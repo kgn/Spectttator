@@ -24,7 +24,7 @@ SPManager
 Pagination
 --------
 
-Most dribbble api calls take `page` and `per_page` to define which page of data to return and how many items should be contained. In Spectttator this can be defined by passing a `SPPagination` object to the `forPagination:` parameter.
+Most dribbble api calls take `page` and `per_page` to define which page of data to return and how many items should be contained. In Spectttator this can be defined by passing a [`SPPagination`](https://github.com/InScopeApps/Spectttator/blob/master/Spectttator/SPPagination.h) object to the `forPagination:` parameter.
 
     [SPPagination page:5]
     [SPPagination perPage:20]
