@@ -32,6 +32,8 @@ Most dribbble api calls take `page` and `per_page` to define which page of data 
 
 Under the hood these helper functions are simply creating dictionaries.
 
+Calls that are pagable return an [`SPPagination`](https://github.com/InScopeApps/Spectttator/blob/master/Spectttator/SPPagination.h) object to the block, this object contains the returned pagination information: page, pages, perPage, total.
+
 SpectttatorTest
 --------
 
