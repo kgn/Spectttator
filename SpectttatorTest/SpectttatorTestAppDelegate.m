@@ -8,7 +8,7 @@
 
 #import "SpectttatorTestAppDelegate.h"
 #import "NSAttributedString+Hyperlink.h"
-#import "Spectttator.h"
+#import <Spectttator/Spectttator.h>
 
 @implementation SpectttatorTestAppDelegate
 
