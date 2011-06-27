@@ -12,7 +12,7 @@ The following snippet demonstrates how to get the last 10 shots a player liked.
     NSString *username = @"inscopeapps";
     [[SPManager sharedManager] shotsForPlayerLikes:username withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Shots %@ likes: %@", username, shots);
-    } andPagination:[SPPagination page:10]];
+    } andPagination:[SPPagination perPage:10]];
 
 This is non-blocking, `NSLog` will run whenever the shot data has finished loading but the block still has access to everything in the scope from where it was defined.
 
