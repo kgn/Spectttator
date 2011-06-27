@@ -29,10 +29,10 @@
 @synthesize player = _player;
 
 - (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self reboundsWithBlock:block forPagination:nil];
+    [self reboundsWithBlock:block andPagination:nil];
 }
 
-- (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block forPagination:(NSDictionary *)pagination{
+- (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%lu/rebounds", 
                            self.identifier, [SPRequest pagination:pagination]];
@@ -52,10 +52,10 @@
 }
 
 - (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self commentsWithBlock:block forPagination:nil];
+    [self commentsWithBlock:block andPagination:nil];
 }
 
-- (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block forPagination:(NSDictionary *)pagination{
+- (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%lu/comments", 
                            self.identifier, [SPRequest pagination:pagination]];

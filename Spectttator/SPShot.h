@@ -45,9 +45,9 @@
 @property (readonly) SPPlayer *player;
 
 - (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block;
-- (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block forPagination:(NSDictionary *)pagination;
+- (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
 - (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block;
-- (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block forPagination:(NSDictionary *)pagination;
+- (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
     
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
