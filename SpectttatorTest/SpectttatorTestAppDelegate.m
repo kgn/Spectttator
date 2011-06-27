@@ -22,12 +22,12 @@
 @synthesize listUpdating = _listUpdating;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification{
+    NSString *username = @"inscopeapps";
+    
     //populate the ui
-    [self.username setStringValue:@"inscopeapps"];
+    [self.username setStringValue:username];
     [self userChanged:self.username];
     [self listChanged:self.listPopup];
-    
-    NSString *username = @"inscopeapps";
     
     //run commands that don't appear in the ui
     [[SPManager sharedManager] shotInformationForIdentifier:199295 withBlock:^(SPShot *shot){
