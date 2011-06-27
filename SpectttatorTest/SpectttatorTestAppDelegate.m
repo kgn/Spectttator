@@ -54,7 +54,7 @@
     
     [[SPManager sharedManager] shotsForPlayerLikes:username withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Shot %@ likes: %@", username, shots);
-    } andPagination:[SPPagination page:10]];
+    } andPagination:[SPPagination perPage:10]];
     
     [[SPManager sharedManager] playerFollowing:username withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Shot %@ likes: %@", username, shots);
