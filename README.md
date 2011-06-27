@@ -8,6 +8,7 @@ Example
 
 The following snippet demonstrates how to get the last 10 shots a player liked.
 
+    #import <Spectttator/Spectttator.h>
     NSString *username = @"inscopeapps";
     [[SPManager sharedManager] shotsForPlayerLikes:username withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Shot %@ likes: %@", username, shots);
@@ -18,7 +19,7 @@ This is non-blocking, `NSLog` will run whenever the shot data has finished loadi
 SPManager
 --------
 
-SPManager is a singleton that contains most of the dribbble api calls, the other methods are on the `SPShot` object.
+[SPManager](https://github.com/InScopeApps/Spectttator/blob/master/Spectttator/SPManager.h) is a singleton that contains most of the dribbble api calls, the other methods are on the [`SPShot`](https://github.com/InScopeApps/Spectttator/blob/master/Spectttator/SPShot.h) object.
 
 Pagination
 --------
@@ -35,3 +36,5 @@ SpectttatorTest
 --------
 
 SpectttatorTest is a sample application that demonstrates how to use Spectttator to create a non-blocking user interface that displays information from dribbble. It also runs every method which was used during testing and development and show how to use each method.
+
+![SpectttatorTest](https://github.com/InScopeApps/Spectttator/raw/master/SpectttatorTest/SpectttatorTest.png)
