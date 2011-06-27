@@ -37,6 +37,6 @@ Calls that are pagable return an [`SPPagination`](https://github.com/InScopeApps
 SpectttatorTest
 --------
 
-SpectttatorTest is a sample application that demonstrates how to use Spectttator to create a non-blocking user interface that displays information from dribbble. It also runs every method which was used during testing and development and show how to use each method.
+SpectttatorTest is a sample application that demonstrates how to use Spectttator to create a non-blocking user interface that displays information from dribbble. It also runs every method, this was used during testing and development and is a great way to see how to use Spectttator.
 
 ![SpectttatorTest](https://github.com/InScopeApps/Spectttator/raw/master/SpectttatorTest/SpectttatorTest.png)
