@@ -25,24 +25,24 @@
 - (void)playerInformationForUsername:(NSString *)username withBlock:(void (^)(SPPlayer *))block;
 
 - (void)playerFollowers:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block;
-- (void)playerFollowers:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block forPagination:(NSDictionary *)pagination;
+- (void)playerFollowers:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
 
 - (void)playerFollowing:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block;
-- (void)playerFollowing:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block forPagination:(NSDictionary *)pagination;
+- (void)playerFollowing:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
 
 - (void)playerDraftees:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block;
-- (void)playerDraftees:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block forPagination:(NSDictionary *)pagination;
+- (void)playerDraftees:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
 
 - (void)shotsForList:(NSString *)list withBlock:(void (^)(NSArray *, SPPagination *))block;
-- (void)shotsForList:(NSString *)list withBlock:(void (^)(NSArray *, SPPagination *))block forPagination:(NSDictionary *)pagination;
+- (void)shotsForList:(NSString *)list withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
 
 - (void)shotsForPlayer:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block;
-- (void)shotsForPlayer:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block forPagination:(NSDictionary *)pagination;
+- (void)shotsForPlayer:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
 
 - (void)shotsForPlayerFollowing:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block;
-- (void)shotsForPlayerFollowing:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block forPagination:(NSDictionary *)pagination;
+- (void)shotsForPlayerFollowing:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
 
 - (void)shotsForPlayerLikes:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block;
-- (void)shotsForPlayerLikes:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block forPagination:(NSDictionary *)pagination;
+- (void)shotsForPlayerLikes:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
 
 @end

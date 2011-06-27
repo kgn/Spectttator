@@ -46,7 +46,7 @@
     
     [[SPManager sharedManager] playerFollowers:@"simplebits" withBlock:^(NSArray *players, SPPagination *pagination){
         NSLog(@"Players following %@: %@", username, players);
-    } forPagination:[SPPagination page:2 perPage:20]];
+    } andPagination:[SPPagination page:2 perPage:20]];
     
     [[SPManager sharedManager] shotsForPlayerFollowing:username withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Shot by player %@ is following: %@", username, shots);
@@ -54,11 +54,11 @@
     
     [[SPManager sharedManager] shotsForPlayerLikes:username withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Shot %@ likes: %@", username, shots);
-    } forPagination:[SPPagination page:10]];
+    } andPagination:[SPPagination page:10]];
     
     [[SPManager sharedManager] playerFollowing:username withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Shot %@ likes: %@", username, shots);
-    } forPagination:[SPPagination page:2]];
+    } andPagination:[SPPagination page:2]];
     
     [[SPManager sharedManager] playerDraftees:username withBlock:^(NSArray *players, SPPagination *pagination){
         NSLog(@"Players %@ drafted: %@", username, players);
@@ -91,7 +91,7 @@
             [self.spinner stopAnimation:nil];
         }
         [self.username setEnabled:YES];
-    } forPagination:[SPPagination perPage:20]];
+    } andPagination:[SPPagination perPage:20]];
 }
 
 - (IBAction)listChanged:(id)sender {
