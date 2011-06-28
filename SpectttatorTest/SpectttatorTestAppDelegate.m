@@ -81,7 +81,7 @@
     
     //get shots from player
     [[SPManager sharedManager] shotsForPlayer:user withBlock:^(NSArray *shots, SPPagination *pagination){
-        NSLog(@"Recieved shot data for %@", user);
+        NSLog(@"Received shot data for %@", user);
         NSLog(@"With pagination: %@", pagination);
         
         //get the last shot uploaded by the player
@@ -118,7 +118,7 @@
     
     //get shots from a list
     [[SPManager sharedManager] shotsForList:list withBlock:^(NSArray *shots, SPPagination *pagination){
-        NSLog(@"Recieved list data for %@", list);
+        NSLog(@"Received list data for %@", list);
         NSLog(@"With pagination: %@", pagination);
         
         //get the last shot uploaded to the list

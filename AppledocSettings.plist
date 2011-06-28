@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
+	"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>--project-name</key>
+    <string>Spectttator</string>
+    <key>--project-company</key>
+    <string>David Keegan</string>
+    <key>--company-id</key>
+    <string>com.inscopeapps</string>
+    <key>--input</key>
+    <array>
+        <string>./Spectttator/SPManager.h</string>
+        <string>./Spectttator/SPPagination.h</string>
+        <string>./Spectttator/SPPlayer.h</string>
+        <string>./Spectttator/SPShot.h</string>
+        <string>./Spectttator/SPComment.h</string>
+    </array>
+    <key>--create-html</key>
+    <true/>
+    <key>--output</key>
+    <string>./Documentation</string>	
+    <key>--verbose</key>
+    <integer>4</integer>
+    <key>--logformat</key>
+    <integer>1</integer>
+</dict>
+</plist>

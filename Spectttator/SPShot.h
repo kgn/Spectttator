@@ -10,6 +10,27 @@
 #import "SPPagination.h"
 #import "SPPlayer.h"
 
+/** The `SPShot` class provides a programmatic interface for interacting 
+ with dribbble shots.
+ 
+ The following snippet demonstrates how to retrieve a shot from an id and then get rebounds and comments on the shot.
+ 
+    #import <Spectttator/Spectttator.h>
+    
+    [[SPManager sharedManager] shotInformationForIdentifier:199295 withBlock:^(SPShot *shot){
+        NSLog(@"Shot Information: %@", shot);
+        [shot reboundsWithBlock:^(NSArray *rebounds, SPPagination *pagination){
+            NSLog(@"Rebounds for '%@': %@", shot.title, rebounds);
+        }];
+        [shot commentsWithBlock:^(NSArray *comments, SPPagination *pagination){
+            NSLog(@"Comments for '%@': %@", shot.title, comments);
+        }];        
+    }];
+ 
+ This is non-blocking, `NSLog` will run whenever the shot data has finished loading but the 
+ block still has access to everything in the scope from where it was defined.
+ */
+
 @interface SPShot : NSObject {
     NSUInteger _identifier;
     NSString *_title;
@@ -28,30 +49,114 @@
     SPPlayer *_player;
 }
 
+/// The unique id number of the shot.
 @property (readonly) NSUInteger identifier;
+/// The title of the shot.
 @property (readonly) NSString *title;
+/// The full url of the shot.
 @property (readonly) NSURL *url;
+/// The short url of the shot.
 @property (readonly) NSURL *short_url;
+/// The url to the shot's image.
 @property (readonly) NSURL *image_url;
+/// The url to the shot's teaser image.
 @property (readonly) NSURL *image_teaser_url;
+/// The width of the shot.
 @property (readonly) NSUInteger width;
+/// The height of the shot.
 @property (readonly) NSUInteger height;
+/// The number of views the shot has.
 @property (readonly) NSUInteger views_count;
+/// The number of likes the shot has.
 @property (readonly) NSUInteger likes_count;
+/// The number of comments the shot has.
 @property (readonly) NSUInteger comments_count;
+/// The number of rebounds the shot has.
 @property (readonly) NSUInteger rebounds_count;
-@property (readonly) NSUInteger rebound_source_id;//the id or NSNotFound
+/** The id number of this shot this shot is a rebound of. 
+
+ If it's not a rebound this value is `NSNotFound`.
+ */
+@property (readonly) NSUInteger rebound_source_id;
+/// The date the shot was created on.
 @property (readonly) NSDate *created_at;
+/** The player who posted the shot.
+ @see SPPlayer
+ */
 @property (readonly) SPPlayer *player;
 
+///----------------------------
+/// @name Initializing a SPShot Object
+///----------------------------
+
+/** 
+ Returns a `SPShot` object initialized with the given shot data. 
+ 
+ There is no need to call this method directly, it is used by 
+ higher level methods like `[SPManager shotsForList:withBlock:]`.
+ @param dictionary A dictionary of shot data.
+ @return An initialized `SPShot` object.
+ */
+- (id)initWithDictionary:(NSDictionary *)dictionary;
+
+///----------------------------
+/// @name Retrieving Images
+///----------------------------
+
+/** 
+ Retrieves the shot's image.
+ @param block The block to be executed once the data has been retrieved. 
+ An `NSImage` object for the shot is passed to the block.
+ */
 - (void)imageWithBlock:(void (^)(NSImage *))block;
+
+/** 
+ Retrieves the shot's teaser image.
+ @param block The block to be executed once the data has been retrieved. 
+ An `NSImage` object for the teaser is passed to the block.
+ */
 - (void)imageTeaserWithBlock:(void (^)(NSImage *))block;
 
+///----------------------------
+/// @name Rebounds and Comments
+///----------------------------
+
+/** 
+ Retrieves the set of rebounds (shots in response to a shot) for the shot.
+ @param block The block to be executed once the data has been retrieved. 
+ A `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
+ @see reboundsWithBlock:withBlock:andPagination:
+ */
 - (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block;
+
+/** 
+ Retrieves the set of rebounds (shots in response to a shot) for the shot.
+ @param block The block to be executed once the data has been retrieved. 
+ A `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
+ @param pagination A NSDictionary with pagination data, the best way to 
+ create this dictionary is with the helper functions on SPPagination.
+ @see reboundsWithBlock:withBlock:
+ */
 - (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
+
+/** 
+ Retrieves the set of comments for the shot.
+ @param block The block to be executed once the data has been retrieved. 
+ A `NSArray` of `SPComment ` objects and a `SPPagination` objects are passed to the block.
+ @see reboundsWithBlock:withBlock:andPagination:
+ @see SPComment
+ */
 - (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block;
+
+/** 
+ Retrieves the set of rebounds (shots in response to a shot) for the shot.
+ @param block The block to be executed once the data has been retrieved. 
+ A `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
+ @param pagination A `NSDictionary` with pagination data, the best way to 
+ create this dictionary is with the helper functions on SPPagination.
+ @see commentsWithBlock:withBlock:
+ @see SPComment
+ */
 - (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
-    
-- (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

@@ -27,8 +27,8 @@ static SPManager *sharedInstance = nil;
 #pragma mark -
 #pragma mark player
 
-- (void)playerInformationForUsername:(NSString *)player withBlock:(void (^)(SPPlayer *))block{
-    NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/players/%@", player];
+- (void)playerInformationForUsername:(NSString *)username withBlock:(void (^)(SPPlayer *))block{
+    NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/players/%@", username];
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         block([[[SPPlayer alloc] initWithDictionary:json] autorelease]);
@@ -38,14 +38,14 @@ static SPManager *sharedInstance = nil;
 #pragma mark -
 #pragma mark player followers
 
-- (void)playerFollowers:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self playerFollowers:player withBlock:block andPagination:nil];
+- (void)playerFollowers:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block{
+    [self playerFollowers:username withBlock:block andPagination:nil];
 }
 
-- (void)playerFollowers:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
+- (void)playerFollowers:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/followers%@", 
-                           player, [SPRequest pagination:pagination]];
+                           username, [SPRequest pagination:pagination]];
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *players = [json objectForKey:@"players"];
@@ -64,14 +64,14 @@ static SPManager *sharedInstance = nil;
 #pragma mark -
 #pragma mark player following
 
-- (void)playerFollowing:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self playerFollowing:player withBlock:block andPagination:nil];
+- (void)playerFollowing:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block{
+    [self playerFollowing:username withBlock:block andPagination:nil];
 }
 
-- (void)playerFollowing:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
+- (void)playerFollowing:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/following%@", 
-                           player, [SPRequest pagination:pagination]];
+                           username, [SPRequest pagination:pagination]];
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *players = [json objectForKey:@"players"];
@@ -90,14 +90,14 @@ static SPManager *sharedInstance = nil;
 #pragma mark -
 #pragma mark player draftees
 
-- (void)playerDraftees:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self playerDraftees:player withBlock:block andPagination:nil];
+- (void)playerDraftees:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block{
+    [self playerDraftees:username withBlock:block andPagination:nil];
 }
 
-- (void)playerDraftees:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
+- (void)playerDraftees:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/draftees%@", 
-                           player, [SPRequest pagination:pagination]];
+                           username, [SPRequest pagination:pagination]];
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *players = [json objectForKey:@"players"];
@@ -142,14 +142,14 @@ static SPManager *sharedInstance = nil;
 #pragma mark -
 #pragma mark shots for player
 
-- (void)shotsForPlayer:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self shotsForPlayer:player withBlock:block andPagination:nil];
+- (void)shotsForPlayer:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block{
+    [self shotsForPlayer:username withBlock:block andPagination:nil];
 }
 
-- (void)shotsForPlayer:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
+- (void)shotsForPlayer:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/shots%@", 
-                           player, [SPRequest pagination:pagination]];
+                           username, [SPRequest pagination:pagination]];
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *shots = [json objectForKey:@"shots"];
@@ -168,14 +168,14 @@ static SPManager *sharedInstance = nil;
 #pragma mark -
 #pragma mark shots for player following
 
-- (void)shotsForPlayerFollowing:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self shotsForPlayerFollowing:player withBlock:block andPagination:nil];
+- (void)shotsForPlayerFollowing:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block{
+    [self shotsForPlayerFollowing:username withBlock:block andPagination:nil];
 }
 
-- (void)shotsForPlayerFollowing:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
+- (void)shotsForPlayerFollowing:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/shots/following%@", 
-                           player, [SPRequest pagination:pagination]];
+                           username, [SPRequest pagination:pagination]];
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *shots = [json objectForKey:@"shots"];
@@ -194,14 +194,14 @@ static SPManager *sharedInstance = nil;
 #pragma mark -
 #pragma mark shots for player likes
 
-- (void)shotsForPlayerLikes:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self shotsForPlayerLikes:player withBlock:block andPagination:nil];
+- (void)shotsForPlayerLikes:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block{
+    [self shotsForPlayerLikes:username withBlock:block andPagination:nil];
 }
 
-- (void)shotsForPlayerLikes:(NSString *)player withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
+- (void)shotsForPlayerLikes:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/shots/likes%@", 
-                           player, [SPRequest pagination:pagination]];
+                           username, [SPRequest pagination:pagination]];
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *shots = [json objectForKey:@"shots"];
