@@ -71,6 +71,8 @@
 - (IBAction)userChanged:(id)sender{
     NSString *user = [sender stringValue];
     [self.shots setString:@""];  
+    [self.lastPlayerShot setImage:nil];
+    [self.avatar setImage:nil];
     if(![user length]){
         return;
     }
@@ -85,14 +87,18 @@
         NSLog(@"With pagination: %@", pagination);
         
         //get the last shot uploaded by the player
-        [[shots objectAtIndex:0] imageWithBlock:^(NSImage *image){
-            [self.lastPlayerShot setImage:image];
-        }];
+        if([shots count]){
+            [[shots objectAtIndex:0] imageWithBlock:^(NSImage *image){
+                [self.lastPlayerShot setImage:image];
+            }];
+        }
         
         //get the player's avatar
-        [[[shots objectAtIndex:0] player] avatarWithBlock:^(NSImage *image){
-            [self.avatar setImage:image];
-        }];          
+        if([shots count]){
+            [[[shots objectAtIndex:0] player] avatarWithBlock:^(NSImage *image){
+                [self.avatar setImage:image];
+            }];       
+        }
         
         @autoreleasepool {
             for(SPShot *shot in shots){
@@ -112,6 +118,7 @@
 - (IBAction)listChanged:(id)sender {
     NSString *list = [[sender titleOfSelectedItem] lowercaseString];
     [self.listShots setString:@""];
+    [self.lastListShot setImage:nil];
     [self.spinner startAnimation:nil];
     [self.listPopup setEnabled:NO];
     self.listUpdating = YES;
@@ -122,9 +129,11 @@
         NSLog(@"With pagination: %@", pagination);
         
         //get the last shot uploaded to the list
-        [[shots objectAtIndex:0] imageWithBlock:^(NSImage *image){
-            [self.lastListShot setImage:image];
-        }];        
+        if([shots count]){
+            [[shots objectAtIndex:0] imageWithBlock:^(NSImage *image){
+                [self.lastListShot setImage:image];
+            }];       
+        }
         
         @autoreleasepool {
             for(SPShot *shot in shots){
