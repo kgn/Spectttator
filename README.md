@@ -3,7 +3,7 @@ Spectttator
 
 Spectttator is an Objective-C framework for the [dribbble api](http://dribbble.com/api). It uses [Grand Central Dispatch](http://developer.apple.com/library/mac/#documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html) and [blocks](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Blocks/Articles/00_Introduction.html) to provide an easy to use, non-blocking, closure style api for dribbble!
 
-Below is a quick overview of the framework, to get an indepth look check out the [documentation](http://inscopeapps.github.com/Spectttator).
+Below is a quick overview of the framework, to get an in depth look check out the [documentation](http://inscopeapps.github.com/Spectttator).
 
 Example
 --------
