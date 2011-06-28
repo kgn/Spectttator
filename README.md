@@ -39,4 +39,6 @@ SpectttatorTest
 
 SpectttatorTest is a sample application that demonstrates how to use Spectttator to create a non-blocking user interface that displays information from dribbble. It also runs every method, this was used during testing and development and is a great way to see how to use Spectttator.
 
+Check out [this video](http://vimeo.com/25704164) to see SpectttatorTest in action.
+
 ![SpectttatorTest](https://github.com/InScopeApps/Spectttator/raw/master/SpectttatorTest/SpectttatorTest.png)
