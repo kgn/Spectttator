@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <SBJson/SBJson.h>
+#import "SBJson.h"
 
 @interface SPRequest : NSObject
 
