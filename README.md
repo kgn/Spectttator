@@ -18,22 +18,6 @@ The following snippet demonstrates how to get the last 10 shots a player liked.
 
 This is non-blocking, `NSLog` will run whenever the shot data has finished loading but the block still has access to everything in the scope from where it was defined.
 
-SPManager
---------
-
-[SPManager](https://github.com/InScopeApps/Spectttator/blob/master/Spectttator/SPManager.h) is a singleton that contains most of the dribbble api calls, the other methods are on the [`SPShot`](https://github.com/InScopeApps/Spectttator/blob/master/Spectttator/SPShot.h) object.
-
-Pagination
---------
-
-Most dribbble api calls take `page` and `per_page` to define which page of data to return and how many items should be contained in the return. In Spectttator this can be defined by passing a dictionary with 'page' and 'per_page' to the `andPagination:` parameter. [`SPPagination`](https://github.com/InScopeApps/Spectttator/blob/master/Spectttator/SPPagination.h) contains helper functions for creating this dictionary.
-
-    [SPPagination page:5]
-    [SPPagination perPage:20]
-    [SPPagination page:2 perPage:20]
-
-Calls that are pagable return an [`SPPagination`](https://github.com/InScopeApps/Spectttator/blob/master/Spectttator/SPPagination.h) object to the block, this object contains the returned pagination information: `page`, `pages`, `perPage`, `total`.
-
 SpectttatorTest
 --------
 
