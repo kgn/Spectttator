@@ -15,6 +15,9 @@
     NSTextView *_shots;
     NSPopUpButton *_listPopup;
     NSTextView *_listShots;
+    NSImageView *_lastPlayerShot;
+    NSImageView *_lastListShot;
+    NSImageView *_avatar;
     BOOL _userUpdating, _listUpdating;
 }
 
@@ -24,6 +27,9 @@
 @property (assign) IBOutlet NSTextView *shots;
 @property (assign) IBOutlet NSPopUpButton *listPopup;
 @property (assign) IBOutlet NSTextView *listShots;
+@property (assign) IBOutlet NSImageView *lastPlayerShot;
+@property (assign) IBOutlet NSImageView *lastListShot;
+@property (assign) IBOutlet NSImageView *avatar;
 @property BOOL userUpdating, listUpdating;
 
 - (IBAction)userChanged:(id)sender;

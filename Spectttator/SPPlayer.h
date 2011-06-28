@@ -50,6 +50,8 @@
 @property (readonly) NSUInteger rebounds_received_count;
 @property (readonly) NSDate *created_at;
 
+- (void)avatarWithBlock:(void (^)(NSImage *))block;
+
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

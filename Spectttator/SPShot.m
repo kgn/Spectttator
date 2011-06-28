@@ -28,6 +28,18 @@
 @synthesize created_at = _created_at;
 @synthesize player = _player;
 
+- (void)imageWithBlock:(void (^)(NSImage *))block{
+    [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
+        block([[[NSImage alloc] initWithContentsOfURL:self.image_url] autorelease]);
+    }]];
+}
+
+- (void)imageTeaserWithBlock:(void (^)(NSImage *))block{
+    [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
+        block([[[NSImage alloc] initWithContentsOfURL:self.image_teaser_url] autorelease]);
+    }]];
+}
+
 - (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block{
     [self reboundsWithBlock:block andPagination:nil];
 }

@@ -18,6 +18,9 @@
 @synthesize shots = _shots;
 @synthesize listPopup = _listPopup;
 @synthesize listShots = _listShots;
+@synthesize lastPlayerShot = _lastPlayerShot;
+@synthesize lastListShot = _lastListShot;
+@synthesize avatar = _avatar;
 @synthesize userUpdating = _userUpdating;
 @synthesize listUpdating = _listUpdating;
 
@@ -71,6 +74,7 @@
     if(![user length]){
         return;
     }
+    
     [self.spinner startAnimation:nil];
     [self.username setEnabled:NO];
     self.userUpdating = YES;
@@ -79,6 +83,17 @@
     [[SPManager sharedManager] shotsForPlayer:user withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Recieved shot data for %@", user);
         NSLog(@"With pagination: %@", pagination);
+        
+        //get the last shot uploaded by the player
+        [[shots objectAtIndex:0] imageWithBlock:^(NSImage *image){
+            [self.lastPlayerShot setImage:image];
+        }];
+        
+        //get the player's avatar
+        [[[shots objectAtIndex:0] player] avatarWithBlock:^(NSImage *image){
+            [self.avatar setImage:image];
+        }];          
+        
         @autoreleasepool {
             for(SPShot *shot in shots){
                 NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
@@ -105,6 +120,12 @@
     [[SPManager sharedManager] shotsForList:list withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Recieved list data for %@", list);
         NSLog(@"With pagination: %@", pagination);
+        
+        //get the last shot uploaded to the list
+        [[shots objectAtIndex:0] imageWithBlock:^(NSImage *image){
+            [self.lastListShot setImage:image];
+        }];        
+        
         @autoreleasepool {
             for(SPShot *shot in shots){
                 NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];

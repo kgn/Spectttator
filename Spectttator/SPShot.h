@@ -44,6 +44,9 @@
 @property (readonly) NSDate *created_at;
 @property (readonly) SPPlayer *player;
 
+- (void)imageWithBlock:(void (^)(NSImage *))block;
+- (void)imageTeaserWithBlock:(void (^)(NSImage *))block;
+
 - (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block;
 - (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
 - (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block;

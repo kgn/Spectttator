@@ -7,6 +7,7 @@
 //
 
 #import "SPPlayer.h"
+#import "SPRequest.h"
 
 @implementation SPPlayer
 
@@ -29,6 +30,12 @@
 @synthesize rebounds_count = _rebounds_count;
 @synthesize rebounds_received_count = _rebounds_received_count;
 @synthesize created_at = _created_at;
+
+- (void)avatarWithBlock:(void (^)(NSImage *))block{
+    [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
+        block([[[NSImage alloc] initWithContentsOfURL:self.avatar_url] autorelease]);
+    }]];    
+}
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
