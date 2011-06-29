@@ -15,28 +15,28 @@
 @synthesize identifier = _identifier;
 @synthesize title = _title;
 @synthesize url = _url;
-@synthesize short_url = _short_url;
-@synthesize image_url = _image_url;
-@synthesize image_teaser_url = _image_teaser_url;
+@synthesize shortUrl = _shortUrl;
+@synthesize imageUrl = _imageUrl;
+@synthesize imageTeaserUrl = _imageTeaserUrl;
 @synthesize width = _width;
 @synthesize height = _height;
-@synthesize views_count = _views_count;
-@synthesize likes_count = _likes_count;
-@synthesize comments_count = _comments_count;
-@synthesize rebounds_count = _rebounds_count;
-@synthesize rebound_source_id = _rebound_source_id;
-@synthesize created_at = _created_at;
+@synthesize viewsCount = _viewsCount;
+@synthesize likesCount = _likesCount;
+@synthesize commentsCount = _commentsCount;
+@synthesize reboundsCount = _reboundsCount;
+@synthesize reboundSourceId = _reboundSourceId;
+@synthesize createdAt = _createdAt;
 @synthesize player = _player;
 
 - (void)imageWithBlock:(void (^)(NSImage *))block{
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        block([[[NSImage alloc] initWithContentsOfURL:self.image_url] autorelease]);
+        block([[[NSImage alloc] initWithContentsOfURL:self.imageUrl] autorelease]);
     }]];
 }
 
 - (void)imageTeaserWithBlock:(void (^)(NSImage *))block{
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        block([[[NSImage alloc] initWithContentsOfURL:self.image_teaser_url] autorelease]);
+        block([[[NSImage alloc] initWithContentsOfURL:self.imageTeaserUrl] autorelease]);
     }]];
 }
 
@@ -52,13 +52,13 @@
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *shots = [json objectForKey:@"shots"];
         NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
-        @autoreleasepool {
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
             for(NSDictionary *shotData in shots){
                 SPShot *shot = [[SPShot alloc] initWithDictionary:shotData];
                 [mshots addObject:shot];
                 [shot release];
             }
-        }
+        [pool drain];
         block(mshots, [SPPagination paginationWithDictionary:json]);
     }]];    
 }
@@ -75,13 +75,13 @@
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *comments = [json objectForKey:@"comments"];
         NSMutableArray *mcomments = [[NSMutableArray alloc] initWithCapacity:[comments count]];
-        @autoreleasepool {
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
             for(NSDictionary *commentData in comments){
                 SPComment *comment = [[SPComment alloc] initWithDictionary:commentData];
                 [mcomments addObject:comment];
                 [comment release];
             }
-        }
+        [pool drain];
         block(mcomments, [SPPagination paginationWithDictionary:json]);
     }]];    
 }
@@ -91,25 +91,25 @@
         _identifier = [[dictionary objectForKey:@"id"] intValue];
         _title = [[NSString alloc] initWithString:[dictionary objectForKey:@"title"]];
         _url = [[NSURL alloc] initWithString:[dictionary objectForKey:@"url"]];
-        _short_url = [[NSURL alloc] initWithString:[dictionary objectForKey:@"short_url"]];
-        _image_url = [[NSURL alloc] initWithString:[dictionary objectForKey:@"image_url"]];
-        _image_teaser_url = [[NSURL alloc] initWithString:[dictionary objectForKey:@"image_teaser_url"]];
+        _shortUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"short_url"]];
+        _imageUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"image_url"]];
+        _imageTeaserUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"image_teaser_url"]];
         _width = [[dictionary objectForKey:@"width"] intValue];
         _height = [[dictionary objectForKey:@"height"] intValue];
-        _views_count = [[dictionary objectForKey:@"views_count"] intValue];
-        _likes_count = [[dictionary objectForKey:@"likes_count"] intValue];
-        _comments_count = [[dictionary objectForKey:@"comments_count"] intValue];
-        _rebounds_count = [[dictionary objectForKey:@"rebounds_count"] intValue];
+        _viewsCount = [[dictionary objectForKey:@"views_count"] intValue];
+        _likesCount = [[dictionary objectForKey:@"likes_count"] intValue];
+        _commentsCount = [[dictionary objectForKey:@"comments_count"] intValue];
+        _reboundsCount = [[dictionary objectForKey:@"rebounds_count"] intValue];
         
         if([dictionary objectForKey:@"rebound_source_id"] != [NSNull null]){
-            _rebound_source_id = [[dictionary objectForKey:@"rebound_source_id"] intValue];
+            _reboundSourceId = [[dictionary objectForKey:@"rebound_source_id"] intValue];
         }else{
-            _rebound_source_id = NSNotFound;
+            _reboundSourceId = NSNotFound;
         }
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
-        _created_at = [[formatter dateFromString:[dictionary objectForKey:@"created_at"]] retain];
+        _createdAt = [[formatter dateFromString:[dictionary objectForKey:@"created_at"]] retain];
         [formatter release];
         
         _player = [[SPPlayer alloc] initWithDictionary:[dictionary objectForKey:@"player"]];
@@ -126,10 +126,10 @@
 - (void)dealloc{
     [_title release];
     [_url release];
-    [_short_url release];
-    [_image_url release];
-    [_image_teaser_url release];
-    [_created_at release];
+    [_shortUrl release];
+    [_imageUrl release];
+    [_imageTeaserUrl release];
+    [_createdAt release];
     [super dealloc];
 }
 

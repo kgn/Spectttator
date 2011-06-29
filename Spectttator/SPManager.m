@@ -50,13 +50,13 @@ static SPManager *sharedInstance = nil;
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *players = [json objectForKey:@"players"];
         NSMutableArray *mplayers = [[NSMutableArray alloc] initWithCapacity:[players count]];
-        @autoreleasepool {
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
             for(NSDictionary *playerData in players){
                 SPPlayer *player = [[SPPlayer alloc] initWithDictionary:playerData];
                 [mplayers addObject:player];
                 [player release];
             }
-        }
+        [pool drain];
         block(mplayers, [SPPagination paginationWithDictionary:json]);
     }]];     
 }
@@ -76,13 +76,13 @@ static SPManager *sharedInstance = nil;
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *players = [json objectForKey:@"players"];
         NSMutableArray *mplayers = [[NSMutableArray alloc] initWithCapacity:[players count]];
-        @autoreleasepool {
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
             for(NSDictionary *playerData in players){
                 SPPlayer *player = [[SPPlayer alloc] initWithDictionary:playerData];
                 [mplayers addObject:player];
                 [player release];
             }
-        }
+        [pool drain];
         block(mplayers, [SPPagination paginationWithDictionary:json]);
     }]];     
 }
@@ -102,13 +102,13 @@ static SPManager *sharedInstance = nil;
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *players = [json objectForKey:@"players"];
         NSMutableArray *mplayers = [[NSMutableArray alloc] initWithCapacity:[players count]];
-        @autoreleasepool {
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
             for(NSDictionary *playerData in players){
                 SPPlayer *player = [[SPPlayer alloc] initWithDictionary:playerData];
                 [mplayers addObject:player];
                 [player release];
             }
-        }
+        [pool drain];
         block(mplayers, [SPPagination paginationWithDictionary:json]);
     }]];     
 }
@@ -128,13 +128,13 @@ static SPManager *sharedInstance = nil;
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *shots = [json objectForKey:@"shots"];
         NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
-        @autoreleasepool {
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
             for(NSDictionary *shotData in shots){
                 SPShot *shot = [[SPShot alloc] initWithDictionary:shotData];
                 [mshots addObject:shot];
                 [shot release];
             }
-        }
+        [pool drain];
         block(mshots, [SPPagination paginationWithDictionary:json]);
     }]];    
 }
@@ -154,13 +154,13 @@ static SPManager *sharedInstance = nil;
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *shots = [json objectForKey:@"shots"];
         NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
-        @autoreleasepool {
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
             for(NSDictionary *shotData in shots){
                 SPShot *shot = [[SPShot alloc] initWithDictionary:shotData];
                 [mshots addObject:shot];
                 [shot release];
             }
-        }
+        [pool drain];
         block(mshots, [SPPagination paginationWithDictionary:json]);
     }]];    
 }
@@ -180,13 +180,13 @@ static SPManager *sharedInstance = nil;
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *shots = [json objectForKey:@"shots"];
         NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
-        @autoreleasepool {
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
             for(NSDictionary *shotData in shots){
                 SPShot *shot = [[SPShot alloc] initWithDictionary:shotData];
                 [mshots addObject:shot];
                 [shot release];
             }
-        }
+        [pool drain];
         block(mshots, [SPPagination paginationWithDictionary:json]);
     }]];    
 }
@@ -206,13 +206,13 @@ static SPManager *sharedInstance = nil;
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         NSArray *shots = [json objectForKey:@"shots"];
         NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
-        @autoreleasepool {
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
             for(NSDictionary *shotData in shots){
                 SPShot *shot = [[SPShot alloc] initWithDictionary:shotData];
                 [mshots addObject:shot];
                 [shot release];
             }
-        }
+        [pool drain];
         block(mshots, [SPPagination paginationWithDictionary:json]);
     }]];    
 }

@@ -35,17 +35,17 @@
     NSUInteger _identifier;
     NSString *_title;
     NSURL *_url;
-    NSURL *_short_url;
-    NSURL *_image_url;
-    NSURL *_image_teaser_url;
+    NSURL *_shortUrl;
+    NSURL *_imageUrl;
+    NSURL *_imageTeaserUrl;
     NSUInteger _width;
     NSUInteger _height;
-    NSUInteger _views_count;
-    NSUInteger _likes_count;
-    NSUInteger _comments_count;
-    NSUInteger _rebounds_count;
-    NSUInteger _rebound_source_id;
-    NSDate *_created_at;
+    NSUInteger _viewsCount;
+    NSUInteger _likesCount;
+    NSUInteger _commentsCount;
+    NSUInteger _reboundsCount;
+    NSUInteger _reboundSourceId;
+    NSDate *_createdAt;
     SPPlayer *_player;
 }
 
@@ -56,30 +56,30 @@
 /// The full url to the shot.
 @property (readonly) NSURL *url;
 /// The short url to the shot.
-@property (readonly) NSURL *short_url;
+@property (readonly) NSURL *shortUrl;
 /// The url to the shot's image.
-@property (readonly) NSURL *image_url;
+@property (readonly) NSURL *imageUrl;
 /// The url to the shot's teaser image.
-@property (readonly) NSURL *image_teaser_url;
+@property (readonly) NSURL *imageTeaserUrl;
 /// The width of the shot.
 @property (readonly) NSUInteger width;
 /// The height of the shot.
 @property (readonly) NSUInteger height;
 /// The number of views the shot has.
-@property (readonly) NSUInteger views_count;
+@property (readonly) NSUInteger viewsCount;
 /// The number of likes the shot has.
-@property (readonly) NSUInteger likes_count;
+@property (readonly) NSUInteger likesCount;
 /// The number of comments the shot has.
-@property (readonly) NSUInteger comments_count;
+@property (readonly) NSUInteger commentsCount;
 /// The number of rebounds the shot has.
-@property (readonly) NSUInteger rebounds_count;
+@property (readonly) NSUInteger reboundsCount;
 /** The id of this shot this shot is a rebound of. 
 
  If it is not a rebound this value is `NSNotFound`.
  */
-@property (readonly) NSUInteger rebound_source_id;
+@property (readonly) NSUInteger reboundSourceId;
 /// The date the shot was created on.
-@property (readonly) NSDate *created_at;
+@property (readonly) NSDate *createdAt;
 /** The player who posted the shot.
  @see SPPlayer
  */

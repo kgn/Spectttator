@@ -100,13 +100,13 @@
             }];       
         }
         
-        @autoreleasepool {
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
             for(SPShot *shot in shots){
                 NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
                 NSMutableAttributedString *shotString = [NSAttributedString hyperlinkFromString:string withURL:shot.url];
                 [[self.shots textStorage] appendAttributedString:shotString];
             }
-        }
+        [pool drain];
         self.userUpdating = NO;
         if(!self.listUpdating){
             [self.spinner stopAnimation:nil];
@@ -135,13 +135,13 @@
             }];       
         }
         
-        @autoreleasepool {
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
             for(SPShot *shot in shots){
                 NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
                 NSMutableAttributedString *shotString = [NSAttributedString hyperlinkFromString:string withURL:shot.url];
                 [[self.listShots textStorage] appendAttributedString:shotString];
             }
-        }
+        [pool drain];
         self.listUpdating = NO;
         if(!self.userUpdating){
             [self.spinner stopAnimation:nil];

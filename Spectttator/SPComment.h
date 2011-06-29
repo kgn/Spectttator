@@ -29,8 +29,8 @@
 @interface SPComment : NSObject{
     NSUInteger _identifier;
     NSString *_body;
-    NSUInteger _likes_count;
-    NSDate *_created_at;
+    NSUInteger _likesCount;
+    NSDate *_createdAt;
     SPPlayer *_player;
 }
 
@@ -39,9 +39,9 @@
 /// The text of the comment.
 @property (readonly) NSString *body;
 /// The number of players who liked the comment.
-@property (readonly) NSUInteger likes_count;
+@property (readonly) NSUInteger likesCount;
 /// The date the comment was created.
-@property (readonly) NSDate *created_at;
+@property (readonly) NSDate *createdAt;
 /** The player who posted the comment.
  @see SPPlayer
  */

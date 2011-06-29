@@ -30,21 +30,21 @@
     NSString *_name;
     NSString *_username;
     NSURL *_url;
-    NSURL *_avatar_url;
+    NSURL *_avatarUrl;
     NSString *_location;
-    NSString *_twitter_screen_name;
-    NSUInteger _drafted_by_player_id;
-    NSUInteger _shots_count;
-    NSUInteger _draftees_count;
-    NSUInteger _followers_count;
-    NSUInteger _following_count;
-    NSUInteger _comments_count;
-    NSUInteger _comments_received_count;
-    NSUInteger _likes_count;
-    NSUInteger _likes_received_count;
-    NSUInteger _rebounds_count;
-    NSUInteger _rebounds_received_count;
-    NSDate *_created_at;
+    NSString *_twitterScreenName;
+    NSUInteger _draftedByPlayerId;
+    NSUInteger _shotsCount;
+    NSUInteger _drafteesCount;
+    NSUInteger _followersCount;
+    NSUInteger _followingCount;
+    NSUInteger _commentsCount;
+    NSUInteger _commentsReceivedCount;
+    NSUInteger _likesCount;
+    NSUInteger _likesReceivedCount;
+    NSUInteger _reboundsCount;
+    NSUInteger _reboundsReceivedCount;
+    NSDate *_createdAt;
 }
 
 /// The unique id of the player.
@@ -56,38 +56,38 @@
 /// The url of the player's profile.
 @property (readonly) NSURL *url;
 /// The url of the player's avatar.
-@property (readonly) NSURL *avatar_url;
+@property (readonly) NSURL *avatarUrl;
 /// The location of the player.
 @property (readonly) NSString *location;
 /// The player's twitter name.
-@property (readonly) NSString *twitter_screen_name;
+@property (readonly) NSString *twitterScreenName;
 /** The id of this player who drafted this player.
  
  If this player was not drafted the value is `NSNotFound`.
  */
-@property (readonly) NSUInteger drafted_by_player_id;
+@property (readonly) NSUInteger draftedByPlayerId;
 /// The number of shots the player has posted.
-@property (readonly) NSUInteger shots_count;
+@property (readonly) NSUInteger shotsCount;
 /// The number of players the player has drafted.
-@property (readonly) NSUInteger draftees_count;
+@property (readonly) NSUInteger drafteesCount;
 /// The number of people the player follows.
-@property (readonly) NSUInteger followers_count;
+@property (readonly) NSUInteger followersCount;
 /// The number of followers the player has.
-@property (readonly) NSUInteger following_count;
+@property (readonly) NSUInteger followingCount;
 /// The number of comments the player has posted.
-@property (readonly) NSUInteger comments_count;
+@property (readonly) NSUInteger commentsCount;
 /// The number of comments the player's shots have received.
-@property (readonly) NSUInteger comments_received_count;
+@property (readonly) NSUInteger commentsReceivedCount;
 /// The number of shots the player has liked.
-@property (readonly) NSUInteger likes_count;
+@property (readonly) NSUInteger likesCount;
 /// The number of likes the player's shots have received.
-@property (readonly) NSUInteger likes_received_count;
+@property (readonly) NSUInteger likesReceivedCount;
 /// The number of rebounds the player has posted.
-@property (readonly) NSUInteger rebounds_count;
+@property (readonly) NSUInteger reboundsCount;
 /// The number of rebounds the player's shots have received.
-@property (readonly) NSUInteger rebounds_received_count;
+@property (readonly) NSUInteger reboundsReceivedCount;
 /// The date the player's account was created on.
-@property (readonly) NSDate *created_at;
+@property (readonly) NSDate *createdAt;
 
 ///----------------------------
 /// @name Initializing a SPPlayer Object
