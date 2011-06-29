@@ -144,7 +144,7 @@
 /** 
  Retrieves the set of comments for the shot.
  @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPComment ` objects and a `SPPagination` objects are passed to the block.
+  An `NSArray` of `SPComment` objects and a `SPPagination` objects are passed to the block.
  @see reboundsWithBlock:withBlock:andPagination:
  @see SPComment
  @see SPPagination
@@ -154,7 +154,7 @@
 /** 
  Retrieves the set of rebounds (shots in response to a shot) for the shot.
  @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
+  An `NSArray` of `SPComment` objects and a `SPPagination` objects are passed to the block.
  @param pagination A `NSDictionary` with pagination data, the best way to 
   create this dictionary is with the helper functions on `SPPagination`.
  @see commentsWithBlock:withBlock:
