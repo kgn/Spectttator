@@ -18,7 +18,7 @@
 #define SPPopularList @"popular"
 
 /** The `SPManager` class provides a programmatic interface for interacting 
- with the majority of [dribbble api](http://dribbble.com/api) calls, there are some shot centric 
+ with the majority of [Dribbble api](http://dribbble.com/api) calls, there are some shot centric 
  methods implemented on the `SPShot` object.
  
  The following snippet demonstrates how to get the last 10 shots a player liked.

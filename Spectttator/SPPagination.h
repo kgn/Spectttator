@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-/** Most dribbble api calls take `page` and `per_page` to define which page of 
+/** Most Dribbble api calls take `page` and `per_page` to define which page of 
  data to return and how many items should be contained in the return. 
  In Spectttator this can be defined by passing a dictionary with `page`
  and `per_page` to the `andPagination:` parameter. 

@@ -11,7 +11,7 @@
 #import "SPPlayer.h"
 
 /** The `SPShot` class provides a programmatic interface for interacting 
- with dribbble shots.
+ with Dribbble shots.
  
  The following snippet demonstrates how to retrieve a shot from an id and then get rebounds and comments on the shot.
  

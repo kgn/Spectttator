@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 /** The `SPPlayer` class provides a programmatic interface for interacting 
- with dribbble players.
+ with Dribbble players.
  
  The following snippet demonstrates how to retrieve information about a player by their username.
  

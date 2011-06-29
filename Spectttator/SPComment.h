@@ -10,7 +10,7 @@
 #import "SPPlayer.h"
 
 /** The `SPComment` class provides a programmatic interface for interacting 
- with dribbble comments.
+ with Dribbble comments.
  
  The following snippet demonstrates how to retrieve comments for a shot.
  
