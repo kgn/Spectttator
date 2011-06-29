@@ -5,6 +5,8 @@ Spectttator is an Objective-C framework that uses [Grand Central Dispatch](http:
 
 Below is a quick overview of the framework, to get an in depth look check out the [documentation](http://inscopeapps.github.com/Spectttator).
 
+Spectttator is currently only available for OSX, iOS support coming soon.
+
 Example
 --------
 
