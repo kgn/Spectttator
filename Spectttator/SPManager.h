@@ -41,7 +41,7 @@
 /// @name Getting the Shared SPManager Instance
 ///----------------------------
 
-/// Returns the shared Spectttator Manager object.
+/// Returns the shared Spectttator manager object.
 + (id)sharedManager;
 
 ///----------------------------
