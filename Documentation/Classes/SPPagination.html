@@ -38,7 +38,7 @@
 	
 	<option value="//api/name/pages">&nbsp;&nbsp;&nbsp;&nbsp;pages</option>
 	
-	<option value="//api/name/perPages">&nbsp;&nbsp;&nbsp;&nbsp;perPages</option>
+	<option value="//api/name/perPage">&nbsp;&nbsp;&nbsp;&nbsp;perPage</option>
 	
 	<option value="//api/name/total">&nbsp;&nbsp;&nbsp;&nbsp;total</option>
 	
@@ -94,7 +94,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pages">pages</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/perPages">perPages</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/perPage">perPage</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/total">total</a></span></li>
 	
@@ -157,15 +157,15 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Most dribbble api calls take <a href="#//api/name/page">page</a> and per_<a href="#//api/name/page">page</a> to define which <a href="#//api/name/page">page</a> of
+						<p>Most dribbble api calls take <a href="#//api/name/page"><code>page</code></a> and <code>per_</code>page<code></code> to define which <a href="#//api/name/page">page</a> of
 data to return and how many items should be contained in the return.
-In Spectttator this can be defined by passing a dictionary with <code>page</code>
-and <code>per_page</code> to the <code>andPagination:</code> parameter.
+In Spectttator this can be defined by passing a dictionary with <a href="#//api/name/page"><code>page</code></a>
+and <code>per_</code>page<code></code> to the <code>andPagination:</code> parameter.
 <a href="SPPagination.html"><code>SPPagination</code></a> contains helper functions for creating this dictionary.</p>
 
-<p>The <code>SPPagination</code> class is used in two ways. First it provides helper functions for creating
-pagination dictionary to pass to methods. Secondly it provides an object that is passed to block,
-this object contains the returned pagination information: <code>page</code>, <code>pages</code>, <code>perPage</code>, <code>total</code>.</p>
+<p>The <a href="SPPagination.html"><code>SPPagination</code></a> class is used in two ways. First it provides helper functions for creating
+pagination dictionary to pass to methods. Secondly it provides an object that is passed to blocks,
+this object contains the returned pagination information: <a href="#//api/name/page"><code>page</code></a>, <a href="#//api/name/pages"><code>pages</code></a>, <a href="#//api/name/perPage"><code>perPage</code></a>, <a href="#//api/name/total"><code>total</code></a>.</p>
 
 <pre><code>#import &lt;Spectttator/Spectttator.h&gt;
 
@@ -194,7 +194,7 @@ NSString *username = @"inscopeapps";
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/page">&nbsp;&nbsp;page</a></code>
-		<span class="tooltip"><p>The number of the current <a href="#//api/name/page">page</a>.</p></span>
+		<span class="tooltip"><p>The current <a href="#//api/name/page">page</a> number.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -207,7 +207,7 @@ NSString *username = @"inscopeapps";
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/perPages">&nbsp;&nbsp;perPages</a></code>
+		<code><a href="#//api/name/perPage">&nbsp;&nbsp;perPage</a></code>
 		<span class="tooltip"><p>The number of items per<a href="#//api/name/page">page</a>.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -237,7 +237,7 @@ NSString *username = @"inscopeapps";
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithDictionary:">&ndash;&nbsp;initWithDictionary:</a></code>
-		<span class="tooltip"><p>Returns a <a href="SPPagination.html"><code>SPPagination</code></a> object initialized with the given pagination data.</p></span>
+		<span class="tooltip"><p>Returns a Spectttator pagination object initialized with the given pagination data.</p></span>
 	</span>
 	
 	
@@ -290,7 +290,7 @@ NSString *username = @"inscopeapps";
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The number of the current <a href="#//api/name/page">page</a>.</p>
+		<p>The current <a href="#//api/name/page">page</a> number.</p>
 	</div>		
 	
 	
@@ -303,7 +303,7 @@ NSString *username = @"inscopeapps";
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The number of the current <a href="#//api/name/page">page</a>.</p>
+		<p>The current <a href="#//api/name/page">page</a> number.</p>
 	</div>
 	
 	
@@ -358,8 +358,8 @@ NSString *username = @"inscopeapps";
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/perPages" title="perPages"></a>
-	<h3 class="subsubtitle method-title">perPages</h3>
+	<a name="//api/name/perPage" title="perPage"></a>
+	<h3 class="subsubtitle method-title">perPage</h3>
 	
 	
 	
@@ -368,7 +368,7 @@ NSString *username = @"inscopeapps";
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (readonly) NSUInteger perPages</code></div>
+	<div class="method-subsection method-declaration"><code>@property (readonly) NSUInteger perPage</code></div>
 	
 	
 	
@@ -604,7 +604,7 @@ NSString *username = @"inscopeapps";
 		<p>Returns an autoreleased <a href="SPPagination.html"><code>SPPagination</code></a> object initialized with the given pagination data.</p>
 
 <p>There is no need to call this method directly, higher level
-methods use these to return pagination data to blocks.</p>
+methods use this to return pagination data to blocks.</p>
 	</div>
 	
 	
@@ -708,7 +708,7 @@ methods use these to return pagination data to blocks.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns a <a href="SPPagination.html"><code>SPPagination</code></a> object initialized with the given pagination data.</p>
+		<p>Returns a Spectttator pagination object initialized with the given pagination data.</p>
 	</div>		
 	
 	
@@ -736,10 +736,10 @@ methods use these to return pagination data to blocks.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a <a href="SPPagination.html"><code>SPPagination</code></a> object initialized with the given pagination data.</p>
+		<p>Returns a Spectttator pagination object initialized with the given pagination data.</p>
 
 <p>There is no need to call this method directly, higher level
-methods use these to return pagination data to blocks.</p>
+methods use this to return pagination data to blocks.</p>
 	</div>
 	
 	

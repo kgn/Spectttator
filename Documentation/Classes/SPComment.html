@@ -144,15 +144,14 @@ with dribbble comments.</p>
 <pre><code>#import &lt;Spectttator/Spectttator.h&gt;
 
 [[SPManager sharedManager] shotInformationForIdentifier:199295 withBlock:^(SPShot *shot){
-    NSLog(@"Shot Information: %@", shot);
     [shot commentsWithBlock:^(NSArray *comments, SPPagination *pagination){
         NSLog(@"Comments for '%@': %@", shot.title, comments);
     }];        
 }];
 </code></pre>
 
-<p>This is non-blocking, <code>NSLog</code> will run whenever the shot data has finished loading but the
-block still has access to everything in the scope from where it was defined.</p>
+<p>This is non-blocking, <code>NSLog</code> will run whenever the comment data has finished loading,
+but the block still has access to everything in the scope from where it was defined.</p>
 					</div>
 					
 					
@@ -171,14 +170,14 @@ block still has access to everything in the scope from where it was defined.</p>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/identifier">&nbsp;&nbsp;identifier</a></code>
-		<span class="tooltip"><p>The unique id number of the comment.</p></span>
+		<span class="tooltip"><p>The unique id of the comment.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/body">&nbsp;&nbsp;body</a></code>
-		<span class="tooltip"><p>The <a href="#//api/name/body">body</a> text of the comment.</p></span>
+		<span class="tooltip"><p>The text of the comment.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -214,7 +213,7 @@ block still has access to everything in the scope from where it was defined.</p>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithDictionary:">&ndash;&nbsp;initWithDictionary:</a></code>
-		<span class="tooltip"><p>Returns a <a href="SPComment.html"><code>SPComment</code></a> object initialized with the given comment data.</p></span>
+		<span class="tooltip"><p>Returns a Spectttator comment object initialized with the given comment data.</p></span>
 	</span>
 	
 	
@@ -238,7 +237,7 @@ block still has access to everything in the scope from where it was defined.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The <a href="#//api/name/body">body</a> text of the comment.</p>
+		<p>The text of the comment.</p>
 	</div>		
 	
 	
@@ -251,7 +250,7 @@ block still has access to everything in the scope from where it was defined.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The <a href="#//api/name/body">body</a> text of the comment.</p>
+		<p>The text of the comment.</p>
 	</div>
 	
 	
@@ -312,7 +311,7 @@ block still has access to everything in the scope from where it was defined.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The unique id number of the comment.</p>
+		<p>The unique id of the comment.</p>
 	</div>		
 	
 	
@@ -325,7 +324,7 @@ block still has access to everything in the scope from where it was defined.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The unique id number of the comment.</p>
+		<p>The unique id of the comment.</p>
 	</div>
 	
 	
@@ -442,7 +441,7 @@ block still has access to everything in the scope from where it was defined.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns a <a href="SPComment.html"><code>SPComment</code></a> object initialized with the given comment data.</p>
+		<p>Returns a Spectttator comment object initialized with the given comment data.</p>
 	</div>		
 	
 	
@@ -470,7 +469,7 @@ block still has access to everything in the scope from where it was defined.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a <a href="SPComment.html"><code>SPComment</code></a> object initialized with the given comment data.</p>
+		<p>Returns a Spectttator comment object initialized with the given comment data.</p>
 
 <p>There is no need to call this method directly, it is used by
 higher level methods like <a href="../Classes/SPShot.html#//api/name/commentsWithBlock:"><code>[SPShot commentsWithBlock:]</code></a>.</p>

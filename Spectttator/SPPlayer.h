@@ -21,8 +21,8 @@
         NSLog(@"Player information for %@: %@", username, player);
     }];
  
- This is non-blocking, `NSLog` will run whenever the shot data has finished loading but the 
- block still has access to everything in the scope from where it was defined.
+ This is non-blocking, `NSLog` will run whenever the shot data has finished loading,
+ but the block still has access to everything in the scope from where it was defined.
  */
 
 @interface SPPlayer : NSObject {
@@ -47,12 +47,13 @@
     NSDate *_created_at;
 }
 
-/// The unique id number of the player.
+/// The unique id of the player.
 @property (readonly) NSUInteger identifier;
 /// The real name of the player.
 @property (readonly) NSString *name;
 /// The username of the player.
 @property (readonly) NSString *username;
+/// The url of the player's profile.
 @property (readonly) NSURL *url;
 /// The url of the player's avatar.
 @property (readonly) NSURL *avatar_url;
@@ -60,7 +61,7 @@
 @property (readonly) NSString *location;
 /// The player's twitter name.
 @property (readonly) NSString *twitter_screen_name;
-/** The id number of this player who drafted this player.
+/** The id of this player who drafted this player.
  
  If this player was not drafted the value is `NSNotFound`.
  */
@@ -93,10 +94,10 @@
 ///----------------------------
 
 /** 
- Returns a `SPPlayer` object initialized with the given player data. 
+ Returns a Spectttator player object initialized with the given player data. 
  
  There is no need to call this method directly, it is used by 
- higher level methods like `[SPManager playerInformationForUsername:withBlock:]`.
+  higher level methods like `[SPManager playerInformationForUsername:withBlock:]`.
  @param dictionary A dictionary of player data.
  @return An initialized `SPPlayer` object.
  */
@@ -109,7 +110,7 @@
 /** 
  Retrieves the player's avatar.
  @param block The block to be executed once the data has been retrieved. 
- An `NSImage` object for the avatar is passed to the block.
+  An `NSImage` object for the avatar is passed to the block.
  */
 - (void)avatarWithBlock:(void (^)(NSImage *))block;
 

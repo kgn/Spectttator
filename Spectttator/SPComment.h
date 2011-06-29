@@ -17,14 +17,13 @@
     #import <Spectttator/Spectttator.h>
      
     [[SPManager sharedManager] shotInformationForIdentifier:199295 withBlock:^(SPShot *shot){
-        NSLog(@"Shot Information: %@", shot);
         [shot commentsWithBlock:^(NSArray *comments, SPPagination *pagination){
             NSLog(@"Comments for '%@': %@", shot.title, comments);
         }];        
     }];
  
- This is non-blocking, `NSLog` will run whenever the shot data has finished loading but the 
- block still has access to everything in the scope from where it was defined.
+ This is non-blocking, `NSLog` will run whenever the comment data has finished loading,
+ but the block still has access to everything in the scope from where it was defined.
  */
 
 @interface SPComment : NSObject{
@@ -35,9 +34,9 @@
     SPPlayer *_player;
 }
 
-/// The unique id number of the comment.
+/// The unique id of the comment.
 @property (readonly) NSUInteger identifier;
-/// The body text of the comment.
+/// The text of the comment.
 @property (readonly) NSString *body;
 /// The number of players who liked the comment.
 @property (readonly) NSUInteger likes_count;
@@ -53,7 +52,7 @@
 ///----------------------------
 
 /** 
- Returns a `SPComment` object initialized with the given comment data. 
+ Returns a Spectttator comment object initialized with the given comment data. 
  
  There is no need to call this method directly, it is used by 
  higher level methods like `[SPShot commentsWithBlock:]`.

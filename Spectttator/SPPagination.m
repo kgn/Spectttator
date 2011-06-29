@@ -12,7 +12,7 @@
 
 @synthesize page = _page;
 @synthesize pages = _pages;
-@synthesize perPages = _perPages;
+@synthesize perPage = _perPage;
 @synthesize total = _total;
 
 + (NSDictionary *)page:(NSUInteger)page{
@@ -42,7 +42,7 @@
     if((self = [super init])){
         _page = [[dictionary objectForKey:@"page"] intValue];
         _pages = [[dictionary objectForKey:@"pages"] intValue];
-        _perPages = [[dictionary objectForKey:@"per_page"] intValue];
+        _perPage = [[dictionary objectForKey:@"per_page"] intValue];
         _total = [[dictionary objectForKey:@"total"] intValue];
     }
     return self;
@@ -50,7 +50,7 @@
 
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ Page=%lu Pages=%lu PerPage=%lu Total=%lu>", 
-            [self className], self.page, self.pages, self.perPages, self.total];
+            [self className], self.page, self.pages, self.perPage, self.total];
 }
 
 @end
