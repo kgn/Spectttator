@@ -21,9 +21,9 @@
     BOOL _userUpdating, _listUpdating;
 }
 
-@property (strong) IBOutlet NSWindow *window;
-@property (strong) IBOutlet NSProgressIndicator *spinner;
-@property (strong) IBOutlet NSTextField *username;
+@property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSProgressIndicator *spinner;
+@property (assign) IBOutlet NSTextField *username;
 @property (assign) IBOutlet NSTextView *shots;
 @property (assign) IBOutlet NSPopUpButton *listPopup;
 @property (assign) IBOutlet NSTextView *listShots;
