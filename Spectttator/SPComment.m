@@ -35,7 +35,7 @@
 
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Username='%@' Body=%@>", 
-            [self className], self.identifier, self.player.username, self.body];
+            [self class], self.identifier, self.player.username, self.body];
 }
 
 - (void)dealloc{

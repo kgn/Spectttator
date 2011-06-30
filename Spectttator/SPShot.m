@@ -28,15 +28,31 @@
 @synthesize createdAt = _createdAt;
 @synthesize player = _player;
 
+#if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+- (void)imageWithBlock:(void (^)(UIImage *))block{
+#else
 - (void)imageWithBlock:(void (^)(NSImage *))block{
+#endif
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
+        #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+        block([UIImage imageWithData:[NSData dataWithContentsOfURL:self.imageUrl]]);
+        #else        
         block([[[NSImage alloc] initWithContentsOfURL:self.imageUrl] autorelease]);
+        #endif
     }]];
 }
-
+    
+#if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+- (void)imageTeaserWithBlock:(void (^)(UIImage *))block{
+#else
 - (void)imageTeaserWithBlock:(void (^)(NSImage *))block{
+#endif
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
+        #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+        block([UIImage imageWithData:[NSData dataWithContentsOfURL:self.imageTeaserUrl]]);
+        #else        
         block([[[NSImage alloc] initWithContentsOfURL:self.imageTeaserUrl] autorelease]);
+        #endif
     }]];
 }
 
@@ -120,7 +136,7 @@
 
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Title='%@' Player=%@ URL=%@>", 
-            [self className], self.identifier, self.title, self.player.username, self.url];
+            [self class], self.identifier, self.title, self.player.username, self.url];
 }
 
 - (void)dealloc{

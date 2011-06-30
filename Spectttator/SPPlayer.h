@@ -110,8 +110,13 @@
 /** 
  Retrieves the player's avatar.
  @param block The block to be executed once the data has been retrieved. 
-  An `NSImage` object for the avatar is passed to the block.
+  Depending on the platform an `NSImage` or `UIImage` object for the 
+  avatar is passed to the block.
  */
+#if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+- (void)avatarWithBlock:(void (^)(UIImage *))block;
+#else
 - (void)avatarWithBlock:(void (^)(NSImage *))block;
+#endif
 
 @end

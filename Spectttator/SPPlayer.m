@@ -31,9 +31,17 @@
 @synthesize reboundsReceivedCount = _reboundsReceivedCount;
 @synthesize createdAt = _createdAt;
 
+#if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+- (void)avatarWithBlock:(void (^)(UIImage *))block{
+#else
 - (void)avatarWithBlock:(void (^)(NSImage *))block{
+#endif
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
+        #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+        block([UIImage imageWithData:[NSData dataWithContentsOfURL:self.avatarUrl]]);
+        #else
         block([[[NSImage alloc] initWithContentsOfURL:self.avatarUrl] autorelease]);
+        #endif
     }]];    
 }
 
@@ -85,7 +93,7 @@
 
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Name='%@' Username='%@' URL=%@>", 
-            [self className], self.identifier, self.name, self.username, self.url];
+            [self class], self.identifier, self.name, self.username, self.url];
 }
 
 - (void)dealloc{

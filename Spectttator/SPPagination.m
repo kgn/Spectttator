@@ -50,7 +50,7 @@
 
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ Page=%lu Pages=%lu PerPage=%lu Total=%lu>", 
-            [self className], self.page, self.pages, self.perPage, self.total];
+            [self class], self.page, self.pages, self.perPage, self.total];
 }
 
 @end

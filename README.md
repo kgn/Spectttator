@@ -1,11 +1,9 @@
 Spectttator
 ========
 
-Spectttator is an Objective-C framework that uses [Grand Central Dispatch](http://developer.apple.com/library/mac/#documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html) and [blocks](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Blocks/Articles/00_Introduction.html) to provide an easy to use, non-blocking, closure style interface to the [Dribbble api](http://dribbble.com/api).
+Spectttator is an Objective-C framework for OSX and iOS that uses [Grand Central Dispatch](http://developer.apple.com/library/mac/#documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html) and [blocks](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Blocks/Articles/00_Introduction.html) to provide an easy to use, non-blocking, closure style interface to the [Dribbble api](http://dribbble.com/api).
 
 Below is a quick overview of the framework, to get an in depth look check out the [documentation](http://inscopeapps.github.com/Spectttator).
-
-Spectttator is currently only available for OSX, iOS support coming soon.
 
 Example
 --------
@@ -30,6 +28,12 @@ SpectttatorTest is a sample application that demonstrates how to use Spectttator
 Check out [this video](http://vimeo.com/25704164) to see SpectttatorTest in action.
 
 ![SpectttatorTest](https://github.com/InScopeApps/Spectttator/raw/master/SpectttatorTest/SpectttatorTest.png)
+
+SpectttatorTest-iOS
+
+SpectttatorTest-iOS is a simple iPhone app that demonstrates how to use Spectttator in iOS.
+
+![SpectttatorTest](https://github.com/InScopeApps/Spectttator/raw/master/SpectttatorTest-iOS/SpectttatorTest-iOS.png)
 
 Credits
 --------
