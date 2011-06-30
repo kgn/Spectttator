@@ -106,7 +106,7 @@
 /** 
  Retrieves the shot's image.
  @param block The block to be executed once the data has been retrieved. 
-  Depending on the platform an `NSImage` or `UIImage object for the 
+  Depending on the platform an `NSImage` or `UIImage` object for the 
   shot is passed to the block.
  */
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
@@ -118,7 +118,7 @@
 /** 
  Retrieves the shot's teaser image.
  @param block The block to be executed once the data has been retrieved. 
-  Depending on the platform an `NSImage` or `UIImage object for the 
+  Depending on the platform an `NSImage` or `UIImage` object for the 
   teaser is passed to the block.
  */
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
