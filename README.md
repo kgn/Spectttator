@@ -30,6 +30,7 @@ Check out [this video](http://vimeo.com/25704164) to see SpectttatorTest in acti
 ![SpectttatorTest](https://github.com/InScopeApps/Spectttator/raw/master/SpectttatorTest/SpectttatorTest.png)
 
 SpectttatorTest-iOS
+--------
 
 SpectttatorTest-iOS is a simple iPhone app that demonstrates how to use Spectttator in iOS.
 
