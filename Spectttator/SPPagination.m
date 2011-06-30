@@ -3,7 +3,7 @@
 //  Spectttator
 //
 //  Created by David Keegan on 6/26/11.
-//  Copyright 2011 InScopeApps {+}. All rights reserved.
+//  Copyright 2011 David Keegan.
 //
 
 #import "SPPagination.h"

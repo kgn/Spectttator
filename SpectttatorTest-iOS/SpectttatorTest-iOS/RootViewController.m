@@ -3,7 +3,7 @@
 //  SpectttatorTest-iOS
 //
 //  Created by David Keegan on 6/29/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 David Keegan.
 //
 
 #import "RootViewController.h"

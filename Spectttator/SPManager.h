@@ -3,7 +3,7 @@
 //  Spectttator
 //
 //  Created by David Keegan on 6/25/11.
-//  Copyright 2011 InScopeApps {+}. All rights reserved.
+//  Copyright 2011 David Keegan.
 //
 //  Singleton from http://boredzo.org/blog/archives/2009-06-17/doing-it-wrong
 //
