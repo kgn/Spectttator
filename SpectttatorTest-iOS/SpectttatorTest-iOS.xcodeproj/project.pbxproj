@@ -47,7 +47,7 @@
 		D6D8C2F713BC29010063DA70 /* SpectttatorTest_iOSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectttatorTest_iOSAppDelegate.m; sourceTree = "<group>"; };
 		D6D8C2FA13BC29010063DA70 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		D6D8C2FC13BC29010063DA70 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		D6D8C2FD13BC29010063DA70 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		D6D8C2FD13BC29010063DA70 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		D6D8C30013BC29020063DA70 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
 		D6D8C33113BC2A260063DA70 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJson.h"; path = "Classes/NSObject+SBJson.h"; sourceTree = "<group>"; };
 		D6D8C33213BC2A260063DA70 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJson.m"; path = "Classes/NSObject+SBJson.m"; sourceTree = "<group>"; };
@@ -398,6 +398,7 @@
 				D6D8C30613BC29020063DA70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

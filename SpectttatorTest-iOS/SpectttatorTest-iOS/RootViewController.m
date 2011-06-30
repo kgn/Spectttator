@@ -42,6 +42,10 @@
     [super viewDidAppear:animated];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 64.0f;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -61,7 +65,7 @@
 
     SPShot *aShot = [self.shots objectAtIndex:indexPath.row];
     cell.textLabel.text = aShot.title;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Views: %lu Likes: %lu Comments: %lu", 
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"👀%lu  💓%lu  📢%lu", 
                                  aShot.viewsCount, aShot.likesCount, aShot.commentsCount];
     
     // A little image cache so we only retrieve the image once,
