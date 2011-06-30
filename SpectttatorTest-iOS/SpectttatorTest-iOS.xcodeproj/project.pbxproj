@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7346BEC813BC5AD40064BBEA /* ShotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7346BEC713BC5AD40064BBEA /* ShotCell.xib */; };
+		7346BECC13BC5CB20064BBEA /* ShotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7346BECB13BC5CB20064BBEA /* ShotCell.m */; };
 		D6D8C2E813BC29010063DA70 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D8C2E713BC29010063DA70 /* UIKit.framework */; };
 		D6D8C2EA13BC29010063DA70 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D8C2E913BC29010063DA70 /* Foundation.framework */; };
 		D6D8C2EC13BC29010063DA70 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D8C2EB13BC29010063DA70 /* CoreGraphics.framework */; };
@@ -36,6 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7346BEC713BC5AD40064BBEA /* ShotCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShotCell.xib; sourceTree = "<group>"; };
+		7346BECA13BC5CB20064BBEA /* ShotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShotCell.h; sourceTree = "<group>"; };
+		7346BECB13BC5CB20064BBEA /* ShotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShotCell.m; sourceTree = "<group>"; };
 		D6D8C2E313BC29010063DA70 /* SpectttatorTest-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpectttatorTest-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D8C2E713BC29010063DA70 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6D8C2E913BC29010063DA70 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -140,6 +145,9 @@
 				D6D8C2FC13BC29010063DA70 /* RootViewController.h */,
 				D6D8C2FD13BC29010063DA70 /* RootViewController.m */,
 				D6D8C2FF13BC29020063DA70 /* RootViewController.xib */,
+				7346BEC713BC5AD40064BBEA /* ShotCell.xib */,
+				7346BECA13BC5CB20064BBEA /* ShotCell.h */,
+				7346BECB13BC5CB20064BBEA /* ShotCell.m */,
 				D6D8C2EE13BC29010063DA70 /* Supporting Files */,
 			);
 			path = "SpectttatorTest-iOS";
@@ -258,6 +266,7 @@
 			files = (
 				D6D8C2FB13BC29010063DA70 /* MainWindow.xib in Resources */,
 				D6D8C30113BC29020063DA70 /* RootViewController.xib in Resources */,
+				7346BEC813BC5AD40064BBEA /* ShotCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +298,7 @@
 				D6D8C62C13BC2A270063DA70 /* SPPlayer.m in Sources */,
 				D6D8C62D13BC2A270063DA70 /* SPRequest.m in Sources */,
 				D6D8C62E13BC2A270063DA70 /* SPShot.m in Sources */,
+				7346BECC13BC5CB20064BBEA /* ShotCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShotCell.h"
 
 @interface RootViewController : UITableViewController{
     NSArray *_shots;

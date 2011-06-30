@@ -22,6 +22,8 @@
         self.imageRetrievedCache = nil;
         self.imageRetrievedCache = [[NSMutableSet alloc] initWithCapacity:[theShots count]];
         self.imageCache = [[NSMutableDictionary alloc] initWithCapacity:[theShots count]];
+        // There is a pretty long delay between when the data is recieved and the table shows the new data,
+        // if you know how to fix this please fork the code and share the love :)
         [self.tableView reloadData];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     } andPagination:[SPPagination perPage:30]];    
@@ -43,7 +45,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 64.0f;
+    return 68.0f;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -56,34 +58,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"ShotCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ShotCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+        cell = [topLevelObjects objectAtIndex:0];
     }
-
+    
     SPShot *aShot = [self.shots objectAtIndex:indexPath.row];
-    cell.textLabel.text = aShot.title;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"👀%lu  💓%lu  📢%lu", 
-                                 aShot.viewsCount, aShot.likesCount, aShot.commentsCount];
+    
+    NSNumber *identifier = [NSNumber numberWithLong:aShot.identifier];
+    [cell loadShot:aShot withImage:[self.imageCache objectForKey:identifier]];
     
     // A little image cache so we only retrieve the image once,
     // and we update the row the first time it's loaded.
-    // There are some redraw problems so this is probably not the best
-    // code to copy directly, but it illustrates the point. If you have
-    // a better solution please fork the code and share the love!
-    NSNumber *identifier = [NSNumber numberWithLong:aShot.identifier];
-    // this will be nil sometimes and we want it that way
-    cell.imageView.image = [self.imageCache objectForKey:identifier];
     if(![self.imageRetrievedCache member:identifier]){
         [self.imageRetrievedCache addObject:identifier];
         [aShot imageTeaserWithBlock:^(UIImage *image){
             [self.imageCache setObject:image forKey:identifier];
-            // We don't need to set the image here becuase when the 
-            // row is reloaded cellForRowAtIndexPath will be called again
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] 
-                                  withRowAnimation:UITableViewRowAnimationNone];
+            cell.shot.image = image;
         }];
     }
     
