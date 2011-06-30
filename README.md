@@ -11,9 +11,7 @@ Example
 The following snippet demonstrates how to get the last 10 shots a player liked.
 
     #import <Spectttator/Spectttator.h>
-    
     NSString *username = @"inscopeapps";
-    
     [[SPManager sharedManager] shotsForPlayerLikes:username withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Shots %@ likes: %@", username, shots);
     } andPagination:[SPPagination perPage:10]];

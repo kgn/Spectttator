@@ -68,6 +68,12 @@
     }];
 }
 
+// There is a sporadic problem with this sample code that causes 
+// the app to hang sometimes. I've looked into it and the problem 
+// is not with Spectttator but with updating the text in NSTextView.
+// I haven't been able to track it down, if you can figure out what 
+// the problem is please fork the code and share the love :)
+
 - (IBAction)userChanged:(id)sender{
     NSString *user = [sender stringValue];
     [self.shots setString:@""];  
