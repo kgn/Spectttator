@@ -3,7 +3,7 @@
 //  SpectttatorTest
 //
 //  Created by David Keegan on 6/25/11.
-//  Copyright 2011 InScopeApps {+}. All rights reserved.
+//  Copyright 2011 David Keegan.
 //
 
 #import "SpectttatorTestAppDelegate.h"
