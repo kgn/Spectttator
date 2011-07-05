@@ -31,13 +31,13 @@
 @synthesize reboundsReceivedCount = _reboundsReceivedCount;
 @synthesize createdAt = _createdAt;
 
-#if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+#if TARGET_OS_IPHONE
 - (void)avatarWithBlock:(void (^)(UIImage *))block{
 #else
 - (void)avatarWithBlock:(void (^)(NSImage *))block{
 #endif
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+        #if TARGET_OS_IPHONE
         block([UIImage imageWithData:[NSData dataWithContentsOfURL:self.avatarUrl]]);
         #else
         block([[[NSImage alloc] initWithContentsOfURL:self.avatarUrl] autorelease]);

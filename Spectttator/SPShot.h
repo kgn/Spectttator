@@ -109,7 +109,7 @@
   Depending on the platform an `NSImage` or `UIImage` object for the 
   shot is passed to the block.
  */
-#if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+#if TARGET_OS_IPHONE
 - (void)imageWithBlock:(void (^)(UIImage *))block;
 #else
 - (void)imageWithBlock:(void (^)(NSImage *))block;
@@ -121,7 +121,7 @@
   Depending on the platform an `NSImage` or `UIImage` object for the 
   teaser is passed to the block.
  */
-#if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+#if TARGET_OS_IPHONE
 - (void)imageTeaserWithBlock:(void (^)(UIImage *))block;
 #else
 - (void)imageTeaserWithBlock:(void (^)(NSImage *))block;
