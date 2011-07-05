@@ -107,8 +107,6 @@
 		7316996113B89753003F6E05 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		73698B6E13B681F400922D1A /* Spectttator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Spectttator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73698B7113B681F400922D1A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		73698B7413B681F400922D1A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		73698B7513B681F400922D1A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		73698B7613B681F400922D1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		73698B7913B681F400922D1A /* Spectttator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Spectttator-Info.plist"; sourceTree = "<group>"; };
 		73698B7D13B681F400922D1A /* Spectttator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spectttator-Prefix.pch"; sourceTree = "<group>"; };
@@ -195,7 +193,7 @@
 			children = (
 				73698B7713B681F400922D1A /* Spectttator */,
 				73698B8A13B6820100922D1A /* SpectttatorTest */,
-				73698B7013B681F400922D1A /* Frameworks */,
+				73698B7013B681F400922D1A /* Mac Frameworks */,
 				73698B6F13B681F400922D1A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -209,23 +207,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		73698B7013B681F400922D1A /* Frameworks */ = {
+		73698B7013B681F400922D1A /* Mac Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				73698B7113B681F400922D1A /* Cocoa.framework */,
-				73698B7313B681F400922D1A /* Other Frameworks */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		73698B7313B681F400922D1A /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				73698B7413B681F400922D1A /* AppKit.framework */,
-				73698B7513B681F400922D1A /* CoreData.framework */,
 				73698B7613B681F400922D1A /* Foundation.framework */,
+				73698B7113B681F400922D1A /* Cocoa.framework */,
 			);
-			name = "Other Frameworks";
+			name = "Mac Frameworks";
 			sourceTree = "<group>";
 		};
 		73698B7713B681F400922D1A /* Spectttator */ = {
