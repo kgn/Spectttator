@@ -1,0 +1,511 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		73698B8913B6820100922D1A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73698B7113B681F400922D1A /* Cocoa.framework */; };
+		73698B9113B6820100922D1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 73698B9013B6820100922D1A /* main.m */; };
+		73698B9813B6820100922D1A /* SpectttatorTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73698B9713B6820100922D1A /* SpectttatorTestAppDelegate.m */; };
+		7388115513C2F05E004B037C /* Spectttator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7388114C13C2F04B004B037C /* Spectttator.framework */; };
+		7388115613C2F064004B037C /* Spectttator.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7388114C13C2F04B004B037C /* Spectttator.framework */; };
+		7388115913C2F075004B037C /* libSpectttator-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7388114E13C2F04B004B037C /* libSpectttator-iOS.a */; };
+		739A44B013B86ADB00E7783A /* NSAttributedString+Hyperlink.m in Sources */ = {isa = PBXBuildFile; fileRef = 739A449713B826A000E7783A /* NSAttributedString+Hyperlink.m */; };
+		73C01CC313C2EC4A00A8ECDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C01CC213C2EC4A00A8ECDB /* main.m */; };
+		73C01CC713C2EC4A00A8ECDB /* SpectttatorTest_iOSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C01CC613C2EC4A00A8ECDB /* SpectttatorTest_iOSAppDelegate.m */; };
+		73C01CCA13C2EC4A00A8ECDB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C01CC913C2EC4A00A8ECDB /* RootViewController.m */; };
+		73C01CDB13C2ED3000A8ECDB /* ShotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C01CD913C2ED3000A8ECDB /* ShotCell.m */; };
+		73C01CDC13C2ED3000A8ECDB /* ShotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73C01CDA13C2ED3000A8ECDB /* ShotCell.xib */; };
+		73C01CDE13C2ED3C00A8ECDB /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73C01CDD13C2ED3B00A8ECDB /* RootViewController.xib */; };
+		73C01CE113C2ED7000A8ECDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C01CAD13C2EBBC00A8ECDB /* UIKit.framework */; };
+		73C01CE313C2ED9800A8ECDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C01CE213C2ED9800A8ECDB /* Foundation.framework */; };
+		73D2C9E613C2EF2D009C0419 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73D2C9E513C2EF2D009C0419 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7388114B13C2F04B004B037C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7388113F13C2F04B004B037C /* Spectttator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 73698B6E13B681F400922D1A;
+			remoteInfo = Spectttator;
+		};
+		7388114D13C2F04B004B037C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7388113F13C2F04B004B037C /* Spectttator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 73C01C7B13C2EA8600A8ECDB;
+			remoteInfo = "Spectttator-iOS";
+		};
+		7388115313C2F058004B037C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7388113F13C2F04B004B037C /* Spectttator.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 73698B6D13B681F400922D1A;
+			remoteInfo = Spectttator;
+		};
+		7388115713C2F070004B037C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7388113F13C2F04B004B037C /* Spectttator.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 73C01C7A13C2EA8600A8ECDB;
+			remoteInfo = "Spectttator-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		73698BA313B6821B00922D1A /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7388115613C2F064004B037C /* Spectttator.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		73698B7113B681F400922D1A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		73698B7613B681F400922D1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		73698B8713B6820100922D1A /* SpectttatorTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectttatorTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		73698B8C13B6820100922D1A /* SpectttatorTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpectttatorTest-Info.plist"; sourceTree = "<group>"; };
+		73698B9013B6820100922D1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		73698B9213B6820100922D1A /* SpectttatorTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpectttatorTest-Prefix.pch"; sourceTree = "<group>"; };
+		73698B9613B6820100922D1A /* SpectttatorTestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpectttatorTestAppDelegate.h; sourceTree = "<group>"; };
+		73698B9713B6820100922D1A /* SpectttatorTestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectttatorTestAppDelegate.m; sourceTree = "<group>"; };
+		7388113F13C2F04B004B037C /* Spectttator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Spectttator.xcodeproj; sourceTree = "<group>"; };
+		739A449613B826A000E7783A /* NSAttributedString+Hyperlink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Hyperlink.h"; sourceTree = "<group>"; };
+		739A449713B826A000E7783A /* NSAttributedString+Hyperlink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Hyperlink.m"; sourceTree = "<group>"; };
+		73C01CAD13C2EBBC00A8ECDB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		73C01CB313C2EC4A00A8ECDB /* SpectttatorTest-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpectttatorTest-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73C01CBE13C2EC4A00A8ECDB /* SpectttatorTest-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpectttatorTest-iOS-Info.plist"; sourceTree = "<group>"; };
+		73C01CC213C2EC4A00A8ECDB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		73C01CC413C2EC4A00A8ECDB /* SpectttatorTest-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpectttatorTest-iOS-Prefix.pch"; sourceTree = "<group>"; };
+		73C01CC513C2EC4A00A8ECDB /* SpectttatorTest_iOSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpectttatorTest_iOSAppDelegate.h; sourceTree = "<group>"; };
+		73C01CC613C2EC4A00A8ECDB /* SpectttatorTest_iOSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectttatorTest_iOSAppDelegate.m; sourceTree = "<group>"; };
+		73C01CC813C2EC4A00A8ECDB /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		73C01CC913C2EC4A00A8ECDB /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		73C01CD813C2ED3000A8ECDB /* ShotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShotCell.h; sourceTree = "<group>"; };
+		73C01CD913C2ED3000A8ECDB /* ShotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShotCell.m; sourceTree = "<group>"; };
+		73C01CDA13C2ED3000A8ECDB /* ShotCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShotCell.xib; sourceTree = "<group>"; };
+		73C01CDD13C2ED3B00A8ECDB /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		73C01CE213C2ED9800A8ECDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		73D2C9E513C2EF2D009C0419 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		73698B8413B6820100922D1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7388115513C2F05E004B037C /* Spectttator.framework in Frameworks */,
+				73698B8913B6820100922D1A /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73C01CB013C2EC4A00A8ECDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7388115913C2F075004B037C /* libSpectttator-iOS.a in Frameworks */,
+				73C01CE313C2ED9800A8ECDB /* Foundation.framework in Frameworks */,
+				73C01CE113C2ED7000A8ECDB /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		73698B6213B681F400922D1A = {
+			isa = PBXGroup;
+			children = (
+				7388113F13C2F04B004B037C /* Spectttator.xcodeproj */,
+				73698B8A13B6820100922D1A /* SpectttatorTest */,
+				73C01CBC13C2EC4A00A8ECDB /* SpectttatorTest-iOS */,
+				73698B7013B681F400922D1A /* Mac Frameworks */,
+				73C01C7C13C2EA8600A8ECDB /* iOS Frameworks */,
+				73698B6F13B681F400922D1A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		73698B6F13B681F400922D1A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				73698B8713B6820100922D1A /* SpectttatorTest.app */,
+				73C01CB313C2EC4A00A8ECDB /* SpectttatorTest-iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		73698B7013B681F400922D1A /* Mac Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				73698B7613B681F400922D1A /* Foundation.framework */,
+				73698B7113B681F400922D1A /* Cocoa.framework */,
+			);
+			name = "Mac Frameworks";
+			sourceTree = "<group>";
+		};
+		73698B8A13B6820100922D1A /* SpectttatorTest */ = {
+			isa = PBXGroup;
+			children = (
+				73698B9613B6820100922D1A /* SpectttatorTestAppDelegate.h */,
+				73698B9713B6820100922D1A /* SpectttatorTestAppDelegate.m */,
+				739A449613B826A000E7783A /* NSAttributedString+Hyperlink.h */,
+				739A449713B826A000E7783A /* NSAttributedString+Hyperlink.m */,
+				73D2C9E513C2EF2D009C0419 /* MainMenu.xib */,
+				73698B8B13B6820100922D1A /* Supporting Files */,
+			);
+			path = SpectttatorTest;
+			sourceTree = "<group>";
+		};
+		73698B8B13B6820100922D1A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				73698B8C13B6820100922D1A /* SpectttatorTest-Info.plist */,
+				73698B9013B6820100922D1A /* main.m */,
+				73698B9213B6820100922D1A /* SpectttatorTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7388114013C2F04B004B037C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7388114C13C2F04B004B037C /* Spectttator.framework */,
+				7388114E13C2F04B004B037C /* libSpectttator-iOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		73C01C7C13C2EA8600A8ECDB /* iOS Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				73C01CE213C2ED9800A8ECDB /* Foundation.framework */,
+				73C01CAD13C2EBBC00A8ECDB /* UIKit.framework */,
+			);
+			name = "iOS Frameworks";
+			sourceTree = "<group>";
+		};
+		73C01CBC13C2EC4A00A8ECDB /* SpectttatorTest-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73C01CC513C2EC4A00A8ECDB /* SpectttatorTest_iOSAppDelegate.h */,
+				73C01CC613C2EC4A00A8ECDB /* SpectttatorTest_iOSAppDelegate.m */,
+				73C01CC813C2EC4A00A8ECDB /* RootViewController.h */,
+				73C01CC913C2EC4A00A8ECDB /* RootViewController.m */,
+				73C01CDD13C2ED3B00A8ECDB /* RootViewController.xib */,
+				73C01CD813C2ED3000A8ECDB /* ShotCell.h */,
+				73C01CD913C2ED3000A8ECDB /* ShotCell.m */,
+				73C01CDA13C2ED3000A8ECDB /* ShotCell.xib */,
+				73C01CBD13C2EC4A00A8ECDB /* Supporting Files */,
+			);
+			path = "SpectttatorTest-iOS";
+			sourceTree = "<group>";
+		};
+		73C01CBD13C2EC4A00A8ECDB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				73C01CBE13C2EC4A00A8ECDB /* SpectttatorTest-iOS-Info.plist */,
+				73C01CC213C2EC4A00A8ECDB /* main.m */,
+				73C01CC413C2EC4A00A8ECDB /* SpectttatorTest-iOS-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		73698B8613B6820100922D1A /* SpectttatorTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73698B9C13B6820100922D1A /* Build configuration list for PBXNativeTarget "SpectttatorTest" */;
+			buildPhases = (
+				73698B8313B6820100922D1A /* Sources */,
+				73698B8413B6820100922D1A /* Frameworks */,
+				73698B8513B6820100922D1A /* Resources */,
+				73698BA313B6821B00922D1A /* Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7388115413C2F058004B037C /* PBXTargetDependency */,
+			);
+			name = SpectttatorTest;
+			productName = SpectttatorTest;
+			productReference = 73698B8713B6820100922D1A /* SpectttatorTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		73C01CB213C2EC4A00A8ECDB /* SpectttatorTest-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73C01CD513C2EC4A00A8ECDB /* Build configuration list for PBXNativeTarget "SpectttatorTest-iOS" */;
+			buildPhases = (
+				73C01CAF13C2EC4A00A8ECDB /* Sources */,
+				73C01CB013C2EC4A00A8ECDB /* Frameworks */,
+				73C01CB113C2EC4A00A8ECDB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7388115813C2F070004B037C /* PBXTargetDependency */,
+			);
+			name = "SpectttatorTest-iOS";
+			productName = "SpectttatorTest-iOS";
+			productReference = 73C01CB313C2EC4A00A8ECDB /* SpectttatorTest-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		73698B6413B681F400922D1A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "InScopeApps {+}";
+			};
+			buildConfigurationList = 73698B6713B681F400922D1A /* Build configuration list for PBXProject "SpectttatorTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 73698B6213B681F400922D1A;
+			productRefGroup = 73698B6F13B681F400922D1A /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7388114013C2F04B004B037C /* Products */;
+					ProjectRef = 7388113F13C2F04B004B037C /* Spectttator.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				73698B8613B6820100922D1A /* SpectttatorTest */,
+				73C01CB213C2EC4A00A8ECDB /* SpectttatorTest-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		7388114C13C2F04B004B037C /* Spectttator.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Spectttator.framework;
+			remoteRef = 7388114B13C2F04B004B037C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7388114E13C2F04B004B037C /* libSpectttator-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libSpectttator-iOS.a";
+			remoteRef = 7388114D13C2F04B004B037C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		73698B8513B6820100922D1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73D2C9E613C2EF2D009C0419 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73C01CB113C2EC4A00A8ECDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73C01CDC13C2ED3000A8ECDB /* ShotCell.xib in Resources */,
+				73C01CDE13C2ED3C00A8ECDB /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		73698B8313B6820100922D1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73698B9113B6820100922D1A /* main.m in Sources */,
+				73698B9813B6820100922D1A /* SpectttatorTestAppDelegate.m in Sources */,
+				739A44B013B86ADB00E7783A /* NSAttributedString+Hyperlink.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73C01CAF13C2EC4A00A8ECDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73C01CC313C2EC4A00A8ECDB /* main.m in Sources */,
+				73C01CC713C2EC4A00A8ECDB /* SpectttatorTest_iOSAppDelegate.m in Sources */,
+				73C01CCA13C2EC4A00A8ECDB /* RootViewController.m in Sources */,
+				73C01CDB13C2ED3000A8ECDB /* ShotCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7388115413C2F058004B037C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Spectttator;
+			targetProxy = 7388115313C2F058004B037C /* PBXContainerItemProxy */;
+		};
+		7388115813C2F070004B037C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Spectttator-iOS";
+			targetProxy = 7388115713C2F070004B037C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		73698B7E13B681F400922D1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		73698B7F13B681F400922D1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		73698B9D13B6820100922D1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpectttatorTest/SpectttatorTest-Prefix.pch";
+				INFOPLIST_FILE = "SpectttatorTest/SpectttatorTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		73698B9E13B6820100922D1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpectttatorTest/SpectttatorTest-Prefix.pch";
+				INFOPLIST_FILE = "SpectttatorTest/SpectttatorTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		73C01CD613C2EC4A00A8ECDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpectttatorTest-iOS/SpectttatorTest-iOS-Prefix.pch";
+				HEADER_SEARCH_PATHS = Spectttator;
+				INFOPLIST_FILE = "SpectttatorTest-iOS/SpectttatorTest-iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		73C01CD713C2EC4A00A8ECDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpectttatorTest-iOS/SpectttatorTest-iOS-Prefix.pch";
+				HEADER_SEARCH_PATHS = Spectttator;
+				INFOPLIST_FILE = "SpectttatorTest-iOS/SpectttatorTest-iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		73698B6713B681F400922D1A /* Build configuration list for PBXProject "SpectttatorTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73698B7E13B681F400922D1A /* Debug */,
+				73698B7F13B681F400922D1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73698B9C13B6820100922D1A /* Build configuration list for PBXNativeTarget "SpectttatorTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73698B9D13B6820100922D1A /* Debug */,
+				73698B9E13B6820100922D1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73C01CD513C2EC4A00A8ECDB /* Build configuration list for PBXNativeTarget "SpectttatorTest-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73C01CD613C2EC4A00A8ECDB /* Debug */,
+				73C01CD713C2EC4A00A8ECDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 73698B6413B681F400922D1A /* Project object */;
+}
