@@ -11,13 +11,25 @@
 
 @implementation RootViewController
 
+@synthesize list = _list;
 @synthesize shots = _shots;
 @synthesize imageRetrievedCache = _imageRetrievedCache;
 @synthesize imageCache = _imageCache;
 
-- (void)refresh{
+@synthesize listButton = _listButton;
+@synthesize refreshButton = _refreshButton;
+
+- (void)refreshWithList:(NSString *)aList{
+    if(aList != nil){
+        self.list = aList;
+    }
+    self.title = [self.list capitalizedString];
+    
+    [self.listButton setEnabled:NO]; 
+    [self.refreshButton setEnabled:NO];   
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    [[SPManager sharedManager] shotsForList:SPPopularList withBlock:^(NSArray *theShots, SPPagination *thsPagination) {
+    [[SPManager sharedManager] shotsForList:self.list withBlock:^(NSArray *theShots, SPPagination *thsPagination) {
         self.shots = theShots;
         self.imageCache = nil;
         self.imageRetrievedCache = nil;
@@ -26,19 +38,56 @@
         
         // Update the table and stop the spinner on the main thread
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
+            [self.listButton setEnabled:YES]; 
+            [self.refreshButton setEnabled:YES];             
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            
+            [self.tableView reloadData];
         });
     } andPagination:[SPPagination perPage:30]];
 }
 
+- (void)refresh{
+    [self refreshWithList:nil];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+	if(buttonIndex == 0){
+        [self refreshWithList:SPPopularList];
+    }else if(buttonIndex == 1){
+        [self refreshWithList:SPEveryoneList];
+    }else if(buttonIndex == 2){
+        [self refreshWithList:SPDebutsList];
+    }
+}
+
+- (void)changeList{
+	UIActionSheet *listSheet = [[UIActionSheet alloc] initWithTitle:@"Lists" 
+                                                            delegate:self 
+                                                   cancelButtonTitle:nil
+                                              destructiveButtonTitle:nil
+                                                   otherButtonTitles:[SPPopularList capitalizedString], 
+                                                                     [SPEveryoneList capitalizedString], 
+                                                                     [SPDebutsList  capitalizedString], 
+                                                                      nil];
+	[listSheet setActionSheetStyle:UIActionSheetStyleBlackOpaque];
+	[listSheet showInView:self.view];
+	[listSheet release];    
+}
+
 - (void)viewDidLoad{
-    self.title = @"Popular";
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
+    [self refreshWithList:SPPopularList];
+    
+    self.refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
                                                                                    target:self 
                                                                                    action:@selector(refresh)];          
-    self.navigationItem.rightBarButtonItem = refreshButton;
-    [refreshButton release];    
+    self.navigationItem.rightBarButtonItem = self.refreshButton;
+    
+    self.listButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks 
+                                                                                   target:self 
+                                                                                   action:@selector(changeList)];          
+    self.navigationItem.leftBarButtonItem = self.listButton;
+    
     [super viewDidLoad];
 }
 
@@ -103,6 +152,10 @@
     [_shots release];
     [_imageRetrievedCache release];
     [_imageCache release];
+    
+    [_refreshButton release];
+    [_listButton release];
+    
     [super dealloc];
 }
 

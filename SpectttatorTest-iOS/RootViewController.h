@@ -9,14 +9,22 @@
 #import <UIKit/UIKit.h>
 #import "ShotCell.h"
 
-@interface RootViewController : UITableViewController{
+@interface RootViewController : UITableViewController <UIActionSheetDelegate>{
+    NSString *_list;
     NSArray *_shots;
     NSMutableSet *_imageRetrievedCache;
     NSMutableDictionary *_imageCache;
+    
+    UIBarButtonItem *_listButton;
+    UIBarButtonItem *_refreshButton;
 }
 
+@property (retain, nonatomic) NSString *list;
 @property (retain, nonatomic) NSArray *shots;
 @property (retain, nonatomic) NSMutableSet *imageRetrievedCache;
 @property (retain, nonatomic) NSMutableDictionary *imageCache;
+
+@property (retain, nonatomic) UIBarButtonItem *listButton;
+@property (retain, nonatomic) UIBarButtonItem *refreshButton;
 
 @end
