@@ -8,11 +8,11 @@ Below is a quick overview of the framework, to get an in depth look check out th
 How To
 --------
 
-If you don't want to checkout or download the whole repository you can simply [download](https://github.com/downloads/InScopeApps/Spectttator/Spectttator.framework.zip) the framework and use it in your Mac app.
-
 Spectttator uses [SBJson](https://github.com/stig/json-framework) to parse the json returned by the Dribbble api. SBJson is included in the Spectttator repository as a submodule so make sure to clone the repo with the `--recursive` flag.
 
     git clone --recursive https://github.com/InScopeApps/Spectttator.git
+
+If you don't want to checkout or download the whole repository you can simply [download](https://github.com/downloads/InScopeApps/Spectttator/Spectttator.framework.zip) the framework and use it in your Mac app.
 
 Example
 --------
