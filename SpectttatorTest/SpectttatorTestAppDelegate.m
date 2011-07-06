@@ -129,7 +129,9 @@
                 [self.spinner stopAnimation:nil];
             });
         }
-        [self.username setEnabled:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.username setEnabled:YES];
+        });
     } andPagination:[SPPagination perPage:20]];
 }
 
@@ -171,7 +173,9 @@
                 [self.spinner stopAnimation:nil];
             });
         }
-        [self.listPopup setEnabled:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.listPopup setEnabled:YES];
+        });
     }];    
 }
 
