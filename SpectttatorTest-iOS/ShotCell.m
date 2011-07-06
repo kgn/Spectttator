@@ -9,11 +9,11 @@
 #import "ShotCell.h"
 
 @implementation ShotCell
-@synthesize title;
-@synthesize player;
-@synthesize info;
-@synthesize shot;
-@synthesize cachedImage;
+
+@synthesize title = _title;
+@synthesize player = _player;
+@synthesize info = _info;
+@synthesize shot = _shot;
 
 - (void)loadShot:(SPShot *)aShot withImage:(UIImage *)image{
     self.title.text = aShot.title;
@@ -24,11 +24,10 @@
 }
 
 - (void)dealloc {
-    [title release];
-    [player release];
-    [info release];
-    [shot release];
-    [cachedImage release];
+    [_title release];
+    [_player release];
+    [_info release];
+    [_shot release];
     [super dealloc];
 }
 @end

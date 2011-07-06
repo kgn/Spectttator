@@ -10,18 +10,16 @@
 #import "Spectttator.h"
 
 @interface ShotCell : UITableViewCell {
-    UILabel *title;
-    UILabel *player;
-    UILabel *info;
-    UIImageView *shot;
-    UIImage *cachedImage;
+    UILabel *_title;
+    UILabel *_player;
+    UILabel *_info;
+    UIImageView *_shot;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *title;
 @property (nonatomic, retain) IBOutlet UILabel *player;
 @property (nonatomic, retain) IBOutlet UILabel *info;
 @property (nonatomic, retain) IBOutlet UIImageView *shot;
-@property (nonatomic, retain) UIImage *cachedImage;
 
 - (void)loadShot:(SPShot *)aShot withImage:(UIImage *)image;
 
