@@ -12,8 +12,6 @@ Spectttator uses [SBJson](https://github.com/stig/json-framework) to parse the j
 
     git clone --recursive https://github.com/InScopeApps/Spectttator.git
 
-If you don't want to checkout or download the whole repository you can simply [download](https://github.com/downloads/InScopeApps/Spectttator/Spectttator.framework.zip) the framework and use it in your Mac app.
-
 Example
 --------
 
@@ -32,7 +30,7 @@ SpectttatorTest
 
 SpectttatorTest is a sample application that demonstrates how to use Spectttator to create a non-blocking user interface that displays information from Dribbble. It also runs every method, this was used during testing and development and is a great way to see how to use Spectttator.
 
-Check out [this video](http://vimeo.com/25704164) to see SpectttatorTest in action, you can also [download](https://github.com/downloads/InScopeApps/Spectttator/SpectttatorTest.app.zip) the app to try it out.
+Check out [this video](http://vimeo.com/25704164) to see SpectttatorTest in action.
 
 ![SpectttatorTest](https://github.com/InScopeApps/Spectttator/raw/master/SpectttatorTest/SpectttatorTest.png)
 
