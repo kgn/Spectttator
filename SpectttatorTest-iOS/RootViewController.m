@@ -19,14 +19,17 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [[SPManager sharedManager] shotsForList:SPPopularList withBlock:^(NSArray *theShots, SPPagination *thsPagination) {
         self.shots = theShots;
+        self.imageCache = nil;
         self.imageRetrievedCache = nil;
         self.imageRetrievedCache = [[NSMutableSet alloc] initWithCapacity:[theShots count]];
         self.imageCache = [[NSMutableDictionary alloc] initWithCapacity:[theShots count]];
-        // There is a pretty long delay between when the data is recieved and the table shows the new data,
-        // if you know how to fix this please fork the code and share the love :)
-        [self.tableView reloadData];
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    } andPagination:[SPPagination perPage:30]];    
+        
+        // Update the table and stop the spinner on the main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        });
+    } andPagination:[SPPagination perPage:30]];
 }
 
 - (void)viewDidLoad{
@@ -78,9 +81,10 @@
         [aShot imageTeaserWithBlock:^(UIImage *image){
             [self.imageCache setObject:image forKey:identifier];
             
-            // Update the ui on the main thread
+            // Update the cell on the main thread
             dispatch_async(dispatch_get_main_queue(), ^{
-                cell.shot.image = image;
+                [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] 
+                                      withRowAnimation:UITableViewRowAnimationNone];
             });
         }];
     }
