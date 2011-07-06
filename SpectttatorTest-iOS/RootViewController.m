@@ -77,7 +77,11 @@
         [self.imageRetrievedCache addObject:identifier];
         [aShot imageTeaserWithBlock:^(UIImage *image){
             [self.imageCache setObject:image forKey:identifier];
-            cell.shot.image = image;
+            
+            // Update the ui on the main thread
+            dispatch_async(dispatch_get_main_queue(), ^{
+                cell.shot.image = image;
+            });
         }];
     }
     

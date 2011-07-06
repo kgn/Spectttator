@@ -68,11 +68,14 @@
     }];
 }
 
-// There is a sporadic problem with this sample code that causes 
-// the app to hang sometimes. I've looked into it and the problem 
-// is not with Spectttator but with updating the text in NSTextView.
-// I haven't been able to track it down, if you can figure out what 
-// the problem is please fork the code and share the love :)
+#pragma mark -
+#pragma mark Actions
+
+// These actions actions get data from dribbble then
+// update the UI on the main thread with
+// dispatch_async(dispatch_get_main_queue(), ^{
+//     //update ui
+// });
 
 - (IBAction)userChanged:(id)sender{
     NSString *user = [sender stringValue];
@@ -95,27 +98,36 @@
         //get the last shot uploaded by the player
         if([shots count]){
             [[shots objectAtIndex:0] imageWithBlock:^(NSImage *image){
-                [self.lastPlayerShot setImage:image];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.lastPlayerShot setImage:image];
+                });
             }];
         }
         
         //get the player's avatar
         if([shots count]){
             [[[shots objectAtIndex:0] player] avatarWithBlock:^(NSImage *image){
-                [self.avatar setImage:image];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.avatar setImage:image];
+                });
             }];       
         }
         
-        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
-            for(SPShot *shot in shots){
-                NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
-                NSMutableAttributedString *shotString = [NSAttributedString hyperlinkFromString:string withURL:shot.url];
-                [[self.shots textStorage] appendAttributedString:shotString];
-            }
-        [pool drain];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
+                for(SPShot *shot in shots){
+                    NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
+                    NSMutableAttributedString *shotString = [NSAttributedString hyperlinkFromString:string withURL:shot.url];
+                        [[self.shots textStorage] appendAttributedString:shotString];
+                }
+            [pool drain];
+        });
+        
         self.userUpdating = NO;
         if(!self.listUpdating){
-            [self.spinner stopAnimation:nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.spinner stopAnimation:nil];
+            });
         }
         [self.username setEnabled:YES];
     } andPagination:[SPPagination perPage:20]];
@@ -137,20 +149,27 @@
         //get the last shot uploaded to the list
         if([shots count]){
             [[shots objectAtIndex:0] imageWithBlock:^(NSImage *image){
-                [self.lastListShot setImage:image];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.lastListShot setImage:image];
+                });
             }];       
         }
         
-        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
-            for(SPShot *shot in shots){
-                NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
-                NSMutableAttributedString *shotString = [NSAttributedString hyperlinkFromString:string withURL:shot.url];
-                [[self.listShots textStorage] appendAttributedString:shotString];
-            }
-        [pool drain];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
+                for(SPShot *shot in shots){
+                    NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
+                    NSMutableAttributedString *shotString = [NSAttributedString hyperlinkFromString:string withURL:shot.url];
+                        [[self.listShots textStorage] appendAttributedString:shotString];
+                }
+            [pool drain];
+        }); 
+        
         self.listUpdating = NO;
         if(!self.userUpdating){
-            [self.spinner stopAnimation:nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.spinner stopAnimation:nil];
+            });
         }
         [self.listPopup setEnabled:YES];
     }];    
