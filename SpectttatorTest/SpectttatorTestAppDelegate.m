@@ -33,49 +33,60 @@
     [self listChanged:self.listPopup];
     
     //run commands that don't appear in the ui
-    [[SPManager sharedManager] shotInformationForIdentifier:199295 withBlock:^(SPShot *shot){
+    [[SPManager sharedManager] shotInformationForIdentifier:199295 runOnMainThread:NO withBlock:^(SPShot *shot){
         NSLog(@"Shot Information: %@", shot);
-        [shot reboundsWithBlock:^(NSArray *rebounds, SPPagination *pagination){
+        [shot reboundsRunOnMainThread:NO withBlock:^(NSArray *rebounds, SPPagination *pagination){
             NSLog(@"Rebounds for '%@': %@", shot.title, rebounds);
         }];
-        [shot commentsWithBlock:^(NSArray *comments, SPPagination *pagination){
+        [shot commentsRunOnMainThread:NO withBlock:^(NSArray *comments, SPPagination *pagination){
             NSLog(@"Comments for '%@': %@", shot.title, comments);
-        }];        
+        }];
     }];
     
-    [[SPManager sharedManager] playerInformationForUsername:username withBlock:^(SPPlayer *player){
-        NSLog(@"Player information for %@: %@", username, player);
-    }];
+    [[SPManager sharedManager] playerInformationForUsername:username 
+                                            runOnMainThread:NO 
+                                                  withBlock:^(SPPlayer *player){
+                                                      NSLog(@"Player information for %@: %@", username, player);
+                                                  }];
     
-    [[SPManager sharedManager] playerFollowers:@"simplebits" withBlock:^(NSArray *players, SPPagination *pagination){
-        NSLog(@"Players following %@: %@", username, players);
-    } andPagination:[SPPagination page:2 perPage:20]];
+    [[SPManager sharedManager] playerFollowers:@"simplebits" 
+                               runOnMainThread:NO 
+                                     withBlock:^(NSArray *players, SPPagination *pagination){
+                                         NSLog(@"Players following %@: %@", username, players);
+                                     } 
+                                 andPagination:[SPPagination page:2 perPage:20]];
     
-    [[SPManager sharedManager] shotsForPlayerFollowing:username withBlock:^(NSArray *shots, SPPagination *pagination){
-        NSLog(@"Shot by player %@ is following: %@", username, shots);
-    }]; 
+    [[SPManager sharedManager] shotsForPlayerFollowing:username 
+                                       runOnMainThread:NO
+                                             withBlock:^(NSArray *shots, SPPagination *pagination){
+                                                 NSLog(@"Shot by player %@ is following: %@", username, shots);
+                                             }]; 
     
-    [[SPManager sharedManager] shotsForPlayerLikes:username withBlock:^(NSArray *shots, SPPagination *pagination){
-        NSLog(@"Shot %@ likes: %@", username, shots);
-    } andPagination:[SPPagination perPage:10]];
+    [[SPManager sharedManager] shotsForPlayerLikes:username 
+                                   runOnMainThread:NO 
+                                         withBlock:^(NSArray *shots, SPPagination *pagination){
+                                             NSLog(@"Shot %@ likes: %@", username, shots);
+                                         } andPagination:[SPPagination perPage:10]];
     
-    [[SPManager sharedManager] playerFollowing:username withBlock:^(NSArray *shots, SPPagination *pagination){
-        NSLog(@"Shot %@ likes: %@", username, shots);
-    } andPagination:[SPPagination page:2]];
+    [[SPManager sharedManager] playerFollowing:username 
+                               runOnMainThread:NO
+                                     withBlock:^(NSArray *shots, SPPagination *pagination){
+                                         NSLog(@"Shot %@ likes: %@", username, shots);
+                                     } 
+                                 andPagination:[SPPagination page:2]];
     
-    [[SPManager sharedManager] playerDraftees:username withBlock:^(NSArray *players, SPPagination *pagination){
-        NSLog(@"Players %@ drafted: %@", username, players);
-    }];
+    [[SPManager sharedManager] playerDraftees:username 
+                              runOnMainThread:NO
+                                    withBlock:^(NSArray *players, SPPagination *pagination){
+                                        NSLog(@"Players %@ drafted: %@", username, players);
+                                    }];
 }
 
 #pragma mark -
 #pragma mark Actions
 
 // These actions actions get data from dribbble then
-// update the UI on the main thread with
-// dispatch_async(dispatch_get_main_queue(), ^{
-//     //update ui
-// });
+// update the UI on the main thread with runOnMainThread:YES
 
 - (IBAction)userChanged:(id)sender{
     NSString *user = [sender stringValue];
@@ -91,47 +102,40 @@
     self.userUpdating = YES;
     
     //get shots from player
-    [[SPManager sharedManager] shotsForPlayer:user withBlock:^(NSArray *shots, SPPagination *pagination){
+    [[SPManager sharedManager] shotsForPlayer:user 
+                              runOnMainThread:YES
+                                    withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Received shot data for %@", user);
         NSLog(@"With pagination: %@", pagination);
         
         //get the last shot uploaded by the player
         if([shots count]){
-            [[shots objectAtIndex:0] imageWithBlock:^(NSImage *image){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.lastPlayerShot setImage:image];
-                });
+            [[shots objectAtIndex:0] imageRunOnMainThread:YES withBlock:^(NSImage *image){
+                [self.lastPlayerShot setImage:image];
             }];
         }
         
         //get the player's avatar
         if([shots count]){
-            [[[shots objectAtIndex:0] player] avatarWithBlock:^(NSImage *image){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.avatar setImage:image];
-                });
+            [[[shots objectAtIndex:0] player] avatarRunOnMainThread:YES withBlock:^(NSImage *image){
+                [self.avatar setImage:image];
             }];       
         }
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
-                for(SPShot *shot in shots){
-                    NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
-                    NSMutableAttributedString *shotString = [NSAttributedString hyperlinkFromString:string withURL:shot.url];
-                        [[self.shots textStorage] appendAttributedString:shotString];
-                }
-            [pool drain];
-        });
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
+            for(SPShot *shot in shots){
+                NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
+                NSMutableAttributedString *shotString = [NSAttributedString hyperlinkFromString:string 
+                                                                                        withURL:shot.url];
+                    [[self.shots textStorage] appendAttributedString:shotString];
+            }
+        [pool drain];
         
         self.userUpdating = NO;
         if(!self.listUpdating){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.spinner stopAnimation:nil];
-            });
+            [self.spinner stopAnimation:nil];
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.username setEnabled:YES];
-        });
+        [self.username setEnabled:YES];
     } andPagination:[SPPagination perPage:20]];
 }
 
@@ -144,38 +148,33 @@
     self.listUpdating = YES;
     
     //get shots from a list
-    [[SPManager sharedManager] shotsForList:list withBlock:^(NSArray *shots, SPPagination *pagination){
+    [[SPManager sharedManager] shotsForList:list 
+                            runOnMainThread:YES 
+                                  withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Received list data for %@", list);
         NSLog(@"With pagination: %@", pagination);
         
         //get the last shot uploaded to the list
         if([shots count]){
-            [[shots objectAtIndex:0] imageWithBlock:^(NSImage *image){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.lastListShot setImage:image];
-                });
+            [[shots objectAtIndex:0] imageRunOnMainThread:NO withBlock:^(NSImage *image){
+                [self.lastListShot setImage:image];
             }];       
         }
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
-                for(SPShot *shot in shots){
-                    NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
-                    NSMutableAttributedString *shotString = [NSAttributedString hyperlinkFromString:string withURL:shot.url];
-                        [[self.listShots textStorage] appendAttributedString:shotString];
-                }
-            [pool drain];
-        }); 
+        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
+            for(SPShot *shot in shots){
+                NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
+                NSMutableAttributedString *shotString = [NSAttributedString hyperlinkFromString:string 
+                                                                                        withURL:shot.url];
+                    [[self.listShots textStorage] appendAttributedString:shotString];
+            }
+        [pool drain];
         
         self.listUpdating = NO;
         if(!self.userUpdating){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.spinner stopAnimation:nil];
-            });
+            [self.spinner stopAnimation:nil];
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.listPopup setEnabled:YES];
-        });
+        [self.listPopup setEnabled:YES];
     }];    
 }
 

@@ -30,19 +30,17 @@
 @synthesize reboundsCount = _reboundsCount;
 @synthesize reboundsReceivedCount = _reboundsReceivedCount;
 @synthesize createdAt = _createdAt;
-
+    
 #if TARGET_OS_IPHONE
-- (void)avatarWithBlock:(void (^)(UIImage *))block{
+- (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
+                    withBlock:(void (^)(UIImage *))block{
 #else
-- (void)avatarWithBlock:(void (^)(NSImage *))block{
+- (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
+                    withBlock:(void (^)(NSImage *))block{
 #endif
-    [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        #if TARGET_OS_IPHONE
-        block([UIImage imageWithData:[NSData dataWithContentsOfURL:self.avatarUrl]]);
-        #else
-        block([[[NSImage alloc] initWithContentsOfURL:self.avatarUrl] autorelease]);
-        #endif
-    }]];    
+    [SPRequest requestImageWithURL:self.avatarUrl
+                   runOnMainThread:runOnMainThread 
+                         withBlock:block];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{

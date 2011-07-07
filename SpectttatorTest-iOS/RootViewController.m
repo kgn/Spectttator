@@ -29,21 +29,18 @@
     [self.refreshButton setEnabled:NO];   
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    [[SPManager sharedManager] shotsForList:self.list withBlock:^(NSArray *theShots, SPPagination *thsPagination) {
+    [[SPManager sharedManager] shotsForList:self.list runOnMainThread:YES withBlock:^(NSArray *theShots, SPPagination *thsPagination) {
         self.shots = theShots;
         self.imageCache = nil;
         self.imageRetrievedCache = nil;
         self.imageRetrievedCache = [[NSMutableSet alloc] initWithCapacity:[theShots count]];
         self.imageCache = [[NSMutableDictionary alloc] initWithCapacity:[theShots count]];
         
-        // Update the table and stop the spinner on the main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.listButton setEnabled:YES]; 
-            [self.refreshButton setEnabled:YES];             
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            
-            [self.tableView reloadData];
-        });
+        [self.listButton setEnabled:YES]; 
+        [self.refreshButton setEnabled:YES];             
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
+        [self.tableView reloadData];
     } andPagination:[SPPagination perPage:30]];
 }
 
@@ -127,14 +124,10 @@
     // and we update the row the first time it's loaded.
     if(![self.imageRetrievedCache member:identifier]){
         [self.imageRetrievedCache addObject:identifier];
-        [aShot imageTeaserWithBlock:^(UIImage *image){
+        [aShot imageTeaserRunOnMainThread:YES withBlock:^(UIImage *image){
             [self.imageCache setObject:image forKey:identifier];
-            
-            // Update the cell on the main thread
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] 
-                                      withRowAnimation:UITableViewRowAnimationNone];
-            });
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] 
+                             withRowAnimation:UITableViewRowAnimationNone];
         }];
     }
     

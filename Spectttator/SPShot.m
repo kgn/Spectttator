@@ -29,77 +29,63 @@
 @synthesize player = _player;
 
 #if TARGET_OS_IPHONE
-- (void)imageWithBlock:(void (^)(UIImage *))block{
+- (void)imageRunOnMainThread:(BOOL)runOnMainThread 
+                   withBlock:(void (^)(UIImage *))block{
 #else
-- (void)imageWithBlock:(void (^)(NSImage *))block{
+- (void)imageRunOnMainThread:(BOOL)runOnMainThread 
+                   withBlock:(void (^)(NSImage *))block{
 #endif
-    [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        #if TARGET_OS_IPHONE
-        block([UIImage imageWithData:[NSData dataWithContentsOfURL:self.imageUrl]]);
-        #else        
-        block([[[NSImage alloc] initWithContentsOfURL:self.imageUrl] autorelease]);
-        #endif
-    }]];
+    [SPRequest requestImageWithURL:self.imageUrl
+                   runOnMainThread:runOnMainThread 
+                   withBlock:block];
 }
     
 #if TARGET_OS_IPHONE
-- (void)imageTeaserWithBlock:(void (^)(UIImage *))block{
+- (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
+                         withBlock:(void (^)(UIImage *))block{
 #else
-- (void)imageTeaserWithBlock:(void (^)(NSImage *))block{
+- (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
+                         withBlock:(void (^)(NSImage *))block{
 #endif
-    [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        #if TARGET_OS_IPHONE
-        block([UIImage imageWithData:[NSData dataWithContentsOfURL:self.imageTeaserUrl]]);
-        #else        
-        block([[[NSImage alloc] initWithContentsOfURL:self.imageTeaserUrl] autorelease]);
-        #endif
-    }]];
+    [SPRequest requestImageWithURL:self.imageTeaserUrl
+                   runOnMainThread:runOnMainThread 
+                         withBlock:block];
 }
 
-- (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self reboundsWithBlock:block andPagination:nil];
+- (void)reboundsRunOnMainThread:(BOOL)runOnMainThread 
+                      withBlock:(void (^)(NSArray *, SPPagination *))block{
+    [self reboundsRunOnMainThread:runOnMainThread 
+                        withBlock:block 
+                    andPagination:nil];
 }
 
-- (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
+- (void)reboundsRunOnMainThread:(BOOL)runOnMainThread 
+                      withBlock:(void (^)(NSArray *, SPPagination *))block 
+                  andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%lu/rebounds", 
                            self.identifier, [SPRequest pagination:pagination]];
-    [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
-        NSArray *shots = [json objectForKey:@"shots"];
-        NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
-        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
-            for(NSDictionary *shotData in shots){
-                SPShot *shot = [[SPShot alloc] initWithDictionary:shotData];
-                [mshots addObject:shot];
-                [shot release];
-            }
-        [pool drain];
-        block(mshots, [SPPagination paginationWithDictionary:json]);
-    }]];    
+    [SPRequest requestShotsWithURL:[NSURL URLWithString:urlString] 
+                   runOnMainThread:runOnMainThread 
+                         withBlock:block];
 }
 
-- (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self commentsWithBlock:block andPagination:nil];
+- (void)commentsRunOnMainThread:(BOOL)runOnMainThread 
+                      withBlock:(void (^)(NSArray *, SPPagination *))block{
+    [self commentsRunOnMainThread:runOnMainThread 
+                        withBlock:block 
+                    andPagination:nil];
 }
 
-- (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination{
+- (void)commentsRunOnMainThread:(BOOL)runOnMainThread 
+                         withBlock:(void (^)(NSArray *, SPPagination *))block 
+                         andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%lu/comments", 
                            self.identifier, [SPRequest pagination:pagination]];
-    [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
-        NSArray *comments = [json objectForKey:@"comments"];
-        NSMutableArray *mcomments = [[NSMutableArray alloc] initWithCapacity:[comments count]];
-        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
-            for(NSDictionary *commentData in comments){
-                SPComment *comment = [[SPComment alloc] initWithDictionary:commentData];
-                [mcomments addObject:comment];
-                [comment release];
-            }
-        [pool drain];
-        block(mcomments, [SPPagination paginationWithDictionary:json]);
-    }]];    
+    [SPRequest requestCommentsWithURL:[NSURL URLWithString:urlString] 
+                   runOnMainThread:runOnMainThread 
+                         withBlock:block];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{

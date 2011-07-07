@@ -105,26 +105,34 @@
 
 /** 
  Retrieves the shot's image.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.  
  @param block The block to be executed once the data has been retrieved. 
   Depending on the platform an `NSImage` or `UIImage` object for the 
   shot is passed to the block.
  */
 #if TARGET_OS_IPHONE
-- (void)imageWithBlock:(void (^)(UIImage *))block;
+- (void)imageRunOnMainThread:(BOOL)runOnMainThread 
+                   withBlock:(void (^)(UIImage *))block;
 #else
-- (void)imageWithBlock:(void (^)(NSImage *))block;
+- (void)imageRunOnMainThread:(BOOL)runOnMainThread 
+                   withBlock:(void (^)(NSImage *))block;
 #endif
 
 /** 
  Retrieves the shot's teaser image.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.   
  @param block The block to be executed once the data has been retrieved. 
   Depending on the platform an `NSImage` or `UIImage` object for the 
   teaser is passed to the block.
  */
 #if TARGET_OS_IPHONE
-- (void)imageTeaserWithBlock:(void (^)(UIImage *))block;
+- (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
+                         withBlock:(void (^)(UIImage *))block;
 #else
-- (void)imageTeaserWithBlock:(void (^)(NSImage *))block;
+- (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
+                         withBlock:(void (^)(NSImage *))block;
 #endif
 
 ///----------------------------
@@ -133,15 +141,20 @@
 
 /** 
  Retrieves the set of rebounds (shots in response to a shot) for the shot.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`. 
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @see reboundsWithBlock:withBlock:andPagination:
  @see SPPagination
  */
-- (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block;
+- (void)reboundsRunOnMainThread:(BOOL)runOnMainThread 
+                      withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the set of rebounds (shots in response to a shot) for the shot.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`. 
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
@@ -149,20 +162,27 @@
  @see reboundsWithBlock:withBlock:
  @see SPPagination
  */
-- (void)reboundsWithBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
+- (void)reboundsRunOnMainThread:(BOOL)runOnMainThread 
+                      withBlock:(void (^)(NSArray *, SPPagination *))block 
+                  andPagination:(NSDictionary *)pagination;
 
 /** 
  Retrieves the set of comments for the shot.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.  
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPComment` objects and a `SPPagination` objects are passed to the block.
  @see reboundsWithBlock:withBlock:andPagination:
  @see SPComment
  @see SPPagination
  */
-- (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block;
+- (void)commentsRunOnMainThread:(BOOL)runOnMainThread 
+                      withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the set of rebounds (shots in response to a shot) for the shot.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.  
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPComment` objects and a `SPPagination` objects are passed to the block.
  @param pagination A `NSDictionary` with pagination data, the best way to 
@@ -171,6 +191,8 @@
  @see SPComment
  @see SPPagination
  */
-- (void)commentsWithBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
+- (void)commentsRunOnMainThread:(BOOL)runOnMainThread 
+                      withBlock:(void (^)(NSArray *, SPPagination *))block 
+                  andPagination:(NSDictionary *)pagination;
 
 @end

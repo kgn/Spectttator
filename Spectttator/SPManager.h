@@ -51,26 +51,36 @@
 /** 
  Retrieves profile details for a player specified by _username_.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.
  @param block The block to be executed once the data has been retrieved. 
   A `SPPlayer` object is passed to the block.
  @see SPPlayer
  */
-- (void)playerInformationForUsername:(NSString *)username withBlock:(void (^)(SPPlayer *))block;
+- (void)playerInformationForUsername:(NSString *)username 
+                     runOnMainThread:(BOOL)runOnMainThread 
+                           withBlock:(void (^)(SPPlayer *))block;
 
 /** 
  Retrieves the list of followers for a player specified by _username_.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`. 
  @param block The block to be executed once the data has been retrieved. 
- An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
+  An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
  @see playerFollowers:withBlock:andPagination:
  @see SPPagination
  @see SPPlayer
  */
-- (void)playerFollowers:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block;
+- (void)playerFollowers:(NSString *)username 
+        runOnMainThread:(BOOL)runOnMainThread 
+              withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the list of followers for a player specified by _username_.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`. 
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
@@ -79,22 +89,31 @@
  @see SPPagination
  @see SPPlayer
  */
-- (void)playerFollowers:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
+- (void)playerFollowers:(NSString *)username 
+        runOnMainThread:(BOOL)runOnMainThread 
+              withBlock:(void (^)(NSArray *, SPPagination *))block 
+          andPagination:(NSDictionary *)pagination;
 
 /** 
  Retrieves the list of players followed by the player specified by _username_.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.  
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
  @see playerFollowing:withBlock:andPagination:
  @see SPPagination
  @see SPPlayer
  */
-- (void)playerFollowing:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block;
+- (void)playerFollowing:(NSString *)username 
+        runOnMainThread:(BOOL)runOnMainThread
+              withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the list of followers for a player specified by _username_.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.  
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
@@ -103,22 +122,31 @@
  @see SPPagination
  @see SPPlayer
  */
-- (void)playerFollowing:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
+- (void)playerFollowing:(NSString *)username 
+        runOnMainThread:(BOOL)runOnMainThread
+              withBlock:(void (^)(NSArray *, SPPagination *))block 
+          andPagination:(NSDictionary *)pagination;
 
 /** 
  Retrieves the list of players drafted by the player specified by _username_.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.   
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
  @see playerDraftees:withBlock:andPagination:
  @see SPPagination
  @see SPPlayer
  */
-- (void)playerDraftees:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block;
+- (void)playerDraftees:(NSString *)username 
+       runOnMainThread:(BOOL)runOnMainThread 
+             withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the list of players drafted by the player specified by _username_.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.   
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
@@ -127,7 +155,10 @@
  @see SPPagination
  @see SPPlayer
  */
-- (void)playerDraftees:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
+- (void)playerDraftees:(NSString *)username 
+       runOnMainThread:(BOOL)runOnMainThread 
+             withBlock:(void (^)(NSArray *, SPPagination *))block 
+         andPagination:(NSDictionary *)pagination;
 
 
 ///----------------------------
@@ -137,11 +168,15 @@
 /** 
  Retrieves details for a shot specified by _id_.
  @param identifier The shot identifier number.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`. 
  @param block The block to be executed once the data has been retrieved. 
   A `SPShot` object is passed to the block.
  @see SPShot
  */
-- (void)shotInformationForIdentifier:(NSUInteger)identifier withBlock:(void (^)(SPShot *))block;
+- (void)shotInformationForIdentifier:(NSUInteger)identifier 
+                     runOnMainThread:(BOOL)runOnMainThread 
+                           withBlock:(void (^)(SPShot *))block;
 
 /** 
  Retrieves the specified list of shots.
@@ -150,13 +185,17 @@
  - `SPDebutsList`
  - `SPEveryoneList`
  - `SPPopularList`
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`. 
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @see shotsForList:withBlock:andPagination:
  @see SPPagination
  @see SPShot
  */
-- (void)shotsForList:(NSString *)list withBlock:(void (^)(NSArray *, SPPagination *))block;
+- (void)shotsForList:(NSString *)list 
+     runOnMainThread:(BOOL)runOnMainThread 
+           withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the specified list of shots.
@@ -165,6 +204,8 @@
  - `SPDebutsList`
  - `SPEveryoneList`
  - `SPPopularList`
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`. 
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
@@ -173,22 +214,31 @@
  @see SPPagination
  @see SPShot
  */
-- (void)shotsForList:(NSString *)list withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
+- (void)shotsForList:(NSString *)list 
+     runOnMainThread:(BOOL)runOnMainThread 
+           withBlock:(void (^)(NSArray *, SPPagination *))block 
+       andPagination:(NSDictionary *)pagination;
 
 /** 
  Retrieves the most recent shots for the player specified by _username_.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.  
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @see shotsForPlayer:withBlock:andPagination:
  @see SPPagination
  @see SPShot
  */
-- (void)shotsForPlayer:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block;
+- (void)shotsForPlayer:(NSString *)username 
+       runOnMainThread:(BOOL)runOnMainThread 
+             withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the most recent shots for the player specified by _username_.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.  
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
@@ -197,23 +247,32 @@
  @see SPPagination
  @see SPShot
  */
-- (void)shotsForPlayer:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
+- (void)shotsForPlayer:(NSString *)username 
+       runOnMainThread:(BOOL)runOnMainThread 
+             withBlock:(void (^)(NSArray *, SPPagination *))block 
+         andPagination:(NSDictionary *)pagination;
 
 
 /** 
  Retrieves the most recent shots published by those the player specified by _username_ is following.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.  
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @see shotsForPlayerFollowing:withBlock:andPagination:
  @see SPPagination
  @see SPShot
  */
-- (void)shotsForPlayerFollowing:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block;
+- (void)shotsForPlayerFollowing:(NSString *)username 
+                runOnMainThread:(BOOL)runOnMainThread
+                      withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the most recent shots published by those the player specified by _username_ is following.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.  
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
@@ -222,23 +281,31 @@
  @see SPPagination
  @see SPShot
  */
-- (void)shotsForPlayerFollowing:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
-
+- (void)shotsForPlayerFollowing:(NSString *)username 
+                runOnMainThread:(BOOL)runOnMainThread
+                      withBlock:(void (^)(NSArray *, SPPagination *))block 
+                  andPagination:(NSDictionary *)pagination;
 
 /** 
  Retrieves shots liked by the player specified by _username_.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.   
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @see shotsForPlayerLikes:withBlock:andPagination:
  @see SPPagination
  @see SPShot
  */
-- (void)shotsForPlayerLikes:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block;
+- (void)shotsForPlayerLikes:(NSString *)username 
+            runOnMainThread:(BOOL)runOnMainThread
+                  withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves shots liked by the player specified by _username_.
  @param username The username of the player.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
@@ -247,6 +314,9 @@
  @see SPPagination
  @see SPShot
  */
-- (void)shotsForPlayerLikes:(NSString *)username withBlock:(void (^)(NSArray *, SPPagination *))block andPagination:(NSDictionary *)pagination;
+- (void)shotsForPlayerLikes:(NSString *)username 
+            runOnMainThread:(BOOL)runOnMainThread
+                  withBlock:(void (^)(NSArray *, SPPagination *))block 
+              andPagination:(NSDictionary *)pagination;
 
 @end

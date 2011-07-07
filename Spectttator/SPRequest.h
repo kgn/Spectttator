@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SPPagination.h"
 #import "SBJson.h"
 
 @interface SPRequest : NSObject
@@ -14,6 +15,29 @@
 + (SBJsonParser *)parser;
 + (NSOperationQueue *)operationQueue;
 + (NSString *)pagination:(NSDictionary *)pagination;
+
++ (void)requestPlayersWithURL:(NSURL *)url 
+              runOnMainThread:(BOOL)runOnMainThread 
+                    withBlock:(void (^)(NSArray *, SPPagination *))block;
+
++ (void)requestShotsWithURL:(NSURL *)url 
+            runOnMainThread:(BOOL)runOnMainThread 
+                  withBlock:(void (^)(NSArray *, SPPagination *))block;
+
++ (void)requestCommentsWithURL:(NSURL *)url 
+               runOnMainThread:(BOOL)runOnMainThread 
+                     withBlock:(void (^)(NSArray *, SPPagination *))block;
+
+#if TARGET_OS_IPHONE
++ (void)requestImageWithURL:(NSURL *)url 
+            runOnMainThread:(BOOL)runOnMainThread 
+                  withBlock:(void (^)(UIImage *))block;
+#else
++ (void)requestImageWithURL:(NSURL *)url 
+            runOnMainThread:(BOOL)runOnMainThread 
+                  withBlock:(void (^)(NSImage *))block;
+#endif
+
 + (id)dataFromUrl:(NSURL *)url;
 
 @end

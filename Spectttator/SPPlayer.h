@@ -109,14 +109,18 @@
 
 /** 
  Retrieves the player's avatar.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.  
  @param block The block to be executed once the data has been retrieved. 
   Depending on the platform an `NSImage` or `UIImage` object for the 
   avatar is passed to the block.
  */
 #if TARGET_OS_IPHONE
-- (void)avatarWithBlock:(void (^)(UIImage *))block;
+- (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
+                    withBlock:(void (^)(UIImage *))block;
 #else
-- (void)avatarWithBlock:(void (^)(NSImage *))block;
+- (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
+                    withBlock:(void (^)(NSImage *))block;
 #endif
 
 @end
