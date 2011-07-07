@@ -28,25 +28,27 @@
 @synthesize createdAt = _createdAt;
 @synthesize player = _player;
 
-#if TARGET_OS_IPHONE
 - (void)imageRunOnMainThread:(BOOL)runOnMainThread 
-                   withBlock:(void (^)(UIImage *))block{
+                   withBlock:(void (^)(
+#if TARGET_OS_IPHONE                                       
+                                       UIImage *
 #else
-- (void)imageRunOnMainThread:(BOOL)runOnMainThread 
-                   withBlock:(void (^)(NSImage *))block{
+                                       NSImage *
 #endif
+                                       ))block{
     [SPRequest requestImageWithURL:self.imageUrl
                    runOnMainThread:runOnMainThread 
                    withBlock:block];
 }
     
-#if TARGET_OS_IPHONE
 - (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
-                         withBlock:(void (^)(UIImage *))block{
+                         withBlock:(void (^)(
+#if TARGET_OS_IPHONE                                       
+                                             UIImage *
 #else
-- (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
-                         withBlock:(void (^)(NSImage *))block{
+                                             NSImage *
 #endif
+                                             ))block{
     [SPRequest requestImageWithURL:self.imageTeaserUrl
                    runOnMainThread:runOnMainThread 
                          withBlock:block];

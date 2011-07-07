@@ -31,13 +31,14 @@
 @synthesize reboundsReceivedCount = _reboundsReceivedCount;
 @synthesize createdAt = _createdAt;
     
+- (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
+                    withBlock:(void (^)(
 #if TARGET_OS_IPHONE
-- (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
-                    withBlock:(void (^)(UIImage *))block{
+                                        UIImage *
 #else
-- (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
-                    withBlock:(void (^)(NSImage *))block{
+                                        NSImage *
 #endif
+                                        ))block{
     [SPRequest requestImageWithURL:self.avatarUrl
                    runOnMainThread:runOnMainThread 
                          withBlock:block];

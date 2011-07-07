@@ -115,12 +115,13 @@
   Depending on the platform an `NSImage` or `UIImage` object for the 
   avatar is passed to the block.
  */
+- (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
+                    withBlock:(void (^)(
 #if TARGET_OS_IPHONE
-- (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
-                    withBlock:(void (^)(UIImage *))block;
+                                        UIImage *
 #else
-- (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
-                    withBlock:(void (^)(NSImage *))block;
+                                        NSImage *
 #endif
+                                        ))block;
 
 @end

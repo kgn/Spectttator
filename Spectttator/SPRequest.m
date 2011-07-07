@@ -120,15 +120,15 @@
     }]];
 }
 
-#if TARGET_OS_IPHONE
 + (void)requestImageWithURL:(NSURL *)url 
             runOnMainThread:(BOOL)runOnMainThread 
-                   withBlock:(void (^)(UIImage *))block{
-#else
-+ (void)requestImageWithURL:(NSURL *)url 
-            runOnMainThread:(BOOL)runOnMainThread 
-                  withBlock:(void (^)(NSImage *))block{
-#endif
+                  withBlock:(void (^)(
+                                      #if TARGET_OS_IPHONE
+                                      UIImage *
+                                      #else
+                                      NSImage *
+                                      #endif
+                                      ))block{
     [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         #if TARGET_OS_IPHONE
         UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];

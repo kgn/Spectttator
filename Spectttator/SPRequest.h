@@ -28,15 +28,15 @@
                runOnMainThread:(BOOL)runOnMainThread 
                      withBlock:(void (^)(NSArray *, SPPagination *))block;
 
++ (void)requestImageWithURL:(NSURL *)url 
+            runOnMainThread:(BOOL)runOnMainThread 
+                  withBlock:(void (^)(
 #if TARGET_OS_IPHONE
-+ (void)requestImageWithURL:(NSURL *)url 
-            runOnMainThread:(BOOL)runOnMainThread 
-                  withBlock:(void (^)(UIImage *))block;
+                                      UIImage *
 #else
-+ (void)requestImageWithURL:(NSURL *)url 
-            runOnMainThread:(BOOL)runOnMainThread 
-                  withBlock:(void (^)(NSImage *))block;
+                                      NSImage *
 #endif
+                                      ))block;
 
 + (id)dataFromUrl:(NSURL *)url;
 

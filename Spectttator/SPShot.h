@@ -111,13 +111,14 @@
   Depending on the platform an `NSImage` or `UIImage` object for the 
   shot is passed to the block.
  */
-#if TARGET_OS_IPHONE
 - (void)imageRunOnMainThread:(BOOL)runOnMainThread 
-                   withBlock:(void (^)(UIImage *))block;
+                   withBlock:(void (^)(
+#if TARGET_OS_IPHONE                                       
+                                       UIImage *
 #else
-- (void)imageRunOnMainThread:(BOOL)runOnMainThread 
-                   withBlock:(void (^)(NSImage *))block;
+                                       NSImage *
 #endif
+                                       ))block;
 
 /** 
  Retrieves the shot's teaser image.
@@ -127,13 +128,14 @@
   Depending on the platform an `NSImage` or `UIImage` object for the 
   teaser is passed to the block.
  */
-#if TARGET_OS_IPHONE
 - (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
-                         withBlock:(void (^)(UIImage *))block;
+                         withBlock:(void (^)(
+#if TARGET_OS_IPHONE                                       
+                                             UIImage *
 #else
-- (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
-                         withBlock:(void (^)(NSImage *))block;
+                                             NSImage *
 #endif
+                                             ))block;
 
 ///----------------------------
 /// @name Rebounds and Comments
