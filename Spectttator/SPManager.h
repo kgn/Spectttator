@@ -64,101 +64,62 @@
 /** 
  Retrieves the list of followers for a player specified by _username_.
  @param username The username of the player.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`. 
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
- @see playerFollowers:withBlock:andPagination:
- @see SPPagination
- @see SPPlayer
- */
-- (void)playerFollowers:(NSString *)username 
-        runOnMainThread:(BOOL)runOnMainThread 
-              withBlock:(void (^)(NSArray *, SPPagination *))block;
-
-/** 
- Retrieves the list of followers for a player specified by _username_.
- @param username The username of the player.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`. 
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
   create this dictionary is with the helper functions on `SPPagination`.
+  If `nil` the default pagination will be used as defined by the 
+  [dribbble api](http://dribbble.com/api#pagination).
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`. 
+ @param block The block to be executed once the data has been retrieved. 
+  An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
  @see playerFollowers:withBlock:
  @see SPPagination
  @see SPPlayer
  */
 - (void)playerFollowers:(NSString *)username 
+         withPagination:(NSDictionary *)pagination
         runOnMainThread:(BOOL)runOnMainThread 
-              withBlock:(void (^)(NSArray *, SPPagination *))block 
-          andPagination:(NSDictionary *)pagination;
-
-/** 
- Retrieves the list of players followed by the player specified by _username_.
- @param username The username of the player.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`.  
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
- @see playerFollowing:withBlock:andPagination:
- @see SPPagination
- @see SPPlayer
- */
-- (void)playerFollowing:(NSString *)username 
-        runOnMainThread:(BOOL)runOnMainThread
               withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the list of followers for a player specified by _username_.
  @param username The username of the player.
+ @param pagination A NSDictionary with pagination data, the best way to 
+  create this dictionary is with the helper functions on `SPPagination`.
+  If `nil` the default pagination will be used as defined by the 
+  [dribbble api](http://dribbble.com/api#pagination).
  @param runOnMainThread Specifies if the passed in block should be run on the main thread.
   If UI elements are being updated in the block this should be `YES`.  
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
- @param pagination A NSDictionary with pagination data, the best way to 
-  create this dictionary is with the helper functions on `SPPagination`.
  @see playerFollowing:withBlock:
  @see SPPagination
  @see SPPlayer
  */
 - (void)playerFollowing:(NSString *)username 
+         withPagination:(NSDictionary *)pagination
         runOnMainThread:(BOOL)runOnMainThread
-              withBlock:(void (^)(NSArray *, SPPagination *))block 
-          andPagination:(NSDictionary *)pagination;
+              withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the list of players drafted by the player specified by _username_.
  @param username The username of the player.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`.   
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
- @see playerDraftees:withBlock:andPagination:
- @see SPPagination
- @see SPPlayer
- */
-- (void)playerDraftees:(NSString *)username 
-       runOnMainThread:(BOOL)runOnMainThread 
-             withBlock:(void (^)(NSArray *, SPPagination *))block;
-
-/** 
- Retrieves the list of players drafted by the player specified by _username_.
- @param username The username of the player.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`.   
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
-  create this dictionary is with the helper functions on `SPPagination`. 
+  create this dictionary is with the helper functions on `SPPagination`.
+  If `nil` the default pagination will be used as defined by the 
+  [dribbble api](http://dribbble.com/api#pagination). 
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.   
+ @param block The block to be executed once the data has been retrieved. 
+  An `NSArray` of `SPPlayer` objects and a `SPPagination` objects are passed to the block.
  @see playerDraftees:withBlock:
  @see SPPagination
  @see SPPlayer
  */
 - (void)playerDraftees:(NSString *)username 
+        withPagination:(NSDictionary *)pagination
        runOnMainThread:(BOOL)runOnMainThread 
-             withBlock:(void (^)(NSArray *, SPPagination *))block 
-         andPagination:(NSDictionary *)pagination;
+             withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 
 ///----------------------------
@@ -185,138 +146,81 @@
  - `SPDebutsList`
  - `SPEveryoneList`
  - `SPPopularList`
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`. 
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
- @see shotsForList:withBlock:andPagination:
- @see SPPagination
- @see SPShot
- */
-- (void)shotsForList:(NSString *)list 
-     runOnMainThread:(BOOL)runOnMainThread 
-           withBlock:(void (^)(NSArray *, SPPagination *))block;
-
-/** 
- Retrieves the specified list of shots.
- @param list The list to retrieve shots from, must be one of the following values: 
- 
- - `SPDebutsList`
- - `SPEveryoneList`
- - `SPPopularList`
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`. 
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
-  create this dictionary is with the helper functions on `SPPagination`.  
+  create this dictionary is with the helper functions on `SPPagination`.
+  If `nil` the default pagination will be used as defined by the 
+  [dribbble api](http://dribbble.com/api#pagination).  
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`. 
+ @param block The block to be executed once the data has been retrieved. 
+  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @see shotsForList:withBlock:
  @see SPPagination
  @see SPShot
  */
 - (void)shotsForList:(NSString *)list 
+      withPagination:(NSDictionary *)pagination
      runOnMainThread:(BOOL)runOnMainThread 
-           withBlock:(void (^)(NSArray *, SPPagination *))block 
-       andPagination:(NSDictionary *)pagination;
+           withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the most recent shots for the player specified by _username_.
  @param username The username of the player.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`.  
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
- @see shotsForPlayer:withBlock:andPagination:
- @see SPPagination
- @see SPShot
- */
-- (void)shotsForPlayer:(NSString *)username 
-       runOnMainThread:(BOOL)runOnMainThread 
-             withBlock:(void (^)(NSArray *, SPPagination *))block;
-
-/** 
- Retrieves the most recent shots for the player specified by _username_.
- @param username The username of the player.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`.  
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
-  create this dictionary is with the helper functions on `SPPagination`.  
+  create this dictionary is with the helper functions on `SPPagination`.
+  If `nil` the default pagination will be used as defined by the 
+  [dribbble api](http://dribbble.com/api#pagination).   
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.  
+ @param block The block to be executed once the data has been retrieved. 
+  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @see shotsForPlayer:withBlock:
  @see SPPagination
  @see SPShot
  */
 - (void)shotsForPlayer:(NSString *)username 
+        withPagination:(NSDictionary *)pagination
        runOnMainThread:(BOOL)runOnMainThread 
-             withBlock:(void (^)(NSArray *, SPPagination *))block 
-         andPagination:(NSDictionary *)pagination;
-
+             withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the most recent shots published by those the player specified by _username_ is following.
  @param username The username of the player.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`.  
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
- @see shotsForPlayerFollowing:withBlock:andPagination:
- @see SPPagination
- @see SPShot
- */
-- (void)shotsForPlayerFollowing:(NSString *)username 
-                runOnMainThread:(BOOL)runOnMainThread
-                      withBlock:(void (^)(NSArray *, SPPagination *))block;
-
-/** 
- Retrieves the most recent shots published by those the player specified by _username_ is following.
- @param username The username of the player.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`.  
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
-  create this dictionary is with the helper functions on `SPPagination`.  
+  create this dictionary is with the helper functions on `SPPagination`.
+  If `nil` the default pagination will be used as defined by the 
+  [dribbble api](http://dribbble.com/api#pagination).   
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`.  
+ @param block The block to be executed once the data has been retrieved. 
+  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block. 
  @see shotsForPlayerFollowing:withBlock:
  @see SPPagination
  @see SPShot
  */
 - (void)shotsForPlayerFollowing:(NSString *)username 
+                 withPagination:(NSDictionary *)pagination
                 runOnMainThread:(BOOL)runOnMainThread
-                      withBlock:(void (^)(NSArray *, SPPagination *))block 
-                  andPagination:(NSDictionary *)pagination;
+                      withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves shots liked by the player specified by _username_.
  @param username The username of the player.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`.   
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
- @see shotsForPlayerLikes:withBlock:andPagination:
- @see SPPagination
- @see SPShot
- */
-- (void)shotsForPlayerLikes:(NSString *)username 
-            runOnMainThread:(BOOL)runOnMainThread
-                  withBlock:(void (^)(NSArray *, SPPagination *))block;
-
-/** 
- Retrieves shots liked by the player specified by _username_.
- @param username The username of the player.
+ @param pagination A NSDictionary with pagination data, the best way to 
+  create this dictionary is with the helper functions on `SPPagination`.
+  If `nil` the default pagination will be used as defined by the 
+  [dribbble api](http://dribbble.com/api#pagination).    
  @param runOnMainThread Specifies if the passed in block should be run on the main thread.
   If UI elements are being updated in the block this should be `YES`.
  @param block The block to be executed once the data has been retrieved. 
   An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
- @param pagination A NSDictionary with pagination data, the best way to 
-  create this dictionary is with the helper functions on `SPPagination`.  
  @see shotsForPlayerLikes:withBlock:
  @see SPPagination
  @see SPShot
  */
 - (void)shotsForPlayerLikes:(NSString *)username 
+             withPagination:(NSDictionary *)pagination
             runOnMainThread:(BOOL)runOnMainThread
-                  withBlock:(void (^)(NSArray *, SPPagination *))block 
-              andPagination:(NSDictionary *)pagination;
+                  withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 @end

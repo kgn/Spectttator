@@ -141,46 +141,27 @@
 
 /** 
  Retrieves the set of rebounds (shots in response to a shot) for the shot.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`. 
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
- @see reboundsWithBlock:withBlock:andPagination:
- @see SPPagination
- */
-- (void)reboundsRunOnMainThread:(BOOL)runOnMainThread 
-                      withBlock:(void (^)(NSArray *, SPPagination *))block;
-
-/** 
- Retrieves the set of rebounds (shots in response to a shot) for the shot.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`. 
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @param pagination A NSDictionary with pagination data, the best way to 
   create this dictionary is with the helper functions on `SPPagination`.
+  If `nil` the default pagination will be used as defined by the 
+  [dribbble api](http://dribbble.com/api#pagination).    
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be `YES`. 
+ @param block The block to be executed once the data has been retrieved. 
+  An `NSArray` of `SPShot` objects and a `SPPagination` objects are passed to the block.
  @see reboundsWithBlock:withBlock:
  @see SPPagination
  */
-- (void)reboundsRunOnMainThread:(BOOL)runOnMainThread 
-                      withBlock:(void (^)(NSArray *, SPPagination *))block 
-                  andPagination:(NSDictionary *)pagination;
-
-/** 
- Retrieves the set of comments for the shot.
- @param runOnMainThread Specifies if the passed in block should be run on the main thread.
-  If UI elements are being updated in the block this should be `YES`.  
- @param block The block to be executed once the data has been retrieved. 
-  An `NSArray` of `SPComment` objects and a `SPPagination` objects are passed to the block.
- @see reboundsWithBlock:withBlock:andPagination:
- @see SPComment
- @see SPPagination
- */
-- (void)commentsRunOnMainThread:(BOOL)runOnMainThread 
-                      withBlock:(void (^)(NSArray *, SPPagination *))block;
+- (void)reboundsWithPagination:(NSDictionary *)pagination
+               runOnMainThread:(BOOL)runOnMainThread 
+                     withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 /** 
  Retrieves the set of rebounds (shots in response to a shot) for the shot.
+ @param pagination A NSDictionary with pagination data, the best way to 
+  create this dictionary is with the helper functions on `SPPagination`.
+  If `nil` the default pagination will be used as defined by the 
+  [dribbble api](http://dribbble.com/api#pagination).    
  @param runOnMainThread Specifies if the passed in block should be run on the main thread.
   If UI elements are being updated in the block this should be `YES`.  
  @param block The block to be executed once the data has been retrieved. 
@@ -191,8 +172,8 @@
  @see SPComment
  @see SPPagination
  */
-- (void)commentsRunOnMainThread:(BOOL)runOnMainThread 
-                      withBlock:(void (^)(NSArray *, SPPagination *))block 
-                  andPagination:(NSDictionary *)pagination;
+- (void)commentsWithPagination:(NSDictionary *)pagination
+               runOnMainThread:(BOOL)runOnMainThread 
+                     withBlock:(void (^)(NSArray *, SPPagination *))block;
 
 @end

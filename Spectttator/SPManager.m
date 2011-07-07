@@ -13,7 +13,6 @@ static SPManager *sharedInstance = nil;
 
 @implementation SPManager
 
-#pragma mark -
 #pragma mark Players
 #pragma mark -
 
@@ -33,21 +32,10 @@ static SPManager *sharedInstance = nil;
     }]];
 }
 
-#pragma mark followers
-
 - (void)playerFollowers:(NSString *)username 
+         withPagination:(NSDictionary *)pagination
         runOnMainThread:(BOOL)runOnMainThread 
               withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self playerFollowers:username 
-          runOnMainThread:runOnMainThread 
-                withBlock:block 
-            andPagination:nil];
-}
-
-- (void)playerFollowers:(NSString *)username 
-        runOnMainThread:(BOOL)runOnMainThread 
-              withBlock:(void (^)(NSArray *, SPPagination *))block 
-          andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/followers%@", 
                            username, [SPRequest pagination:pagination]];
@@ -55,22 +43,11 @@ static SPManager *sharedInstance = nil;
                 runOnMainThread:runOnMainThread 
                       withBlock:block];
 }
- 
-#pragma mark following
 
 - (void)playerFollowing:(NSString *)username 
+         withPagination:(NSDictionary *)pagination
         runOnMainThread:(BOOL)runOnMainThread
               withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self playerFollowing:username 
-          runOnMainThread:(BOOL)runOnMainThread
-                withBlock:block 
-            andPagination:nil];
-}
-
-- (void)playerFollowing:(NSString *)username 
-        runOnMainThread:(BOOL)runOnMainThread
-              withBlock:(void (^)(NSArray *, SPPagination *))block 
-          andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/following%@", 
                            username, [SPRequest pagination:pagination]];
@@ -79,21 +56,10 @@ static SPManager *sharedInstance = nil;
                       withBlock:block];    
 }
 
-#pragma mark draftees
-
 - (void)playerDraftees:(NSString *)username 
+        withPagination:(NSDictionary *)pagination
        runOnMainThread:(BOOL)runOnMainThread 
              withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self playerDraftees:username 
-         runOnMainThread:runOnMainThread
-               withBlock:block 
-           andPagination:nil];
-}
-
-- (void)playerDraftees:(NSString *)username 
-       runOnMainThread:(BOOL)runOnMainThread 
-             withBlock:(void (^)(NSArray *, SPPagination *))block 
-         andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/draftees%@", 
                            username, [SPRequest pagination:pagination]];
@@ -102,7 +68,6 @@ static SPManager *sharedInstance = nil;
                       withBlock:block];
 }
 
-#pragma mark -
 #pragma mark Shots
 #pragma mark -
 
@@ -122,21 +87,10 @@ static SPManager *sharedInstance = nil;
     }]];     
 }
 
-#pragma mark for list...
-
 - (void)shotsForList:(NSString *)list 
+      withPagination:(NSDictionary *)pagination
      runOnMainThread:(BOOL)runOnMainThread 
            withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self shotsForList:list 
-       runOnMainThread:runOnMainThread 
-             withBlock:block 
-         andPagination:nil];
-}
-
-- (void)shotsForList:(NSString *)list 
-     runOnMainThread:(BOOL)runOnMainThread 
-           withBlock:(void (^)(NSArray *, SPPagination *))block 
-       andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%@%@", 
                            list, [SPRequest pagination:pagination]];
@@ -145,21 +99,10 @@ static SPManager *sharedInstance = nil;
                       withBlock:block];  
 }
 
-#pragma mark for player...
-
 - (void)shotsForPlayer:(NSString *)username 
+        withPagination:(NSDictionary *)pagination
        runOnMainThread:(BOOL)runOnMainThread 
              withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self shotsForPlayer:username 
-         runOnMainThread:runOnMainThread
-               withBlock:block 
-           andPagination:nil];
-}
-
-- (void)shotsForPlayer:(NSString *)username 
-       runOnMainThread:(BOOL)runOnMainThread 
-             withBlock:(void (^)(NSArray *, SPPagination *))block 
-         andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/shots%@", 
                            username, [SPRequest pagination:pagination]];
@@ -168,22 +111,10 @@ static SPManager *sharedInstance = nil;
                     withBlock:block];
 }
 
-#pragma mark -
-#pragma mark for player following...
-
 - (void)shotsForPlayerFollowing:(NSString *)username 
+                 withPagination:(NSDictionary *)pagination
                 runOnMainThread:(BOOL)runOnMainThread
                       withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self shotsForPlayerFollowing:username 
-                  runOnMainThread:runOnMainThread
-                        withBlock:block 
-                    andPagination:nil];
-}
-
-- (void)shotsForPlayerFollowing:(NSString *)username 
-                runOnMainThread:(BOOL)runOnMainThread
-                      withBlock:(void (^)(NSArray *, SPPagination *))block 
-                  andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/shots/following%@", 
                            username, [SPRequest pagination:pagination]];
@@ -192,22 +123,10 @@ static SPManager *sharedInstance = nil;
                     withBlock:block];
 }
 
-#pragma mark -
-#pragma mark for player likes...
-
 - (void)shotsForPlayerLikes:(NSString *)username 
+             withPagination:(NSDictionary *)pagination
             runOnMainThread:(BOOL)runOnMainThread
                   withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self shotsForPlayerLikes:username 
-              runOnMainThread:runOnMainThread
-                    withBlock:block 
-                andPagination:nil];
-}
-
-- (void)shotsForPlayerLikes:(NSString *)username 
-            runOnMainThread:(BOOL)runOnMainThread
-                  withBlock:(void (^)(NSArray *, SPPagination *))block 
-              andPagination:(NSDictionary *)pagination{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/shots/likes%@", 
                            username, [SPRequest pagination:pagination]];

@@ -35,12 +35,16 @@
     //run commands that don't appear in the ui
     [[SPManager sharedManager] shotInformationForIdentifier:199295 runOnMainThread:NO withBlock:^(SPShot *shot){
         NSLog(@"Shot Information: %@", shot);
-        [shot reboundsRunOnMainThread:NO withBlock:^(NSArray *rebounds, SPPagination *pagination){
-            NSLog(@"Rebounds for '%@': %@", shot.title, rebounds);
-        }];
-        [shot commentsRunOnMainThread:NO withBlock:^(NSArray *comments, SPPagination *pagination){
-            NSLog(@"Comments for '%@': %@", shot.title, comments);
-        }];
+        [shot reboundsWithPagination:nil 
+                     runOnMainThread:NO 
+                           withBlock:^(NSArray *rebounds, SPPagination *pagination){
+                               NSLog(@"Rebounds for '%@': %@", shot.title, rebounds);
+                           }];
+        [shot commentsWithPagination:nil 
+                     runOnMainThread:NO 
+                           withBlock:^(NSArray *comments, SPPagination *pagination){
+                               NSLog(@"Comments for '%@': %@", shot.title, comments);
+                           }];
     }];
     
     [[SPManager sharedManager] playerInformationForUsername:username 
@@ -50,32 +54,35 @@
                                                   }];
     
     [[SPManager sharedManager] playerFollowers:@"simplebits" 
+                                withPagination:[SPPagination page:2 perPage:20]
                                runOnMainThread:NO 
                                      withBlock:^(NSArray *players, SPPagination *pagination){
                                          NSLog(@"Players following %@: %@", username, players);
-                                     } 
-                                 andPagination:[SPPagination page:2 perPage:20]];
+                                     }];
     
     [[SPManager sharedManager] shotsForPlayerFollowing:username 
+                                        withPagination:nil
                                        runOnMainThread:NO
                                              withBlock:^(NSArray *shots, SPPagination *pagination){
                                                  NSLog(@"Shot by player %@ is following: %@", username, shots);
                                              }]; 
     
     [[SPManager sharedManager] shotsForPlayerLikes:username 
+                                    withPagination:[SPPagination perPage:10]     
                                    runOnMainThread:NO 
                                          withBlock:^(NSArray *shots, SPPagination *pagination){
                                              NSLog(@"Shot %@ likes: %@", username, shots);
-                                         } andPagination:[SPPagination perPage:10]];
+                                         }];
     
     [[SPManager sharedManager] playerFollowing:username 
+                                withPagination:[SPPagination page:2]
                                runOnMainThread:NO
                                      withBlock:^(NSArray *shots, SPPagination *pagination){
                                          NSLog(@"Shot %@ likes: %@", username, shots);
-                                     } 
-                                 andPagination:[SPPagination page:2]];
+                                     }];
     
     [[SPManager sharedManager] playerDraftees:username 
+                               withPagination:nil
                               runOnMainThread:NO
                                     withBlock:^(NSArray *players, SPPagination *pagination){
                                         NSLog(@"Players %@ drafted: %@", username, players);
@@ -103,6 +110,7 @@
     
     //get shots from player
     [[SPManager sharedManager] shotsForPlayer:user 
+                               withPagination:[SPPagination perPage:20]
                               runOnMainThread:YES
                                     withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Received shot data for %@", user);
@@ -136,7 +144,7 @@
             [self.spinner stopAnimation:nil];
         }
         [self.username setEnabled:YES];
-    } andPagination:[SPPagination perPage:20]];
+    }];
 }
 
 - (IBAction)listChanged:(id)sender {
@@ -149,6 +157,7 @@
     
     //get shots from a list
     [[SPManager sharedManager] shotsForList:list 
+                             withPagination:nil
                             runOnMainThread:YES 
                                   withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Received list data for %@", list);

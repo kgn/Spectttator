@@ -52,16 +52,9 @@
                          withBlock:block];
 }
 
-- (void)reboundsRunOnMainThread:(BOOL)runOnMainThread 
-                      withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self reboundsRunOnMainThread:runOnMainThread 
-                        withBlock:block 
-                    andPagination:nil];
-}
-
-- (void)reboundsRunOnMainThread:(BOOL)runOnMainThread 
-                      withBlock:(void (^)(NSArray *, SPPagination *))block 
-                  andPagination:(NSDictionary *)pagination{
+- (void)reboundsWithPagination:(NSDictionary *)pagination
+               runOnMainThread:(BOOL)runOnMainThread 
+                     withBlock:(void (^)(NSArray *, SPPagination *))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%lu/rebounds", 
                            self.identifier, [SPRequest pagination:pagination]];
@@ -70,16 +63,9 @@
                          withBlock:block];
 }
 
-- (void)commentsRunOnMainThread:(BOOL)runOnMainThread 
-                      withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [self commentsRunOnMainThread:runOnMainThread 
-                        withBlock:block 
-                    andPagination:nil];
-}
-
-- (void)commentsRunOnMainThread:(BOOL)runOnMainThread 
-                         withBlock:(void (^)(NSArray *, SPPagination *))block 
-                         andPagination:(NSDictionary *)pagination{
+- (void)commentsWithPagination:(NSDictionary *)pagination
+               runOnMainThread:(BOOL)runOnMainThread 
+                     withBlock:(void (^)(NSArray *, SPPagination *))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%lu/comments", 
                            self.identifier, [SPRequest pagination:pagination]];
