@@ -71,19 +71,15 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/commentsWithBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- commentsWithBlock:</option>
+	<option value="//api/name/commentsWithPagination:runOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- commentsWithPagination:runOnMainThread:withBlock:</option>
 	
-	<option value="//api/name/commentsWithBlock:andPagination:">&nbsp;&nbsp;&nbsp;&nbsp;- commentsWithBlock:andPagination:</option>
+	<option value="//api/name/imageRunOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- imageRunOnMainThread:withBlock:</option>
 	
-	<option value="//api/name/imageTeaserWithBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- imageTeaserWithBlock:</option>
-	
-	<option value="//api/name/imageWithBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- imageWithBlock:</option>
+	<option value="//api/name/imageTeaserRunOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- imageTeaserRunOnMainThread:withBlock:</option>
 	
 	<option value="//api/name/initWithDictionary:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDictionary:</option>
 	
-	<option value="//api/name/reboundsWithBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- reboundsWithBlock:</option>
-	
-	<option value="//api/name/reboundsWithBlock:andPagination:">&nbsp;&nbsp;&nbsp;&nbsp;- reboundsWithBlock:andPagination:</option>
+	<option value="//api/name/reboundsWithPagination:runOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- reboundsWithPagination:runOnMainThread:withBlock:</option>
 	
 	
 	
@@ -153,19 +149,15 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/commentsWithBlock:">commentsWithBlock:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/commentsWithPagination:runOnMainThread:withBlock:">commentsWithPagination:runOnMainThread:withBlock:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/commentsWithBlock:andPagination:">commentsWithBlock:andPagination:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageRunOnMainThread:withBlock:">imageRunOnMainThread:withBlock:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageTeaserWithBlock:">imageTeaserWithBlock:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageWithBlock:">imageWithBlock:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageTeaserRunOnMainThread:withBlock:">imageTeaserRunOnMainThread:withBlock:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDictionary:">initWithDictionary:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reboundsWithBlock:">reboundsWithBlock:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reboundsWithBlock:andPagination:">reboundsWithBlock:andPagination:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reboundsWithPagination:runOnMainThread:withBlock:">reboundsWithPagination:runOnMainThread:withBlock:</a></span></li>
 	
 </ul></li>
 
@@ -204,26 +196,32 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The <code>SPShot</code> class provides a programmatic interface for interacting
+						<p>The <a href="SPShot.html"><code>SPShot</code></a> class provides a programmatic interface for interacting
 with Dribbble shots.</p>
 
 <p>The following snippet demonstrates how to retrieve a shot from an id and then get rebounds and comments on the shot.</p>
 
 <pre><code>#import &lt;Spectttator/Spectttator.h&gt;
 
-[[SPManager sharedManager] shotInformationForIdentifier:199295 withBlock:^(SPShot *shot){
+[[SPManager sharedManager] shotInformationForIdentifier:199295 runOnMainThread:NO withBlock:^(SPShot *shot){
     NSLog(@"Shot Information: %@", shot);
-    [shot reboundsWithBlock:^(NSArray *rebounds, SPPagination *pagination){
-        NSLog(@"Rebounds for '%@': %@", shot.title, rebounds);
-    }];
-    [shot commentsWithBlock:^(NSArray *comments, SPPagination *pagination){
-        NSLog(@"Comments for '%@': %@", shot.title, comments);
-    }];        
+    [shot reboundsWithPagination:nil 
+                 runOnMainThread:NO 
+                       withBlock:^(NSArray *rebounds, SPPagination *pagination){
+                           NSLog(@"Rebounds for '%@': %@", shot.title, rebounds);
+                       }];
+    [shot commentsWithPagination:nil 
+                 runOnMainThread:NO 
+                       withBlock:^(NSArray *comments, SPPagination *pagination){
+                           NSLog(@"Comments for '%@': %@", shot.title, comments);
+                       }];
 }];
 </code></pre>
 
-<p>This is non-blocking, <code>NSLog</code> will run whenever the shot data has finished loading,
-but the block still has access to everything in the scope from where it was defined.</p>
+<p>This is non-blocking, <code>NSLog</code> will run whenever the comment data has finished loading,
+but the block still has access to everything in the scope from where it was defined.
+If the block is updating UI elements make sure to set <code>runOnMainThread:YES</code>, the Dribbble
+requests will still be asynchronous but the passed in block will be executed on the main thread.</p>
 					</div>
 					
 					
@@ -249,49 +247,49 @@ but the block still has access to everything in the scope from where it was defi
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/title">&nbsp;&nbsp;title</a></code>
-		<span class="tooltip"><p>The title of the shot.</p></span>
+		<span class="tooltip"><p>The <a href="#//api/name/title">title</a> of the shot.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/url">&nbsp;&nbsp;url</a></code>
-		<span class="tooltip"><p>The full url to the shot.</p></span>
+		<span class="tooltip"><p>The full <a href="#//api/name/url">url</a> to the shot.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<span class="tooltip"><p>The short url to the shot.</p></span>
 		<code><a href="#//api/name/shortUrl">&nbsp;&nbsp;shortUrl</a></code>
+		<span class="tooltip"><p>The short <a href="#//api/name/url">url</a> to the shot.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<span class="tooltip"><p>The url to the shot&rsquo;s image.</p></span>
 		<code><a href="#//api/name/imageUrl">&nbsp;&nbsp;imageUrl</a></code>
+		<span class="tooltip"><p>The <a href="#//api/name/url">url</a> to the shot&rsquo;s image.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<span class="tooltip"><p>The url to the shot&rsquo;s teaser image.</p></span>
 		<code><a href="#//api/name/imageTeaserUrl">&nbsp;&nbsp;imageTeaserUrl</a></code>
+		<span class="tooltip"><p>The <a href="#//api/name/url">url</a> to the shot&rsquo;s teaser image.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/width">&nbsp;&nbsp;width</a></code>
-		<span class="tooltip"><p>The width of the shot.</p></span>
+		<span class="tooltip"><p>The <a href="#//api/name/width">width</a> of the shot.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/height">&nbsp;&nbsp;height</a></code>
-		<span class="tooltip"><p>The height of the shot.</p></span>
+		<span class="tooltip"><p>The <a href="#//api/name/height">height</a> of the shot.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -340,7 +338,7 @@ but the block still has access to everything in the scope from where it was defi
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/player">&nbsp;&nbsp;player</a></code>
-		<span class="tooltip"><p>The player who posted the shot.</p></span>
+		<span class="tooltip"><p>The <a href="#//api/name/player">player</a> who posted the shot.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -369,14 +367,14 @@ but the block still has access to everything in the scope from where it was defi
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/imageWithBlock:">&ndash;&nbsp;imageWithBlock:</a></code>
+		<code><a href="#//api/name/imageRunOnMainThread:withBlock:">&ndash;&nbsp;imageRunOnMainThread:withBlock:</a></code>
 		<span class="tooltip"><p>Retrieves the shot&rsquo;s image.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/imageTeaserWithBlock:">&ndash;&nbsp;imageTeaserWithBlock:</a></code>
+		<code><a href="#//api/name/imageTeaserRunOnMainThread:withBlock:">&ndash;&nbsp;imageTeaserRunOnMainThread:withBlock:</a></code>
 		<span class="tooltip"><p>Retrieves the shot&rsquo;s teaser image.</p></span>
 	</span>
 	
@@ -391,28 +389,14 @@ but the block still has access to everything in the scope from where it was defi
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/reboundsWithBlock:">&ndash;&nbsp;reboundsWithBlock:</a></code>
+		<code><a href="#//api/name/reboundsWithPagination:runOnMainThread:withBlock:">&ndash;&nbsp;reboundsWithPagination:runOnMainThread:withBlock:</a></code>
 		<span class="tooltip"><p>Retrieves the set of rebounds (shots in response to a shot) for the shot.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/reboundsWithBlock:andPagination:">&ndash;&nbsp;reboundsWithBlock:andPagination:</a></code>
-		<span class="tooltip"><p>Retrieves the set of rebounds (shots in response to a shot) for the shot.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/commentsWithBlock:">&ndash;&nbsp;commentsWithBlock:</a></code>
-		<span class="tooltip"><p>Retrieves the set of comments for the shot.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/commentsWithBlock:andPagination:">&ndash;&nbsp;commentsWithBlock:andPagination:</a></code>
+		<code><a href="#//api/name/commentsWithPagination:runOnMainThread:withBlock:">&ndash;&nbsp;commentsWithPagination:runOnMainThread:withBlock:</a></code>
 		<span class="tooltip"><p>Retrieves the set of rebounds (shots in response to a shot) for the shot.</p></span>
 	</span>
 	
@@ -448,7 +432,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of comments the shot has.</p>
+	</div>
 	
 	
 	
@@ -482,7 +469,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The date the shot was created on.</p>
+	</div>
 	
 	
 	
@@ -505,7 +495,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The height of the shot.</p>
+		<p>The <a href="#//api/name/height">height</a> of the shot.</p>
 	</div>		
 	
 	
@@ -515,7 +505,11 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/height">height</a> of the shot.</p>
+	</div>
 	
 	
 	
@@ -549,7 +543,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The unique id of the shot.</p>
+	</div>
 	
 	
 	
@@ -572,7 +569,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The url to the shot&rsquo;s teaser image.</p>
+		<p>The <a href="#//api/name/url">url</a> to the shot&rsquo;s teaser image.</p>
 	</div>		
 	
 	
@@ -583,7 +580,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/url">url</a> to the shot&rsquo;s teaser image.</p>
+	</div>
 	
 	
 	
@@ -606,7 +606,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The url to the shot&rsquo;s image.</p>
+		<p>The <a href="#//api/name/url">url</a> to the shot&rsquo;s image.</p>
 	</div>		
 	
 	
@@ -617,7 +617,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/url">url</a> to the shot&rsquo;s image.</p>
+	</div>
 	
 	
 	
@@ -650,7 +653,11 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of likes the shot has.</p>
+	</div>
 	
 	
 	
@@ -673,7 +680,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The player who posted the shot.</p>
+		<p>The <a href="#//api/name/player">player</a> who posted the shot.</p>
 	</div>		
 	
 	
@@ -683,7 +690,12 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/player">player</a> who posted the shot.</p>
+	</div>
+	
 	
 	
 	
@@ -727,6 +739,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
+		<p>The id of this shot this shot is a rebound of.</p>
 
 <p>If it is not a rebound this value is <code>NSNotFound</code>.</p>
 	</div>
@@ -761,7 +774,13 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of rebounds the shot has.</p>
+	</div>
+	
 	
 	
 	
@@ -783,7 +802,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The short url to the shot.</p>
+		<p>The short <a href="#//api/name/url">url</a> to the shot.</p>
 	</div>		
 	
 	
@@ -793,6 +812,11 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The short <a href="#//api/name/url">url</a> to the shot.</p>
+	</div>
 	
 	
 	
@@ -815,7 +839,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The title of the shot.</p>
+		<p>The <a href="#//api/name/title">title</a> of the shot.</p>
 	</div>		
 	
 	
@@ -826,6 +850,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/title">title</a> of the shot.</p>
+	</div>
 	
 	
 	
@@ -848,7 +876,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The full url to the shot.</p>
+		<p>The full <a href="#//api/name/url">url</a> to the shot.</p>
 	</div>		
 	
 	
@@ -858,7 +886,11 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The full <a href="#//api/name/url">url</a> to the shot.</p>
+	</div>
 	
 	
 	
@@ -892,7 +924,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of views the shot has.</p>
+	</div>
 	
 	
 	
@@ -915,7 +950,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The width of the shot.</p>
+		<p>The <a href="#//api/name/width">width</a> of the shot.</p>
 	</div>		
 	
 	
@@ -924,7 +959,12 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/width">width</a> of the shot.</p>
+	</div>
 	
 	
 	
@@ -951,64 +991,8 @@ but the block still has access to everything in the scope from where it was defi
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/commentsWithBlock:" title="commentsWithBlock:"></a>
-	<h3 class="subsubtitle method-title">commentsWithBlock:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves the set of comments for the shot.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (void)commentsWithBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em></code></div>
-	
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>block</em></dt>
-			<dd><p>The block to be executed once the data has been retrieved.
-  An <code>NSArray</code> of <a href="../Classes/SPComment.html"><code>SPComment</code></a> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection see-also-section">
-		<h4 class="method-subtitle">See Also</h4>
-		<ul>
-			
-			<li><code><p><a href="../Classes/SPComment.html">SPComment</a></p></code></li>
-			
-			<li><code><p><a href="../Classes/SPPagination.html">SPPagination</a></p></code></li>
-			
-		</ul>
-	</div>
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SPShot.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/commentsWithBlock:andPagination:" title="commentsWithBlock:andPagination:"></a>
-	<h3 class="subsubtitle method-title">commentsWithBlock:andPagination:</h3>
+	<a name="//api/name/commentsWithPagination:runOnMainThread:withBlock:" title="commentsWithPagination:runOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">commentsWithPagination:runOnMainThread:withBlock:</h3>
 	
 	
 	
@@ -1017,22 +1001,28 @@ but the block still has access to everything in the scope from where it was defi
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)commentsWithBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em> andPagination:(NSDictionary *)<em>pagination</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)commentsWithPagination:(NSDictionary *)<em>pagination</em> runOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>block</em></dt>
-			<dd><p>The block to be executed once the data has been retrieved.
-  An <code>NSArray</code> of <a href="../Classes/SPComment.html"><code>SPComment</code></a> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
 			<dt><em>pagination</em></dt>
 			<dd><p>A <code>NSDictionary</code> with pagination data, the best way to
   create this dictionary is with the helper functions on <a href="../Classes/SPPagination.html"><code>SPPagination</code></a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block to be executed once the data has been retrieved.
+  An <code>NSArray</code> of <a href="../Classes/SPComment.html"><code>SPComment</code></a> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
 		</dl>
 		
 	</div>
@@ -1041,7 +1031,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves the set of rebounds (shots in response to a shot) for the shot.</p>
+	</div>
 	
 	
 	
@@ -1069,54 +1062,8 @@ but the block still has access to everything in the scope from where it was defi
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/imageTeaserWithBlock:" title="imageTeaserWithBlock:"></a>
-	<h3 class="subsubtitle method-title">imageTeaserWithBlock:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves the shot&rsquo;s teaser image.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (void)imageTeaserWithBlock:(void ( ^ ) ( NS/UIImage *))<em>block</em></code></div>
-	
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>block</em></dt>
-			<dd><p>The block to be executed once the data has been retrieved.
-  Depending on the platform an <code>NSImage</code> or <code>UIImage</code> object for the
-  teaser is passed to the block.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SPShot.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/imageWithBlock:" title="imageWithBlock:"></a>
-	<h3 class="subsubtitle method-title">imageWithBlock:</h3>
+	<a name="//api/name/imageRunOnMainThread:withBlock:" title="imageRunOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">imageRunOnMainThread:withBlock:</h3>
 	
 	
 	
@@ -1125,11 +1072,17 @@ but the block still has access to everything in the scope from where it was defi
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)imageWithBlock:(void ( ^ ) ( NS/UIImage *))<em>block</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)imageRunOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( # if TARGET_OS_IPHONE UIImage *# else NSImage *# endif ))<em>block</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>block</em></dt>
@@ -1144,7 +1097,65 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves the shot&rsquo;s image.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPShot.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageTeaserRunOnMainThread:withBlock:" title="imageTeaserRunOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">imageTeaserRunOnMainThread:withBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieves the shot&rsquo;s teaser image.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)imageTeaserRunOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( # if TARGET_OS_IPHONE UIImage *# else NSImage *# endif ))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block to be executed once the data has been retrieved.
+  Depending on the platform an <code>NSImage</code> or <code>UIImage</code> object for the
+  teaser is passed to the block.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves the shot&rsquo;s teaser image.</p>
+	</div>
 	
 	
 	
@@ -1188,16 +1199,17 @@ but the block still has access to everything in the scope from where it was defi
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An initialized <code>SPShot</code> object.</p>
+		<p>An initialized <a href="SPShot.html"><code>SPShot</code></a> object.</p>
 	</div>
 	
 	
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a Spetttator shot object initialized with the given shot data.</p>
 
 <p>There is no need to call this method directly, it is used by
-  higher level methods like <a href="../Classes/SPManager.html#//api/name/shotsForList:withBlock:"><code>[SPManager shotsForList:withBlock:]</code></a>.</p>
+  higher level methods like <code>[SPManager shotsForList:withBlock:]</code>.</p>
 	</div>
 	
 	
@@ -1215,8 +1227,8 @@ but the block still has access to everything in the scope from where it was defi
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/reboundsWithBlock:" title="reboundsWithBlock:"></a>
-	<h3 class="subsubtitle method-title">reboundsWithBlock:</h3>
+	<a name="//api/name/reboundsWithPagination:runOnMainThread:withBlock:" title="reboundsWithPagination:runOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">reboundsWithPagination:runOnMainThread:withBlock:</h3>
 	
 	
 	
@@ -1225,75 +1237,30 @@ but the block still has access to everything in the scope from where it was defi
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)reboundsWithBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)reboundsWithPagination:(NSDictionary *)<em>pagination</em> runOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>block</em></dt>
-			<dd><p>The block to be executed once the data has been retrieved.
-  An <code>NSArray</code> of <code>SPShot</code> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection see-also-section">
-		<h4 class="method-subtitle">See Also</h4>
-		<ul>
-			
-			<li><code><p><a href="../Classes/SPPagination.html">SPPagination</a></p></code></li>
-			
-		</ul>
-	</div>
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SPShot.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/reboundsWithBlock:andPagination:" title="reboundsWithBlock:andPagination:"></a>
-	<h3 class="subsubtitle method-title">reboundsWithBlock:andPagination:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves the set of rebounds (shots in response to a shot) for the shot.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (void)reboundsWithBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em> andPagination:(NSDictionary *)<em>pagination</em></code></div>
-	
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>block</em></dt>
-			<dd><p>The block to be executed once the data has been retrieved.
-  An <code>NSArray</code> of <code>SPShot</code> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
-		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>pagination</em></dt>
 			<dd><p>A NSDictionary with pagination data, the best way to
-  create this dictionary is with the helper functions on <a href="../Classes/SPPagination.html"><code>SPPagination</code></a>.</p></dd>
+  create this dictionary is with the helper functions on <a href="../Classes/SPPagination.html"><code>SPPagination</code></a>.
+  If <code>nil</code> the default pagination will be used as defined by the
+  <a href="http://dribbble.com/api#pagination">dribbble api</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block to be executed once the data has been retrieved.
+  An <code>NSArray</code> of <a href="SPShot.html"><code>SPShot</code></a> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
 		</dl>
 		
 	</div>
@@ -1302,7 +1269,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves the set of rebounds (shots in response to a shot) for the shot.</p>
+	</div>
 	
 	
 	
@@ -1340,7 +1310,7 @@ but the block still has access to everything in the scope from where it was defi
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 David Keegan. All rights reserved. (Last updated: 2011-06-29)</span><br />
+						<p><span class="copyright">&copy; 2011 David Keegan. All rights reserved. (Last updated: 2011-07-06)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						

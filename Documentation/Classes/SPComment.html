@@ -136,22 +136,24 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The <code>SPComment</code> class provides a programmatic interface for interacting
+						<p>The <a href="SPComment.html"><code>SPComment</code></a> class provides a programmatic interface for interacting
 with Dribbble comments.</p>
 
 <p>The following snippet demonstrates how to retrieve comments for a shot.</p>
 
 <pre><code>#import &lt;Spectttator/Spectttator.h&gt;
 
-[[SPManager sharedManager] shotInformationForIdentifier:199295 withBlock:^(SPShot *shot){
-    [shot commentsWithBlock:^(NSArray *comments, SPPagination *pagination){
+[[SPManager sharedManager] shotInformationForIdentifier:199295 runOnMainThread:NO withBlock:^(SPShot *shot){
+    [shot commentsWithPagination:nil runOnMainThread:NO withBlock:^(NSArray *comments, SPPagination *pagination){
         NSLog(@"Comments for '%@': %@", shot.title, comments);
-    }];        
+    }];
 }];
 </code></pre>
 
 <p>This is non-blocking, <code>NSLog</code> will run whenever the comment data has finished loading,
-but the block still has access to everything in the scope from where it was defined.</p>
+but the block still has access to everything in the scope from where it was defined.
+If the block is updating UI elements make sure to set <code>runOnMainThread:YES</code>, the Dribbble
+requests will still be asynchronous but the passed in block will be executed on the main thread.</p>
 					</div>
 					
 					
@@ -198,7 +200,7 @@ but the block still has access to everything in the scope from where it was defi
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/player">&nbsp;&nbsp;player</a></code>
-		<span class="tooltip"><p>The player who posted the comment.</p></span>
+		<span class="tooltip"><p>The <a href="#//api/name/player">player</a> who posted the comment.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -248,7 +250,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The text of the comment.</p>
+	</div>
 	
 	
 	
@@ -282,7 +287,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The date the comment was created.</p>
+	</div>
 	
 	
 	
@@ -316,7 +324,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The unique id of the comment.</p>
+	</div>
 	
 	
 	
@@ -350,7 +361,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of players who liked the comment.</p>
+	</div>
 	
 	
 	
@@ -373,7 +387,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The player who posted the comment.</p>
+		<p>The <a href="#//api/name/player">player</a> who posted the comment.</p>
 	</div>		
 	
 	
@@ -384,7 +398,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/player">player</a> who posted the comment.</p>
+	</div>
 	
 	
 	
@@ -447,16 +464,17 @@ but the block still has access to everything in the scope from where it was defi
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An initialized <code>SPComment</code> object.</p>
+		<p>An initialized <a href="SPComment.html"><code>SPComment</code></a> object.</p>
 	</div>
 	
 	
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a Spectttator comment object initialized with the given comment data.</p>
 
 <p>There is no need to call this method directly, it is used by
-higher level methods like <a href="../Classes/SPShot.html#//api/name/commentsWithBlock:"><code>[SPShot commentsWithBlock:]</code></a>.</p>
+higher level methods like <code>[SPShot commentsWithBlock:]</code>.</p>
 	</div>
 	
 	
@@ -486,7 +504,7 @@ higher level methods like <a href="../Classes/SPShot.html#//api/name/commentsWit
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 David Keegan. All rights reserved. (Last updated: 2011-06-29)</span><br />
+						<p><span class="copyright">&copy; 2011 David Keegan. All rights reserved. (Last updated: 2011-07-06)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						

@@ -22,10 +22,18 @@
 
     NSString *username = @"inscopeapps";
 
-    [[SPManager sharedManager] shotsForPlayer:user withBlock:^(NSArray *shots, SPPagination *pagination){
-        NSLog(@"Received shot data for %@", user);
-        NSLog(@"With pagination: %@", pagination);
-    } andPagination:[SPPagination perPage:20]];
+    [[SPManager sharedManager] shotsForPlayer:user 
+                               withPagination:[SPPagination perPage:20]
+                              runOnMainThread:NO
+                                    withBlock:^(NSArray *shots, SPPagination *pagination){
+                                        NSLog(@"Received shot data for %@", user);
+                                        NSLog(@"With pagination: %@", pagination);
+                                    }];
+ 
+ This is non-blocking, `NSLog` will run whenever the comment data has finished loading,
+ but the block still has access to everything in the scope from where it was defined.
+ If the block is updating UI elements make sure to set `runOnMainThread:YES`, the Dribbble 
+ requests will still be asynchronous but the passed in block will be executed on the main thread. 
  */
 
 @interface SPPagination : NSObject{

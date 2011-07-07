@@ -17,12 +17,16 @@
 
     NSString *username = @"inscopeapps";
 
-    [[SPManager sharedManager] playerInformationForUsername:username withBlock:^(SPPlayer *player){
-        NSLog(@"Player information for %@: %@", username, player);
-    }];
+    [[SPManager sharedManager] playerInformationForUsername:username 
+                                            runOnMainThread:NO 
+                                                  withBlock:^(SPPlayer *player){
+                                                      NSLog(@"Player information for %@: %@", username, player);
+                                                  }];
  
- This is non-blocking, `NSLog` will run whenever the shot data has finished loading,
+ This is non-blocking, `NSLog` will run whenever the comment data has finished loading,
  but the block still has access to everything in the scope from where it was defined.
+ If the block is updating UI elements make sure to set `runOnMainThread:YES`, the Dribbble 
+ requests will still be asynchronous but the passed in block will be executed on the main thread. 
  */
 
 @interface SPPlayer : NSObject {

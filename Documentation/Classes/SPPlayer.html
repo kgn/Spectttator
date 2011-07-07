@@ -79,7 +79,7 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/avatarWithBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- avatarWithBlock:</option>
+	<option value="//api/name/avatarRunOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- avatarRunOnMainThread:withBlock:</option>
 	
 	<option value="//api/name/initWithDictionary:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDictionary:</option>
 	
@@ -157,7 +157,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/avatarWithBlock:">avatarWithBlock:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/avatarRunOnMainThread:withBlock:">avatarRunOnMainThread:withBlock:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDictionary:">initWithDictionary:</a></span></li>
 	
@@ -198,22 +198,26 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The <code>SPPlayer</code> class provides a programmatic interface for interacting
+						<p>The <a href="SPPlayer.html"><code>SPPlayer</code></a> class provides a programmatic interface for interacting
 with Dribbble players.</p>
 
-<p>The following snippet demonstrates how to retrieve information about a player by their username.</p>
+<p>The following snippet demonstrates how to retrieve information about a player by their <a href="#//api/name/username">username</a>.</p>
 
 <pre><code>#import &lt;Spectttator/Spectttator.h&gt;
 
 NSString *username = @"inscopeapps";
 
-[[SPManager sharedManager] playerInformationForUsername:username withBlock:^(SPPlayer *player){
-    NSLog(@"Player information for %@: %@", username, player);
-}];
+[[SPManager sharedManager] playerInformationForUsername:username 
+                                        runOnMainThread:NO 
+                                              withBlock:^(SPPlayer *player){
+                                                  NSLog(@"Player information for %@: %@", username, player);
+                                              }];
 </code></pre>
 
-<p>This is non-blocking, <code>NSLog</code> will run whenever the shot data has finished loading,
-but the block still has access to everything in the scope from where it was defined.</p>
+<p>This is non-blocking, <code>NSLog</code> will run whenever the comment data has finished loading,
+but the block still has access to everything in the scope from where it was defined.
+If the block is updating UI elements make sure to set <code>runOnMainThread:YES</code>, the Dribbble
+requests will still be asynchronous but the passed in block will be executed on the main thread.</p>
 					</div>
 					
 					
@@ -239,42 +243,42 @@ but the block still has access to everything in the scope from where it was defi
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
-		<span class="tooltip"><p>The real name of the player.</p></span>
+		<span class="tooltip"><p>The real <a href="#//api/name/name">name</a> of the player.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/username">&nbsp;&nbsp;username</a></code>
-		<span class="tooltip"><p>The username of the player.</p></span>
+		<span class="tooltip"><p>The <a href="#//api/name/username">username</a> of the player.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/url">&nbsp;&nbsp;url</a></code>
-		<span class="tooltip"><p>The url of the player&rsquo;s profile.</p></span>
+		<span class="tooltip"><p>The <a href="#//api/name/url">url</a> of the player&rsquo;s profile.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<span class="tooltip"><p>The url of the player&rsquo;s avatar.</p></span>
 		<code><a href="#//api/name/avatarUrl">&nbsp;&nbsp;avatarUrl</a></code>
+		<span class="tooltip"><p>The <a href="#//api/name/url">url</a> of the player&rsquo;s avatar.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/location">&nbsp;&nbsp;location</a></code>
-		<span class="tooltip"><p>The location of the player.</p></span>
+		<span class="tooltip"><p>The <a href="#//api/name/location">location</a> of the player.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<span class="tooltip"><p>The player&rsquo;s twitter name.</p></span>
 		<code><a href="#//api/name/twitterScreenName">&nbsp;&nbsp;twitterScreenName</a></code>
+		<span class="tooltip"><p>The player&rsquo;s twitter <a href="#//api/name/name">name</a>.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -387,7 +391,7 @@ but the block still has access to everything in the scope from where it was defi
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/avatarWithBlock:">&ndash;&nbsp;avatarWithBlock:</a></code>
+		<code><a href="#//api/name/avatarRunOnMainThread:withBlock:">&ndash;&nbsp;avatarRunOnMainThread:withBlock:</a></code>
 		<span class="tooltip"><p>Retrieves the player&rsquo;s avatar.</p></span>
 	</span>
 	
@@ -412,7 +416,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The url of the player&rsquo;s avatar.</p>
+		<p>The <a href="#//api/name/url">url</a> of the player&rsquo;s avatar.</p>
 	</div>		
 	
 	
@@ -423,7 +427,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/url">url</a> of the player&rsquo;s avatar.</p>
+	</div>
 	
 	
 	
@@ -457,7 +464,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of comments the player has posted.</p>
+	</div>
 	
 	
 	
@@ -491,7 +501,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of comments the player&rsquo;s shots have received.</p>
+	</div>
 	
 	
 	
@@ -525,7 +538,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The date the player&rsquo;s account was created on.</p>
+	</div>
 	
 	
 	
@@ -561,6 +577,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
+		<p>The id of this player who drafted this player.</p>
 
 <p>If this player was not drafted the value is <code>NSNotFound</code>.</p>
 	</div>
@@ -597,7 +614,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of players the player has drafted.</p>
+	</div>
 	
 	
 	
@@ -631,7 +651,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of people the player follows.</p>
+	</div>
 	
 	
 	
@@ -665,7 +688,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of followers the player has.</p>
+	</div>
 	
 	
 	
@@ -699,7 +725,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The unique id of the player.</p>
+	</div>
 	
 	
 	
@@ -733,7 +762,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of shots the player has liked.</p>
+	</div>
 	
 	
 	
@@ -767,7 +799,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of likes the player&rsquo;s shots have received.</p>
+	</div>
 	
 	
 	
@@ -790,7 +825,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The location of the player.</p>
+		<p>The <a href="#//api/name/location">location</a> of the player.</p>
 	</div>		
 	
 	
@@ -801,7 +836,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/location">location</a> of the player.</p>
+	</div>
 	
 	
 	
@@ -824,7 +862,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The real name of the player.</p>
+		<p>The real <a href="#//api/name/name">name</a> of the player.</p>
 	</div>		
 	
 	
@@ -835,7 +873,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The real <a href="#//api/name/name">name</a> of the player.</p>
+	</div>
 	
 	
 	
@@ -869,7 +910,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of rebounds the player has posted.</p>
+	</div>
 	
 	
 	
@@ -903,7 +947,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of rebounds the player&rsquo;s shots have received.</p>
+	</div>
 	
 	
 	
@@ -937,7 +984,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of shots the player has posted.</p>
+	</div>
 	
 	
 	
@@ -960,7 +1010,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The player&rsquo;s twitter name.</p>
+		<p>The player&rsquo;s twitter <a href="#//api/name/name">name</a>.</p>
 	</div>		
 	
 	
@@ -971,7 +1021,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The player&rsquo;s twitter <a href="#//api/name/name">name</a>.</p>
+	</div>
 	
 	
 	
@@ -994,7 +1047,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The url of the player&rsquo;s profile.</p>
+		<p>The <a href="#//api/name/url">url</a> of the player&rsquo;s profile.</p>
 	</div>		
 	
 	
@@ -1005,7 +1058,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/url">url</a> of the player&rsquo;s profile.</p>
+	</div>
 	
 	
 	
@@ -1028,7 +1084,7 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The username of the player.</p>
+		<p>The <a href="#//api/name/username">username</a> of the player.</p>
 	</div>		
 	
 	
@@ -1039,7 +1095,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/username">username</a> of the player.</p>
+	</div>
 	
 	
 	
@@ -1066,8 +1125,8 @@ but the block still has access to everything in the scope from where it was defi
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/avatarWithBlock:" title="avatarWithBlock:"></a>
-	<h3 class="subsubtitle method-title">avatarWithBlock:</h3>
+	<a name="//api/name/avatarRunOnMainThread:withBlock:" title="avatarRunOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">avatarRunOnMainThread:withBlock:</h3>
 	
 	
 	
@@ -1076,11 +1135,17 @@ but the block still has access to everything in the scope from where it was defi
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)avatarWithBlock:(void ( ^ ) ( NS/UIImage *))<em>block</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)avatarRunOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( # if TARGET_OS_IPHONE UIImage *# else NSImage *# endif ))<em>block</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>block</em></dt>
@@ -1095,7 +1160,10 @@ but the block still has access to everything in the scope from where it was defi
 	
 	
 	
-
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves the player&rsquo;s avatar.</p>
+	</div>
 	
 	
 	
@@ -1139,16 +1207,17 @@ but the block still has access to everything in the scope from where it was defi
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An initialized <code>SPPlayer</code> object.</p>
+		<p>An initialized <a href="SPPlayer.html"><code>SPPlayer</code></a> object.</p>
 	</div>
 	
 	
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a Spectttator player object initialized with the given player data.</p>
 
 <p>There is no need to call this method directly, it is used by
-  higher level methods like <a href="../Classes/SPManager.html#//api/name/playerInformationForUsername:withBlock:"><code>[SPManager playerInformationForUsername:withBlock:]</code></a>.</p>
+  higher level methods like <code>[SPManager playerInformationForUsername:withBlock:]</code>.</p>
 	</div>
 	
 	
@@ -1178,7 +1247,7 @@ but the block still has access to everything in the scope from where it was defi
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 David Keegan. All rights reserved. (Last updated: 2011-06-29)</span><br />
+						<p><span class="copyright">&copy; 2011 David Keegan. All rights reserved. (Last updated: 2011-07-06)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						

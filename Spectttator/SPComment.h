@@ -16,14 +16,16 @@
  
     #import <Spectttator/Spectttator.h>
      
-    [[SPManager sharedManager] shotInformationForIdentifier:199295 withBlock:^(SPShot *shot){
-        [shot commentsWithBlock:^(NSArray *comments, SPPagination *pagination){
+    [[SPManager sharedManager] shotInformationForIdentifier:199295 runOnMainThread:NO withBlock:^(SPShot *shot){
+        [shot commentsWithPagination:nil runOnMainThread:NO withBlock:^(NSArray *comments, SPPagination *pagination){
             NSLog(@"Comments for '%@': %@", shot.title, comments);
-        }];        
+        }];
     }];
  
  This is non-blocking, `NSLog` will run whenever the comment data has finished loading,
  but the block still has access to everything in the scope from where it was defined.
+ If the block is updating UI elements make sure to set `runOnMainThread:YES`, the Dribbble 
+ requests will still be asynchronous but the passed in block will be executed on the main thread.
  */
 
 @interface SPComment : NSObject{
