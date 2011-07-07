@@ -99,7 +99,7 @@
  Returns a Spetttator shot object initialized with the given shot data. 
  
  There is no need to call this method directly, it is used by 
-  higher level methods like `[SPManager shotsForList:withBlock:]`.
+  higher level methods like `[SPManager shotsForList:withPagination:runOnMainThread:withBlock:]`.
  @param dictionary A dictionary of shot data.
  @return An initialized `SPShot` object.
  */

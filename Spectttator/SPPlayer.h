@@ -101,7 +101,7 @@
  Returns a Spectttator player object initialized with the given player data. 
  
  There is no need to call this method directly, it is used by 
-  higher level methods like `[SPManager playerInformationForUsername:withBlock:]`.
+  higher level methods like `[SPManager playerInformationForUsername:runOnMainThread:withBlock:]`.
  @param dictionary A dictionary of player data.
  @return An initialized `SPPlayer` object.
  */

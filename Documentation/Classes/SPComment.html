@@ -136,7 +136,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The <a href="SPComment.html"><code>SPComment</code></a> class provides a programmatic interface for interacting
+						<p>The <code>SPComment</code> class provides a programmatic interface for interacting
 with Dribbble comments.</p>
 
 <p>The following snippet demonstrates how to retrieve comments for a shot.</p>
@@ -200,7 +200,7 @@ requests will still be asynchronous but the passed in block will be executed on 
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/player">&nbsp;&nbsp;player</a></code>
-		<span class="tooltip"><p>The <a href="#//api/name/player">player</a> who posted the comment.</p></span>
+		<span class="tooltip"><p>The player who posted the comment.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -250,10 +250,7 @@ requests will still be asynchronous but the passed in block will be executed on 
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The text of the comment.</p>
-	</div>
+
 	
 	
 	
@@ -287,10 +284,7 @@ requests will still be asynchronous but the passed in block will be executed on 
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The date the comment was created.</p>
-	</div>
+
 	
 	
 	
@@ -324,10 +318,7 @@ requests will still be asynchronous but the passed in block will be executed on 
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The unique id of the comment.</p>
-	</div>
+
 	
 	
 	
@@ -361,10 +352,7 @@ requests will still be asynchronous but the passed in block will be executed on 
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The number of players who liked the comment.</p>
-	</div>
+
 	
 	
 	
@@ -387,7 +375,7 @@ requests will still be asynchronous but the passed in block will be executed on 
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The <a href="#//api/name/player">player</a> who posted the comment.</p>
+		<p>The player who posted the comment.</p>
 	</div>		
 	
 	
@@ -398,10 +386,7 @@ requests will still be asynchronous but the passed in block will be executed on 
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The <a href="#//api/name/player">player</a> who posted the comment.</p>
-	</div>
+
 	
 	
 	
@@ -464,17 +449,16 @@ requests will still be asynchronous but the passed in block will be executed on 
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An initialized <a href="SPComment.html"><code>SPComment</code></a> object.</p>
+		<p>An initialized <code>SPComment</code> object.</p>
 	</div>
 	
 	
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a Spectttator comment object initialized with the given comment data.</p>
 
 <p>There is no need to call this method directly, it is used by
-higher level methods like <code>[SPShot commentsWithBlock:]</code>.</p>
+higher level methods like <a href="../Classes/SPShot.html#//api/name/commentsWithPagination:runOnMainThread:withBlock:"><code>[SPShot commentsWithPagination:runOnMainThread:withBlock:]</code></a>.</p>
 	</div>
 	
 	

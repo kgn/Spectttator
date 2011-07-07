@@ -57,7 +57,8 @@
  Returns a Spectttator comment object initialized with the given comment data. 
  
  There is no need to call this method directly, it is used by 
- higher level methods like `[SPShot commentsWithBlock:]`.
+ higher level methods like 
+ `[SPShot commentsWithPagination:runOnMainThread:withBlock:]`.
  @param dictionary A dictionary of comment data.
  @return An initialized `SPComment` object.
  */
