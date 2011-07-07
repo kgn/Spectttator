@@ -29,7 +29,9 @@
     [self.refreshButton setEnabled:NO];   
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    [[SPManager sharedManager] shotsForList:self.list runOnMainThread:YES withBlock:^(NSArray *theShots, SPPagination *thsPagination) {
+    [[SPManager sharedManager] shotsForList:self.list 
+                             withPagination:[SPPagination perPage:30] 
+                            runOnMainThread:YES withBlock:^(NSArray *theShots, SPPagination *thsPagination){
         self.shots = theShots;
         self.imageCache = nil;
         self.imageRetrievedCache = nil;
@@ -41,7 +43,7 @@
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         
         [self.tableView reloadData];
-    } andPagination:[SPPagination perPage:30]];
+    }];
 }
 
 - (void)refresh{
