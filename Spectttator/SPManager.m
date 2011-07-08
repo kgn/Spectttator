@@ -141,7 +141,9 @@ static SPManager *sharedInstance = nil;
 
 + (void)initialize{
     if(!sharedInstance){
-        [self alloc];
+        // This if is a hack to suppress a warning
+        // About the return of init not being used
+        if([[self alloc] init]){}
     }
 }
 
@@ -160,7 +162,6 @@ static SPManager *sharedInstance = nil;
     }else if(self != sharedInstance){
         self = sharedInstance;
     }
-    
     return self;
 }
 
