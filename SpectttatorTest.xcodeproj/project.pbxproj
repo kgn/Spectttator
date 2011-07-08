@@ -416,6 +416,7 @@
 		73698B9D13B6820100922D1A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpectttatorTest/SpectttatorTest-Prefix.pch";
 				INFOPLIST_FILE = "SpectttatorTest/SpectttatorTest-Info.plist";
@@ -427,6 +428,7 @@
 		73698B9E13B6820100922D1A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpectttatorTest/SpectttatorTest-Prefix.pch";
 				INFOPLIST_FILE = "SpectttatorTest/SpectttatorTest-Info.plist";
