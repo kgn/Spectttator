@@ -8,28 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SpectttatorTestAppDelegate : NSObject <NSApplicationDelegate, NSTextViewDelegate> {
-    NSWindow *_window;
-    NSProgressIndicator *_spinner;
-    NSTextField *_username;
-    NSTextView *_shots;
-    NSPopUpButton *_listPopup;
-    NSTextView *_listShots;
-    NSImageView *_lastPlayerShot;
-    NSImageView *_lastListShot;
-    NSImageView *_avatar;
-    BOOL _userUpdating, _listUpdating;
-}
+@interface SpectttatorTestAppDelegate : NSObject <NSApplicationDelegate, NSTextViewDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
-@property (assign) IBOutlet NSProgressIndicator *spinner;
-@property (assign) IBOutlet NSTextField *username;
-@property (assign) IBOutlet NSTextView *shots;
-@property (assign) IBOutlet NSPopUpButton *listPopup;
-@property (assign) IBOutlet NSTextView *listShots;
-@property (assign) IBOutlet NSImageView *lastPlayerShot;
-@property (assign) IBOutlet NSImageView *lastListShot;
-@property (assign) IBOutlet NSImageView *avatar;
+@property (strong, nonatomic) IBOutlet NSWindow *window;
+@property (strong, nonatomic) IBOutlet NSProgressIndicator *spinner;
+@property (strong, nonatomic) IBOutlet NSTextField *username;
+@property (strong, nonatomic) IBOutlet NSTextView *shots;
+@property (strong, nonatomic) IBOutlet NSPopUpButton *listPopup;
+@property (strong, nonatomic) IBOutlet NSTextView *listShots;
+@property (strong, nonatomic) IBOutlet NSImageView *lastPlayerShot;
+@property (strong, nonatomic) IBOutlet NSImageView *lastListShot;
+@property (strong, nonatomic) IBOutlet NSImageView *avatar;
 @property BOOL userUpdating, listUpdating;
 
 - (IBAction)userChanged:(id)sender;
