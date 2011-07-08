@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SpectttatorTest_iOSAppDelegate.h"
 
 int main(int argc, char *argv[]){
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    int retVal = UIApplicationMain(argc, argv, nil, nil);
-    [pool release];
+    int retVal = 0;
+    @autoreleasepool {
+        retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([SpectttatorTest_iOSAppDelegate class]));
+    }
     return retVal;
 }

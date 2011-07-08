@@ -70,8 +70,7 @@
                                                                      [SPDebutsList  capitalizedString], 
                                                                       nil];
 	[listSheet setActionSheetStyle:UIActionSheetStyleBlackOpaque];
-	[listSheet showInView:self.view];
-	[listSheet release];    
+	[listSheet showInView:self.view];  
 }
 
 - (void)viewDidLoad{
@@ -141,17 +140,6 @@
     // Open the shot in safari
     SPShot *aShot = [self.shots objectAtIndex:indexPath.row];
     [[UIApplication sharedApplication] openURL:aShot.url];
-}
-
-- (void)dealloc{
-    [_shots release];
-    [_imageRetrievedCache release];
-    [_imageCache release];
-    
-    [_refreshButton release];
-    [_listButton release];
-    
-    [super dealloc];
 }
 
 @end
