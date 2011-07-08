@@ -11,12 +11,12 @@
 
 @interface RootViewController : UITableViewController <UIActionSheetDelegate>
 
-@property (retain, nonatomic) NSString *list;
-@property (retain, nonatomic) NSArray *shots;
-@property (retain, nonatomic) NSMutableSet *imageRetrievedCache;
-@property (retain, nonatomic) NSMutableDictionary *imageCache;
+@property (strong, nonatomic) NSString *list;
+@property (strong, nonatomic) NSArray *shots;
+@property (strong, nonatomic) NSMutableSet *imageRetrievedCache;
+@property (strong, nonatomic) NSMutableDictionary *imageCache;
 
-@property (retain, nonatomic) UIBarButtonItem *listButton;
-@property (retain, nonatomic) UIBarButtonItem *refreshButton;
+@property (strong, nonatomic) UIBarButtonItem *listButton;
+@property (strong, nonatomic) UIBarButtonItem *refreshButton;
 
 @end
