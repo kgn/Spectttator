@@ -156,7 +156,9 @@
                                          returningResponse:&response
                                                      error:&error];
     
-    return [[self parser] objectWithData:data];
+    return [NSJSONSerialization JSONObjectWithData:data 
+                                           options:NSJSONReadingMutableContainers 
+                                             error:&error];
 }
 
 @end
