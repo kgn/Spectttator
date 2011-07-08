@@ -33,15 +33,15 @@
 /// The unique id of the comment.
 @property (readonly) NSUInteger identifier;
 /// The text of the comment.
-@property (readonly) NSString *body;
+@property (strong, readonly) NSString *body;
 /// The number of players who liked the comment.
 @property (readonly) NSUInteger likesCount;
 /// The date the comment was created.
-@property (readonly) NSDate *createdAt;
+@property (strong, readonly) NSDate *createdAt;
 /** The player who posted the comment.
  @see SPPlayer
  */
-@property (readonly) SPPlayer *player;
+@property (strong, readonly) SPPlayer *player;
 
 ///----------------------------
 /// @name Initializing a SPComment Object

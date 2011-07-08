@@ -42,15 +42,15 @@
 /// The unique id of the shot.
 @property (readonly) NSUInteger identifier;
 /// The title of the shot.
-@property (readonly) NSString *title;
+@property (strong, readonly) NSString *title;
 /// The full url to the shot.
-@property (readonly) NSURL *url;
+@property (strong, readonly) NSURL *url;
 /// The short url to the shot.
-@property (readonly) NSURL *shortUrl;
+@property (strong, readonly) NSURL *shortUrl;
 /// The url to the shot's image.
-@property (readonly) NSURL *imageUrl;
+@property (strong, readonly) NSURL *imageUrl;
 /// The url to the shot's teaser image.
-@property (readonly) NSURL *imageTeaserUrl;
+@property (strong, readonly) NSURL *imageTeaserUrl;
 /// The width of the shot.
 @property (readonly) NSUInteger width;
 /// The height of the shot.
@@ -69,11 +69,11 @@
  */
 @property (readonly) NSUInteger reboundSourceId;
 /// The date the shot was created on.
-@property (readonly) NSDate *createdAt;
+@property (strong, readonly) NSDate *createdAt;
 /** The player who posted the shot.
  @see SPPlayer
  */
-@property (readonly) SPPlayer *player;
+@property (strong, readonly) SPPlayer *player;
 
 ///----------------------------
 /// @name Initializing a SPShot Object
