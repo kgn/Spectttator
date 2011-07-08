@@ -44,6 +44,13 @@ SpectttatorTest-iOS is a simple iPhone app that demonstrates how to use Specttta
 
 ![SpectttatorTest](https://github.com/InScopeApps/Spectttator/raw/master/SpectttatorTest-iOS/SpectttatorTest-iOS.png)
 
+Change Log
+--------
+
+**2.1** - Switching to 64bit, this caused no interface changes.
+**2.0** - Overhaul of all the methods by adding runOnMainThread to make it easy to update UI elements inside the block on the main thread.
+**1.0** - Initial release with support for the full Dribbble api.
+
 License
 --------
 
