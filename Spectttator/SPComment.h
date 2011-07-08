@@ -28,13 +28,7 @@
  requests will still be asynchronous but the passed in block will be executed on the main thread.
  */
 
-@interface SPComment : NSObject{
-    NSUInteger _identifier;
-    NSString *_body;
-    NSUInteger _likesCount;
-    NSDate *_createdAt;
-    SPPlayer *_player;
-}
+@interface SPComment : NSObject
 
 /// The unique id of the comment.
 @property (readonly) NSUInteger identifier;
