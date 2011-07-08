@@ -449,7 +449,7 @@
 				GCC_PREFIX_HEADER = "SpectttatorTest-iOS/SpectttatorTest-iOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = Spectttator;
 				INFOPLIST_FILE = "SpectttatorTest-iOS/SpectttatorTest-iOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
@@ -469,7 +469,7 @@
 				GCC_PREFIX_HEADER = "SpectttatorTest-iOS/SpectttatorTest-iOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = Spectttator;
 				INFOPLIST_FILE = "SpectttatorTest-iOS/SpectttatorTest-iOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
