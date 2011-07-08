@@ -483,7 +483,7 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 2;
 				DYLIB_CURRENT_VERSION = 2;
-				FRAMEWORK_VERSION = A;
+				FRAMEWORK_VERSION = B;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spectttator/Spectttator-Prefix.pch";
 				INFOPLIST_FILE = "Spectttator/Spectttator-Info.plist";
@@ -500,6 +500,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 2;
 				DYLIB_CURRENT_VERSION = 2;
 				FRAMEWORK_VERSION = A;
+				FRAMEWORK_VERSION = B;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spectttator/Spectttator-Prefix.pch";
 				INFOPLIST_FILE = "Spectttator/Spectttator-Info.plist";
