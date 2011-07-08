@@ -29,27 +29,7 @@
  requests will still be asynchronous but the passed in block will be executed on the main thread. 
  */
 
-@interface SPPlayer : NSObject {
-    NSUInteger _identifier;
-    NSString *_name;
-    NSString *_username;
-    NSURL *_url;
-    NSURL *_avatarUrl;
-    NSString *_location;
-    NSString *_twitterScreenName;
-    NSUInteger _draftedByPlayerId;
-    NSUInteger _shotsCount;
-    NSUInteger _drafteesCount;
-    NSUInteger _followersCount;
-    NSUInteger _followingCount;
-    NSUInteger _commentsCount;
-    NSUInteger _commentsReceivedCount;
-    NSUInteger _likesCount;
-    NSUInteger _likesReceivedCount;
-    NSUInteger _reboundsCount;
-    NSUInteger _reboundsReceivedCount;
-    NSDate *_createdAt;
-}
+@interface SPPlayer : NSObject
 
 /// The unique id of the player.
 @property (readonly) NSUInteger identifier;

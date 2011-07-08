@@ -36,12 +36,7 @@
  requests will still be asynchronous but the passed in block will be executed on the main thread. 
  */
 
-@interface SPPagination : NSObject{
-    NSUInteger _page;
-    NSUInteger _pages;
-    NSUInteger _perPage;
-    NSUInteger _total;
-}
+@interface SPPagination : NSObject
 
 /// The current page number.
 @property(readonly) NSUInteger page;

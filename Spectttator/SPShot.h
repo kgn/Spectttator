@@ -37,23 +37,7 @@
  requests will still be asynchronous but the passed in block will be executed on the main thread.
  */
 
-@interface SPShot : NSObject {
-    NSUInteger _identifier;
-    NSString *_title;
-    NSURL *_url;
-    NSURL *_shortUrl;
-    NSURL *_imageUrl;
-    NSURL *_imageTeaserUrl;
-    NSUInteger _width;
-    NSUInteger _height;
-    NSUInteger _viewsCount;
-    NSUInteger _likesCount;
-    NSUInteger _commentsCount;
-    NSUInteger _reboundsCount;
-    NSUInteger _reboundSourceId;
-    NSDate *_createdAt;
-    SPPlayer *_player;
-}
+@interface SPShot : NSObject
 
 /// The unique id of the shot.
 @property (readonly) NSUInteger identifier;
