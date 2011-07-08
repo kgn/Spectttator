@@ -116,7 +116,7 @@
         #if TARGET_OS_IPHONE
         UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
         #else
-        NSImage *image = [[[NSImage alloc] initWithContentsOfURL:url] autorelease];
+        NSImage *image = [[NSImage alloc] initWithContentsOfURL:url];
         #endif
         
         if(runOnMainThread){
