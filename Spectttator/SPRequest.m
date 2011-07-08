@@ -14,14 +14,6 @@
 
 @implementation SPRequest
 
-+ (SBJsonParser *)parser{
-    static SBJsonParser *kParser = nil;
-    if(kParser == nil){
-        kParser = [[SBJsonParser alloc] init];
-    }
-    return kParser;
-}
-
 + (NSOperationQueue *)operationQueue{
     static NSOperationQueue *kQueue = nil;
     if(kQueue == nil){
