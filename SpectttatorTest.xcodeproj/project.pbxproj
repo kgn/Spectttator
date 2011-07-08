@@ -23,6 +23,7 @@
 		73C01CE113C2ED7000A8ECDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C01CAD13C2EBBC00A8ECDB /* UIKit.framework */; };
 		73C01CE313C2ED9800A8ECDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C01CE213C2ED9800A8ECDB /* Foundation.framework */; };
 		73D2C9E613C2EF2D009C0419 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73D2C9E513C2EF2D009C0419 /* MainMenu.xib */; };
+		D6901D6913C7089600CD1689 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6901D6813C7089600CD1689 /* MainWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		73C01CDD13C2ED3B00A8ECDB /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		73C01CE213C2ED9800A8ECDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		73D2C9E513C2EF2D009C0419 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		D6901D6813C7089600CD1689 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 				73C01CD813C2ED3000A8ECDB /* ShotCell.h */,
 				73C01CD913C2ED3000A8ECDB /* ShotCell.m */,
 				73C01CDA13C2ED3000A8ECDB /* ShotCell.xib */,
+				D6901D6813C7089600CD1689 /* MainWindow.xib */,
 				73C01CBD13C2EC4A00A8ECDB /* Supporting Files */,
 			);
 			path = "SpectttatorTest-iOS";
@@ -323,6 +326,7 @@
 			files = (
 				73C01CDC13C2ED3000A8ECDB /* ShotCell.xib in Resources */,
 				73C01CDE13C2ED3C00A8ECDB /* RootViewController.xib in Resources */,
+				D6901D6913C7089600CD1689 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
