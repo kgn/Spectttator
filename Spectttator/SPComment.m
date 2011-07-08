@@ -24,8 +24,7 @@
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
-        _createdAt = [[formatter dateFromString:[dictionary objectForKey:@"created_at"]] retain];
-        [formatter release];
+        _createdAt = [formatter dateFromString:[dictionary objectForKey:@"created_at"]];
         
         _player = [[SPPlayer alloc] initWithDictionary:[dictionary objectForKey:@"player"]];
     }
@@ -36,13 +35,6 @@
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Username='%@' Body=%@>", 
             [self class], self.identifier, self.player.username, self.body];
-}
-
-- (void)dealloc{
-    [_body release];
-    [_createdAt release];
-    [_player release];
-    [super dealloc];
 }
 
 @end

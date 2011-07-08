@@ -8,11 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "SPPagination.h"
-#import "SBJson.h"
 
 @interface SPRequest : NSObject
 
-+ (SBJsonParser *)parser;
 + (NSOperationQueue *)operationQueue;
 + (NSString *)pagination:(NSDictionary *)pagination;
 

@@ -24,10 +24,10 @@ static SPManager *sharedInstance = nil;
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
-                block([[[SPPlayer alloc] initWithDictionary:json] autorelease]);
+                block([[SPPlayer alloc] initWithDictionary:json]);
             });
         }else{
-            block([[[SPPlayer alloc] initWithDictionary:json] autorelease]);
+            block([[SPPlayer alloc] initWithDictionary:json]);
         }        
     }]];
 }
@@ -79,10 +79,10 @@ static SPManager *sharedInstance = nil;
         NSDictionary *json = [SPRequest dataFromUrl:[NSURL URLWithString:urlString]];
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
-                block([[[SPShot alloc] initWithDictionary:json] autorelease]);
+                block([[SPShot alloc] initWithDictionary:json]);
             });
         }else{
-            block([[[SPShot alloc] initWithDictionary:json] autorelease]);
+            block([[SPShot alloc] initWithDictionary:json]);
         }
     }]];     
 }
@@ -141,7 +141,7 @@ static SPManager *sharedInstance = nil;
 
 + (void)initialize{
     if(!sharedInstance){
-        [[[self alloc] init] release];
+        [self alloc];
     }
 }
 
@@ -150,16 +150,15 @@ static SPManager *sharedInstance = nil;
 }
 
 + (id)allocWithZone:(NSZone *)zone{
-    return [sharedInstance retain] ?: [super allocWithZone:zone];
+    return sharedInstance ?: [super allocWithZone:zone];
 }
 
 - (id)init{
     if(!sharedInstance){
         self = [super init];
-        sharedInstance = [self retain];
+        sharedInstance = self;
     }else if(self != sharedInstance){
-        [self release];
-        self = [sharedInstance retain];
+        self = sharedInstance;
     }
     
     return self;

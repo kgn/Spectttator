@@ -83,8 +83,7 @@
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
-        _createdAt = [[formatter dateFromString:[dictionary objectForKey:@"created_at"]] retain];
-        [formatter release];
+        _createdAt = [formatter dateFromString:[dictionary objectForKey:@"created_at"]];
     }
     
     return self;
@@ -93,17 +92,6 @@
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Name='%@' Username='%@' URL=%@>", 
             [self class], self.identifier, self.name, self.username, self.url];
-}
-
-- (void)dealloc{
-    [_name release];
-    [_username release];
-    [_url release];
-    [_avatarUrl release];
-    [_location release];
-    [_twitterScreenName release];
-    [_createdAt release];
-    [super dealloc];
 }
 
 @end

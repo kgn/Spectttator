@@ -14,14 +14,6 @@
 
 @implementation SPRequest
 
-+ (SBJsonParser *)parser{
-    static SBJsonParser *kParser = nil;
-    if(kParser == nil){
-        kParser = [[SBJsonParser alloc] init];
-    }
-    return kParser;
-}
-
 + (NSOperationQueue *)operationQueue{
     static NSOperationQueue *kQueue = nil;
     if(kQueue == nil){
@@ -52,13 +44,11 @@
         NSDictionary *json = [SPRequest dataFromUrl:url];
         NSArray *players = [json objectForKey:@"players"];
         NSMutableArray *mplayers = [[NSMutableArray alloc] initWithCapacity:[players count]];
-        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
-        for(NSDictionary *playerData in players){
-            SPPlayer *player = [[SPPlayer alloc] initWithDictionary:playerData];
-            [mplayers addObject:player];
-            [player release];
+        @autoreleasepool {
+            for(NSDictionary *playerData in players){
+                [mplayers addObject:[[SPPlayer alloc] initWithDictionary:playerData]];
+            }
         }
-        [pool drain];
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(mplayers, [SPPagination paginationWithDictionary:json]);
@@ -66,7 +56,6 @@
         }else{
             block(mplayers, [SPPagination paginationWithDictionary:json]);
         }  
-        [mplayers release];
     }]];
 }
 
@@ -77,13 +66,11 @@
         NSDictionary *json = [SPRequest dataFromUrl:url];
         NSArray *shots = [json objectForKey:@"shots"];
         NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
-        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
-        for(NSDictionary *shotData in shots){
-            SPShot *shot = [[SPShot alloc] initWithDictionary:shotData];
-            [mshots addObject:shot];
-            [shot release];
+        @autoreleasepool {
+            for(NSDictionary *shotData in shots){
+                [mshots addObject:[[SPShot alloc] initWithDictionary:shotData]];
+            }
         }
-        [pool drain];
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(mshots, [SPPagination paginationWithDictionary:json]);
@@ -91,7 +78,6 @@
         }else{
             block(mshots, [SPPagination paginationWithDictionary:json]);
         }
-        [mshots release];
     }]]; 
 }
 
@@ -102,13 +88,11 @@
         NSDictionary *json = [SPRequest dataFromUrl:url];
         NSArray *comments = [json objectForKey:@"comments"];
         NSMutableArray *mcomments = [[NSMutableArray alloc] initWithCapacity:[comments count]];
-        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
-        for(NSDictionary *commentData in comments){
-            SPComment *comment = [[SPComment alloc] initWithDictionary:commentData];
-            [mcomments addObject:comment];
-            [comment release];
+        @autoreleasepool {
+            for(NSDictionary *commentData in comments){
+                [mcomments addObject:[[SPComment alloc] initWithDictionary:commentData]];
+            }
         }
-        [pool drain];
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(mcomments, [SPPagination paginationWithDictionary:json]);
@@ -116,7 +100,6 @@
         }else{
             block(mcomments, [SPPagination paginationWithDictionary:json]);
         }
-        [mcomments release];
     }]];
 }
 

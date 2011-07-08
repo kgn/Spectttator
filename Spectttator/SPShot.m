@@ -99,8 +99,7 @@
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
-        _createdAt = [[formatter dateFromString:[dictionary objectForKey:@"created_at"]] retain];
-        [formatter release];
+        _createdAt = [formatter dateFromString:[dictionary objectForKey:@"created_at"]];
         
         _player = [[SPPlayer alloc] initWithDictionary:[dictionary objectForKey:@"player"]];
     }
@@ -111,16 +110,6 @@
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Title='%@' Player=%@ URL=%@>", 
             [self class], self.identifier, self.title, self.player.username, self.url];
-}
-
-- (void)dealloc{
-    [_title release];
-    [_url release];
-    [_shortUrl release];
-    [_imageUrl release];
-    [_imageTeaserUrl release];
-    [_createdAt release];
-    [super dealloc];
 }
 
 @end
