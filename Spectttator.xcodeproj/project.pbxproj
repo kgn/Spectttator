@@ -481,9 +481,9 @@
 		73698B8113B681F400922D1A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DYLIB_COMPATIBILITY_VERSION = 2;
-				DYLIB_CURRENT_VERSION = 2;
-				FRAMEWORK_VERSION = B;
+				DYLIB_COMPATIBILITY_VERSION = 3;
+				DYLIB_CURRENT_VERSION = 3;
+				FRAMEWORK_VERSION = C;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spectttator/Spectttator-Prefix.pch";
 				INFOPLIST_FILE = "Spectttator/Spectttator-Info.plist";
@@ -497,10 +497,9 @@
 		73698B8213B681F400922D1A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DYLIB_COMPATIBILITY_VERSION = 2;
-				DYLIB_CURRENT_VERSION = 2;
-				FRAMEWORK_VERSION = A;
-				FRAMEWORK_VERSION = B;
+				DYLIB_COMPATIBILITY_VERSION = 3;
+				DYLIB_CURRENT_VERSION = 3;
+				FRAMEWORK_VERSION = C;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spectttator/Spectttator-Prefix.pch";
 				INFOPLIST_FILE = "Spectttator/Spectttator-Info.plist";
@@ -516,7 +515,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/Spectttator_iOS.dst;
-				FRAMEWORK_VERSION = B;
+				FRAMEWORK_VERSION = C;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spectttator/Spectttator-iOS-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -532,7 +531,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/Spectttator_iOS.dst;
-				FRAMEWORK_VERSION = B;
+				FRAMEWORK_VERSION = C;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spectttator/Spectttator-iOS-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
