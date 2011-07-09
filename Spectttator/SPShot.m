@@ -7,7 +7,7 @@
 //
 
 #import "SPShot.h"
-#import "SPRequest.h"
+#import "SPMethods.h"
 #import "SPComment.h"
 
 @implementation SPShot
@@ -36,7 +36,7 @@
                                        NSImage *
 #endif
                                        ))block{
-    [SPRequest requestImageWithURL:self.imageUrl
+    [SPMethods requestImageWithURL:self.imageUrl
                    runOnMainThread:runOnMainThread 
                    withBlock:block];
 }
@@ -49,7 +49,7 @@
                                              NSImage *
 #endif
                                              ))block{
-    [SPRequest requestImageWithURL:self.imageTeaserUrl
+    [SPMethods requestImageWithURL:self.imageTeaserUrl
                    runOnMainThread:runOnMainThread 
                          withBlock:block];
 }
@@ -59,8 +59,8 @@
                      withBlock:(void (^)(NSArray *, SPPagination *))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%lu/rebounds", 
-                           self.identifier, [SPRequest pagination:pagination]];
-    [SPRequest requestShotsWithURL:[NSURL URLWithString:urlString] 
+                           self.identifier, [SPMethods pagination:pagination]];
+    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString] 
                    runOnMainThread:runOnMainThread 
                          withBlock:block];
 }
@@ -70,8 +70,8 @@
                      withBlock:(void (^)(NSArray *, SPPagination *))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%lu/comments", 
-                           self.identifier, [SPRequest pagination:pagination]];
-    [SPRequest requestCommentsWithURL:[NSURL URLWithString:urlString] 
+                           self.identifier, [SPMethods pagination:pagination]];
+    [SPMethods requestCommentsWithURL:[NSURL URLWithString:urlString] 
                    runOnMainThread:runOnMainThread 
                          withBlock:block];
 }

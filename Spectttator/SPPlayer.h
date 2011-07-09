@@ -17,11 +17,11 @@
 
     NSString *username = @"inscopeapps";
 
-    [[SPManager sharedManager] playerInformationForUsername:username 
-                                            runOnMainThread:NO 
-                                                  withBlock:^(SPPlayer *player){
-                                                      NSLog(@"Player information for %@: %@", username, player);
-                                                  }];
+    [SPRequest playerInformationForUsername:username 
+                            runOnMainThread:NO 
+                                  withBlock:^(SPPlayer *player){
+                                      NSLog(@"Player information for %@: %@", username, player);
+                                  }];
  
  This is non-blocking, `NSLog` will run whenever the comment data has finished loading,
  but the block still has access to everything in the scope from where it was defined.
@@ -81,7 +81,7 @@
  Returns a Spectttator player object initialized with the given player data. 
  
  There is no need to call this method directly, it is used by 
-  higher level methods like `[SPManager playerInformationForUsername:runOnMainThread:withBlock:]`.
+  higher level methods like `[SPRequest playerInformationForUsername:runOnMainThread:withBlock:]`.
  @param dictionary A dictionary of player data.
  @return An initialized `SPPlayer` object.
  */

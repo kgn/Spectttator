@@ -29,20 +29,21 @@
     [self.refreshButton setEnabled:NO];   
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    [[SPManager sharedManager] shotsForList:self.list 
-                             withPagination:[SPPagination perPage:30] 
-                            runOnMainThread:YES withBlock:^(NSArray *theShots, SPPagination *thsPagination){
-        self.shots = theShots;
-        self.imageCache = nil;
-        self.imageRetrievedCache = nil;
-        self.imageRetrievedCache = [[NSMutableSet alloc] initWithCapacity:[theShots count]];
-        self.imageCache = [[NSMutableDictionary alloc] initWithCapacity:[theShots count]];
-        
-        [self.listButton setEnabled:YES]; 
-        [self.refreshButton setEnabled:YES];             
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        
-        [self.tableView reloadData];
+    [SPRequest shotsForList:self.list 
+             withPagination:[SPPagination perPage:30] 
+            runOnMainThread:YES 
+                  withBlock:^(NSArray *theShots, SPPagination *thsPagination){
+                      self.shots = theShots;
+                      self.imageCache = nil;
+                      self.imageRetrievedCache = nil;
+                      self.imageRetrievedCache = [[NSMutableSet alloc] initWithCapacity:[theShots count]];
+                      self.imageCache = [[NSMutableDictionary alloc] initWithCapacity:[theShots count]];
+                      
+                      [self.listButton setEnabled:YES]; 
+                      [self.refreshButton setEnabled:YES];             
+                      [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                      
+                      [self.tableView reloadData];
     }];
 }
 

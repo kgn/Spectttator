@@ -7,7 +7,7 @@
 //
 
 #import "SPPlayer.h"
-#import "SPRequest.h"
+#import "SPMethods.h"
 
 @implementation SPPlayer
 
@@ -39,7 +39,7 @@
                                         NSImage *
 #endif
                                         ))block{
-    [SPRequest requestImageWithURL:self.avatarUrl
+    [SPMethods requestImageWithURL:self.avatarUrl
                    runOnMainThread:runOnMainThread 
                          withBlock:block];
 }
