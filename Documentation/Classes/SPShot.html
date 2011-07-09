@@ -203,7 +203,7 @@ with Dribbble shots.</p>
 
 <pre><code>#import &lt;Spectttator/Spectttator.h&gt;
 
-[[SPManager sharedManager] shotInformationForIdentifier:199295 runOnMainThread:NO withBlock:^(SPShot *shot){
+[SPRequest shotInformationForIdentifier:199295 runOnMainThread:NO withBlock:^(SPShot *shot){
     NSLog(@"Shot Information: %@", shot);
     [shot reboundsWithPagination:nil 
                  runOnMainThread:NO 
@@ -1144,7 +1144,7 @@ requests will still be asynchronous but the passed in block will be executed on 
 		<h4 class="method-subtitle">Discussion</h4>
 
 <p>There is no need to call this method directly, it is used by
-  higher level methods like <a href="../Classes/SPManager.html#//api/name/shotsForList:withPagination:runOnMainThread:withBlock:"><code>[SPManager shotsForList:withPagination:runOnMainThread:withBlock:]</code></a>.</p>
+  higher level methods like <a href="../Classes/SPRequest.html#//api/name/shotsForList:withPagination:runOnMainThread:withBlock:"><code>[SPRequest shotsForList:withPagination:runOnMainThread:withBlock:]</code></a>.</p>
 	</div>
 	
 	

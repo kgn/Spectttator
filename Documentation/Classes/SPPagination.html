@@ -171,13 +171,13 @@ this object contains the returned pagination information: <a href="#//api/name/p
 
 NSString *username = @"inscopeapps";
 
-[[SPManager sharedManager] shotsForPlayer:user 
-                           withPagination:[SPPagination perPage:20]
-                          runOnMainThread:NO
-                                withBlock:^(NSArray *shots, SPPagination *pagination){
-                                    NSLog(@"Received shot data for %@", user);
-                                    NSLog(@"With pagination: %@", pagination);
-                                }];
+[SPRequest shotsForPlayer:user 
+           withPagination:[SPPagination perPage:20]
+          runOnMainThread:NO
+                withBlock:^(NSArray *shots, SPPagination *pagination){
+                    NSLog(@"Received shot data for %@", user);
+                    NSLog(@"With pagination: %@", pagination);
+                }];
 </code></pre>
 
 <p>This is non-blocking, <code>NSLog</code> will run whenever the comment data has finished loading,
