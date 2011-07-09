@@ -34,8 +34,6 @@
             runOnMainThread:YES 
                   withBlock:^(NSArray *theShots, SPPagination *thsPagination){
                       self.shots = theShots;
-                      self.imageCache = nil;
-                      self.imageRetrievedCache = nil;
                       self.imageRetrievedCache = [[NSMutableSet alloc] initWithCapacity:[theShots count]];
                       self.imageCache = [[NSMutableDictionary alloc] initWithCapacity:[theShots count]];
                       
