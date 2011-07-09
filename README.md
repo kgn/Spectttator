@@ -19,12 +19,12 @@ The following snippet demonstrates how to get the last 10 shots a player liked.
 
     #import <Spectttator/Spectttator.h>
     NSString *username = @"inscopeapps";
-    [[SPManager sharedManager] shotsForPlayerLikes:username 
-                                    withPagination:[SPPagination perPage:10]     
-                                   runOnMainThread:NO 
-                                         withBlock:^(NSArray *shots, SPPagination *pagination){
-                                             NSLog(@"Shot %@ likes: %@", username, shots);
-                                         }];
+    [SPRequest shotsForPlayerLikes:username 
+                    withPagination:[SPPagination perPage:10]     
+                   runOnMainThread:NO 
+                         withBlock:^(NSArray *shots, SPPagination *pagination){
+                             NSLog(@"Shot %@ likes: %@", username, shots);
+                         }];
 
 This is non-blocking, `NSLog` will run whenever the comment data has finished loading, but the block still has access to everything in the scope from where it was defined. If the block is updating UI elements make sure to set `runOnMainThread:YES`, the Dribbble requests will still be asynchronous but the passed in block will be executed on the main thread.
 
