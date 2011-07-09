@@ -6,7 +6,7 @@
 //  Copyright 2011 David Keegan.
 //
 
-#import "SPManager.h"
+#import "SPRequest.h"
 #import "SPPagination.h"
 #import "SPShot.h"
 #import "SPPlayer.h"

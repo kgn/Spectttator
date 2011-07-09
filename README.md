@@ -47,6 +47,7 @@ SpectttatorTest-iOS is a simple iPhone app that demonstrates how to use Specttta
 Change Log
 --------
 
+* **3.0** - Renaming SPManager to SPRequest. SPRequest is no longer a singleton and all it's methods are now simply class methods.
 * **2.1** - Switching to 64bit, this caused no interface changes.
 * **2.0** - Overhaul of all the methods by adding runOnMainThread to make it easy to update UI elements inside the block on the main thread.
 * **1.0** - Initial release with support for the full Dribbble api.

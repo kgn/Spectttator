@@ -2,146 +2,135 @@
 //  SPRequest.m
 //  Spectttator
 //
-//  Created by David Keegan on 6/27/11.
+//  Created by David Keegan on 6/25/11.
 //  Copyright 2011 David Keegan.
 //
 
 #import "SPRequest.h"
-
-#import "SPPlayer.h"
-#import "SPComment.h"
-#import "SPShot.h"
+#import "SPMethods.h"
 
 @implementation SPRequest
 
-+ (NSOperationQueue *)operationQueue{
-    static NSOperationQueue *kQueue = nil;
-    if(kQueue == nil){
-        kQueue = [[NSOperationQueue alloc] init];
-        [kQueue setMaxConcurrentOperationCount:
-         NSOperationQueueDefaultMaxConcurrentOperationCount];
-    }
-    return kQueue;    
-}
+#pragma mark Players
+#pragma mark -
 
-+ (NSString *)pagination:(NSDictionary *)pagination{
-    NSNumber *page = [pagination objectForKey:@"page"];
-    NSNumber *perPage = [pagination objectForKey:@"perPage"];
-    if(page && perPage){
-        return [NSString stringWithFormat:@"?page=%lu&per_page=%lu", [page longValue], [perPage longValue]];
-    }else if(page){
-        return [NSString stringWithFormat:@"?page=%lu", [page longValue]];
-    }else if(perPage){
-        return [NSString stringWithFormat:@"?per_page=%lu", [perPage longValue]];
-    }
-    return @"";
-}
-
-+ (void)requestPlayersWithURL:(NSURL *)url 
-              runOnMainThread:(BOOL)runOnMainThread 
-                    withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSDictionary *json = [SPRequest dataFromUrl:url];
-        NSArray *players = [json objectForKey:@"players"];
-        NSMutableArray *mplayers = [[NSMutableArray alloc] initWithCapacity:[players count]];
-        @autoreleasepool {
-            for(NSDictionary *playerData in players){
-                [mplayers addObject:[[SPPlayer alloc] initWithDictionary:playerData]];
-            }
-        }
++ (void)playerInformationForUsername:(NSString *)username 
+                     runOnMainThread:(BOOL)runOnMainThread 
+                           withBlock:(void (^)(SPPlayer *))block{
+    NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/players/%@", username];
+    [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
+        NSDictionary *json = [SPMethods dataFromUrl:[NSURL URLWithString:urlString]];
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
-                block(mplayers, [SPPagination paginationWithDictionary:json]);
+                block([[SPPlayer alloc] initWithDictionary:json]);
             });
         }else{
-            block(mplayers, [SPPagination paginationWithDictionary:json]);
-        }  
+            block([[SPPlayer alloc] initWithDictionary:json]);
+        }        
     }]];
 }
 
-+ (void)requestShotsWithURL:(NSURL *)url 
-            runOnMainThread:(BOOL)runOnMainThread 
-                  withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSDictionary *json = [SPRequest dataFromUrl:url];
-        NSArray *shots = [json objectForKey:@"shots"];
-        NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
-        @autoreleasepool {
-            for(NSDictionary *shotData in shots){
-                [mshots addObject:[[SPShot alloc] initWithDictionary:shotData]];
-            }
-        }
-        if(runOnMainThread){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                block(mshots, [SPPagination paginationWithDictionary:json]);
-            });            
-        }else{
-            block(mshots, [SPPagination paginationWithDictionary:json]);
-        }
-    }]]; 
++ (void)playerFollowers:(NSString *)username 
+         withPagination:(NSDictionary *)pagination
+        runOnMainThread:(BOOL)runOnMainThread 
+              withBlock:(void (^)(NSArray *, SPPagination *))block{
+    NSString *urlString = [NSString stringWithFormat:
+                           @"http://api.dribbble.com/players/%@/followers%@", 
+                           username, [SPMethods pagination:pagination]];
+    [SPMethods requestPlayersWithURL:[NSURL URLWithString:urlString] 
+                runOnMainThread:runOnMainThread 
+                      withBlock:block];
 }
 
-+ (void)requestCommentsWithURL:(NSURL *)url 
-            runOnMainThread:(BOOL)runOnMainThread 
-                  withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSDictionary *json = [SPRequest dataFromUrl:url];
-        NSArray *comments = [json objectForKey:@"comments"];
-        NSMutableArray *mcomments = [[NSMutableArray alloc] initWithCapacity:[comments count]];
-        @autoreleasepool {
-            for(NSDictionary *commentData in comments){
-                [mcomments addObject:[[SPComment alloc] initWithDictionary:commentData]];
-            }
-        }
-        if(runOnMainThread){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                block(mcomments, [SPPagination paginationWithDictionary:json]);
-            });            
-        }else{
-            block(mcomments, [SPPagination paginationWithDictionary:json]);
-        }
-    }]];
++ (void)playerFollowing:(NSString *)username 
+         withPagination:(NSDictionary *)pagination
+        runOnMainThread:(BOOL)runOnMainThread
+              withBlock:(void (^)(NSArray *, SPPagination *))block{
+    NSString *urlString = [NSString stringWithFormat:
+                           @"http://api.dribbble.com/players/%@/following%@", 
+                           username, [SPMethods pagination:pagination]];
+    [SPMethods requestPlayersWithURL:[NSURL URLWithString:urlString] 
+                runOnMainThread:runOnMainThread 
+                      withBlock:block];    
 }
 
-+ (void)requestImageWithURL:(NSURL *)url 
-            runOnMainThread:(BOOL)runOnMainThread 
-                  withBlock:(void (^)(
-                                      #if TARGET_OS_IPHONE
-                                      UIImage *
-                                      #else
-                                      NSImage *
-                                      #endif
-                                      ))block{
-    [[SPRequest operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        #if TARGET_OS_IPHONE
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-        #else
-        NSImage *image = [[NSImage alloc] initWithContentsOfURL:url];
-        #endif
-        
++ (void)playerDraftees:(NSString *)username 
+        withPagination:(NSDictionary *)pagination
+       runOnMainThread:(BOOL)runOnMainThread 
+             withBlock:(void (^)(NSArray *, SPPagination *))block{
+    NSString *urlString = [NSString stringWithFormat:
+                           @"http://api.dribbble.com/players/%@/draftees%@", 
+                           username, [SPMethods pagination:pagination]];
+    [SPMethods requestPlayersWithURL:[NSURL URLWithString:urlString] 
+                runOnMainThread:runOnMainThread 
+                      withBlock:block];
+}
+
+#pragma mark Shots
+#pragma mark -
+
++ (void)shotInformationForIdentifier:(NSUInteger)identifier 
+                     runOnMainThread:(BOOL)runOnMainThread 
+                           withBlock:(void (^)(SPShot *))block{
+    NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/shots/%lu", identifier];
+    [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
+        NSDictionary *json = [SPMethods dataFromUrl:[NSURL URLWithString:urlString]];
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
-                block(image);
+                block([[SPShot alloc] initWithDictionary:json]);
             });
         }else{
-            block(image);
+            block([[SPShot alloc] initWithDictionary:json]);
         }
-    }]];
+    }]];     
 }
 
-+ (id)dataFromUrl:(NSURL *)url{
-    NSURLRequest *request = [NSURLRequest requestWithURL:url
-                                             cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                         timeoutInterval:20.0f];
-    NSError *error;
-    NSURLResponse *response;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request
-                                         returningResponse:&response
-                                                     error:&error];
-    
-    return [NSJSONSerialization JSONObjectWithData:data 
-                                           options:NSJSONReadingMutableContainers 
-                                             error:&error];
++ (void)shotsForList:(NSString *)list 
+      withPagination:(NSDictionary *)pagination
+     runOnMainThread:(BOOL)runOnMainThread 
+           withBlock:(void (^)(NSArray *, SPPagination *))block{
+    NSString *urlString = [NSString stringWithFormat:
+                           @"http://api.dribbble.com/shots/%@%@", 
+                           list, [SPMethods pagination:pagination]];
+    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString] 
+                runOnMainThread:runOnMainThread 
+                      withBlock:block];  
+}
+
++ (void)shotsForPlayer:(NSString *)username 
+        withPagination:(NSDictionary *)pagination
+       runOnMainThread:(BOOL)runOnMainThread 
+             withBlock:(void (^)(NSArray *, SPPagination *))block{
+    NSString *urlString = [NSString stringWithFormat:
+                           @"http://api.dribbble.com/players/%@/shots%@", 
+                           username, [SPMethods pagination:pagination]];
+    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString] 
+              runOnMainThread:runOnMainThread 
+                    withBlock:block];
+}
+
++ (void)shotsForPlayerFollowing:(NSString *)username 
+                 withPagination:(NSDictionary *)pagination
+                runOnMainThread:(BOOL)runOnMainThread
+                      withBlock:(void (^)(NSArray *, SPPagination *))block{
+    NSString *urlString = [NSString stringWithFormat:
+                           @"http://api.dribbble.com/players/%@/shots/following%@", 
+                           username, [SPMethods pagination:pagination]];
+    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString] 
+              runOnMainThread:runOnMainThread 
+                    withBlock:block];
+}
+
++ (void)shotsForPlayerLikes:(NSString *)username 
+             withPagination:(NSDictionary *)pagination
+            runOnMainThread:(BOOL)runOnMainThread
+                  withBlock:(void (^)(NSArray *, SPPagination *))block{
+    NSString *urlString = [NSString stringWithFormat:
+                           @"http://api.dribbble.com/players/%@/shots/likes%@", 
+                           username, [SPMethods pagination:pagination]];
+    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString] 
+              runOnMainThread:runOnMainThread 
+                    withBlock:block];   
 }
 
 @end

@@ -17,7 +17,7 @@
  
     #import <Spectttator/Spectttator.h>
     
-    [[SPManager sharedManager] shotInformationForIdentifier:199295 runOnMainThread:NO withBlock:^(SPShot *shot){
+    [SPRequest shotInformationForIdentifier:199295 runOnMainThread:NO withBlock:^(SPShot *shot){
         NSLog(@"Shot Information: %@", shot);
         [shot reboundsWithPagination:nil 
                      runOnMainThread:NO 
@@ -83,7 +83,7 @@
  Returns a Spetttator shot object initialized with the given shot data. 
  
  There is no need to call this method directly, it is used by 
-  higher level methods like `[SPManager shotsForList:withPagination:runOnMainThread:withBlock:]`.
+  higher level methods like `[SPRequest shotsForList:withPagination:runOnMainThread:withBlock:]`.
  @param dictionary A dictionary of shot data.
  @return An initialized `SPShot` object.
  */

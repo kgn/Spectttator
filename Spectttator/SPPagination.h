@@ -22,13 +22,13 @@
 
     NSString *username = @"inscopeapps";
 
-    [[SPManager sharedManager] shotsForPlayer:user 
-                               withPagination:[SPPagination perPage:20]
-                              runOnMainThread:NO
-                                    withBlock:^(NSArray *shots, SPPagination *pagination){
-                                        NSLog(@"Received shot data for %@", user);
-                                        NSLog(@"With pagination: %@", pagination);
-                                    }];
+    [SPRequest shotsForPlayer:user 
+              withPagination:[SPPagination perPage:20]
+             runOnMainThread:NO
+                   withBlock:^(NSArray *shots, SPPagination *pagination){
+                       NSLog(@"Received shot data for %@", user);
+                       NSLog(@"With pagination: %@", pagination);
+                   }];
  
  This is non-blocking, `NSLog` will run whenever the comment data has finished loading,
  but the block still has access to everything in the scope from where it was defined.
@@ -59,7 +59,7 @@
  @param dictionary A dictionary of comment data.
  @return An autoreleased `SPPagination` object.
  @see initWithDictionary:
- @see [SPManager shotsForPlayerLikes:withBlock:]
+ @see [SPRequest shotsForPlayerLikes:withBlock:]
  */
 + (id)paginationWithDictionary:(NSDictionary *)dictionary;
 
@@ -70,7 +70,7 @@
  methods use this to return pagination data to blocks.
  @param dictionary A dictionary of comment data.
  @return An initialized `SPPagination` object.
- @see [SPManager shotsForPlayerLikes:withBlock:]
+ @see [SPRequest shotsForPlayerLikes:withBlock:]
  */
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

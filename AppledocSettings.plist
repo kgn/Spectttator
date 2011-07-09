@@ -11,7 +11,7 @@
     <string>com.inscopeapps</string>
     <key>--input</key>
     <array>
-        <string>./Spectttator/SPManager.h</string>
+        <string>./Spectttator/SPRequest.h</string>
         <string>./Spectttator/SPPagination.h</string>
         <string>./Spectttator/SPPlayer.h</string>
         <string>./Spectttator/SPShot.h</string>

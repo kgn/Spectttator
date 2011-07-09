@@ -16,7 +16,7 @@
  
     #import <Spectttator/Spectttator.h>
      
-    [[SPManager sharedManager] shotInformationForIdentifier:199295 runOnMainThread:NO withBlock:^(SPShot *shot){
+    [SPRequest shotInformationForIdentifier:199295 runOnMainThread:NO withBlock:^(SPShot *shot){
         [shot commentsWithPagination:nil runOnMainThread:NO withBlock:^(NSArray *comments, SPPagination *pagination){
             NSLog(@"Comments for '%@': %@", shot.title, comments);
         }];
