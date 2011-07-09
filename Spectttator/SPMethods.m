@@ -1,5 +1,5 @@
 //
-//  SPRequest.m
+//  SPMethods.m
 //  Spectttator
 //
 //  Created by David Keegan on 6/27/11.
