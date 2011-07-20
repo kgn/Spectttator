@@ -49,8 +49,8 @@
         _identifier = [[dictionary objectForKey:@"id"] intValue];
         _name = [[NSString alloc] initWithString:[dictionary objectForKey:@"name"]];
         _username = [[NSString alloc] initWithString:[dictionary objectForKey:@"username"]];               
-        _url = [[NSURL alloc] initWithString:[dictionary objectForKey:@"url"]];
-        _avatarUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"avatar_url"]];
+        _url = [[NSURL alloc] initWithString:[dictionary objectForKey:@"url"] ?: @""];
+        _avatarUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"avatar_url"] ?: @""];
         
         if([dictionary objectForKey:@"location"] != [NSNull null]){
             _location = [[NSString alloc] initWithString:[dictionary objectForKey:@"location"]];
