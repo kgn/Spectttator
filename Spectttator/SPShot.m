@@ -79,11 +79,11 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
         _identifier = [[dictionary objectForKey:@"id"] intValue];
-        _url = [[NSURL alloc] initWithString:[dictionary objectForKey:@"url"]];
-        _shortUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"short_url"]];
-        _imageUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"image_url"]];
-        _imageTeaserUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"image_teaser_url"]];
         _title = [dictionary objectForKey:@"title"];
+        _url = [NSURL URLWithString:[dictionary objectForKey:@"url"] ?: @""];
+        _shortUrl = [NSURL URLWithString:[dictionary objectForKey:@"short_url"] ?: @""];
+        _imageUrl = [NSURL URLWithString:[dictionary objectForKey:@"image_url"] ?: @""];
+        _imageTeaserUrl = [NSURL URLWithString:[dictionary objectForKey:@"image_teaser_url"] ?: @""];
         _width = [[dictionary objectForKey:@"width"] intValue];
         _height = [[dictionary objectForKey:@"height"] intValue];
         _viewsCount = [[dictionary objectForKey:@"views_count"] intValue];

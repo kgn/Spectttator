@@ -47,10 +47,10 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
         _identifier = [[dictionary objectForKey:@"id"] intValue];
-        _url = [[NSURL alloc] initWithString:[dictionary objectForKey:@"url"]];
-        _avatarUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"avatar_url"]];
         _name = [dictionary objectForKey:@"name"];
         _username = [dictionary objectForKey:@"username"];               
+        _url = [NSURL URLWithString:[dictionary objectForKey:@"url"] ?: @""];
+        _avatarUrl = [NSURL URLWithString:[dictionary objectForKey:@"avatar_url"] ?: @""];
         
         if([dictionary objectForKey:@"location"] != [NSNull null]){
             _location = [dictionary objectForKey:@"location"];
