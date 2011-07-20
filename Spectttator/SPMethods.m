@@ -139,9 +139,12 @@
                                          returningResponse:&response
                                                      error:&error];
     
-    return [NSJSONSerialization JSONObjectWithData:data 
-                                           options:NSJSONReadingMutableContainers 
-                                             error:&error];
+    if(data){
+        return [NSJSONSerialization JSONObjectWithData:data 
+                                               options:NSJSONReadingMutableContainers 
+                                                 error:&error];
+    }
+    return nil;
 }
 
 @end
