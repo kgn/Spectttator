@@ -19,7 +19,7 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
         _identifier = [[dictionary objectForKey:@"id"] intValue];
-        _body = [[NSString alloc] initWithString:[dictionary objectForKey:@"body"]];
+        _body = [dictionary objectForKey:@"body"];
         _likesCount = [[dictionary objectForKey:@"likes_count"] intValue];
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

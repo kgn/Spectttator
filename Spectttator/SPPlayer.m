@@ -47,21 +47,17 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
         _identifier = [[dictionary objectForKey:@"id"] intValue];
-        _name = [[NSString alloc] initWithString:[dictionary objectForKey:@"name"]];
-        _username = [[NSString alloc] initWithString:[dictionary objectForKey:@"username"]];               
         _url = [[NSURL alloc] initWithString:[dictionary objectForKey:@"url"]];
         _avatarUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"avatar_url"]];
+        _name = [dictionary objectForKey:@"name"];
+        _username = [dictionary objectForKey:@"username"];               
         
         if([dictionary objectForKey:@"location"] != [NSNull null]){
-            _location = [[NSString alloc] initWithString:[dictionary objectForKey:@"location"]];
-        }else{
-            _location = nil;
+            _location = [dictionary objectForKey:@"location"];
         }
         
         if([dictionary objectForKey:@"twitter_screen_name"] != [NSNull null]){
-            _twitterScreenName = [[NSString alloc] initWithString:[dictionary objectForKey:@"twitter_screen_name"]];
-        }else{
-            _twitterScreenName = nil;
+            _twitterScreenName = [dictionary objectForKey:@"twitter_screen_name"];
         }
         
         if([dictionary objectForKey:@"drafted_by_player_id"] != [NSNull null]){
