@@ -32,8 +32,8 @@
 		73C01C9E13C2EB0B00A8ECDB /* SPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 739A44A613B8642B00E7783A /* SPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73C01CAE13C2EBBC00A8ECDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C01CAD13C2EBBC00A8ECDB /* UIKit.framework */; };
 		73C01CE413C2EDA000A8ECDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C01CE213C2ED9800A8ECDB /* Foundation.framework */; };
-		D62F7E5C13C7FE7D00D1A992 /* SPMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = D62F7E5A13C7FE7D00D1A992 /* SPMethods.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D62F7E5D13C7FE7D00D1A992 /* SPMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = D62F7E5A13C7FE7D00D1A992 /* SPMethods.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D62F7E5C13C7FE7D00D1A992 /* SPMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = D62F7E5A13C7FE7D00D1A992 /* SPMethods.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D62F7E5D13C7FE7D00D1A992 /* SPMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = D62F7E5A13C7FE7D00D1A992 /* SPMethods.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D62F7E5E13C7FE7D00D1A992 /* SPMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = D62F7E5B13C7FE7D00D1A992 /* SPMethods.m */; };
 		D62F7E5F13C7FE7D00D1A992 /* SPMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = D62F7E5B13C7FE7D00D1A992 /* SPMethods.m */; };
 /* End PBXBuildFile section */

@@ -11,3 +11,4 @@
 #import "SPShot.h"
 #import "SPPlayer.h"
 #import "SPComment.h"
+#import "SPMethods.h"
