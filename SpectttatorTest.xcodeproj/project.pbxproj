@@ -23,7 +23,6 @@
 		73C01CE113C2ED7000A8ECDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C01CAD13C2EBBC00A8ECDB /* UIKit.framework */; };
 		73C01CE313C2ED9800A8ECDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C01CE213C2ED9800A8ECDB /* Foundation.framework */; };
 		73D2C9E613C2EF2D009C0419 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73D2C9E513C2EF2D009C0419 /* MainMenu.xib */; };
-		D688AD2113C70A6E00278A6D /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D688AD2013C70A6E00278A6D /* MainWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,7 +97,6 @@
 		73C01CDD13C2ED3B00A8ECDB /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		73C01CE213C2ED9800A8ECDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		73D2C9E513C2EF2D009C0419 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
-		D688AD2013C70A6E00278A6D /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +204,6 @@
 				73C01CD813C2ED3000A8ECDB /* ShotCell.h */,
 				73C01CD913C2ED3000A8ECDB /* ShotCell.m */,
 				73C01CDA13C2ED3000A8ECDB /* ShotCell.xib */,
-				D688AD2013C70A6E00278A6D /* MainWindow.xib */,
 				73C01CBD13C2EC4A00A8ECDB /* Supporting Files */,
 			);
 			path = "SpectttatorTest-iOS";
@@ -268,6 +265,7 @@
 		73698B6413B681F400922D1A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "InScopeApps {+}";
 			};
 			buildConfigurationList = 73698B6713B681F400922D1A /* Build configuration list for PBXProject "SpectttatorTest" */;
@@ -326,7 +324,6 @@
 			files = (
 				73C01CDC13C2ED3000A8ECDB /* ShotCell.xib in Resources */,
 				73C01CDE13C2ED3C00A8ECDB /* RootViewController.xib in Resources */,
-				D688AD2113C70A6E00278A6D /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +372,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -385,6 +383,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -400,10 +399,12 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -448,7 +449,7 @@
 				GCC_PREFIX_HEADER = "SpectttatorTest-iOS/SpectttatorTest-iOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = Spectttator;
 				INFOPLIST_FILE = "SpectttatorTest-iOS/SpectttatorTest-iOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
@@ -468,7 +469,7 @@
 				GCC_PREFIX_HEADER = "SpectttatorTest-iOS/SpectttatorTest-iOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = Spectttator;
 				INFOPLIST_FILE = "SpectttatorTest-iOS/SpectttatorTest-iOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

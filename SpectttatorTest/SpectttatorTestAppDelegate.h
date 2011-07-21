@@ -10,15 +10,15 @@
 
 @interface SpectttatorTestAppDelegate : NSObject <NSApplicationDelegate, NSTextViewDelegate>
 
-@property (retain, nonatomic) IBOutlet NSWindow *window;
-@property (retain, nonatomic) IBOutlet NSProgressIndicator *spinner;
-@property (retain, nonatomic) IBOutlet NSTextField *username;
-@property (retain, nonatomic) IBOutlet NSTextView *shots;
-@property (retain, nonatomic) IBOutlet NSPopUpButton *listPopup;
-@property (retain, nonatomic) IBOutlet NSTextView *listShots;
-@property (retain, nonatomic) IBOutlet NSImageView *lastPlayerShot;
-@property (retain, nonatomic) IBOutlet NSImageView *lastListShot;
-@property (retain, nonatomic) IBOutlet NSImageView *avatar;
+@property (strong, nonatomic) IBOutlet NSWindow *window;
+@property (strong, nonatomic) IBOutlet NSProgressIndicator *spinner;
+@property (strong, nonatomic) IBOutlet NSTextField *username;
+@property (strong, nonatomic) IBOutlet NSTextView *shots;
+@property (strong, nonatomic) IBOutlet NSPopUpButton *listPopup;
+@property (strong, nonatomic) IBOutlet NSTextView *listShots;
+@property (strong, nonatomic) IBOutlet NSImageView *lastPlayerShot;
+@property (strong, nonatomic) IBOutlet NSImageView *lastListShot;
+@property (strong, nonatomic) IBOutlet NSImageView *avatar;
 @property BOOL userUpdating, listUpdating;
 
 - (IBAction)userChanged:(id)sender;

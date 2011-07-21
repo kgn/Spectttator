@@ -79,11 +79,11 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
         _identifier = [[dictionary objectForKey:@"id"] intValue];
-        _title = [[NSString alloc] initWithString:[dictionary objectForKey:@"title"]];
-        _url = [[NSURL alloc] initWithString:[dictionary objectForKey:@"url"]];
-        _shortUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"short_url"]];
-        _imageUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"image_url"]];
-        _imageTeaserUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"image_teaser_url"]];
+        _title = [dictionary objectForKey:@"title"];
+        _url = [NSURL URLWithString:[dictionary objectForKey:@"url"] ?: @""];
+        _shortUrl = [NSURL URLWithString:[dictionary objectForKey:@"short_url"] ?: @""];
+        _imageUrl = [NSURL URLWithString:[dictionary objectForKey:@"image_url"] ?: @""];
+        _imageTeaserUrl = [NSURL URLWithString:[dictionary objectForKey:@"image_teaser_url"] ?: @""];
         _width = [[dictionary objectForKey:@"width"] intValue];
         _height = [[dictionary objectForKey:@"height"] intValue];
         _viewsCount = [[dictionary objectForKey:@"views_count"] intValue];
@@ -99,8 +99,7 @@
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
-        _createdAt = [[formatter dateFromString:[dictionary objectForKey:@"created_at"]] retain];
-        [formatter release];
+        _createdAt = [formatter dateFromString:[dictionary objectForKey:@"created_at"]];
         
         _player = [[SPPlayer alloc] initWithDictionary:[dictionary objectForKey:@"player"]];
     }
@@ -111,16 +110,6 @@
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Title='%@' Player=%@ URL=%@>", 
             [self class], self.identifier, self.title, self.player.username, self.url];
-}
-
-- (void)dealloc{
-    [_title release];
-    [_url release];
-    [_shortUrl release];
-    [_imageUrl release];
-    [_imageTeaserUrl release];
-    [_createdAt release];
-    [super dealloc];
 }
 
 @end

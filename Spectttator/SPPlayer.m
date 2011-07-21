@@ -47,21 +47,17 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
         _identifier = [[dictionary objectForKey:@"id"] intValue];
-        _name = [[NSString alloc] initWithString:[dictionary objectForKey:@"name"]];
-        _username = [[NSString alloc] initWithString:[dictionary objectForKey:@"username"]];               
-        _url = [[NSURL alloc] initWithString:[dictionary objectForKey:@"url"]];
-        _avatarUrl = [[NSURL alloc] initWithString:[dictionary objectForKey:@"avatar_url"]];
+        _name = [dictionary objectForKey:@"name"];
+        _username = [dictionary objectForKey:@"username"];               
+        _url = [NSURL URLWithString:[dictionary objectForKey:@"url"] ?: @""];
+        _avatarUrl = [NSURL URLWithString:[dictionary objectForKey:@"avatar_url"] ?: @""];
         
         if([dictionary objectForKey:@"location"] != [NSNull null]){
-            _location = [[NSString alloc] initWithString:[dictionary objectForKey:@"location"]];
-        }else{
-            _location = nil;
+            _location = [dictionary objectForKey:@"location"];
         }
         
         if([dictionary objectForKey:@"twitter_screen_name"] != [NSNull null]){
-            _twitterScreenName = [[NSString alloc] initWithString:[dictionary objectForKey:@"twitter_screen_name"]];
-        }else{
-            _twitterScreenName = nil;
+            _twitterScreenName = [dictionary objectForKey:@"twitter_screen_name"];
         }
         
         if([dictionary objectForKey:@"drafted_by_player_id"] != [NSNull null]){
@@ -83,8 +79,7 @@
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
-        _createdAt = [[formatter dateFromString:[dictionary objectForKey:@"created_at"]] retain];
-        [formatter release];
+        _createdAt = [formatter dateFromString:[dictionary objectForKey:@"created_at"]];
     }
     
     return self;
@@ -93,17 +88,6 @@
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Name='%@' Username='%@' URL=%@>", 
             [self class], self.identifier, self.name, self.username, self.url];
-}
-
-- (void)dealloc{
-    [_name release];
-    [_username release];
-    [_url release];
-    [_avatarUrl release];
-    [_location release];
-    [_twitterScreenName release];
-    [_createdAt release];
-    [super dealloc];
 }
 
 @end

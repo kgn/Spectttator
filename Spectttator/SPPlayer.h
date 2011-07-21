@@ -34,17 +34,17 @@
 /// The unique id of the player.
 @property (readonly) NSUInteger identifier;
 /// The real name of the player.
-@property (readonly) NSString *name;
+@property (strong, readonly) NSString *name;
 /// The username of the player.
-@property (readonly) NSString *username;
+@property (strong, readonly) NSString *username;
 /// The url of the player's profile.
-@property (readonly) NSURL *url;
+@property (strong, readonly) NSURL *url;
 /// The url of the player's avatar.
-@property (readonly) NSURL *avatarUrl;
+@property (strong, readonly) NSURL *avatarUrl;
 /// The location of the player.
-@property (readonly) NSString *location;
+@property (strong, readonly) NSString *location;
 /// The player's twitter name.
-@property (readonly) NSString *twitterScreenName;
+@property (strong, readonly) NSString *twitterScreenName;
 /** The id of this player who drafted this player.
  
  If this player was not drafted the value is `NSNotFound`.
@@ -71,7 +71,7 @@
 /// The number of rebounds the player's shots have received.
 @property (readonly) NSUInteger reboundsReceivedCount;
 /// The date the player's account was created on.
-@property (readonly) NSDate *createdAt;
+@property (strong, readonly) NSDate *createdAt;
 
 ///----------------------------
 /// @name Initializing a SPPlayer Object

@@ -22,10 +22,10 @@
         NSDictionary *json = [SPMethods dataFromUrl:[NSURL URLWithString:urlString]];
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
-                block([[[SPPlayer alloc] initWithDictionary:json] autorelease]);
+                block([[SPPlayer alloc] initWithDictionary:json]);
             });
         }else{
-            block([[[SPPlayer alloc] initWithDictionary:json] autorelease]);
+            block([[SPPlayer alloc] initWithDictionary:json]);
         }        
     }]];
 }
@@ -77,10 +77,10 @@
         NSDictionary *json = [SPMethods dataFromUrl:[NSURL URLWithString:urlString]];
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
-                block([[[SPShot alloc] initWithDictionary:json] autorelease]);
+                block([[SPShot alloc] initWithDictionary:json]);
             });
         }else{
-            block([[[SPShot alloc] initWithDictionary:json] autorelease]);
+            block([[SPShot alloc] initWithDictionary:json]);
         }
     }]];     
 }
