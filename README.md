@@ -5,7 +5,7 @@ Spectttator is an Objective-C framework for OSX and iOS that uses [Grand Central
 
 Below is a quick overview of the framework, to get an in depth look check out the [documentation](http://inscopeapps.github.com/Spectttator).
 
-*There is a version of [Spectttator for Lion and iOS 5](https://github.com/InScopeApps/Spectttator/tree/lion-ios5) that uses arc and NSJSONSerialization.*
+*There is a version of (Spectttator for Lion and iOS 5)[https://github.com/InScopeApps/Spectttator/tree/lion-ios5] that uses arc and NSJSONSerialization.*
 
 How To
 --------
