@@ -5,14 +5,7 @@ Spectttator is an Objective-C framework for OSX and iOS that uses [Grand Central
 
 Below is a quick overview of the framework, to get an in depth look check out the [documentation](http://inscopeapps.github.com/Spectttator).
 
-*There is a version of (Spectttator for Lion and iOS 5)[https://github.com/InScopeApps/Spectttator/tree/lion-ios5] that uses arc and NSJSONSerialization.*
-
-How To
---------
-
-Spectttator uses [SBJson](https://github.com/stig/json-framework) to parse the json returned by the Dribbble api. SBJson is included in the Spectttator repository as a submodule so make sure to clone the repo with the `--recursive` flag.
-
-    git clone --recursive https://github.com/InScopeApps/Spectttator.git
+*There is a [branch](https://github.com/InScopeApps/Spectttator/tree/SBJson) of Spectttator that still uses [SBJson](https://github.com/stig/json-framework).*
 
 Example
 --------
