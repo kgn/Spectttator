@@ -19,7 +19,7 @@
                            withBlock:(void (^)(SPPlayer *))block{
     NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/players/%@", username];
     [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSDictionary *json = [SPMethods dataFromUrl:[NSURL URLWithString:urlString]];
+        NSDictionary *json = [SPMethods jsonDataFromUrl:[NSURL URLWithString:urlString]];
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block([[SPPlayer alloc] initWithDictionary:json]);
@@ -74,7 +74,7 @@
                            withBlock:(void (^)(SPShot *))block{
     NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/shots/%lu", identifier];
     [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSDictionary *json = [SPMethods dataFromUrl:[NSURL URLWithString:urlString]];
+        NSDictionary *json = [SPMethods jsonDataFromUrl:[NSURL URLWithString:urlString]];
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block([[SPShot alloc] initWithDictionary:json]);
