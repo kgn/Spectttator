@@ -40,10 +40,29 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
-        _page = [[dictionary objectForKey:@"page"] intValue];
-        _pages = [[dictionary objectForKey:@"pages"] intValue];
-        _perPage = [[dictionary objectForKey:@"per_page"] intValue];
-        _total = [[dictionary objectForKey:@"total"] intValue];
+        if([dictionary objectForKey:@"page"] != [NSNull null]){
+            _page = [[dictionary objectForKey:@"page"] intValue];
+        }else{
+            _page = NSNotFound;
+        }
+        
+        if([dictionary objectForKey:@"pages"] != [NSNull null]){
+            _pages = [[dictionary objectForKey:@"pages"] intValue];
+        }else{
+            _pages = NSNotFound;
+        }
+        
+        if([dictionary objectForKey:@"per_page"] != [NSNull null]){
+            _perPage = [[dictionary objectForKey:@"per_page"] intValue];
+        }else{
+            _perPage = NSNotFound;
+        }
+        
+        if([dictionary objectForKey:@"total"] != [NSNull null]){
+            _total = [[dictionary objectForKey:@"total"] intValue];
+        }else{
+            _total = NSNotFound;
+        }
     }
     return self;
 }
