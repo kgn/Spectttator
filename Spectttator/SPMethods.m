@@ -129,7 +129,7 @@
     }]];
 }
 
-+ (id)dataFromUrl:(NSURL *)url{
++ (NSData *)dataFromUrl:(NSURL *)url{
     NSURLRequest *request = [NSURLRequest requestWithURL:url
                                              cachePolicy:NSURLRequestReloadIgnoringCacheData
                                          timeoutInterval:20.0f];
