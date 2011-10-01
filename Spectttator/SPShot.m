@@ -107,6 +107,13 @@
     return self;
 }
 
+- (BOOL)isEqual:(id)object{
+    if([object isKindOfClass:[self class]]){
+        return (self.identifier == [(SPShot *)object identifier]);
+    }
+    return NO;
+}
+
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Title='%@' Player=%@ URL=%@>", 
             [self class], self.identifier, self.title, self.player.username, self.url];

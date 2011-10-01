@@ -32,6 +32,13 @@
     return self;
 }
 
+- (BOOL)isEqual:(id)object{
+    if([object isKindOfClass:[self class]]){
+        return (self.identifier == [(SPComment *)object identifier]);
+    }
+    return NO;
+}
+
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Username='%@' Body=%@>", 
             [self class], self.identifier, self.player.username, self.body];

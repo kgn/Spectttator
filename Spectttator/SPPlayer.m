@@ -85,6 +85,13 @@
     return self;
 }
 
+- (BOOL)isEqual:(id)object{
+    if([object isKindOfClass:[self class]]){
+        return (self.identifier == [(SPPlayer *)object identifier]);
+    }
+    return NO;
+}
+
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Name='%@' Username='%@' URL=%@>", 
             [self class], self.identifier, self.name, self.username, self.url];
