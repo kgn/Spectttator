@@ -49,6 +49,9 @@
                 [mplayers addObject:[[SPPlayer alloc] initWithDictionary:playerData]];
             }
         }
+        if([mplayers count] == 0){
+            mplayers = nil;
+        }        
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(mplayers, [SPPagination paginationWithDictionary:json]);
@@ -70,6 +73,9 @@
             for(NSDictionary *shotData in shots){
                 [mshots addObject:[[SPShot alloc] initWithDictionary:shotData]];
             }
+        }
+        if([mshots count] == 0){
+            mshots = nil;
         }
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -93,6 +99,9 @@
                 [mcomments addObject:[[SPComment alloc] initWithDictionary:commentData]];
             }
         }
+        if([mcomments count] == 0){
+            mcomments = nil;
+        }         
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(mcomments, [SPPagination paginationWithDictionary:json]);
