@@ -32,6 +32,10 @@
     return self;
 }
 
+- (NSUInteger)hash{
+    return self.identifier;
+}
+
 - (BOOL)isEqual:(id)object{
     if([object isKindOfClass:[self class]]){
         return (self.identifier == [(SPComment *)object identifier]);
