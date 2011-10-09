@@ -23,7 +23,7 @@
         _likesCount = [[dictionary objectForKey:@"likes_count"] intValue];
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
+        [formatter setDateFormat:@"yyyy/MM/dd hh:mm:ss '-0400'"];//TODO: replace -0400
         _createdAt = [formatter dateFromString:[dictionary objectForKey:@"created_at"]];
         
         _player = [[SPPlayer alloc] initWithDictionary:[dictionary objectForKey:@"player"]];

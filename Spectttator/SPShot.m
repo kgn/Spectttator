@@ -96,9 +96,22 @@
         }else{
             _reboundSourceId = NSNotFound;
         }
+
+//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//        [formatter setDateFormat:@"yyyy/MM/dd hh:mm:ss a"];
+//        NSLog(@"%@", [dictionary objectForKey:@"created_at"]);
+//        
+//        NSDate *date = nil;
+//        NSError *error = nil;
+//        NSString *created_at = [dictionary objectForKey:@"created_at"];
+//        NSRange range = NSMakeRange(0, [created_at length]);
+//        BOOL success = [formatter getObjectValue:&date forString:created_at range:&range error:&error];
+//        if(success){
+//            NSLog(@"%@", date);
+//        }
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
+        [formatter setDateFormat:@"yyyy/MM/dd hh:mm:ss '-0400'"];//TODO: replace -0400
         _createdAt = [formatter dateFromString:[dictionary objectForKey:@"created_at"]];
         
         _player = [[SPPlayer alloc] initWithDictionary:[dictionary objectForKey:@"player"]];
