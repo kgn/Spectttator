@@ -20,12 +20,16 @@
     NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/players/%@", username];
     [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSDictionary *json = [SPMethods jsonDataFromUrl:[NSURL URLWithString:urlString]];
+        SPPlayer *player = nil;
+        if(![[json objectForKey:@"message"] isEqualToString:@"Not found"]){
+            player = [[SPPlayer alloc] initWithDictionary:json];
+        }
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
-                block([[SPPlayer alloc] initWithDictionary:json]);
+                block(player);
             });
         }else{
-            block([[SPPlayer alloc] initWithDictionary:json]);
+            block(player);
         }        
     }]];
 }
@@ -75,12 +79,16 @@
     NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/shots/%lu", identifier];
     [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSDictionary *json = [SPMethods jsonDataFromUrl:[NSURL URLWithString:urlString]];
+        SPShot *shot = nil;
+        if(![[json objectForKey:@"message"] isEqualToString:@"Not found"]){
+            shot = [[SPShot alloc] initWithDictionary:json];
+        }
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
-                block([[SPShot alloc] initWithDictionary:json]);
+                block(shot);
             });
         }else{
-            block([[SPShot alloc] initWithDictionary:json]);
+            block(shot);
         }
     }]];     
 }
