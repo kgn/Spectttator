@@ -12,6 +12,35 @@
 #import "SPComment.h"
 #import "SPShot.h"
 
+@implementation NSDictionary(Spectttator)
+
+- (NSUInteger)uintSafelyFromKey:(id)key{
+    if([self objectForKey:key] != [NSNull null] && [self objectForKey:key] != nil){
+        return [[self objectForKey:key] intValue];
+    }
+    return NSNotFound;
+}
+
+- (NSString *)stringSafelyFromKey:(id)key{
+    return [self objectSafelyFromKey:key];
+}
+
+- (NSURL *)URLSafelyFromKey:(id)key{
+    if([self objectForKey:key] != [NSNull null] && [self objectForKey:key] != nil){
+        return [NSURL URLWithString:[self objectForKey:key]];
+    }
+    return nil;
+}
+
+- (id)objectSafelyFromKey:(id)key{
+    if([self objectForKey:key] != [NSNull null] && [self objectForKey:key] != nil){
+        return [self objectForKey:key];
+    }
+    return nil;
+}
+
+@end
+
 @implementation SPMethods
 
 + (NSOperationQueue *)operationQueue{
@@ -21,7 +50,7 @@
         [kQueue setMaxConcurrentOperationCount:
          NSOperationQueueDefaultMaxConcurrentOperationCount];
     }
-    return kQueue;    
+    return kQueue;
 }
 
 + (NSString *)pagination:(NSDictionary *)pagination{
@@ -37,8 +66,8 @@
     return @"";
 }
 
-+ (void)requestPlayersWithURL:(NSURL *)url 
-              runOnMainThread:(BOOL)runOnMainThread 
++ (void)requestPlayersWithURL:(NSURL *)url
+              runOnMainThread:(BOOL)runOnMainThread
                     withBlock:(void (^)(NSArray *, SPPagination *))block{
     [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSDictionary *json = [SPMethods jsonDataFromUrl:url];
@@ -51,19 +80,19 @@
         }
         if([mplayers count] == 0){
             mplayers = nil;
-        }        
+        }
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(mplayers, [SPPagination paginationWithDictionary:json]);
             });
         }else{
             block(mplayers, [SPPagination paginationWithDictionary:json]);
-        }  
+        }
     }]];
 }
 
-+ (void)requestShotsWithURL:(NSURL *)url 
-            runOnMainThread:(BOOL)runOnMainThread 
++ (void)requestShotsWithURL:(NSURL *)url
+            runOnMainThread:(BOOL)runOnMainThread
                   withBlock:(void (^)(NSArray *, SPPagination *))block{
     [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSDictionary *json = [SPMethods jsonDataFromUrl:url];
@@ -80,15 +109,15 @@
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(mshots, [SPPagination paginationWithDictionary:json]);
-            });            
+            });
         }else{
             block(mshots, [SPPagination paginationWithDictionary:json]);
         }
-    }]]; 
+    }]];
 }
 
-+ (void)requestCommentsWithURL:(NSURL *)url 
-               runOnMainThread:(BOOL)runOnMainThread 
++ (void)requestCommentsWithURL:(NSURL *)url
+               runOnMainThread:(BOOL)runOnMainThread
                      withBlock:(void (^)(NSArray *, SPPagination *))block{
     [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSDictionary *json = [SPMethods jsonDataFromUrl:url];
@@ -101,19 +130,19 @@
         }
         if([mcomments count] == 0){
             mcomments = nil;
-        }         
+        }
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(mcomments, [SPPagination paginationWithDictionary:json]);
-            });            
+            });
         }else{
             block(mcomments, [SPPagination paginationWithDictionary:json]);
         }
     }]];
 }
 
-+ (void)requestImageWithURL:(NSURL *)url 
-            runOnMainThread:(BOOL)runOnMainThread 
++ (void)requestImageWithURL:(NSURL *)url
+            runOnMainThread:(BOOL)runOnMainThread
                   withBlock:(void (^)(
 #if TARGET_OS_IPHONE
                                       UIImage *
@@ -127,7 +156,7 @@
 #else
         NSImage *image = [[NSImage alloc] initWithContentsOfURL:url];
 #endif
-        
+
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(image);
@@ -154,8 +183,8 @@
     NSError *error;
     NSData *data = [self dataFromUrl:url];
     if(data){
-        return [NSJSONSerialization JSONObjectWithData:data 
-                                               options:NSJSONReadingMutableContainers 
+        return [NSJSONSerialization JSONObjectWithData:data
+                                               options:NSJSONReadingMutableContainers
                                                  error:&error];
     }
     return nil;

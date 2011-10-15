@@ -30,8 +30,8 @@
 @synthesize reboundsCount = _reboundsCount;
 @synthesize reboundsReceivedCount = _reboundsReceivedCount;
 @synthesize createdAt = _createdAt;
-    
-- (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
+
+- (void)avatarRunOnMainThread:(BOOL)runOnMainThread
                     withBlock:(void (^)(
 #if TARGET_OS_IPHONE
                                         UIImage *
@@ -40,48 +40,43 @@
 #endif
                                         ))block{
     [SPMethods requestImageWithURL:self.avatarUrl
-                   runOnMainThread:runOnMainThread 
+                   runOnMainThread:runOnMainThread
                          withBlock:block];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
-        _identifier = [[dictionary objectForKey:@"id"] intValue];
-        _name = [dictionary objectForKey:@"name"];
-        _username = [dictionary objectForKey:@"username"];               
-        _url = [NSURL URLWithString:[dictionary objectForKey:@"url"] ?: @""];
-        _avatarUrl = [NSURL URLWithString:[dictionary objectForKey:@"avatar_url"] ?: @""];
-        
-        if([dictionary objectForKey:@"location"] != [NSNull null]){
-            _location = [dictionary objectForKey:@"location"];
-        }
-        
-        if([dictionary objectForKey:@"twitter_screen_name"] != [NSNull null]){
-            _twitterScreenName = [dictionary objectForKey:@"twitter_screen_name"];
-        }
-        
-        if([dictionary objectForKey:@"drafted_by_player_id"] != [NSNull null]){
-            _draftedByPlayerId = [[dictionary objectForKey:@"drafted_by_player_id"] intValue];
+        _identifier = [dictionary uintSafelyFromKey:@"id"];
+        _name = [dictionary stringSafelyFromKey:@"name"];
+        _username = [dictionary stringSafelyFromKey:@"username"];
+        _url = [dictionary URLSafelyFromKey:@"url"];
+        _avatarUrl = [dictionary URLSafelyFromKey:@"avatar_url"];
+        _location = [dictionary stringSafelyFromKey:@"location"];
+        _twitterScreenName = [dictionary stringSafelyFromKey:@"twitter_screen_name"];
+        _draftedByPlayerId = [dictionary uintSafelyFromKey:@"drafted_by_player_id"];
+
+        _shotsCount = [dictionary uintSafelyFromKey:@"shots_count"];
+        _drafteesCount = [dictionary uintSafelyFromKey:@"draftees_count"];
+        _followersCount = [dictionary uintSafelyFromKey:@"followers_count"];
+        _followingCount = [dictionary uintSafelyFromKey:@"following_count"];
+        _commentsCount = [dictionary uintSafelyFromKey:@"comments_count"];
+        _commentsReceivedCount = [dictionary uintSafelyFromKey:@"comments_received_count"];
+        _likesCount = [dictionary uintSafelyFromKey:@"likes_count"];
+        _likesReceivedCount = [dictionary uintSafelyFromKey:@"likes_received_count"];
+        _reboundsCount = [dictionary uintSafelyFromKey:@"rebounds_count"];
+        _reboundsReceivedCount = [dictionary uintSafelyFromKey:@"rebounds_received_count"];
+
+        NSString *createdAt = [dictionary stringSafelyFromKey:@"created_at"];
+        if(createdAt != nil){
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss '-0400'"];//TODO: find a better way to match the timezone
+            _createdAt = [[formatter dateFromString:[dictionary objectForKey:@"created_at"]] retain];
+            [formatter release];
         }else{
-            _draftedByPlayerId = NSNotFound;
-        }        
-        
-        _shotsCount = [[dictionary objectForKey:@"shots_count"] intValue];
-        _drafteesCount = [[dictionary objectForKey:@"draftees_count"] intValue];
-        _followersCount = [[dictionary objectForKey:@"followers_count"] intValue];
-        _followingCount = [[dictionary objectForKey:@"following_count"] intValue];
-        _commentsCount = [[dictionary objectForKey:@"comments_count"] intValue];
-        _commentsReceivedCount = [[dictionary objectForKey:@"comments_received_count"] intValue];
-        _likesCount = [[dictionary objectForKey:@"likes_count"] intValue];
-        _likesReceivedCount = [[dictionary objectForKey:@"likes_received_count"] intValue];
-        _reboundsCount = [[dictionary objectForKey:@"rebounds_count"] intValue];
-        _reboundsReceivedCount = [[dictionary objectForKey:@"rebounds_received_count"] intValue];
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy/MM/dd hh:mm:ss '-0400'"];//TODO: replace -0400
-        _createdAt = [formatter dateFromString:[dictionary objectForKey:@"created_at"]];
+            _createdAt = nil;
+        }
     }
-    
+
     return self;
 }
 
@@ -97,7 +92,7 @@
 }
 
 - (NSString *)description{
-    return [NSString stringWithFormat:@"<%@ %lu Name='%@' Username='%@' URL=%@>", 
+    return [NSString stringWithFormat:@"<%@ %lu Name='%@' Username='%@' URL=%@>",
             [self class], self.identifier, self.name, self.username, self.url];
 }
 

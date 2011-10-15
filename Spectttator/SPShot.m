@@ -28,95 +28,88 @@
 @synthesize createdAt = _createdAt;
 @synthesize player = _player;
 
-- (void)imageRunOnMainThread:(BOOL)runOnMainThread 
+- (void)imageRunOnMainThread:(BOOL)runOnMainThread
                    withBlock:(void (^)(
-#if TARGET_OS_IPHONE                                       
+#if TARGET_OS_IPHONE
                                        UIImage *
 #else
                                        NSImage *
 #endif
                                        ))block{
     [SPMethods requestImageWithURL:self.imageUrl
-                   runOnMainThread:runOnMainThread 
+                   runOnMainThread:runOnMainThread
                    withBlock:block];
 }
-    
-- (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
+
+- (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread
                          withBlock:(void (^)(
-#if TARGET_OS_IPHONE                                       
+#if TARGET_OS_IPHONE
                                              UIImage *
 #else
                                              NSImage *
 #endif
                                              ))block{
     [SPMethods requestImageWithURL:self.imageTeaserUrl
-                   runOnMainThread:runOnMainThread 
+                   runOnMainThread:runOnMainThread
                          withBlock:block];
 }
 
 - (void)reboundsWithPagination:(NSDictionary *)pagination
-               runOnMainThread:(BOOL)runOnMainThread 
+               runOnMainThread:(BOOL)runOnMainThread
                      withBlock:(void (^)(NSArray *, SPPagination *))block{
     NSString *urlString = [NSString stringWithFormat:
-                           @"http://api.dribbble.com/shots/%lu/rebounds", 
+                           @"http://api.dribbble.com/shots/%lu/rebounds",
                            self.identifier, [SPMethods pagination:pagination]];
-    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString] 
-                   runOnMainThread:runOnMainThread 
+    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString]
+                   runOnMainThread:runOnMainThread
                          withBlock:block];
 }
 
 - (void)commentsWithPagination:(NSDictionary *)pagination
-               runOnMainThread:(BOOL)runOnMainThread 
+               runOnMainThread:(BOOL)runOnMainThread
                      withBlock:(void (^)(NSArray *, SPPagination *))block{
     NSString *urlString = [NSString stringWithFormat:
-                           @"http://api.dribbble.com/shots/%lu/comments", 
+                           @"http://api.dribbble.com/shots/%lu/comments",
                            self.identifier, [SPMethods pagination:pagination]];
-    [SPMethods requestCommentsWithURL:[NSURL URLWithString:urlString] 
-                   runOnMainThread:runOnMainThread 
+    [SPMethods requestCommentsWithURL:[NSURL URLWithString:urlString]
+                   runOnMainThread:runOnMainThread
                          withBlock:block];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
-        _identifier = [[dictionary objectForKey:@"id"] intValue];
-        _title = [dictionary objectForKey:@"title"];
-        _url = [NSURL URLWithString:[dictionary objectForKey:@"url"] ?: @""];
-        _shortUrl = [NSURL URLWithString:[dictionary objectForKey:@"short_url"] ?: @""];
-        _imageUrl = [NSURL URLWithString:[dictionary objectForKey:@"image_url"] ?: @""];
-        _imageTeaserUrl = [NSURL URLWithString:[dictionary objectForKey:@"image_teaser_url"] ?: @""];
-        _width = [[dictionary objectForKey:@"width"] intValue];
-        _height = [[dictionary objectForKey:@"height"] intValue];
-        _viewsCount = [[dictionary objectForKey:@"views_count"] intValue];
-        _likesCount = [[dictionary objectForKey:@"likes_count"] intValue];
-        _commentsCount = [[dictionary objectForKey:@"comments_count"] intValue];
-        _reboundsCount = [[dictionary objectForKey:@"rebounds_count"] intValue];
-        
-        if([dictionary objectForKey:@"rebound_source_id"] != [NSNull null]){
-            _reboundSourceId = [[dictionary objectForKey:@"rebound_source_id"] intValue];
+        _identifier = [dictionary uintSafelyFromKey:@"id"];
+        _title = [dictionary stringSafelyFromKey:@"title"];
+        _url = [dictionary URLSafelyFromKey:@"url"];
+        _shortUrl = [dictionary URLSafelyFromKey:@"short_url"];
+        _imageUrl = [dictionary URLSafelyFromKey:@"image_url"];
+        _imageTeaserUrl = [dictionary URLSafelyFromKey:@"image_teaser_url"];
+        _width = [dictionary uintSafelyFromKey:@"width"];
+        _height = [dictionary uintSafelyFromKey:@"height"];
+        _viewsCount = [dictionary uintSafelyFromKey:@"views_count"];
+        _likesCount = [dictionary uintSafelyFromKey:@"likes_count"];
+        _commentsCount = [dictionary uintSafelyFromKey:@"comments_count"];
+        _reboundsCount = [dictionary uintSafelyFromKey:@"rebounds_count"];
+        _reboundSourceId = [dictionary uintSafelyFromKey:@"rebound_source_id"];
+
+        NSString *createdAt = [dictionary stringSafelyFromKey:@"created_at"];
+        if(createdAt != nil){
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss '-0400'"];//TODO: find a better way to match the timezone
+            _createdAt = [[formatter dateFromString:[dictionary objectForKey:@"created_at"]] retain];
+            [formatter release];
         }else{
-            _reboundSourceId = NSNotFound;
+            _createdAt = nil;
         }
 
-//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//        [formatter setDateFormat:@"yyyy/MM/dd hh:mm:ss a"];
-//        NSLog(@"%@", [dictionary objectForKey:@"created_at"]);
-//        
-//        NSDate *date = nil;
-//        NSError *error = nil;
-//        NSString *created_at = [dictionary objectForKey:@"created_at"];
-//        NSRange range = NSMakeRange(0, [created_at length]);
-//        BOOL success = [formatter getObjectValue:&date forString:created_at range:&range error:&error];
-//        if(success){
-//            NSLog(@"%@", date);
-//        }
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy/MM/dd hh:mm:ss '-0400'"];//TODO: replace -0400
-        _createdAt = [formatter dateFromString:[dictionary objectForKey:@"created_at"]];
-        
-        _player = [[SPPlayer alloc] initWithDictionary:[dictionary objectForKey:@"player"]];
+        NSDictionary *player = [dictionary objectSafelyFromKey:@"player"];
+        if(player != nil){
+        _player = [[SPPlayer alloc] initWithDictionary:player];
+        }else{
+            _player = nil;
+        }
     }
-    
+
     return self;
 }
 
@@ -132,7 +125,7 @@
 }
 
 - (NSString *)description{
-    return [NSString stringWithFormat:@"<%@ %lu Title='%@' Player=%@ URL=%@>", 
+    return [NSString stringWithFormat:@"<%@ %lu Title='%@' Player=%@ URL=%@>",
             [self class], self.identifier, self.title, self.player.username, self.url];
 }
 

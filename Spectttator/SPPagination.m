@@ -7,6 +7,7 @@
 //
 
 #import "SPPagination.h"
+#import "SPMethods.h"
 
 @implementation SPPagination
 
@@ -30,7 +31,7 @@
     }
     if(perPage != NSNotFound && perPage > 0){
         [dictionary setObject:[NSNumber numberWithLong:perPage] forKey:@"perPage"];
-    }    
+    }
     return dictionary;
 }
 
@@ -40,35 +41,16 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
-        if([dictionary objectForKey:@"page"] != [NSNull null]){
-            _page = [[dictionary objectForKey:@"page"] intValue];
-        }else{
-            _page = NSNotFound;
-        }
-        
-        if([dictionary objectForKey:@"pages"] != [NSNull null]){
-            _pages = [[dictionary objectForKey:@"pages"] intValue];
-        }else{
-            _pages = NSNotFound;
-        }
-        
-        if([dictionary objectForKey:@"per_page"] != [NSNull null]){
-            _perPage = [[dictionary objectForKey:@"per_page"] intValue];
-        }else{
-            _perPage = NSNotFound;
-        }
-        
-        if([dictionary objectForKey:@"total"] != [NSNull null]){
-            _total = [[dictionary objectForKey:@"total"] intValue];
-        }else{
-            _total = NSNotFound;
-        }
+        _page = [dictionary uintSafelyFromKey:@"page"];
+        _pages = [dictionary uintSafelyFromKey:@"pages"];
+        _perPage = [dictionary uintSafelyFromKey:@"per_page"];
+        _total = [dictionary uintSafelyFromKey:@"total"];
     }
     return self;
 }
 
 - (NSString *)description{
-    return [NSString stringWithFormat:@"<%@ Page=%lu Pages=%lu PerPage=%lu Total=%lu>", 
+    return [NSString stringWithFormat:@"<%@ Page=%lu Pages=%lu PerPage=%lu Total=%lu>",
             [self class], self.page, self.pages, self.perPage, self.total];
 }
 

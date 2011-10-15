@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "SPPagination.h"
 
+@interface NSDictionary(Spectttator)
+
+- (NSUInteger)uintSafelyFromKey:(id)key;
+- (NSString *)stringSafelyFromKey:(id)key;
+- (NSURL *)URLSafelyFromKey:(id)key;
+- (id)objectSafelyFromKey:(id)key;
+
+@end
+
 @interface SPMethods : NSObject
 
 + (NSOperationQueue *)operationQueue;
