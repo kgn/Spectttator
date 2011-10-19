@@ -27,10 +27,10 @@
 + (NSDictionary *)page:(NSUInteger)page perPage:(NSUInteger)perPage{
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     if(page != NSNotFound && page > 0){
-        [dictionary setObject:[NSNumber numberWithLong:page] forKey:@"page"];
+        [dictionary setObject:[NSNumber numberWithInteger:page] forKey:@"page"];
     }
     if(perPage != NSNotFound && perPage > 0){
-        [dictionary setObject:[NSNumber numberWithLong:perPage] forKey:@"perPage"];
+        [dictionary setObject:[NSNumber numberWithInteger:perPage] forKey:@"perPage"];
     }
     return dictionary;
 }
