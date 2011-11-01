@@ -154,7 +154,9 @@
 #if TARGET_OS_IPHONE
         UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
 #else
-        NSImage *image = [[NSImage alloc] initWithContentsOfURL:url];
+        // NSImage initWithContentsOfURL appears to not work so great
+        CGImageRef cgimage = [[NSBitmapImageRep imageRepWithData:[[self class] dataFromUrl:url]] CGImage];
+        NSImage *image = [[NSImage alloc] initWithCGImage:cgimage size:NSMakeSize(CGImageGetWidth(cgimage), CGImageGetHeight(cgimage))];
 #endif
 
         if(runOnMainThread){
