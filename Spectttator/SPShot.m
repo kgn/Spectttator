@@ -96,8 +96,7 @@
         if(createdAt != nil){
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss '-0400'"];//TODO: find a better way to match the timezone
-            _createdAt = [[formatter dateFromString:[dictionary objectForKey:@"created_at"]] retain];
-            [formatter release];
+            _createdAt = [formatter dateFromString:[dictionary objectForKey:@"created_at"]];
         }else{
             _createdAt = nil;
         }
