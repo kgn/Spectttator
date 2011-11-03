@@ -159,6 +159,11 @@
         NSImage *image = [[NSImage alloc] initWithCGImage:cgimage size:NSMakeSize(CGImageGetWidth(cgimage), CGImageGetHeight(cgimage))];
 #endif
 
+        // if the image has no size it was not loaded so return nil
+        if(image.size.width == 0 && image.size.height == 0){
+            image = nil;
+        }
+        
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(image);
