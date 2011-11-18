@@ -34,6 +34,8 @@
             runOnMainThread:YES 
                   withBlock:^(NSArray *theShots, SPPagination *thsPagination){
                       self.shots = theShots;
+                      self.imageCache = nil;
+                      self.imageRetrievedCache = nil;
                       self.imageRetrievedCache = [[NSMutableSet alloc] initWithCapacity:[theShots count]];
                       self.imageCache = [[NSMutableDictionary alloc] initWithCapacity:[theShots count]];
                       
@@ -69,7 +71,8 @@
                                                                      [SPDebutsList  capitalizedString], 
                                                                       nil];
 	[listSheet setActionSheetStyle:UIActionSheetStyleBlackOpaque];
-	[listSheet showInView:self.view];  
+	[listSheet showInView:self.view];
+	[listSheet release];    
 }
 
 - (void)viewDidLoad{
@@ -139,6 +142,17 @@
     // Open the shot in safari
     SPShot *aShot = [self.shots objectAtIndex:indexPath.row];
     [[UIApplication sharedApplication] openURL:aShot.url];
+}
+
+- (void)dealloc{
+    [_shots release];
+    [_imageRetrievedCache release];
+    [_imageCache release];
+    
+    [_refreshButton release];
+    [_listButton release];
+    
+    [super dealloc];
 }
 
 @end

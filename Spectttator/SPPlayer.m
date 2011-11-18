@@ -30,8 +30,8 @@
 @synthesize reboundsCount = _reboundsCount;
 @synthesize reboundsReceivedCount = _reboundsReceivedCount;
 @synthesize createdAt = _createdAt;
-
-- (void)avatarRunOnMainThread:(BOOL)runOnMainThread
+    
+- (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
                     withBlock:(void (^)(
 #if TARGET_OS_IPHONE
                                         UIImage *
@@ -40,21 +40,21 @@
 #endif
                                         ))block{
     [SPMethods requestImageWithURL:self.avatarUrl
-                   runOnMainThread:runOnMainThread
+                   runOnMainThread:runOnMainThread 
                          withBlock:block];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
         _identifier = [dictionary uintSafelyFromKey:@"id"];
-        _name = [dictionary stringSafelyFromKey:@"name"];
-        _username = [dictionary stringSafelyFromKey:@"username"];
-        _url = [dictionary URLSafelyFromKey:@"url"];
-        _avatarUrl = [dictionary URLSafelyFromKey:@"avatar_url"];
-        _location = [dictionary stringSafelyFromKey:@"location"];
-        _twitterScreenName = [dictionary stringSafelyFromKey:@"twitter_screen_name"];
+        _name = [[dictionary stringSafelyFromKey:@"name"] retain];
+        _username = [[dictionary stringSafelyFromKey:@"username"] retain];
+        _url = [[dictionary URLSafelyFromKey:@"url"] retain];
+        _avatarUrl = [[dictionary URLSafelyFromKey:@"avatar_url"] retain];
+        _location = [[dictionary stringSafelyFromKey:@"location"] retain];
+        _twitterScreenName = [[dictionary stringSafelyFromKey:@"twitter_screen_name"] retain];
         _draftedByPlayerId = [dictionary uintSafelyFromKey:@"drafted_by_player_id"];
-
+        
         _shotsCount = [dictionary uintSafelyFromKey:@"shots_count"];
         _drafteesCount = [dictionary uintSafelyFromKey:@"draftees_count"];
         _followersCount = [dictionary uintSafelyFromKey:@"followers_count"];
@@ -65,17 +65,18 @@
         _likesReceivedCount = [dictionary uintSafelyFromKey:@"likes_received_count"];
         _reboundsCount = [dictionary uintSafelyFromKey:@"rebounds_count"];
         _reboundsReceivedCount = [dictionary uintSafelyFromKey:@"rebounds_received_count"];
-
+        
         NSString *createdAt = [dictionary stringSafelyFromKey:@"created_at"];
         if(createdAt != nil){
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss '-0400'"];//TODO: find a better way to match the timezone
-            _createdAt = [formatter dateFromString:[dictionary objectForKey:@"created_at"]];
+            _createdAt = [[formatter dateFromString:[dictionary objectForKey:@"created_at"]] retain];
+            [formatter release];
         }else{
             _createdAt = nil;
         }
     }
-
+    
     return self;
 }
 
@@ -91,8 +92,19 @@
 }
 
 - (NSString *)description{
-    return [NSString stringWithFormat:@"<%@ %lu Name='%@' Username='%@' URL=%@>",
+    return [NSString stringWithFormat:@"<%@ %lu Name='%@' Username='%@' URL=%@>", 
             [self class], self.identifier, self.name, self.username, self.url];
+}
+
+- (void)dealloc{
+    [_name release];
+    [_username release];
+    [_url release];
+    [_avatarUrl release];
+    [_location release];
+    [_twitterScreenName release];
+    [_createdAt release];
+    [super dealloc];
 }
 
 @end

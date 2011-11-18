@@ -23,4 +23,11 @@
     self.shot.image = image;
 }
 
+- (void)dealloc {
+    [_title release];
+    [_player release];
+    [_info release];
+    [_shot release];
+    [super dealloc];
+}
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SPPagination.h"
+#import "SBJson.h"
 
 @interface NSDictionary(Spectttator)
 
@@ -20,6 +21,7 @@
 
 @interface SPMethods : NSObject
 
++ (SBJsonParser *)parser;
 + (NSOperationQueue *)operationQueue;
 + (NSString *)pagination:(NSDictionary *)pagination;
 

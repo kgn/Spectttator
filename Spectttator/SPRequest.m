@@ -14,8 +14,8 @@
 #pragma mark Players
 #pragma mark -
 
-+ (void)playerInformationForUsername:(NSString *)username 
-                     runOnMainThread:(BOOL)runOnMainThread 
++ (void)playerInformationForUsername:(NSString *)username
+                     runOnMainThread:(BOOL)runOnMainThread
                            withBlock:(void (^)(SPPlayer *))block{
     NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/players/%@", username];
     [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
@@ -26,55 +26,55 @@
         }
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
-                block(player);
+                block([player autorelease]);
             });
         }else{
-            block(player);
-        }        
+            block([player autorelease]);
+        }
     }]];
 }
 
-+ (void)playerFollowers:(NSString *)username 
-         withPagination:(NSDictionary *)pagination
-        runOnMainThread:(BOOL)runOnMainThread 
-              withBlock:(void (^)(NSArray *, SPPagination *))block{
-    NSString *urlString = [NSString stringWithFormat:
-                           @"http://api.dribbble.com/players/%@/followers%@", 
-                           username, [SPMethods pagination:pagination]];
-    [SPMethods requestPlayersWithURL:[NSURL URLWithString:urlString] 
-                runOnMainThread:runOnMainThread 
-                      withBlock:block];
-}
-
-+ (void)playerFollowing:(NSString *)username 
++ (void)playerFollowers:(NSString *)username
          withPagination:(NSDictionary *)pagination
         runOnMainThread:(BOOL)runOnMainThread
               withBlock:(void (^)(NSArray *, SPPagination *))block{
     NSString *urlString = [NSString stringWithFormat:
-                           @"http://api.dribbble.com/players/%@/following%@", 
+                           @"http://api.dribbble.com/players/%@/followers%@",
                            username, [SPMethods pagination:pagination]];
-    [SPMethods requestPlayersWithURL:[NSURL URLWithString:urlString] 
-                runOnMainThread:runOnMainThread 
-                      withBlock:block];    
+    [SPMethods requestPlayersWithURL:[NSURL URLWithString:urlString]
+                runOnMainThread:runOnMainThread
+                      withBlock:block];
 }
 
-+ (void)playerDraftees:(NSString *)username 
++ (void)playerFollowing:(NSString *)username
+         withPagination:(NSDictionary *)pagination
+        runOnMainThread:(BOOL)runOnMainThread
+              withBlock:(void (^)(NSArray *, SPPagination *))block{
+    NSString *urlString = [NSString stringWithFormat:
+                           @"http://api.dribbble.com/players/%@/following%@",
+                           username, [SPMethods pagination:pagination]];
+    [SPMethods requestPlayersWithURL:[NSURL URLWithString:urlString]
+                runOnMainThread:runOnMainThread
+                      withBlock:block];
+}
+
++ (void)playerDraftees:(NSString *)username
         withPagination:(NSDictionary *)pagination
-       runOnMainThread:(BOOL)runOnMainThread 
+       runOnMainThread:(BOOL)runOnMainThread
              withBlock:(void (^)(NSArray *, SPPagination *))block{
     NSString *urlString = [NSString stringWithFormat:
-                           @"http://api.dribbble.com/players/%@/draftees%@", 
+                           @"http://api.dribbble.com/players/%@/draftees%@",
                            username, [SPMethods pagination:pagination]];
-    [SPMethods requestPlayersWithURL:[NSURL URLWithString:urlString] 
-                runOnMainThread:runOnMainThread 
+    [SPMethods requestPlayersWithURL:[NSURL URLWithString:urlString]
+                runOnMainThread:runOnMainThread
                       withBlock:block];
 }
 
 #pragma mark Shots
 #pragma mark -
 
-+ (void)shotInformationForIdentifier:(NSUInteger)identifier 
-                     runOnMainThread:(BOOL)runOnMainThread 
++ (void)shotInformationForIdentifier:(NSUInteger)identifier
+                     runOnMainThread:(BOOL)runOnMainThread
                            withBlock:(void (^)(SPShot *))block{
     NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/shots/%lu", identifier];
     [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
@@ -85,60 +85,60 @@
         }
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
-                block(shot);
+                block([shot autorelease]);
             });
         }else{
-            block(shot);
+            block([shot autorelease]);
         }
-    }]];     
+    }]];
 }
 
-+ (void)shotsForList:(NSString *)list 
++ (void)shotsForList:(NSString *)list
       withPagination:(NSDictionary *)pagination
-     runOnMainThread:(BOOL)runOnMainThread 
+     runOnMainThread:(BOOL)runOnMainThread
            withBlock:(void (^)(NSArray *, SPPagination *))block{
     NSString *urlString = [NSString stringWithFormat:
-                           @"http://api.dribbble.com/shots/%@%@", 
+                           @"http://api.dribbble.com/shots/%@%@",
                            list, [SPMethods pagination:pagination]];
-    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString] 
-                runOnMainThread:runOnMainThread 
-                      withBlock:block];  
+    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString]
+                runOnMainThread:runOnMainThread
+                      withBlock:block];
 }
 
-+ (void)shotsForPlayer:(NSString *)username 
++ (void)shotsForPlayer:(NSString *)username
         withPagination:(NSDictionary *)pagination
-       runOnMainThread:(BOOL)runOnMainThread 
+       runOnMainThread:(BOOL)runOnMainThread
              withBlock:(void (^)(NSArray *, SPPagination *))block{
     NSString *urlString = [NSString stringWithFormat:
-                           @"http://api.dribbble.com/players/%@/shots%@", 
+                           @"http://api.dribbble.com/players/%@/shots%@",
                            username, [SPMethods pagination:pagination]];
-    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString] 
-              runOnMainThread:runOnMainThread 
+    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString]
+              runOnMainThread:runOnMainThread
                     withBlock:block];
 }
 
-+ (void)shotsForPlayerFollowing:(NSString *)username 
++ (void)shotsForPlayerFollowing:(NSString *)username
                  withPagination:(NSDictionary *)pagination
                 runOnMainThread:(BOOL)runOnMainThread
                       withBlock:(void (^)(NSArray *, SPPagination *))block{
     NSString *urlString = [NSString stringWithFormat:
-                           @"http://api.dribbble.com/players/%@/shots/following%@", 
+                           @"http://api.dribbble.com/players/%@/shots/following%@",
                            username, [SPMethods pagination:pagination]];
-    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString] 
-              runOnMainThread:runOnMainThread 
+    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString]
+              runOnMainThread:runOnMainThread
                     withBlock:block];
 }
 
-+ (void)shotsForPlayerLikes:(NSString *)username 
++ (void)shotsForPlayerLikes:(NSString *)username
              withPagination:(NSDictionary *)pagination
             runOnMainThread:(BOOL)runOnMainThread
                   withBlock:(void (^)(NSArray *, SPPagination *))block{
     NSString *urlString = [NSString stringWithFormat:
-                           @"http://api.dribbble.com/players/%@/shots/likes%@", 
+                           @"http://api.dribbble.com/players/%@/shots/likes%@",
                            username, [SPMethods pagination:pagination]];
-    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString] 
-              runOnMainThread:runOnMainThread 
-                    withBlock:block];   
+    [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString]
+              runOnMainThread:runOnMainThread
+                    withBlock:block];
 }
 
 @end

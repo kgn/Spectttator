@@ -31,12 +31,12 @@
     }
     if(perPage != NSNotFound && perPage > 0){
         [dictionary setObject:[NSNumber numberWithInteger:perPage] forKey:@"perPage"];
-    }
+    }    
     return dictionary;
 }
 
 + (id)paginationWithDictionary:(NSDictionary *)dictionary{
-    return [[SPPagination alloc] initWithDictionary:dictionary];
+    return [[[SPPagination alloc] initWithDictionary:dictionary] autorelease];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
@@ -50,7 +50,7 @@
 }
 
 - (NSString *)description{
-    return [NSString stringWithFormat:@"<%@ Page=%lu Pages=%lu PerPage=%lu Total=%lu>",
+    return [NSString stringWithFormat:@"<%@ Page=%lu Pages=%lu PerPage=%lu Total=%lu>", 
             [self class], self.page, self.pages, self.perPage, self.total];
 }
 

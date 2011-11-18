@@ -5,7 +5,12 @@ Spectttator is an Objective-C framework for OSX and iOS that uses [Grand Central
 
 Below is a quick overview of the framework, to get an in depth look check out the [documentation](http://inscopeapps.github.com/Spectttator).
 
-*There is a [branch](https://github.com/InScopeApps/Spectttator/tree/SBJson) of Spectttator that still uses [SBJson](https://github.com/stig/json-framework).*
+How To
+--------
+
+Spectttator uses [SBJson](https://github.com/stig/json-framework) to parse the json returned by the Dribbble api. SBJson is included in the Spectttator repository as a submodule so make sure to clone the repo with the `--recursive` flag.
+
+    git clone --recursive https://github.com/InScopeApps/Spectttator.git
 
 Example
 --------
@@ -14,9 +19,9 @@ The following snippet demonstrates how to get the last 10 shots a player liked.
 
     #import <Spectttator/Spectttator.h>
     NSString *username = @"inscopeapps";
-    [SPRequest shotsForPlayerLikes:username 
-                    withPagination:[SPPagination perPage:10]     
-                   runOnMainThread:NO 
+    [SPRequest shotsForPlayerLikes:username
+                    withPagination:[SPPagination perPage:10]
+                   runOnMainThread:NO
                          withBlock:^(NSArray *shots, SPPagination *pagination){
                              NSLog(@"Shot %@ likes: %@", username, shots);
                          }];
@@ -42,11 +47,10 @@ SpectttatorTest-iOS is a simple iPhone app that demonstrates how to use Specttta
 Change Log
 --------
 
-* **3.1** - Updating for lion and iOS 5 by using arc and NSJSONSerialization.
-* **3.0** - Renaming SPManager to SPRequest. SPRequest is no longer a singleton and all it's methods are now simply class methods.
-* **2.1** - Switching to 64bit, this caused no interface changes.
-* **2.0** - Overhaul of all the methods by adding runOnMainThread to make it easy to update UI elements inside the block on the main thread.
-* **1.0** - Initial release with support for the full Dribbble api.
+* **0.3.0** - Renaming SPManager to SPRequest. SPRequest is no longer a singleton and all it's methods are now simply class methods.
+* **0.2.1** - Switching to 64bit, this caused no interface changes.
+* **0.2.0** - Overhaul of all the methods by adding runOnMainThread to make it easy to update UI elements inside the block on the main thread.
+* **0.1.0** - Initial release with support for the full Dribbble api.
 
 License
 --------

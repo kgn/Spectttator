@@ -10,7 +10,7 @@
 
 @interface SpectttatorTest_iOSAppDelegate : NSObject <UIApplicationDelegate>
 
-@property (strong, nonatomic) IBOutlet UIWindow *window;
-@property (strong, nonatomic) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 @end
