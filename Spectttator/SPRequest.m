@@ -8,6 +8,7 @@
 
 #import "SPRequest.h"
 #import "SPMethods.h"
+#import "AFJSONRequestOperation.h"
 
 @implementation SPRequest
 
@@ -18,8 +19,9 @@
                      runOnMainThread:(BOOL)runOnMainThread
                            withBlock:(void (^)(SPPlayer *))block{
     NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/players/%@", username];
-    [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSDictionary *json = [SPMethods jsonDataFromUrl:[NSURL URLWithString:urlString]];
+    [[SPMethods operationQueue] addOperation:[AFJSONRequestOperation
+     JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]
+     success:^(NSURLRequest *request, NSURLResponse *response, NSDictionary *json){
         SPPlayer *player = nil;
         if(![[json objectForKey:@"message"] isEqualToString:@"Not found"]){
             player = [[SPPlayer alloc] initWithDictionary:json];
@@ -31,7 +33,7 @@
         }else{
             block([player autorelease]);
         }
-    }]];
+    } failure:nil]];
 }
 
 + (void)playerFollowers:(NSString *)username
@@ -77,8 +79,9 @@
                      runOnMainThread:(BOOL)runOnMainThread
                            withBlock:(void (^)(SPShot *))block{
     NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/shots/%lu", identifier];
-    [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSDictionary *json = [SPMethods jsonDataFromUrl:[NSURL URLWithString:urlString]];
+    [[SPMethods operationQueue] addOperation:[AFJSONRequestOperation
+     JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]
+     success:^(NSURLRequest *request, NSURLResponse *response, NSDictionary *json){
         SPShot *shot = nil;
         if(![[json objectForKey:@"message"] isEqualToString:@"Not found"]){
             shot = [[SPShot alloc] initWithDictionary:json];
@@ -90,7 +93,7 @@
         }else{
             block([shot autorelease]);
         }
-    }]];
+    } failure:nil]];
 }
 
 + (void)shotsForList:(NSString *)list

@@ -8,7 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "SPPagination.h"
-#import "SBJson.h"
+
+#if TARGET_OS_IPHONE
+#define SPImage UIImage
+#else
+#define SPImage NSImage
+#endif
 
 @interface NSDictionary(Spectttator)
 
@@ -21,7 +26,6 @@
 
 @interface SPMethods : NSObject
 
-+ (SBJsonParser *)parser;
 + (NSOperationQueue *)operationQueue;
 + (NSString *)pagination:(NSDictionary *)pagination;
 
@@ -39,15 +43,6 @@
 
 + (void)requestImageWithURL:(NSURL *)url 
             runOnMainThread:(BOOL)runOnMainThread 
-                  withBlock:(void (^)(
-#if TARGET_OS_IPHONE
-                                      UIImage *
-#else
-                                      NSImage *
-#endif
-                                      ))block;
-
-+ (NSData *)dataFromUrl:(NSURL *)url;
-+ (id)jsonDataFromUrl:(NSURL *)url;
+                  withBlock:(void (^)(SPImage *))block;
 
 @end

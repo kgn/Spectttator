@@ -11,6 +11,8 @@
 #import "SPPlayer.h"
 #import "SPComment.h"
 #import "SPShot.h"
+#import "AFJSONRequestOperation.h"
+#import "AFImageRequestOperation.h"
 
 @implementation NSDictionary(Spectttator)
 
@@ -48,14 +50,6 @@
 
 @implementation SPMethods
 
-+ (SBJsonParser *)parser{
-    static SBJsonParser *kParser = nil;
-    if(kParser == nil){
-        kParser = [[SBJsonParser alloc] init];
-    }
-    return kParser;
-}
-
 + (NSOperationQueue *)operationQueue{
     static NSOperationQueue *kQueue = nil;
     if(kQueue == nil){
@@ -82,8 +76,9 @@
 + (void)requestPlayersWithURL:(NSURL *)url
               runOnMainThread:(BOOL)runOnMainThread
                     withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSDictionary *json = [SPMethods jsonDataFromUrl:url];
+    [[[self class] operationQueue] addOperation:[AFJSONRequestOperation
+     JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
+     success:^(NSURLRequest *request, NSURLResponse *response, NSDictionary *json){
         NSArray *players = [json objectForKey:@"players"];
         NSMutableArray *mplayers = [[NSMutableArray alloc] initWithCapacity:[players count]];
         NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
@@ -106,15 +101,16 @@
         }
         if(mplayers != nil){
             [mplayers release];
-        }        
-    }]];
+        }
+    } failure:nil]];
 }
 
 + (void)requestShotsWithURL:(NSURL *)url
             runOnMainThread:(BOOL)runOnMainThread
                   withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSDictionary *json = [SPMethods jsonDataFromUrl:url];
+    [[[self class] operationQueue] addOperation:[AFJSONRequestOperation
+     JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url] 
+     success:^(NSURLRequest *request, NSURLResponse *response, NSDictionary *json){
         NSArray *shots = [json objectForKey:@"shots"];
         NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
         NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
@@ -138,14 +134,15 @@
         if(mshots != nil){
             [mshots release];
         } 
-    }]];
+    } failure:nil]];
 }
 
 + (void)requestCommentsWithURL:(NSURL *)url
             runOnMainThread:(BOOL)runOnMainThread
                   withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSDictionary *json = [SPMethods jsonDataFromUrl:url];
+    [[[self class] operationQueue] addOperation:[AFJSONRequestOperation
+     JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url] 
+     success:^(NSURLRequest *request, NSURLResponse *response, NSDictionary *json){
         NSArray *comments = [json objectForKey:@"comments"];
         NSMutableArray *mcomments = [[NSMutableArray alloc] initWithCapacity:[comments count]];
         NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
@@ -169,40 +166,15 @@
         if(mcomments != nil){
             [mcomments release];
         }
-    }]];
+    } failure:nil]];
 }
 
 + (void)requestImageWithURL:(NSURL *)url
             runOnMainThread:(BOOL)runOnMainThread
-                  withBlock:(void (^)(
-                                      #if TARGET_OS_IPHONE
-                                      UIImage *
-                                      #else
-                                      NSImage *
-                                      #endif
-                                      ))block{
-    [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        #if TARGET_OS_IPHONE
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-        #else
-        NSImage *image = nil;        
-        NSData *imageData = [[self class] dataFromUrl:url];
-        if(imageData != nil){
-            image = [[[NSImage alloc] initWithData:imageData] autorelease];
-            // For some reason the size can be inccorect so make a CGImage, which seems
-            // to always have the correct size, and then set the size based on what
-            // the CGImage says it is.
-            CGImageRef cgimage = [[NSBitmapImageRep imageRepWithData:imageData] CGImage];
-            NSSize realSize = NSMakeSize(CGImageGetWidth(cgimage), CGImageGetHeight(cgimage));
-            [image setSize:realSize];
-        }
-        #endif
-
-        // if the image has no size it was not loaded so return nil
-        if(image != nil && image.size.width == 0 && image.size.height == 0){
-            image = nil;
-        }
-        
+                  withBlock:(void (^)(SPImage *))block{
+    [[[self class] operationQueue] addOperation:[AFImageRequestOperation 
+     imageRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
+     success:^(SPImage *image){
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(image);
@@ -211,23 +183,6 @@
             block(image);
         }
     }]];
-}
-
-+ (NSData *)dataFromUrl:(NSURL *)url{
-    NSURLRequest *request = [NSURLRequest requestWithURL:url
-                                             cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                         timeoutInterval:20.0f];
-    NSError *error;
-    NSURLResponse *response;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request
-                                         returningResponse:&response
-                                                     error:&error];
-    return data;
-}
-
-+ (id)jsonDataFromUrl:(NSURL *)url{
-    NSData *data = [self dataFromUrl:url];
-    return [[self parser] objectWithData:data];
 }
 
 @end
