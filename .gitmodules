@@ -1,3 +1,6 @@
 [submodule "Spectttator/AFNetworking"]
 	path = Spectttator/AFNetworking
 	url = git@github.com:InScopeApps/AFNetworking.git
+[submodule "Spectttator/JSONKit"]
+	path = Spectttator/JSONKit
+	url = https://github.com/johnezang/JSONKit.git
