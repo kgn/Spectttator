@@ -102,7 +102,15 @@
         if(mplayers != nil){
             [mplayers release];
         }
-    } failure:nil]];
+     } failure:^(NSURLRequest *request, NSURLResponse *response, NSError *error, id JSON){
+         if(runOnMainThread){
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 block(nil, nil);
+             });
+         }else{
+             block(nil, nil);
+         }         
+     }]];
 }
 
 + (void)requestShotsWithURL:(NSURL *)url
@@ -134,7 +142,15 @@
         if(mshots != nil){
             [mshots release];
         } 
-    } failure:nil]];
+     } failure:^(NSURLRequest *request, NSURLResponse *response, NSError *error, id JSON){
+         if(runOnMainThread){
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 block(nil, nil);
+             });
+         }else{
+             block(nil, nil);
+         }         
+     }]];
 }
 
 + (void)requestCommentsWithURL:(NSURL *)url
@@ -166,7 +182,15 @@
         if(mcomments != nil){
             [mcomments release];
         }
-    } failure:nil]];
+     } failure:^(NSURLRequest *request, NSURLResponse *response, NSError *error, id JSON){
+         if(runOnMainThread){
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 block(nil, nil);
+             });
+         }else{
+             block(nil, nil);
+         }         
+     }]];
 }
 
 + (void)requestImageWithURL:(NSURL *)url
@@ -174,7 +198,8 @@
                   withBlock:(void (^)(SPImage *))block{
     [[[self class] operationQueue] addOperation:[AFImageRequestOperation 
      imageRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
-     success:^(SPImage *image){
+     imageProcessingBlock:nil cacheName: nil
+     success:^(NSURLRequest *request, NSHTTPURLResponse *response, SPImage *image){
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(image);
@@ -182,7 +207,15 @@
         }else{
             block(image);
         }
-    }]];
+     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+         if(runOnMainThread){
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 block(nil);
+             });
+         }else{
+             block(nil);
+         }
+     }]];
 }
 
 @end

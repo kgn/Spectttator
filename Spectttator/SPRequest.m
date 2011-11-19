@@ -33,7 +33,15 @@
         }else{
             block([player autorelease]);
         }
-    } failure:nil]];
+     } failure:^(NSURLRequest *request, NSURLResponse *response, NSError *error, id JSON){
+         if(runOnMainThread){
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 block(nil);
+             });
+         }else{
+             block(nil);
+         }         
+     }]];
 }
 
 + (void)playerFollowers:(NSString *)username
@@ -93,7 +101,15 @@
         }else{
             block([shot autorelease]);
         }
-    } failure:nil]];
+     } failure:^(NSURLRequest *request, NSURLResponse *response, NSError *error, id JSON){
+         if(runOnMainThread){
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 block(nil);
+             });
+         }else{
+             block(nil);
+         }         
+     }]];
 }
 
 + (void)shotsForList:(NSString *)list
