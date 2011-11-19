@@ -1,3 +1,6 @@
 [submodule "Spectttator/JSONKit"]
 	path = Spectttator/JSONKit
 	url = https://github.com/johnezang/JSONKit.git
+[submodule "Spectttator/AFNetworking"]
+	path = Spectttator/AFNetworking
+	url = https://github.com/AFNetworking/AFNetworking.git
