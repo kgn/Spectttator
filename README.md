@@ -15,8 +15,9 @@ and above.
 How To
 --------
 
-Spectttator uses [AFNetworking](https://github.com/AFNetworking/AFNetworking) to connect to the Dribbble api.
-AFNetworking is included in the Spectttator repository as a submodule so make sure to clone the repo with the `--recursive` flag.
+Spectttator uses [AFNetworking](https://github.com/AFNetworking/AFNetworking) 
+and [JSONKit](https://github.com/johnezang/JSONKit).
+These libraries are included as submodules, so make sure to clone the repo with the `--recursive` flag.
 
     git clone --recursive https://github.com/InScopeApps/Spectttator.git
 
@@ -59,7 +60,7 @@ SpectttatorTest-iOS is a simple iPhone app that demonstrates how to use Specttta
 Change Log
 --------
 
-* **0.3.1** - Switching to use [AFNetworking](https://github.com/AFNetworking/AFNetworking), no public API change.
+* **0.3.1** - Switching to use [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [JSONKit](https://github.com/johnezang/JSONKit), no public API change.
 * **0.3.0** - Renaming SPManager to SPRequest. SPRequest is no longer a singleton and all it's methods are now simply class methods.
 * **0.2.1** - Switching to 64bit, this caused no interface changes.
 * **0.2.0** - Overhaul of all the methods by adding runOnMainThread to make it easy to update UI elements inside the block on the main thread.
