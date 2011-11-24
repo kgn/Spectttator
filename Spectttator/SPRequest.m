@@ -21,7 +21,7 @@
     NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/players/%@", username];
     [[SPMethods operationQueue] addOperation:[AFJSONRequestOperation
      JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]
-     success:^(NSURLRequest *request, NSURLResponse *response, NSDictionary *json){
+     success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
         SPPlayer *player = nil;
         if(![[json objectForKey:@"message"] isEqualToString:@"Not found"]){
             player = [[SPPlayer alloc] initWithDictionary:json];
@@ -33,7 +33,7 @@
         }else{
             block([player autorelease]);
         }
-     } failure:^(NSURLRequest *request, NSURLResponse *response, NSError *error, id JSON){
+     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
          if(runOnMainThread){
              dispatch_async(dispatch_get_main_queue(), ^{
                  block(nil);
@@ -89,7 +89,7 @@
     NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/shots/%lu", identifier];
     [[SPMethods operationQueue] addOperation:[AFJSONRequestOperation
      JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]
-     success:^(NSURLRequest *request, NSURLResponse *response, NSDictionary *json){
+     success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
         SPShot *shot = nil;
         if(![[json objectForKey:@"message"] isEqualToString:@"Not found"]){
             shot = [[SPShot alloc] initWithDictionary:json];
@@ -101,7 +101,7 @@
         }else{
             block([shot autorelease]);
         }
-     } failure:^(NSURLRequest *request, NSURLResponse *response, NSError *error, id JSON){
+     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
          if(runOnMainThread){
              dispatch_async(dispatch_get_main_queue(), ^{
                  block(nil);

@@ -78,7 +78,7 @@
                     withBlock:(void (^)(NSArray *, SPPagination *))block{
     [[[self class] operationQueue] addOperation:[AFJSONRequestOperation
      JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
-     success:^(NSURLRequest *request, NSURLResponse *response, NSDictionary *json){
+     success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
         NSArray *players = [json objectForKey:@"players"];
         NSMutableArray *mplayers = [[NSMutableArray alloc] initWithCapacity:[players count]];
         NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
@@ -102,7 +102,7 @@
         if(mplayers != nil){
             [mplayers release];
         }
-     } failure:^(NSURLRequest *request, NSURLResponse *response, NSError *error, id JSON){
+     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
          if(runOnMainThread){
              dispatch_async(dispatch_get_main_queue(), ^{
                  block(nil, nil);
@@ -118,7 +118,7 @@
                   withBlock:(void (^)(NSArray *, SPPagination *))block{
     [[[self class] operationQueue] addOperation:[AFJSONRequestOperation
      JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url] 
-     success:^(NSURLRequest *request, NSURLResponse *response, NSDictionary *json){
+     success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
         NSArray *shots = [json objectForKey:@"shots"];
         NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
         NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
@@ -142,7 +142,7 @@
         if(mshots != nil){
             [mshots release];
         } 
-     } failure:^(NSURLRequest *request, NSURLResponse *response, NSError *error, id JSON){
+     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
          if(runOnMainThread){
              dispatch_async(dispatch_get_main_queue(), ^{
                  block(nil, nil);
@@ -158,7 +158,7 @@
                   withBlock:(void (^)(NSArray *, SPPagination *))block{
     [[[self class] operationQueue] addOperation:[AFJSONRequestOperation
      JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url] 
-     success:^(NSURLRequest *request, NSURLResponse *response, NSDictionary *json){
+     success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
         NSArray *comments = [json objectForKey:@"comments"];
         NSMutableArray *mcomments = [[NSMutableArray alloc] initWithCapacity:[comments count]];
         NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
@@ -182,7 +182,7 @@
         if(mcomments != nil){
             [mcomments release];
         }
-     } failure:^(NSURLRequest *request, NSURLResponse *response, NSError *error, id JSON){
+     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
          if(runOnMainThread){
              dispatch_async(dispatch_get_main_queue(), ^{
                  block(nil, nil);
