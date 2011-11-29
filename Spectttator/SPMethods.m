@@ -17,33 +17,33 @@
 @implementation NSDictionary(Spectttator)
 
 - (NSUInteger)uintSafelyFromKey:(id)key{
-    if([self objectForKey:key] != [NSNull null] && [self objectForKey:key] != nil){
-        return [[self objectForKey:key] intValue];
+    if([self objectForKey:key] == [NSNull null] || [self objectForKey:key] == nil){
+        return NSNotFound;
     }
-    return NSNotFound;    
+    return [[self objectForKey:key] integerValue];
 }
 
 - (NSString *)stringSafelyFromKey:(id)key{
-    if([self objectForKey:key] != [NSNull null] && [self objectForKey:key] != nil){
-        return [NSString stringWithString:[self objectForKey:key]];
+    if([self objectForKey:key] == [NSNull null] || [self objectForKey:key] == nil){
+        return nil;
     }
-    return nil;         
+    return [NSString stringWithString:[self objectForKey:key]];    
 }
 
 - (NSURL *)URLSafelyFromKey:(id)key{
-    if([self objectForKey:key] != [NSNull null] && [self objectForKey:key] != nil){
-        NSString *urlString = [[self objectForKey:key] 
-                               stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];      
-        return [NSURL URLWithString:urlString];
+    if([self objectForKey:key] == [NSNull null] || [self objectForKey:key] == nil){
+        return nil;
     }
-    return nil;    
+    NSString *urlString = 
+    [[self objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];      
+    return [NSURL URLWithString:urlString];  
 }
 
 - (id)objectSafelyFromKey:(id)key{
-    if([self objectForKey:key] != [NSNull null] && [self objectForKey:key] != nil){
-        return [self objectForKey:key];
-    }
-    return nil;     
+    if([self objectForKey:key] == [NSNull null] || [self objectForKey:key] == nil){
+        return nil;
+    }    
+    return [self objectForKey:key];  
 }
 
 @end
