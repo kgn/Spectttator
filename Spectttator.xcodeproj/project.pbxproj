@@ -366,7 +366,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
-				ORGANIZATIONNAME = "InScopeApps {+}";
+				ORGANIZATIONNAME = "David Keegan";
 			};
 			buildConfigurationList = 73698B6713B681F400922D1A /* Build configuration list for PBXProject "Spectttator" */;
 			compatibilityVersion = "Xcode 3.2";
