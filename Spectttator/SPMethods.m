@@ -13,6 +13,7 @@
 #import "SPShot.h"
 #import "AFJSONRequestOperation.h"
 #import "AFImageRequestOperation.h"
+#import "AFHTTPRequestOperation.h"
 
 @implementation NSDictionary(Spectttator)
 
@@ -216,6 +217,31 @@
              block(nil);
          }
      }]];
+}
+
++ (void)requestDataWithURL:(NSURL *)url
+            runOnMainThread:(BOOL)runOnMainThread
+                  withBlock:(void (^)(NSData *))block{
+    AFHTTPRequestOperation *requestOperation = 
+    [[[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:url]] autorelease];
+    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+        if(runOnMainThread){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                block(operation.responseData);
+            });
+        }else{
+            block(operation.responseData);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        if(runOnMainThread){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                block(nil);
+            });
+        }else{
+            block(nil);
+        }
+    }];
+    [[[self class] operationQueue] addOperation:requestOperation];
 }
 
 @end

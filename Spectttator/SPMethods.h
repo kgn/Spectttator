@@ -45,4 +45,7 @@
             runOnMainThread:(BOOL)runOnMainThread 
                   withBlock:(void (^)(SPImage *))block;
 
++ (void)requestDataWithURL:(NSURL *)url
+           runOnMainThread:(BOOL)runOnMainThread
+                 withBlock:(void (^)(NSData *))block;
 @end
