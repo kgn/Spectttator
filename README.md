@@ -5,6 +5,8 @@ Spectttator is an Objective-C framework for OSX and iOS that uses
 [blocks](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Blocks/Articles/00_Introduction.html)
 to provide an easy to use asynchronous interface to the [Dribbble api](http://dribbble.com/api).
 
+This framework has been heavily veted by the Mac App [Play by Play](http://playbyplayapp.com).
+
 Below is a quick overview of the framework, to get an in depth look check out the [documentation](http://inscopeapps.github.com/Spectttator).
 
 Spectttator requires either
