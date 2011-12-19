@@ -19,6 +19,10 @@
 		739A44A913B8642B00E7783A /* SPMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 739A44A713B8642B00E7783A /* SPMethods.m */; };
 		739A44AE13B86A8C00E7783A /* SPComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 739A44AC13B86A8C00E7783A /* SPComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		739A44AF13B86A8C00E7783A /* SPComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 739A44AD13B86A8C00E7783A /* SPComment.m */; };
+		73A29482149F477500F25E50 /* SPObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 73A29480149F477500F25E50 /* SPObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		73A29483149F477500F25E50 /* SPObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A29481149F477500F25E50 /* SPObject.m */; };
+		73A29485149F4AC400F25E50 /* SPObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A29481149F477500F25E50 /* SPObject.m */; };
+		73A29486149F4AC700F25E50 /* SPObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 73A29480149F477500F25E50 /* SPObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73BBCF2113B7FB0300D5F5DF /* SPShot.h in Headers */ = {isa = PBXBuildFile; fileRef = 73BBCF1F13B7FB0300D5F5DF /* SPShot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73BBCF2213B7FB0300D5F5DF /* SPShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 73BBCF2013B7FB0300D5F5DF /* SPShot.m */; };
 		73C01C8613C2EAF700A8ECDB /* SPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 73698BAD13B6839500922D1A /* SPRequest.m */; };
@@ -103,6 +107,8 @@
 		739A44A713B8642B00E7783A /* SPMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMethods.m; sourceTree = "<group>"; };
 		739A44AC13B86A8C00E7783A /* SPComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPComment.h; sourceTree = "<group>"; };
 		739A44AD13B86A8C00E7783A /* SPComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPComment.m; sourceTree = "<group>"; };
+		73A29480149F477500F25E50 /* SPObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPObject.h; sourceTree = "<group>"; };
+		73A29481149F477500F25E50 /* SPObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPObject.m; sourceTree = "<group>"; };
 		73BBCF1F13B7FB0300D5F5DF /* SPShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPShot.h; sourceTree = "<group>"; };
 		73BBCF2013B7FB0300D5F5DF /* SPShot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPShot.m; sourceTree = "<group>"; };
 		73C01C7B13C2EA8600A8ECDB /* libSpectttator-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSpectttator-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +196,8 @@
 				73698BA813B6832E00922D1A /* Spectttator.h */,
 				73698BAC13B6839500922D1A /* SPRequest.h */,
 				73698BAD13B6839500922D1A /* SPRequest.m */,
+				73A29480149F477500F25E50 /* SPObject.h */,
+				73A29481149F477500F25E50 /* SPObject.m */,
 				73BBCF1F13B7FB0300D5F5DF /* SPShot.h */,
 				73BBCF2013B7FB0300D5F5DF /* SPShot.m */,
 				739A447213B811E200E7783A /* SPPlayer.h */,
@@ -279,6 +287,7 @@
 				739A447413B811E200E7783A /* SPPlayer.h in Headers */,
 				73698BAE13B6839500922D1A /* SPRequest.h in Headers */,
 				739A44A813B8642B00E7783A /* SPMethods.h in Headers */,
+				73A29482149F477500F25E50 /* SPObject.h in Headers */,
 				73C15D74147619BB001BFA80 /* AFHTTPClient.h in Headers */,
 				73C15D78147619BB001BFA80 /* AFHTTPRequestOperation.h in Headers */,
 				73C15D7C147619BB001BFA80 /* AFImageCache.h in Headers */,
@@ -306,6 +315,7 @@
 				73C01C9C13C2EB0B00A8ECDB /* SPComment.h in Headers */,
 				73C01C9D13C2EB0B00A8ECDB /* SPPagination.h in Headers */,
 				73C01C9E13C2EB0B00A8ECDB /* SPMethods.h in Headers */,
+				73A29486149F4AC700F25E50 /* SPObject.h in Headers */,
 				73C15D75147619BB001BFA80 /* AFHTTPClient.h in Headers */,
 				73C15D79147619BB001BFA80 /* AFHTTPRequestOperation.h in Headers */,
 				73C15D7D147619BB001BFA80 /* AFImageCache.h in Headers */,
@@ -408,6 +418,7 @@
 				73C15D9A147619BB001BFA80 /* AFXMLRequestOperation.m in Sources */,
 				73C15D9E147619BB001BFA80 /* UIImageView+AFNetworking.m in Sources */,
 				73E902AC14764DFF006EB9E4 /* JSONKit.m in Sources */,
+				73A29483149F477500F25E50 /* SPObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73A29485149F4AC400F25E50 /* SPObject.m in Sources */,
 				73C01C8613C2EAF700A8ECDB /* SPRequest.m in Sources */,
 				73C01C8713C2EAF700A8ECDB /* SPShot.m in Sources */,
 				73C01C8813C2EAF700A8ECDB /* SPPlayer.m in Sources */,

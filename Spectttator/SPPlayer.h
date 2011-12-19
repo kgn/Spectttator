@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SPMethods.h"
+#import "SPObject.h"
 
 /** The `SPPlayer` class provides a programmatic interface for interacting 
  with Dribbble players.
@@ -30,10 +30,8 @@
  requests will still be asynchronous but the passed in block will be executed on the main thread. 
  */
 
-@interface SPPlayer : NSObject
+@interface SPPlayer : SPObject
 
-/// The unique id of the player.
-@property (readonly, nonatomic) NSUInteger identifier;
 /// The real name of the player.
 @property (readonly, nonatomic) NSString *name;
 /// The username of the player.
@@ -71,22 +69,6 @@
 @property (readonly, nonatomic) NSUInteger reboundsCount;
 /// The number of rebounds the player's shots have received.
 @property (readonly, nonatomic) NSUInteger reboundsReceivedCount;
-/// The date the player's account was created on.
-@property (readonly, nonatomic) NSDate *createdAt;
-
-///----------------------------
-/// @name Initializing a SPPlayer Object
-///----------------------------
-
-/** 
- Returns a Spectttator player object initialized with the given player data. 
- 
- There is no need to call this method directly, it is used by 
-  higher level methods like `[SPRequest playerInformationForUsername:runOnMainThread:withBlock:]`.
- @param dictionary A dictionary of player data.
- @return An initialized `SPPlayer` object.
- */
-- (id)initWithDictionary:(NSDictionary *)dictionary;
 
 ///----------------------------
 /// @name Avatar

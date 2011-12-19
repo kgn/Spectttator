@@ -7,12 +7,10 @@
 //
 
 #import "SPShot.h"
-#import "SPMethods.h"
 #import "SPComment.h"
 
 @implementation SPShot
 
-@synthesize identifier = _identifier;
 @synthesize title = _title;
 @synthesize url = _url;
 @synthesize shortUrl = _shortUrl;
@@ -25,7 +23,6 @@
 @synthesize commentsCount = _commentsCount;
 @synthesize reboundsCount = _reboundsCount;
 @synthesize reboundSourceId = _reboundSourceId;
-@synthesize createdAt = _createdAt;
 @synthesize player = _player;
 
 - (void)imageRunOnMainThread:(BOOL)runOnMainThread 
@@ -65,8 +62,7 @@
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
-    if((self = [super init])){
-        _identifier = [dictionary uintSafelyFromKey:@"id"];
+    if((self = [super initWithDictionary:dictionary])){
         _title = [[dictionary stringSafelyFromKey:@"title"] retain];
         _url = [[dictionary URLSafelyFromKey:@"url"] retain];
         _shortUrl = [[dictionary URLSafelyFromKey:@"short_url"] retain];
@@ -80,36 +76,15 @@
         _reboundsCount = [dictionary uintSafelyFromKey:@"rebounds_count"];
         _reboundSourceId = [dictionary uintSafelyFromKey:@"rebound_source_id"];
         
-        NSString *createdAt = [dictionary stringSafelyFromKey:@"created_at"];
-        if(createdAt != nil){
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss ZZZZ"];
-            _createdAt = [[formatter dateFromString:createdAt] retain];
-            [formatter release];
-        }else{
-            _createdAt = nil;
-        }
-        
         NSDictionary *player = [dictionary objectSafelyFromKey:@"player"];
         if(player != nil){
-        _player = [[SPPlayer alloc] initWithDictionary:player];
+            _player = [[SPPlayer alloc] initWithDictionary:player];
         }else{
             _player = nil;
         }
     }
     
     return self;
-}
-
-- (NSUInteger)hash{
-    return self.identifier;
-}
-
-- (BOOL)isEqual:(id)object{
-    if([object isKindOfClass:[self class]]){
-        return (self.identifier == [(SPShot *)object identifier]);
-    }
-    return NO;
 }
 
 - (NSString *)description{
@@ -123,7 +98,6 @@
     [_shortUrl release];
     [_imageUrl release];
     [_imageTeaserUrl release];
-    [_createdAt release];
     [_player release];
     [super dealloc];
 }

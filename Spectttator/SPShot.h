@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "SPPagination.h"
 #import "SPPlayer.h"
-#import "SPMethods.h"
 
 /** The `SPShot` class provides a programmatic interface for interacting 
  with Dribbble shots.
@@ -38,10 +37,8 @@
  requests will still be asynchronous but the passed in block will be executed on the main thread.
  */
 
-@interface SPShot : NSObject
+@interface SPShot : SPObject
 
-/// The unique id of the shot.
-@property (readonly, nonatomic) NSUInteger identifier;
 /// The title of the shot.
 @property (readonly, nonatomic) NSString *title;
 /// The full url to the shot.
@@ -69,26 +66,11 @@
  If it is not a rebound this value is `NSNotFound`.
  */
 @property (readonly, nonatomic) NSUInteger reboundSourceId;
-/// The date the shot was created on.
-@property (readonly, nonatomic) NSDate *createdAt;
 /** The player who posted the shot.
  @see SPPlayer
  */
 @property (readonly, nonatomic) SPPlayer *player;
 
-///----------------------------
-/// @name Initializing a SPShot Object
-///----------------------------
-
-/** 
- Returns a Spetttator shot object initialized with the given shot data. 
- 
- There is no need to call this method directly, it is used by 
-  higher level methods like `[SPRequest shotsForList:withPagination:runOnMainThread:withBlock:]`.
- @param dictionary A dictionary of shot data.
- @return An initialized `SPShot` object.
- */
-- (id)initWithDictionary:(NSDictionary *)dictionary;
 
 ///----------------------------
 /// @name Retrieving Images

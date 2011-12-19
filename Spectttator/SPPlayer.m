@@ -10,7 +10,6 @@
 
 @implementation SPPlayer
 
-@synthesize identifier = _identifier;
 @synthesize name = _name;
 @synthesize username = _username;
 @synthesize url = _url;
@@ -28,7 +27,6 @@
 @synthesize likesReceivedCount = _likesReceivedCount;
 @synthesize reboundsCount = _reboundsCount;
 @synthesize reboundsReceivedCount = _reboundsReceivedCount;
-@synthesize createdAt = _createdAt;
     
 - (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
                     withBlock:(void (^)(SPImage *))block{
@@ -38,8 +36,7 @@
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
-    if((self = [super init])){
-        _identifier = [dictionary uintSafelyFromKey:@"id"];
+    if((self = [super initWithDictionary:dictionary])){
         _name = [[dictionary stringSafelyFromKey:@"name"] retain];
         _username = [[dictionary stringSafelyFromKey:@"username"] retain];
         _url = [[dictionary URLSafelyFromKey:@"url"] retain];
@@ -47,7 +44,6 @@
         _location = [[dictionary stringSafelyFromKey:@"location"] retain];
         _twitterScreenName = [[dictionary stringSafelyFromKey:@"twitter_screen_name"] retain];
         _draftedByPlayerId = [dictionary uintSafelyFromKey:@"drafted_by_player_id"];
-        
         _shotsCount = [dictionary uintSafelyFromKey:@"shots_count"];
         _drafteesCount = [dictionary uintSafelyFromKey:@"draftees_count"];
         _followersCount = [dictionary uintSafelyFromKey:@"followers_count"];
@@ -58,30 +54,9 @@
         _likesReceivedCount = [dictionary uintSafelyFromKey:@"likes_received_count"];
         _reboundsCount = [dictionary uintSafelyFromKey:@"rebounds_count"];
         _reboundsReceivedCount = [dictionary uintSafelyFromKey:@"rebounds_received_count"];
-        
-        NSString *createdAt = [dictionary stringSafelyFromKey:@"created_at"];
-        if(createdAt != nil){
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss ZZZZ"];
-            _createdAt = [[formatter dateFromString:createdAt] retain];
-            [formatter release];
-        }else{
-            _createdAt = nil;
-        }
     }
     
     return self;
-}
-
-- (NSUInteger)hash{
-    return self.identifier;
-}
-
-- (BOOL)isEqual:(id)object{
-    if([object isKindOfClass:[self class]]){
-        return (self.identifier == [(SPPlayer *)object identifier]);
-    }
-    return NO;
 }
 
 - (NSString *)description{
@@ -96,7 +71,6 @@
     [_avatarUrl release];
     [_location release];
     [_twitterScreenName release];
-    [_createdAt release];
     [super dealloc];
 }
 

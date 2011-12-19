@@ -28,34 +28,15 @@
  requests will still be asynchronous but the passed in block will be executed on the main thread.
  */
 
-@interface SPComment : NSObject
+@interface SPComment : SPObject
 
-/// The unique id of the comment.
-@property (readonly, nonatomic) NSUInteger identifier;
 /// The text of the comment.
 @property (readonly, nonatomic) NSString *body;
 /// The number of players who liked the comment.
 @property (readonly, nonatomic) NSUInteger likesCount;
-/// The date the comment was created.
-@property (readonly, nonatomic) NSDate *createdAt;
 /** The player who posted the comment.
  @see SPPlayer
  */
 @property (readonly, nonatomic) SPPlayer *player;
-
-///----------------------------
-/// @name Initializing a SPComment Object
-///----------------------------
-
-/** 
- Returns a Spectttator comment object initialized with the given comment data. 
- 
- There is no need to call this method directly, it is used by 
- higher level methods like 
- `[SPShot commentsWithPagination:runOnMainThread:withBlock:]`.
- @param dictionary A dictionary of comment data.
- @return An initialized `SPComment` object.
- */
-- (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

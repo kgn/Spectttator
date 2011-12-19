@@ -7,31 +7,17 @@
 //
 
 #import "SPComment.h"
-#import "SPMethods.h"
 
 @implementation SPComment
 
-@synthesize identifier = _identifier;
 @synthesize body = _body;
 @synthesize likesCount = _likesCount;
-@synthesize createdAt = _createdAt;
 @synthesize player = _player;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
-    if((self = [super init])){
-        _identifier = [dictionary uintSafelyFromKey:@"id"];
+    if((self = [super initWithDictionary:dictionary])){
         _body = [[dictionary stringSafelyFromKey:@"body"] retain];
         _likesCount = [dictionary uintSafelyFromKey:@"likes_count"];
-        
-        NSString *createdAt = [dictionary stringSafelyFromKey:@"created_at"];
-        if(createdAt != nil){
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss ZZZZ"];
-            _createdAt = [[formatter dateFromString:createdAt] retain];
-            [formatter release];
-        }else{
-            _createdAt = nil;
-        }
         
         NSDictionary *player = [dictionary objectSafelyFromKey:@"player"];
         if(player != nil){
@@ -44,17 +30,6 @@
     return self;
 }
 
-- (NSUInteger)hash{
-    return self.identifier;
-}
-
-- (BOOL)isEqual:(id)object{
-    if([object isKindOfClass:[self class]]){
-        return (self.identifier == [(SPComment *)object identifier]);
-    }
-    return NO;
-}
-
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Username='%@' Body=%@>", 
             [self class], self.identifier, self.player.username, self.body];
@@ -62,7 +37,6 @@
 
 - (void)dealloc{
     [_body release];
-    [_createdAt release];
     [_player release];
     [super dealloc];
 }
