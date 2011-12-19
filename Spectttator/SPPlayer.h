@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SPMethods.h"
 
 /** The `SPPlayer` class provides a programmatic interface for interacting 
  with Dribbble players.
@@ -100,12 +101,6 @@
   avatar is passed to the block.
  */
 - (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
-                    withBlock:(void (^)(
-#if TARGET_OS_IPHONE
-                                        UIImage *
-#else
-                                        NSImage *
-#endif
-                                        ))block;
+                    withBlock:(void (^)(SPImage *))block;
 
 @end

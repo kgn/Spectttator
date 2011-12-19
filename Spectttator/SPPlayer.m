@@ -7,7 +7,6 @@
 //
 
 #import "SPPlayer.h"
-#import "SPMethods.h"
 
 @implementation SPPlayer
 
@@ -32,13 +31,7 @@
 @synthesize createdAt = _createdAt;
     
 - (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
-                    withBlock:(void (^)(
-#if TARGET_OS_IPHONE
-                                        UIImage *
-#else
-                                        NSImage *
-#endif
-                                        ))block{
+                    withBlock:(void (^)(SPImage *))block{
     [SPMethods requestImageWithURL:self.avatarUrl
                    runOnMainThread:runOnMainThread 
                          withBlock:block];
@@ -69,8 +62,8 @@
         NSString *createdAt = [dictionary stringSafelyFromKey:@"created_at"];
         if(createdAt != nil){
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss '-0400'"];//TODO: find a better way to match the timezone
-            _createdAt = [[formatter dateFromString:[dictionary objectForKey:@"created_at"]] retain];
+            [formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss ZZZZ"];
+            _createdAt = [[formatter dateFromString:createdAt] retain];
             [formatter release];
         }else{
             _createdAt = nil;

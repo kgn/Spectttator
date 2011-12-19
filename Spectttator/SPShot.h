@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SPPagination.h"
 #import "SPPlayer.h"
+#import "SPMethods.h"
 
 /** The `SPShot` class provides a programmatic interface for interacting 
  with Dribbble shots.
@@ -102,13 +103,7 @@
   shot is passed to the block.
  */
 - (void)imageRunOnMainThread:(BOOL)runOnMainThread 
-                   withBlock:(void (^)(
-#if TARGET_OS_IPHONE                                       
-                                       UIImage *
-#else
-                                       NSImage *
-#endif
-                                       ))block;
+                   withBlock:(void (^)(SPImage *))block;
 
 /** 
  Retrieves the shot's teaser image.
@@ -119,13 +114,7 @@
   teaser is passed to the block.
  */
 - (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
-                         withBlock:(void (^)(
-#if TARGET_OS_IPHONE                                       
-                                             UIImage *
-#else
-                                             NSImage *
-#endif
-                                             ))block;
+                         withBlock:(void (^)(SPImage *))block;
 
 ///----------------------------
 /// @name Rebounds and Comments
