@@ -7,7 +7,7 @@ to provide an easy to use asynchronous interface to the [Dribbble api](http://dr
 
 This framework has been heavily veted by the Mac App [Play by Play](http://playbyplayapp.com).
 
-Below is a quick overview of the framework, to get an in depth look check out the [documentation](http://inscopeapps.github.com/Spectttator).
+Below is a quick overview of the framework, to get an in depth look check out the [documentation](http://kgn.github.com/Spectttator).
 
 Spectttator requires either
 [iOS 4.0](http://developer.apple.com/library/ios/#releasenotes/General/WhatsNewIniPhoneOS/Articles/iPhoneOS4.html%23//apple_ref/doc/uid/TP40009559-SW1)
@@ -21,7 +21,7 @@ Spectttator uses [AFNetworking](https://github.com/AFNetworking/AFNetworking)
 and [JSONKit](https://github.com/johnezang/JSONKit).
 These libraries are included as submodules, so make sure to clone the repo with the `--recursive` flag.
 
-    git clone --recursive https://github.com/InScopeApps/Spectttator.git
+    git clone --recursive https://github.com/kgn/Spectttator.git
 
 Example
 --------
@@ -30,7 +30,7 @@ The following snippet demonstrates how to get the last 10 shots a player liked.
 
 ``` obj-c
 #import <Spectttator/Spectttator.h>
-NSString *username = @"inscopeapps";
+NSString *username = @"kgn";
 [SPRequest shotsForPlayerLikes:username
                 withPagination:[SPPagination perPage:10]
                runOnMainThread:NO
@@ -52,14 +52,14 @@ development and is a great way to see how to use Spectttator.
 
 Check out [this video](http://vimeo.com/25704164) to see SpectttatorTest in action.
 
-![SpectttatorTest](https://github.com/InScopeApps/Spectttator/raw/master/SpectttatorTest/SpectttatorTest.png)
+![SpectttatorTest](https://github.com/kgn/Spectttator/raw/master/SpectttatorTest/SpectttatorTest.png)
 
 SpectttatorTest-iOS
 --------
 
 SpectttatorTest-iOS is a simple iPhone app that demonstrates how to use Spectttator in iOS.
 
-![SpectttatorTest](https://github.com/InScopeApps/Spectttator/raw/master/SpectttatorTest-iOS/SpectttatorTest-iOS.png)
+![SpectttatorTest](https://github.com/kgn/Spectttator/raw/master/SpectttatorTest-iOS/SpectttatorTest-iOS.png)
 
 Change Log
 --------
