@@ -450,6 +450,7 @@
 				HEADER_SEARCH_PATHS = Spectttator;
 				INFOPLIST_FILE = "SpectttatorTest-iOS/SpectttatorTest-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
@@ -471,6 +472,7 @@
 				INFOPLIST_FILE = "SpectttatorTest-iOS/SpectttatorTest-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
