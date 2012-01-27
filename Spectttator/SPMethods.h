@@ -26,7 +26,6 @@
 
 @interface SPMethods : NSObject
 
-+ (NSOperationQueue *)operationQueue;
 + (NSString *)pagination:(NSDictionary *)pagination;
 
 + (void)requestPlayersWithURL:(NSURL *)url 

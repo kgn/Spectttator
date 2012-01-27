@@ -51,16 +51,6 @@
 
 @implementation SPMethods
 
-+ (NSOperationQueue *)operationQueue{
-    static NSOperationQueue *kQueue = nil;
-    if(kQueue == nil){
-        kQueue = [[NSOperationQueue alloc] init];
-        [kQueue setMaxConcurrentOperationCount:
-         NSOperationQueueDefaultMaxConcurrentOperationCount];
-    }
-    return kQueue;
-}
-
 + (NSString *)pagination:(NSDictionary *)pagination{
     NSNumber *page = [pagination objectForKey:@"page"];
     NSNumber *perPage = [pagination objectForKey:@"perPage"];
@@ -77,154 +67,154 @@
 + (void)requestPlayersWithURL:(NSURL *)url
               runOnMainThread:(BOOL)runOnMainThread
                     withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [[[self class] operationQueue] addOperation:[AFJSONRequestOperation
-     JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
-     success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
-        NSArray *players = [json objectForKey:@"players"];
-        NSMutableArray *mplayers = [[NSMutableArray alloc] initWithCapacity:[players count]];
-        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
-        for(NSDictionary *playerData in players){
-            SPPlayer *player = [[SPPlayer alloc] initWithDictionary:playerData];
-            [mplayers addObject:player];
-            [player release];
-        }
-        [pool drain];
-        if([mplayers count] == 0){
-            [mplayers release];
-            mplayers = nil;
-        }
-        if(runOnMainThread){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                block(mplayers, [SPPagination paginationWithDictionary:json]);
-            });
-        }else{
-            block(mplayers, [SPPagination paginationWithDictionary:json]);
-        }
-        if(mplayers != nil){
-            [mplayers release];
-        }
-     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
-         if(runOnMainThread){
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 block(nil, nil);
-             });
-         }else{
-             block(nil, nil);
-         }         
-     }]];
+    [[AFJSONRequestOperation
+      JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
+      success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
+          NSArray *players = [json objectForKey:@"players"];
+          NSMutableArray *mplayers = [[NSMutableArray alloc] initWithCapacity:[players count]];
+          NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
+          for(NSDictionary *playerData in players){
+              SPPlayer *player = [[SPPlayer alloc] initWithDictionary:playerData];
+              [mplayers addObject:player];
+              [player release];
+          }
+          [pool drain];
+          if([mplayers count] == 0){
+              [mplayers release];
+              mplayers = nil;
+          }
+          if(runOnMainThread){
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  block(mplayers, [SPPagination paginationWithDictionary:json]);
+              });
+          }else{
+              block(mplayers, [SPPagination paginationWithDictionary:json]);
+          }
+          if(mplayers != nil){
+              [mplayers release];
+          }
+      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
+          if(runOnMainThread){
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  block(nil, nil);
+              });
+          }else{
+              block(nil, nil);
+          }         
+      }] start];
 }
 
 + (void)requestShotsWithURL:(NSURL *)url
             runOnMainThread:(BOOL)runOnMainThread
                   withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [[[self class] operationQueue] addOperation:[AFJSONRequestOperation
-     JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url] 
-     success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
-        NSArray *shots = [json objectForKey:@"shots"];
-        NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
-        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
-        for(NSDictionary *shotData in shots){
-            SPShot *shot = [[SPShot alloc] initWithDictionary:shotData];
-            [mshots addObject:shot];
-            [shot release];
-        }
-        [pool drain];
-        if([mshots count] == 0){
-            [mshots release];            
-            mshots = nil;
-        }
-        if(runOnMainThread){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                block(mshots, [SPPagination paginationWithDictionary:json]);
-            });
-        }else{
-            block(mshots, [SPPagination paginationWithDictionary:json]);
-        }
-        if(mshots != nil){
-            [mshots release];
-        } 
-     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
-         if(runOnMainThread){
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 block(nil, nil);
-             });
-         }else{
-             block(nil, nil);
-         }         
-     }]];
+    [[AFJSONRequestOperation
+      JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url] 
+      success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
+          NSArray *shots = [json objectForKey:@"shots"];
+          NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
+          NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
+          for(NSDictionary *shotData in shots){
+              SPShot *shot = [[SPShot alloc] initWithDictionary:shotData];
+              [mshots addObject:shot];
+              [shot release];
+          }
+          [pool drain];
+          if([mshots count] == 0){
+              [mshots release];            
+              mshots = nil;
+          }
+          if(runOnMainThread){
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  block(mshots, [SPPagination paginationWithDictionary:json]);
+              });
+          }else{
+              block(mshots, [SPPagination paginationWithDictionary:json]);
+          }
+          if(mshots != nil){
+              [mshots release];
+          } 
+      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
+          if(runOnMainThread){
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  block(nil, nil);
+              });
+          }else{
+              block(nil, nil);
+          }         
+      }] start];
 }
 
 + (void)requestCommentsWithURL:(NSURL *)url
             runOnMainThread:(BOOL)runOnMainThread
                   withBlock:(void (^)(NSArray *, SPPagination *))block{
-    [[[self class] operationQueue] addOperation:[AFJSONRequestOperation
-     JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url] 
-     success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
-        NSArray *comments = [json objectForKey:@"comments"];
-        NSMutableArray *mcomments = [[NSMutableArray alloc] initWithCapacity:[comments count]];
-        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
-        for(NSDictionary *commentData in comments){
-            SPComment *comment = [[SPComment alloc] initWithDictionary:commentData];
-            [mcomments addObject:comment];
-            [comment release];
-        }
-        [pool drain];
-        if([mcomments count] == 0){
-            [mcomments release];
-            mcomments = nil;
-        }
-        if(runOnMainThread){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                block(mcomments, [SPPagination paginationWithDictionary:json]);
-            });
-        }else{
-            block(mcomments, [SPPagination paginationWithDictionary:json]);
-        }
-        if(mcomments != nil){
-            [mcomments release];
-        }
-     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
-         if(runOnMainThread){
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 block(nil, nil);
-             });
-         }else{
-             block(nil, nil);
-         }         
-     }]];
+    [[AFJSONRequestOperation
+      JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url] 
+      success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
+          NSArray *comments = [json objectForKey:@"comments"];
+          NSMutableArray *mcomments = [[NSMutableArray alloc] initWithCapacity:[comments count]];
+          NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
+          for(NSDictionary *commentData in comments){
+              SPComment *comment = [[SPComment alloc] initWithDictionary:commentData];
+              [mcomments addObject:comment];
+              [comment release];
+          }
+          [pool drain];
+          if([mcomments count] == 0){
+              [mcomments release];
+              mcomments = nil;
+          }
+          if(runOnMainThread){
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  block(mcomments, [SPPagination paginationWithDictionary:json]);
+              });
+          }else{
+              block(mcomments, [SPPagination paginationWithDictionary:json]);
+          }
+          if(mcomments != nil){
+              [mcomments release];
+          }
+      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
+          if(runOnMainThread){
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  block(nil, nil);
+              });
+          }else{
+              block(nil, nil);
+          }         
+      }] start];
 }
 
 + (void)requestImageWithURL:(NSURL *)url
             runOnMainThread:(BOOL)runOnMainThread
                   withBlock:(void (^)(SPImage *))block{
-    [[[self class] operationQueue] addOperation:[AFImageRequestOperation 
-     imageRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
-     imageProcessingBlock:nil cacheName: nil
-     success:^(NSURLRequest *request, NSHTTPURLResponse *response, SPImage *image){
-        if(runOnMainThread){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                block(image);
-            });
-        }else{
-            block(image);
-        }
-     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-         if(runOnMainThread){
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 block(nil);
-             });
-         }else{
-             block(nil);
-         }
-     }]];
+    [[AFImageRequestOperation 
+      imageRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
+      imageProcessingBlock:nil cacheName: nil
+      success:^(NSURLRequest *request, NSHTTPURLResponse *response, SPImage *image){
+          if(runOnMainThread){
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  block(image);
+              });
+          }else{
+              block(image);
+          }
+      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+          if(runOnMainThread){
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  block(nil);
+              });
+          }else{
+              block(nil);
+          }
+      }] start];
 }
 
 + (void)requestDataWithURL:(NSURL *)url
             runOnMainThread:(BOOL)runOnMainThread
                   withBlock:(void (^)(NSData *))block{
-    AFHTTPRequestOperation *requestOperation = 
+    AFHTTPRequestOperation *operation = 
     [[[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:url]] autorelease];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
                 block(operation.responseData);
@@ -241,7 +231,7 @@
             block(nil);
         }
     }];
-    [[[self class] operationQueue] addOperation:requestOperation];
+    [operation start];
 }
 
 @end
