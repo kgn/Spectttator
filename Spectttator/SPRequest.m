@@ -17,7 +17,7 @@
 
 + (void)playerInformationForUsername:(NSString *)username
                      runOnMainThread:(BOOL)runOnMainThread
-                           withBlock:(void (^)(SPPlayer *))block{
+                           withBlock:(void (^)(SPPlayer *player))block{
     NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/players/%@", username];
     [[AFJSONRequestOperation
       JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]
@@ -47,7 +47,7 @@
 + (void)playerFollowers:(NSString *)username
          withPagination:(NSDictionary *)pagination
         runOnMainThread:(BOOL)runOnMainThread
-              withBlock:(void (^)(NSArray *, SPPagination *))block{
+              withBlock:(void (^)(NSArray *players, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/followers%@",
                            username, [SPMethods pagination:pagination]];
@@ -59,7 +59,7 @@
 + (void)playerFollowing:(NSString *)username
          withPagination:(NSDictionary *)pagination
         runOnMainThread:(BOOL)runOnMainThread
-              withBlock:(void (^)(NSArray *, SPPagination *))block{
+              withBlock:(void (^)(NSArray *players, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/following%@",
                            username, [SPMethods pagination:pagination]];
@@ -71,7 +71,7 @@
 + (void)playerDraftees:(NSString *)username
         withPagination:(NSDictionary *)pagination
        runOnMainThread:(BOOL)runOnMainThread
-             withBlock:(void (^)(NSArray *, SPPagination *))block{
+             withBlock:(void (^)(NSArray *players, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/draftees%@",
                            username, [SPMethods pagination:pagination]];
@@ -85,7 +85,7 @@
 
 + (void)shotInformationForIdentifier:(NSUInteger)identifier
                      runOnMainThread:(BOOL)runOnMainThread
-                           withBlock:(void (^)(SPShot *))block{
+                           withBlock:(void (^)(SPShot *shot))block{
     NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/shots/%lu", identifier];
     [[AFJSONRequestOperation
      JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]
@@ -115,7 +115,7 @@
 + (void)shotsForList:(NSString *)list
       withPagination:(NSDictionary *)pagination
      runOnMainThread:(BOOL)runOnMainThread
-           withBlock:(void (^)(NSArray *, SPPagination *))block{
+           withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%@%@",
                            list, [SPMethods pagination:pagination]];
@@ -127,7 +127,7 @@
 + (void)shotsForPlayer:(NSString *)username
         withPagination:(NSDictionary *)pagination
        runOnMainThread:(BOOL)runOnMainThread
-             withBlock:(void (^)(NSArray *, SPPagination *))block{
+             withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/shots%@",
                            username, [SPMethods pagination:pagination]];
@@ -139,7 +139,7 @@
 + (void)shotsForPlayerFollowing:(NSString *)username
                  withPagination:(NSDictionary *)pagination
                 runOnMainThread:(BOOL)runOnMainThread
-                      withBlock:(void (^)(NSArray *, SPPagination *))block{
+                      withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/shots/following%@",
                            username, [SPMethods pagination:pagination]];
@@ -151,7 +151,7 @@
 + (void)shotsForPlayerLikes:(NSString *)username
              withPagination:(NSDictionary *)pagination
             runOnMainThread:(BOOL)runOnMainThread
-                  withBlock:(void (^)(NSArray *, SPPagination *))block{
+                  withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/players/%@/shots/likes%@",
                            username, [SPMethods pagination:pagination]];

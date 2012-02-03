@@ -29,7 +29,7 @@
 @synthesize reboundsReceivedCount = _reboundsReceivedCount;
     
 - (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
-                    withBlock:(void (^)(SPImage *))block{
+                    withBlock:(void (^)(SPImage *image))block{
     [SPMethods requestImageWithURL:self.avatarUrl
                    runOnMainThread:runOnMainThread 
                          withBlock:block];

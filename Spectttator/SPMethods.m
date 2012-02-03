@@ -66,7 +66,7 @@
 
 + (void)requestPlayersWithURL:(NSURL *)url
               runOnMainThread:(BOOL)runOnMainThread
-                    withBlock:(void (^)(NSArray *, SPPagination *))block{
+                    withBlock:(void (^)(NSArray *players, SPPagination *pagination))block{
     [[AFJSONRequestOperation
       JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
@@ -106,7 +106,7 @@
 
 + (void)requestShotsWithURL:(NSURL *)url
             runOnMainThread:(BOOL)runOnMainThread
-                  withBlock:(void (^)(NSArray *, SPPagination *))block{
+                  withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block{
     [[AFJSONRequestOperation
       JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url] 
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
@@ -146,7 +146,7 @@
 
 + (void)requestCommentsWithURL:(NSURL *)url
             runOnMainThread:(BOOL)runOnMainThread
-                  withBlock:(void (^)(NSArray *, SPPagination *))block{
+                  withBlock:(void (^)(NSArray *comments, SPPagination *pagination))block{
     [[AFJSONRequestOperation
       JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url] 
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
@@ -186,7 +186,7 @@
 
 + (void)requestImageWithURL:(NSURL *)url
             runOnMainThread:(BOOL)runOnMainThread
-                  withBlock:(void (^)(SPImage *))block{
+                  withBlock:(void (^)(SPImage *image))block{
     [[AFImageRequestOperation 
       imageRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
       imageProcessingBlock:nil cacheName: nil
@@ -211,7 +211,7 @@
 
 + (void)requestDataWithURL:(NSURL *)url
             runOnMainThread:(BOOL)runOnMainThread
-                  withBlock:(void (^)(NSData *))block{
+                  withBlock:(void (^)(NSData *data))block{
     AFHTTPRequestOperation *operation = 
     [[[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:url]] autorelease];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){

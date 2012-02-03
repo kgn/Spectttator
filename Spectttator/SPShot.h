@@ -85,7 +85,7 @@
   shot is passed to the block.
  */
 - (void)imageRunOnMainThread:(BOOL)runOnMainThread 
-                   withBlock:(void (^)(SPImage *))block;
+                   withBlock:(void (^)(SPImage *image))block;
 
 /** 
  Retrieves the shot's teaser image.
@@ -96,7 +96,7 @@
   teaser is passed to the block.
  */
 - (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
-                         withBlock:(void (^)(SPImage *))block;
+                         withBlock:(void (^)(SPImage *image))block;
 
 ///----------------------------
 /// @name Rebounds and Comments
@@ -117,7 +117,7 @@
  */
 - (void)reboundsWithPagination:(NSDictionary *)pagination
                runOnMainThread:(BOOL)runOnMainThread 
-                     withBlock:(void (^)(NSArray *, SPPagination *))block;
+                     withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block;
 
 /** 
  Retrieves the set of rebounds (shots in response to a shot) for the shot.
@@ -137,6 +137,6 @@
  */
 - (void)commentsWithPagination:(NSDictionary *)pagination
                runOnMainThread:(BOOL)runOnMainThread 
-                     withBlock:(void (^)(NSArray *, SPPagination *))block;
+                     withBlock:(void (^)(NSArray *comments, SPPagination *pagination))block;
 
 @end

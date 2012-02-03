@@ -55,7 +55,7 @@
  */
 + (void)playerInformationForUsername:(NSString *)username 
                      runOnMainThread:(BOOL)runOnMainThread 
-                           withBlock:(void (^)(SPPlayer *))block;
+                           withBlock:(void (^)(SPPlayer *player))block;
 
 /** 
  Retrieves the list of followers for a player specified by _username_.
@@ -75,7 +75,7 @@
 + (void)playerFollowers:(NSString *)username 
          withPagination:(NSDictionary *)pagination
         runOnMainThread:(BOOL)runOnMainThread 
-              withBlock:(void (^)(NSArray *, SPPagination *))block;
+              withBlock:(void (^)(NSArray *players, SPPagination *pagination))block;
 
 /** 
  Retrieves the list of followers for a player specified by _username_.
@@ -95,7 +95,7 @@
 + (void)playerFollowing:(NSString *)username 
          withPagination:(NSDictionary *)pagination
         runOnMainThread:(BOOL)runOnMainThread
-              withBlock:(void (^)(NSArray *, SPPagination *))block;
+              withBlock:(void (^)(NSArray *players, SPPagination *pagination))block;
 
 /** 
  Retrieves the list of players drafted by the player specified by _username_.
@@ -115,7 +115,7 @@
 + (void)playerDraftees:(NSString *)username 
         withPagination:(NSDictionary *)pagination
        runOnMainThread:(BOOL)runOnMainThread 
-             withBlock:(void (^)(NSArray *, SPPagination *))block;
+             withBlock:(void (^)(NSArray *players, SPPagination *pagination))block;
 
 
 ///----------------------------
@@ -133,7 +133,7 @@
  */
 + (void)shotInformationForIdentifier:(NSUInteger)identifier 
                      runOnMainThread:(BOOL)runOnMainThread 
-                           withBlock:(void (^)(SPShot *))block;
+                           withBlock:(void (^)(SPShot *shot))block;
 
 /** 
  Retrieves the specified list of shots.
@@ -157,7 +157,7 @@
 + (void)shotsForList:(NSString *)list 
       withPagination:(NSDictionary *)pagination
      runOnMainThread:(BOOL)runOnMainThread 
-           withBlock:(void (^)(NSArray *, SPPagination *))block;
+           withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block;
 
 /** 
  Retrieves the most recent shots for the player specified by _username_.
@@ -177,7 +177,7 @@
 + (void)shotsForPlayer:(NSString *)username 
         withPagination:(NSDictionary *)pagination
        runOnMainThread:(BOOL)runOnMainThread 
-             withBlock:(void (^)(NSArray *, SPPagination *))block;
+             withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block;
 
 /** 
  Retrieves the most recent shots published by those the player specified by _username_ is following.
@@ -197,7 +197,7 @@
 + (void)shotsForPlayerFollowing:(NSString *)username 
                  withPagination:(NSDictionary *)pagination
                 runOnMainThread:(BOOL)runOnMainThread
-                      withBlock:(void (^)(NSArray *, SPPagination *))block;
+                      withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block;
 
 /** 
  Retrieves shots liked by the player specified by _username_.
@@ -217,6 +217,6 @@
 + (void)shotsForPlayerLikes:(NSString *)username 
              withPagination:(NSDictionary *)pagination
             runOnMainThread:(BOOL)runOnMainThread
-                  withBlock:(void (^)(NSArray *, SPPagination *))block;
+                  withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block;
 
 @end

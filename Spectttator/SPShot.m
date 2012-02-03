@@ -26,14 +26,14 @@
 @synthesize player = _player;
 
 - (void)imageRunOnMainThread:(BOOL)runOnMainThread 
-                   withBlock:(void (^)(SPImage *))block{
+                   withBlock:(void (^)(SPImage *image))block{
     [SPMethods requestImageWithURL:self.imageUrl
                    runOnMainThread:runOnMainThread 
                    withBlock:block];
 }
     
 - (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
-                         withBlock:(void (^)(SPImage *))block{
+                         withBlock:(void (^)(SPImage *image))block{
     [SPMethods requestImageWithURL:self.imageTeaserUrl
                    runOnMainThread:runOnMainThread 
                          withBlock:block];
@@ -41,7 +41,7 @@
 
 - (void)reboundsWithPagination:(NSDictionary *)pagination
                runOnMainThread:(BOOL)runOnMainThread 
-                     withBlock:(void (^)(NSArray *, SPPagination *))block{
+                     withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%lu/rebounds", 
                            self.identifier, [SPMethods pagination:pagination]];
@@ -52,7 +52,7 @@
 
 - (void)commentsWithPagination:(NSDictionary *)pagination
                runOnMainThread:(BOOL)runOnMainThread 
-                     withBlock:(void (^)(NSArray *, SPPagination *))block{
+                     withBlock:(void (^)(NSArray *comments, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%lu/comments", 
                            self.identifier, [SPMethods pagination:pagination]];

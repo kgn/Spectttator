@@ -83,6 +83,6 @@
   avatar is passed to the block.
  */
 - (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
-                    withBlock:(void (^)(SPImage *))block;
+                    withBlock:(void (^)(SPImage *image))block;
 
 @end

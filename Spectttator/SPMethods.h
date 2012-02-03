@@ -30,21 +30,21 @@
 
 + (void)requestPlayersWithURL:(NSURL *)url 
               runOnMainThread:(BOOL)runOnMainThread 
-                    withBlock:(void (^)(NSArray *, SPPagination *))block;
+                    withBlock:(void (^)(NSArray *players, SPPagination *pagination))block;
 
 + (void)requestShotsWithURL:(NSURL *)url 
             runOnMainThread:(BOOL)runOnMainThread 
-                  withBlock:(void (^)(NSArray *, SPPagination *))block;
+                  withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block;
 
 + (void)requestCommentsWithURL:(NSURL *)url 
                runOnMainThread:(BOOL)runOnMainThread 
-                     withBlock:(void (^)(NSArray *, SPPagination *))block;
+                     withBlock:(void (^)(NSArray *comments, SPPagination *pagination))block;
 
 + (void)requestImageWithURL:(NSURL *)url 
             runOnMainThread:(BOOL)runOnMainThread 
-                  withBlock:(void (^)(SPImage *))block;
+                  withBlock:(void (^)(SPImage *image))block;
 
 + (void)requestDataWithURL:(NSURL *)url
            runOnMainThread:(BOOL)runOnMainThread
-                 withBlock:(void (^)(NSData *))block;
+                 withBlock:(void (^)(NSData *data))block;
 @end
