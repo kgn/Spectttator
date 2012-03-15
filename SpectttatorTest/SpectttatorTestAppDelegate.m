@@ -25,10 +25,7 @@
 @synthesize listUpdating = _listUpdating;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification{
-    NSString *username = @"inscopeapps";
-    
-    // Just a test to make sure we can use SPMethod
-    [[SPMethods operationQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{}]];
+    NSString *username = @"kgn";
     
     //populate the ui
     [self.username setStringValue:username];
