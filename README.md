@@ -7,7 +7,7 @@ to provide an easy to use asynchronous interface to the [Dribbble api](http://dr
 
 This framework has been heavily veted by the Mac App [Play by Play](http://playbyplayapp.com).
 
-Below is a quick overview of the framework, to get an in depth look check out the [documentation](http://kgn.github.com/docs/Spectttator).
+Below is a quick overview of the framework, to get an in depth look check out the [documentation](http://kgn.github.com/Spectttator).
 
 Spectttator requires either
 [iOS 4.0](http://developer.apple.com/library/ios/#releasenotes/General/WhatsNewIniPhoneOS/Articles/iPhoneOS4.html%23//apple_ref/doc/uid/TP40009559-SW1)
