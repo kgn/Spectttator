@@ -1,0 +1,844 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SPPagination Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SPPagination Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/page">&nbsp;&nbsp;&nbsp;&nbsp;page</option>
+	
+	<option value="//api/name/pages">&nbsp;&nbsp;&nbsp;&nbsp;pages</option>
+	
+	<option value="//api/name/perPage">&nbsp;&nbsp;&nbsp;&nbsp;perPage</option>
+	
+	<option value="//api/name/total">&nbsp;&nbsp;&nbsp;&nbsp;total</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/page:">&nbsp;&nbsp;&nbsp;&nbsp;+ page:</option>
+	
+	<option value="//api/name/page:perPage:">&nbsp;&nbsp;&nbsp;&nbsp;+ page:perPage:</option>
+	
+	<option value="//api/name/paginationWithDictionary:">&nbsp;&nbsp;&nbsp;&nbsp;+ paginationWithDictionary:</option>
+	
+	<option value="//api/name/perPage:">&nbsp;&nbsp;&nbsp;&nbsp;+ perPage:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/initWithDictionary:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDictionary:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Initializing a SPPagination Object">Initializing a SPPagination Object</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Pagination Dictionary">Pagination Dictionary</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/page">page</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pages">pages</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/perPage">perPage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/total">total</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/page:">page:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/page:perPage:">page:perPage:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paginationWithDictionary:">paginationWithDictionary:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/perPage:">perPage:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDictionary:">initWithDictionary:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SPPagination Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SPPagination Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SPPagination.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Most Dribbble api calls take <code>page</code> and <code>per_page</code> to define which page of
+data to return and how many items should be contained in the return.
+In Spectttator this can be defined by passing a dictionary with <code>page</code>
+and <code>per_page</code> to the <code>andPagination:</code> parameter.
+<code>SPPagination</code> contains helper functions for creating this dictionary.</p>
+
+<p>The <code>SPPagination</code> class is used in two ways. First it provides helper functions for creating
+pagination dictionary to pass to methods. Secondly it provides an object that is passed to blocks,
+this object contains the returned pagination information: <a href="#//api/name/page"><code>page</code></a>, <a href="#//api/name/pages"><code>pages</code></a>, <a href="#//api/name/perPage"><code>perPage</code></a>, <a href="#//api/name/total"><code>total</code></a>.</p>
+
+<pre><code>#import &lt;Spectttator/Spectttator.h&gt;
+
+NSString *username = @"inscopeapps";
+
+[SPRequest shotsForPlayer:user 
+           withPagination:[SPPagination perPage:20]
+          runOnMainThread:NO
+                withBlock:^(NSArray *shots, SPPagination *pagination){
+                    NSLog(@"Received shot data for %@", user);
+                    NSLog(@"With pagination: %@", pagination);
+                }];
+</code></pre>
+
+<p>This is non-blocking, <code>NSLog</code> will run whenever the comment data has finished loading,
+but the block still has access to everything in the scope from where it was defined.
+If the block is updating UI elements make sure to set <code>runOnMainThread:YES</code>, the Dribbble
+requests will still be asynchronous but the passed in block will be executed on the main thread.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/page">&nbsp;&nbsp;page</a></code>
+		<span class="tooltip"><p>The current page number.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pages">&nbsp;&nbsp;pages</a></code>
+		<span class="tooltip"><p>The total number of pages.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/perPage">&nbsp;&nbsp;perPage</a></code>
+		<span class="tooltip"><p>The number of items per-page.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/total">&nbsp;&nbsp;total</a></code>
+		<span class="tooltip"><p>The total number of items.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Initializing a SPPagination Object" name="task_Initializing a SPPagination Object"></a>
+						<h3 class="subsubtitle task-title">Initializing a SPPagination Object</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/paginationWithDictionary:">+&nbsp;paginationWithDictionary:</a></code>
+		<span class="tooltip"><p>Returns an autoreleased <code>SPPagination</code> object initialized with the given pagination data.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithDictionary:">&ndash;&nbsp;initWithDictionary:</a></code>
+		<span class="tooltip"><p>Returns a Spectttator pagination object initialized with the given pagination data.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Pagination Dictionary" name="task_Pagination Dictionary"></a>
+						<h3 class="subsubtitle task-title">Pagination Dictionary</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/page:">+&nbsp;page:</a></code>
+		<span class="tooltip"><p>A helper method for creating a pagination dictionary.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/perPage:">+&nbsp;perPage:</a></code>
+		<span class="tooltip"><p>A helper method for creating a pagination dictionary.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/page:perPage:">+&nbsp;page:perPage:</a></code>
+		<span class="tooltip"><p>A helper method for creating a pagination dictionary.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/page" title="page"></a>
+	<h3 class="subsubtitle method-title">page</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current page number.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (readonly) NSUInteger page</code></div>
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPPagination.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pages" title="pages"></a>
+	<h3 class="subsubtitle method-title">pages</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The total number of pages.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (readonly) NSUInteger pages</code></div>
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPPagination.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/perPage" title="perPage"></a>
+	<h3 class="subsubtitle method-title">perPage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The number of items per-page.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (readonly) NSUInteger perPage</code></div>
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPPagination.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/total" title="total"></a>
+	<h3 class="subsubtitle method-title">total</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The total number of items.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (readonly) NSUInteger total</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPPagination.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/page:" title="page:"></a>
+	<h3 class="subsubtitle method-title">page:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A helper method for creating a pagination dictionary.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSDictionary *)page:(NSUInteger)<em>page</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>page</em></dt>
+			<dd><p>The page number.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A pagination dictionary with the specified <code>page</code> value.</p>
+	</div>
+	
+	
+	
+
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/page:perPage:">+ page:perPage:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPPagination.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/page:perPage:" title="page:perPage:"></a>
+	<h3 class="subsubtitle method-title">page:perPage:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A helper method for creating a pagination dictionary.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSDictionary *)page:(NSUInteger)<em>page</em> perPage:(NSUInteger)<em>perPage</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>page</em></dt>
+			<dd><p>The page number.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>perPage</em></dt>
+			<dd><p>The number of items per-page.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A pagination dictionary with the specified <code>page</code> and <code>per_page</code> values.</p>
+	</div>
+	
+	
+	
+
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/page:perPage:">+ page:perPage:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPPagination.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/paginationWithDictionary:" title="paginationWithDictionary:"></a>
+	<h3 class="subsubtitle method-title">paginationWithDictionary:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an autoreleased <code>SPPagination</code> object initialized with the given pagination data.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)paginationWithDictionary:(NSDictionary *)<em>dictionary</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dictionary</em></dt>
+			<dd><p>A dictionary of comment data.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An autoreleased <code>SPPagination</code> object.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+<p>There is no need to call this method directly, higher level
+methods use this to return pagination data to blocks.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/initWithDictionary:">&ndash; initWithDictionary:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPPagination.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/perPage:" title="perPage:"></a>
+	<h3 class="subsubtitle method-title">perPage:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A helper method for creating a pagination dictionary.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSDictionary *)perPage:(NSUInteger)<em>perPage</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>perPage</em></dt>
+			<dd><p>The number of items per-page.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A pagination dictionary with the specified <code>per_page</code> value.</p>
+	</div>
+	
+	
+	
+
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/page:perPage:">+ page:perPage:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPPagination.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithDictionary:" title="initWithDictionary:"></a>
+	<h3 class="subsubtitle method-title">initWithDictionary:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a Spectttator pagination object initialized with the given pagination data.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithDictionary:(NSDictionary *)<em>dictionary</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dictionary</em></dt>
+			<dd><p>A dictionary of comment data.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An initialized <code>SPPagination</code> object.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+<p>There is no need to call this method directly, higher level
+methods use this to return pagination data to blocks.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPPagination.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 David Keegan. All rights reserved. (Last updated: 2011-07-06)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

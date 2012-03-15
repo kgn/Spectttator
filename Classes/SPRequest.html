@@ -1,0 +1,1065 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SPRequest Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SPRequest Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/playerDraftees:withPagination:runOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ playerDraftees:withPagination:runOnMainThread:withBlock:</option>
+	
+	<option value="//api/name/playerFollowers:withPagination:runOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ playerFollowers:withPagination:runOnMainThread:withBlock:</option>
+	
+	<option value="//api/name/playerFollowing:withPagination:runOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ playerFollowing:withPagination:runOnMainThread:withBlock:</option>
+	
+	<option value="//api/name/playerInformationForUsername:runOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ playerInformationForUsername:runOnMainThread:withBlock:</option>
+	
+	<option value="//api/name/shotInformationForIdentifier:runOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ shotInformationForIdentifier:runOnMainThread:withBlock:</option>
+	
+	<option value="//api/name/shotsForList:withPagination:runOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ shotsForList:withPagination:runOnMainThread:withBlock:</option>
+	
+	<option value="//api/name/shotsForPlayer:withPagination:runOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ shotsForPlayer:withPagination:runOnMainThread:withBlock:</option>
+	
+	<option value="//api/name/shotsForPlayerFollowing:withPagination:runOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ shotsForPlayerFollowing:withPagination:runOnMainThread:withBlock:</option>
+	
+	<option value="//api/name/shotsForPlayerLikes:withPagination:runOnMainThread:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ shotsForPlayerLikes:withPagination:runOnMainThread:withBlock:</option>
+	
+	
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Players">Players</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Shots">Shots</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playerDraftees:withPagination:runOnMainThread:withBlock:">playerDraftees:withPagination:runOnMainThread:withBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playerFollowers:withPagination:runOnMainThread:withBlock:">playerFollowers:withPagination:runOnMainThread:withBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playerFollowing:withPagination:runOnMainThread:withBlock:">playerFollowing:withPagination:runOnMainThread:withBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playerInformationForUsername:runOnMainThread:withBlock:">playerInformationForUsername:runOnMainThread:withBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shotInformationForIdentifier:runOnMainThread:withBlock:">shotInformationForIdentifier:runOnMainThread:withBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shotsForList:withPagination:runOnMainThread:withBlock:">shotsForList:withPagination:runOnMainThread:withBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shotsForPlayer:withPagination:runOnMainThread:withBlock:">shotsForPlayer:withPagination:runOnMainThread:withBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shotsForPlayerFollowing:withPagination:runOnMainThread:withBlock:">shotsForPlayerFollowing:withPagination:runOnMainThread:withBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shotsForPlayerLikes:withPagination:runOnMainThread:withBlock:">shotsForPlayerLikes:withPagination:runOnMainThread:withBlock:</a></span></li>
+	
+</ul></li>
+
+
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SPRequest Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SPRequest Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SPRequest.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The <code>SPRequest</code> class provides a programmatic interface for interacting
+with the majority of <a href="http://dribbble.com/api">Dribbble api</a> calls, there are some shot centric
+methods implemented on the <a href="../Classes/SPShot.html"><code>SPShot</code></a> object.</p>
+
+<p>The following snippet demonstrates how to get the last 10 shots a player liked.</p>
+
+<pre><code>#import &lt;Spectttator/Spectttator.h&gt;
+
+NSString *username = @"inscopeapps";
+
+[SPRequest shotsForPlayerLikes:username 
+                withPagination:[SPPagination perPage:10]     
+               runOnMainThread:NO 
+                     withBlock:^(NSArray *shots, SPPagination *pagination){
+                         NSLog(@"Shot %@ likes: %@", username, shots);
+                     }];
+</code></pre>
+
+<p>This is non-blocking, <code>NSLog</code> will run whenever the comment data has finished loading,
+but the block still has access to everything in the scope from where it was defined.
+If the block is updating UI elements make sure to set <code>runOnMainThread:YES</code>, the Dribbble
+requests will still be asynchronous but the passed in block will be executed on the main thread.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Players" name="task_Players"></a>
+						<h3 class="subsubtitle task-title">Players</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/playerInformationForUsername:runOnMainThread:withBlock:">+&nbsp;playerInformationForUsername:runOnMainThread:withBlock:</a></code>
+		<span class="tooltip"><p>Retrieves profile details for a player specified by <em>username</em>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/playerFollowers:withPagination:runOnMainThread:withBlock:">+&nbsp;playerFollowers:withPagination:runOnMainThread:withBlock:</a></code>
+		<span class="tooltip"><p>Retrieves the list of followers for a player specified by <em>username</em>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/playerFollowing:withPagination:runOnMainThread:withBlock:">+&nbsp;playerFollowing:withPagination:runOnMainThread:withBlock:</a></code>
+		<span class="tooltip"><p>Retrieves the list of followers for a player specified by <em>username</em>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/playerDraftees:withPagination:runOnMainThread:withBlock:">+&nbsp;playerDraftees:withPagination:runOnMainThread:withBlock:</a></code>
+		<span class="tooltip"><p>Retrieves the list of players drafted by the player specified by <em>username</em>.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Shots" name="task_Shots"></a>
+						<h3 class="subsubtitle task-title">Shots</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shotInformationForIdentifier:runOnMainThread:withBlock:">+&nbsp;shotInformationForIdentifier:runOnMainThread:withBlock:</a></code>
+		<span class="tooltip"><p>Retrieves details for a shot specified by <em>id</em>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shotsForList:withPagination:runOnMainThread:withBlock:">+&nbsp;shotsForList:withPagination:runOnMainThread:withBlock:</a></code>
+		<span class="tooltip"><p>Retrieves the specified list of shots.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shotsForPlayer:withPagination:runOnMainThread:withBlock:">+&nbsp;shotsForPlayer:withPagination:runOnMainThread:withBlock:</a></code>
+		<span class="tooltip"><p>Retrieves the most recent shots for the player specified by <em>username</em>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shotsForPlayerFollowing:withPagination:runOnMainThread:withBlock:">+&nbsp;shotsForPlayerFollowing:withPagination:runOnMainThread:withBlock:</a></code>
+		<span class="tooltip"><p>Retrieves the most recent shots published by those the player specified by <em>username</em> is following.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shotsForPlayerLikes:withPagination:runOnMainThread:withBlock:">+&nbsp;shotsForPlayerLikes:withPagination:runOnMainThread:withBlock:</a></code>
+		<span class="tooltip"><p>Retrieves shots liked by the player specified by <em>username</em>.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/playerDraftees:withPagination:runOnMainThread:withBlock:" title="playerDraftees:withPagination:runOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">playerDraftees:withPagination:runOnMainThread:withBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieves the list of players drafted by the player specified by <em>username</em>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)playerDraftees:(NSString *)<em>username</em> withPagination:(NSDictionary *)<em>pagination</em> runOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>username</em></dt>
+			<dd><p>The username of the player.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pagination</em></dt>
+			<dd><p>A NSDictionary with pagination data, the best way to
+  create this dictionary is with the helper functions on <a href="../Classes/SPPagination.html"><code>SPPagination</code></a>.
+  If <code>nil</code> the default pagination will be used as defined by the
+  <a href="http://dribbble.com/api#pagination">dribbble api</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block to be executed once the data has been retrieved.
+  An <code>NSArray</code> of <a href="../Classes/SPPlayer.html"><code>SPPlayer</code></a> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves the list of players drafted by the player specified by <em>username</em>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/SPPagination.html">SPPagination</a></p></code></li>
+			
+			<li><code><p><a href="../Classes/SPPlayer.html">SPPlayer</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/playerFollowers:withPagination:runOnMainThread:withBlock:" title="playerFollowers:withPagination:runOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">playerFollowers:withPagination:runOnMainThread:withBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieves the list of followers for a player specified by <em>username</em>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)playerFollowers:(NSString *)<em>username</em> withPagination:(NSDictionary *)<em>pagination</em> runOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>username</em></dt>
+			<dd><p>The username of the player.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pagination</em></dt>
+			<dd><p>A NSDictionary with pagination data, the best way to
+  create this dictionary is with the helper functions on <a href="../Classes/SPPagination.html"><code>SPPagination</code></a>.
+  If <code>nil</code> the default pagination will be used as defined by the
+  <a href="http://dribbble.com/api#pagination">dribbble api</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block to be executed once the data has been retrieved.
+  An <code>NSArray</code> of <a href="../Classes/SPPlayer.html"><code>SPPlayer</code></a> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves the list of followers for a player specified by <em>username</em>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/SPPagination.html">SPPagination</a></p></code></li>
+			
+			<li><code><p><a href="../Classes/SPPlayer.html">SPPlayer</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/playerFollowing:withPagination:runOnMainThread:withBlock:" title="playerFollowing:withPagination:runOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">playerFollowing:withPagination:runOnMainThread:withBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieves the list of followers for a player specified by <em>username</em>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)playerFollowing:(NSString *)<em>username</em> withPagination:(NSDictionary *)<em>pagination</em> runOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>username</em></dt>
+			<dd><p>The username of the player.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pagination</em></dt>
+			<dd><p>A NSDictionary with pagination data, the best way to
+  create this dictionary is with the helper functions on <a href="../Classes/SPPagination.html"><code>SPPagination</code></a>.
+  If <code>nil</code> the default pagination will be used as defined by the
+  <a href="http://dribbble.com/api#pagination">dribbble api</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block to be executed once the data has been retrieved.
+  An <code>NSArray</code> of <a href="../Classes/SPPlayer.html"><code>SPPlayer</code></a> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves the list of followers for a player specified by <em>username</em>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/SPPagination.html">SPPagination</a></p></code></li>
+			
+			<li><code><p><a href="../Classes/SPPlayer.html">SPPlayer</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/playerInformationForUsername:runOnMainThread:withBlock:" title="playerInformationForUsername:runOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">playerInformationForUsername:runOnMainThread:withBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieves profile details for a player specified by <em>username</em>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)playerInformationForUsername:(NSString *)<em>username</em> runOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( SPPlayer *))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>username</em></dt>
+			<dd><p>The username of the player.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block to be executed once the data has been retrieved.
+  A <a href="../Classes/SPPlayer.html"><code>SPPlayer</code></a> object is passed to the block.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves profile details for a player specified by <em>username</em>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/SPPlayer.html">SPPlayer</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shotInformationForIdentifier:runOnMainThread:withBlock:" title="shotInformationForIdentifier:runOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">shotInformationForIdentifier:runOnMainThread:withBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieves details for a shot specified by <em>id</em>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)shotInformationForIdentifier:(NSUInteger)<em>identifier</em> runOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( SPShot *))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>identifier</em></dt>
+			<dd><p>The shot identifier number.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block to be executed once the data has been retrieved.
+  A <a href="../Classes/SPShot.html"><code>SPShot</code></a> object is passed to the block.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves details for a shot specified by <em>id</em>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/SPShot.html">SPShot</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shotsForList:withPagination:runOnMainThread:withBlock:" title="shotsForList:withPagination:runOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">shotsForList:withPagination:runOnMainThread:withBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieves the specified list of shots.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)shotsForList:(NSString *)<em>list</em> withPagination:(NSDictionary *)<em>pagination</em> runOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>list</em></dt>
+			<dd><p>The list to retrieve shots from, must be one of the following values:</p>
+
+<ul>
+<li><code>SPDebutsList</code></li>
+<li><code>SPEveryoneList</code></li>
+<li><code>SPPopularList</code></li>
+</ul>
+</dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pagination</em></dt>
+			<dd><p>A NSDictionary with pagination data, the best way to
+  create this dictionary is with the helper functions on <a href="../Classes/SPPagination.html"><code>SPPagination</code></a>.
+  If <code>nil</code> the default pagination will be used as defined by the
+  <a href="http://dribbble.com/api#pagination">dribbble api</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block to be executed once the data has been retrieved.
+  An <code>NSArray</code> of <a href="../Classes/SPShot.html"><code>SPShot</code></a> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves the specified list of shots.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/SPPagination.html">SPPagination</a></p></code></li>
+			
+			<li><code><p><a href="../Classes/SPShot.html">SPShot</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shotsForPlayer:withPagination:runOnMainThread:withBlock:" title="shotsForPlayer:withPagination:runOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">shotsForPlayer:withPagination:runOnMainThread:withBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieves the most recent shots for the player specified by <em>username</em>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)shotsForPlayer:(NSString *)<em>username</em> withPagination:(NSDictionary *)<em>pagination</em> runOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>username</em></dt>
+			<dd><p>The username of the player.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pagination</em></dt>
+			<dd><p>A NSDictionary with pagination data, the best way to
+  create this dictionary is with the helper functions on <a href="../Classes/SPPagination.html"><code>SPPagination</code></a>.
+  If <code>nil</code> the default pagination will be used as defined by the
+  <a href="http://dribbble.com/api#pagination">dribbble api</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block to be executed once the data has been retrieved.
+  An <code>NSArray</code> of <a href="../Classes/SPShot.html"><code>SPShot</code></a> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves the most recent shots for the player specified by <em>username</em>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/SPPagination.html">SPPagination</a></p></code></li>
+			
+			<li><code><p><a href="../Classes/SPShot.html">SPShot</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shotsForPlayerFollowing:withPagination:runOnMainThread:withBlock:" title="shotsForPlayerFollowing:withPagination:runOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">shotsForPlayerFollowing:withPagination:runOnMainThread:withBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieves the most recent shots published by those the player specified by <em>username</em> is following.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)shotsForPlayerFollowing:(NSString *)<em>username</em> withPagination:(NSDictionary *)<em>pagination</em> runOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>username</em></dt>
+			<dd><p>The username of the player.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pagination</em></dt>
+			<dd><p>A NSDictionary with pagination data, the best way to
+  create this dictionary is with the helper functions on <a href="../Classes/SPPagination.html"><code>SPPagination</code></a>.
+  If <code>nil</code> the default pagination will be used as defined by the
+  <a href="http://dribbble.com/api#pagination">dribbble api</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block to be executed once the data has been retrieved.
+  An <code>NSArray</code> of <a href="../Classes/SPShot.html"><code>SPShot</code></a> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves the most recent shots published by those the player specified by <em>username</em> is following.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/SPPagination.html">SPPagination</a></p></code></li>
+			
+			<li><code><p><a href="../Classes/SPShot.html">SPShot</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shotsForPlayerLikes:withPagination:runOnMainThread:withBlock:" title="shotsForPlayerLikes:withPagination:runOnMainThread:withBlock:"></a>
+	<h3 class="subsubtitle method-title">shotsForPlayerLikes:withPagination:runOnMainThread:withBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieves shots liked by the player specified by <em>username</em>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)shotsForPlayerLikes:(NSString *)<em>username</em> withPagination:(NSDictionary *)<em>pagination</em> runOnMainThread:(BOOL)<em>runOnMainThread</em> withBlock:(void ( ^ ) ( NSArray *, SPPagination *))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>username</em></dt>
+			<dd><p>The username of the player.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pagination</em></dt>
+			<dd><p>A NSDictionary with pagination data, the best way to
+  create this dictionary is with the helper functions on <a href="../Classes/SPPagination.html"><code>SPPagination</code></a>.
+  If <code>nil</code> the default pagination will be used as defined by the
+  <a href="http://dribbble.com/api#pagination">dribbble api</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>runOnMainThread</em></dt>
+			<dd><p>Specifies if the passed in block should be run on the main thread.
+  If UI elements are being updated in the block this should be <code>YES</code>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block to be executed once the data has been retrieved.
+  An <code>NSArray</code> of <a href="../Classes/SPShot.html"><code>SPShot</code></a> objects and a <a href="../Classes/SPPagination.html"><code>SPPagination</code></a> objects are passed to the block.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieves shots liked by the player specified by <em>username</em>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/SPPagination.html">SPPagination</a></p></code></li>
+			
+			<li><code><p><a href="../Classes/SPShot.html">SPShot</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 David Keegan. All rights reserved. (Last updated: 2011-07-08)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>
