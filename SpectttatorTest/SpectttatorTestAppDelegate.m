@@ -110,7 +110,7 @@
     
     //get shots from player
     [SPRequest shotsForPlayer:user 
-               withPagination:[SPPagination perPage:20]
+               withPagination:[SPPagination perPage:SPMaxPerPage]
               runOnMainThread:YES
                     withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Received shot data for %@", user);

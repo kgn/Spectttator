@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define SPMaxPerPage 30
+#define SPMaxPerPage 50
+#define SPDefaultPerPage 15
 
 /** Most Dribbble api calls take `page` and `per_page` to define which page of 
  data to return and how many items should be contained in the return. 

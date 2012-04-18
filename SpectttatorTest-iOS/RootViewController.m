@@ -30,7 +30,7 @@
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [SPRequest shotsForList:self.list 
-             withPagination:[SPPagination perPage:30] 
+             withPagination:[SPPagination perPage:SPMaxPerPage] 
             runOnMainThread:YES 
                   withBlock:^(NSArray *theShots, SPPagination *thsPagination){
                       self.shots = theShots;
