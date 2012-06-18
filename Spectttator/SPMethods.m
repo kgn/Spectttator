@@ -189,7 +189,7 @@
                   withBlock:(void (^)(SPImage *image))block{
     [[AFImageRequestOperation 
       imageRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
-      imageProcessingBlock:nil cacheName: nil
+      imageProcessingBlock:nil
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, SPImage *image){
           if(runOnMainThread){
               dispatch_async(dispatch_get_main_queue(), ^{
