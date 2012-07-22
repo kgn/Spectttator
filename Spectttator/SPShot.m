@@ -43,7 +43,7 @@
                runOnMainThread:(BOOL)runOnMainThread 
                      withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
-                           @"http://api.dribbble.com/shots/%lu/rebounds", 
+                           @"http://api.dribbble.com/shots/%lu/rebounds%@", 
                            self.identifier, [SPMethods pagination:pagination]];
     [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString] 
                    runOnMainThread:runOnMainThread 
@@ -54,7 +54,7 @@
                runOnMainThread:(BOOL)runOnMainThread 
                      withBlock:(void (^)(NSArray *comments, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
-                           @"http://api.dribbble.com/shots/%lu/comments", 
+                           @"http://api.dribbble.com/shots/%lu/comments%@", 
                            self.identifier, [SPMethods pagination:pagination]];
     [SPMethods requestCommentsWithURL:[NSURL URLWithString:urlString] 
                    runOnMainThread:runOnMainThread 
