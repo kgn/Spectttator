@@ -18,33 +18,33 @@
 @implementation NSDictionary(Spectttator)
 
 - (NSUInteger)uintSafelyFromKey:(id)key{
-    if([self objectForKey:key] == [NSNull null] || [self objectForKey:key] == nil){
+    if(self[key] == [NSNull null] || self[key] == nil){
         return NSNotFound;
     }
-    return [[self objectForKey:key] integerValue];
+    return [self[key] integerValue];
 }
 
 - (NSString *)stringSafelyFromKey:(id)key{
-    if([self objectForKey:key] == [NSNull null] || [self objectForKey:key] == nil){
+    if(self[key] == [NSNull null] || self[key] == nil){
         return nil;
     }
-    return [NSString stringWithString:[self objectForKey:key]];    
+    return [NSString stringWithString:self[key]];    
 }
 
 - (NSURL *)URLSafelyFromKey:(id)key{
-    if([self objectForKey:key] == [NSNull null] || [self objectForKey:key] == nil){
+    if(self[key] == [NSNull null] || self[key] == nil){
         return nil;
     }
     NSString *urlString = 
-    [[self objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];      
+    [self[key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];      
     return [NSURL URLWithString:urlString];  
 }
 
 - (id)objectSafelyFromKey:(id)key{
-    if([self objectForKey:key] == [NSNull null] || [self objectForKey:key] == nil){
+    if(self[key] == [NSNull null] || self[key] == nil){
         return nil;
     }    
-    return [self objectForKey:key];  
+    return self[key];  
 }
 
 @end
@@ -52,8 +52,8 @@
 @implementation SPMethods
 
 + (NSString *)pagination:(NSDictionary *)pagination{
-    NSNumber *page = [pagination objectForKey:@"page"];
-    NSNumber *perPage = [pagination objectForKey:@"perPage"];
+    NSNumber *page = pagination[@"page"];
+    NSNumber *perPage = pagination[@"perPage"];
     if(page && perPage){
         return [NSString stringWithFormat:@"?page=%lu&per_page=%lu", [page longValue], [perPage longValue]];
     }else if(page){
@@ -70,7 +70,7 @@
     [[AFJSONRequestOperation
       JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
-          NSArray *players = [json objectForKey:@"players"];
+          NSArray *players = json[@"players"];
           NSMutableArray *mplayers = [[NSMutableArray alloc] initWithCapacity:[players count]];
           NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
           for(NSDictionary *playerData in players){
@@ -110,7 +110,7 @@
     [[AFJSONRequestOperation
       JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url] 
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
-          NSArray *shots = [json objectForKey:@"shots"];
+          NSArray *shots = json[@"shots"];
           NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
           NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
           for(NSDictionary *shotData in shots){
@@ -150,7 +150,7 @@
     [[AFJSONRequestOperation
       JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:url] 
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
-          NSArray *comments = [json objectForKey:@"comments"];
+          NSArray *comments = json[@"comments"];
           NSMutableArray *mcomments = [[NSMutableArray alloc] initWithCapacity:[comments count]];
           NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
           for(NSDictionary *commentData in comments){

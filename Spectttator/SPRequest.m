@@ -23,7 +23,7 @@
       JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
           SPPlayer *player = nil;
-          if(![[json objectForKey:@"message"] isEqualToString:@"Not found"]){
+          if(![json[@"message"] isEqualToString:@"Not found"]){
               player = [[SPPlayer alloc] initWithDictionary:json];
           }
           if(runOnMainThread){
@@ -91,7 +91,7 @@
      JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
         SPShot *shot = nil;
-        if(![[json objectForKey:@"message"] isEqualToString:@"Not found"]){
+        if(![json[@"message"] isEqualToString:@"Not found"]){
             shot = [[SPShot alloc] initWithDictionary:json];
         }
         if(runOnMainThread){

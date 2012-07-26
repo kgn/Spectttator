@@ -118,14 +118,14 @@
         
         //get the last shot uploaded by the player
         if([shots count]){
-            [[shots objectAtIndex:0] imageRunOnMainThread:YES withBlock:^(NSImage *image){
+            [shots[0] imageRunOnMainThread:YES withBlock:^(NSImage *image){
                 [self.lastPlayerShot setImage:image];
             }];
         }
         
         //get the player's avatar
         if([shots count]){
-            [[[shots objectAtIndex:0] player] avatarRunOnMainThread:YES withBlock:^(NSImage *image){
+            [[shots[0] player] avatarRunOnMainThread:YES withBlock:^(NSImage *image){
                 [self.avatar setImage:image];
             }];       
         }
@@ -165,7 +165,7 @@
         
         //get the last shot uploaded to the list
         if([shots count]){
-            [[shots objectAtIndex:0] imageRunOnMainThread:NO withBlock:^(NSImage *image){
+            [shots[0] imageRunOnMainThread:NO withBlock:^(NSImage *image){
                 [self.lastListShot setImage:image];
             }];       
         }
