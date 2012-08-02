@@ -72,13 +72,13 @@
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
           NSArray *players = json[@"players"];
           NSMutableArray *mplayers = [[NSMutableArray alloc] initWithCapacity:[players count]];
-          NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
           for(NSDictionary *playerData in players){
-              SPPlayer *player = [[SPPlayer alloc] initWithDictionary:playerData];
-              [mplayers addObject:player];
-              [player release];
+              @autoreleasepool{
+                  SPPlayer *player = [[SPPlayer alloc] initWithDictionary:playerData];
+                  [mplayers addObject:player];
+                  [player release];
+              }
           }
-          [pool drain];
           if([mplayers count] == 0){
               [mplayers release];
               mplayers = nil;
@@ -112,13 +112,13 @@
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
           NSArray *shots = json[@"shots"];
           NSMutableArray *mshots = [[NSMutableArray alloc] initWithCapacity:[shots count]];
-          NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
           for(NSDictionary *shotData in shots){
-              SPShot *shot = [[SPShot alloc] initWithDictionary:shotData];
-              [mshots addObject:shot];
-              [shot release];
+              @autoreleasepool{
+                  SPShot *shot = [[SPShot alloc] initWithDictionary:shotData];
+                  [mshots addObject:shot];
+                  [shot release];
+              }
           }
-          [pool drain];
           if([mshots count] == 0){
               [mshots release];            
               mshots = nil;
@@ -152,13 +152,13 @@
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
           NSArray *comments = json[@"comments"];
           NSMutableArray *mcomments = [[NSMutableArray alloc] initWithCapacity:[comments count]];
-          NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
           for(NSDictionary *commentData in comments){
-              SPComment *comment = [[SPComment alloc] initWithDictionary:commentData];
-              [mcomments addObject:comment];
-              [comment release];
+              @autoreleasepool{
+                  SPComment *comment = [[SPComment alloc] initWithDictionary:commentData];
+                  [mcomments addObject:comment];
+                  [comment release];
+              }
           }
-          [pool drain];
           if([mcomments count] == 0){
               [mcomments release];
               mcomments = nil;
