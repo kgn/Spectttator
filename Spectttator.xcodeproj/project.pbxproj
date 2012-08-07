@@ -369,7 +369,7 @@
 		73698B6413B681F400922D1A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "David Keegan";
 			};
 			buildConfigurationList = 73698B6713B681F400922D1A /* Build configuration list for PBXProject "Spectttator" */;
@@ -491,6 +491,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spectttator/Spectttator-Prefix.pch";
 				INFOPLIST_FILE = "Spectttator/Spectttator-Info.plist";
@@ -507,6 +508,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spectttator/Spectttator-Prefix.pch";
 				INFOPLIST_FILE = "Spectttator/Spectttator-Info.plist";
