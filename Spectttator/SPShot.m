@@ -44,7 +44,7 @@
                      withBlock:(void (^)(NSArray *shots, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%lu/rebounds%@", 
-                           self.identifier, [SPMethods pagination:pagination]];
+                           (unsigned long)self.identifier, [SPMethods pagination:pagination]];
     [SPMethods requestShotsWithURL:[NSURL URLWithString:urlString] 
                    runOnMainThread:runOnMainThread 
                          withBlock:block];
@@ -55,7 +55,7 @@
                      withBlock:(void (^)(NSArray *comments, SPPagination *pagination))block{
     NSString *urlString = [NSString stringWithFormat:
                            @"http://api.dribbble.com/shots/%lu/comments%@", 
-                           self.identifier, [SPMethods pagination:pagination]];
+                           (unsigned long)self.identifier, [SPMethods pagination:pagination]];
     [SPMethods requestCommentsWithURL:[NSURL URLWithString:urlString] 
                    runOnMainThread:runOnMainThread 
                          withBlock:block];
@@ -89,7 +89,7 @@
 
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Title='%@' Player=%@ URL=%@>", 
-            [self class], self.identifier, self.title, self.player.username, self.url];
+            [self class], (unsigned long)self.identifier, self.title, self.player.username, self.url];
 }
 
 - (void)dealloc{

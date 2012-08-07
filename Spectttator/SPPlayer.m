@@ -61,7 +61,7 @@
 
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@ %lu Name='%@' Username='%@' URL=%@>", 
-            [self class], self.identifier, self.name, self.username, self.url];
+            [self class], (unsigned long)self.identifier, self.name, self.username, self.url];
 }
 
 - (void)dealloc{
