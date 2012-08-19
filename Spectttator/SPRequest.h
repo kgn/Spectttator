@@ -23,8 +23,7 @@ extern NSString *const SPListPopular;
  
     #import <Spectttator/Spectttator.h>
     
-    NSString *username = @"inscopeapps";
-    
+    NSString *username = @"kgn";
     [SPRequest shotsForPlayerLikes:username 
                     withPagination:[SPPagination perPage:10]     
                    runOnMainThread:NO 

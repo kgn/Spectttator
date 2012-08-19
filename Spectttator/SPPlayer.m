@@ -8,25 +8,27 @@
 
 #import "SPPlayer.h"
 
-@implementation SPPlayer
+@interface SPPlayer()
+@property (copy, nonatomic, readwrite) NSString *name;
+@property (copy, nonatomic, readwrite) NSString *username;
+@property (retain, nonatomic, readwrite) NSURL *url;
+@property (retain, nonatomic, readwrite) NSURL *avatarUrl;
+@property (copy, nonatomic, readwrite) NSString *location;
+@property (copy, nonatomic, readwrite) NSString *twitterScreenName;
+@property (nonatomic, readwrite) NSUInteger draftedByPlayerId;
+@property (nonatomic, readwrite) NSUInteger shotsCount;
+@property (nonatomic, readwrite) NSUInteger drafteesCount;
+@property (nonatomic, readwrite) NSUInteger followersCount;
+@property (nonatomic, readwrite) NSUInteger followingCount;
+@property (nonatomic, readwrite) NSUInteger commentsCount;
+@property (nonatomic, readwrite) NSUInteger commentsReceivedCount;
+@property (nonatomic, readwrite) NSUInteger likesCount;
+@property (nonatomic, readwrite) NSUInteger likesReceivedCount;
+@property (nonatomic, readwrite) NSUInteger reboundsCount;
+@property (nonatomic, readwrite) NSUInteger reboundsReceivedCount;
+@end
 
-@synthesize name = _name;
-@synthesize username = _username;
-@synthesize url = _url;
-@synthesize avatarUrl = _avatarUrl;
-@synthesize location = _location;
-@synthesize twitterScreenName = _twitterScreenName;
-@synthesize draftedByPlayerId = _draftedByPlayerId;
-@synthesize shotsCount = _shotsCount;
-@synthesize drafteesCount = _drafteesCount;
-@synthesize followersCount = _followersCount;
-@synthesize followingCount = _followingCount;
-@synthesize commentsCount = _commentsCount;
-@synthesize commentsReceivedCount = _commentsReceivedCount;
-@synthesize likesCount = _likesCount;
-@synthesize likesReceivedCount = _likesReceivedCount;
-@synthesize reboundsCount = _reboundsCount;
-@synthesize reboundsReceivedCount = _reboundsReceivedCount;
+@implementation SPPlayer
     
 - (void)avatarRunOnMainThread:(BOOL)runOnMainThread 
                     withBlock:(void (^)(SPImage *image))block{
@@ -37,23 +39,23 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super initWithDictionary:dictionary])){
-        _name = [[dictionary stringSafelyFromKey:@"name"] retain];
-        _username = [[dictionary stringSafelyFromKey:@"username"] retain];
-        _url = [[dictionary URLSafelyFromKey:@"url"] retain];
-        _avatarUrl = [[dictionary URLSafelyFromKey:@"avatar_url"] retain];
-        _location = [[dictionary stringSafelyFromKey:@"location"] retain];
-        _twitterScreenName = [[dictionary stringSafelyFromKey:@"twitter_screen_name"] retain];
-        _draftedByPlayerId = [dictionary uintSafelyFromKey:@"drafted_by_player_id"];
-        _shotsCount = [dictionary uintSafelyFromKey:@"shots_count"];
-        _drafteesCount = [dictionary uintSafelyFromKey:@"draftees_count"];
-        _followersCount = [dictionary uintSafelyFromKey:@"followers_count"];
-        _followingCount = [dictionary uintSafelyFromKey:@"following_count"];
-        _commentsCount = [dictionary uintSafelyFromKey:@"comments_count"];
-        _commentsReceivedCount = [dictionary uintSafelyFromKey:@"comments_received_count"];
-        _likesCount = [dictionary uintSafelyFromKey:@"likes_count"];
-        _likesReceivedCount = [dictionary uintSafelyFromKey:@"likes_received_count"];
-        _reboundsCount = [dictionary uintSafelyFromKey:@"rebounds_count"];
-        _reboundsReceivedCount = [dictionary uintSafelyFromKey:@"rebounds_received_count"];
+        self.name = [dictionary stringSafelyFromKey:@"name"];
+        self.username = [dictionary stringSafelyFromKey:@"username"];
+        self.url = [dictionary URLSafelyFromKey:@"url"];
+        self.avatarUrl = [dictionary URLSafelyFromKey:@"avatar_url"];
+        self.location = [dictionary stringSafelyFromKey:@"location"];
+        self.twitterScreenName = [[dictionary stringSafelyFromKey:@"twitter_screen_name"] retain];
+        self.draftedByPlayerId = [dictionary uintSafelyFromKey:@"drafted_by_player_id"];
+        self.shotsCount = [dictionary uintSafelyFromKey:@"shots_count"];
+        self.drafteesCount = [dictionary uintSafelyFromKey:@"draftees_count"];
+        self.followersCount = [dictionary uintSafelyFromKey:@"followers_count"];
+        self.followingCount = [dictionary uintSafelyFromKey:@"following_count"];
+        self.commentsCount = [dictionary uintSafelyFromKey:@"comments_count"];
+        self.commentsReceivedCount = [dictionary uintSafelyFromKey:@"comments_received_count"];
+        self.likesCount = [dictionary uintSafelyFromKey:@"likes_count"];
+        self.likesReceivedCount = [dictionary uintSafelyFromKey:@"likes_received_count"];
+        self.reboundsCount = [dictionary uintSafelyFromKey:@"rebounds_count"];
+        self.reboundsReceivedCount = [dictionary uintSafelyFromKey:@"rebounds_received_count"];
     }
     
     return self;

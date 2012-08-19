@@ -7,23 +7,24 @@
 //
 
 #import "SPComment.h"
+#import "SPPlayer.h"
+
+@interface SPComment()
+@property (copy, nonatomic, readwrite) NSString *body;
+@property (nonatomic, readwrite) NSUInteger likesCount;
+@property (retain, nonatomic, readwrite) SPPlayer *player;
+@end
 
 @implementation SPComment
 
-@synthesize body = _body;
-@synthesize likesCount = _likesCount;
-@synthesize player = _player;
-
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super initWithDictionary:dictionary])){
-        _body = [[dictionary stringSafelyFromKey:@"body"] retain];
-        _likesCount = [dictionary uintSafelyFromKey:@"likes_count"];
+        self.body = [[dictionary stringSafelyFromKey:@"body"] retain];
+        self.likesCount = [dictionary uintSafelyFromKey:@"likes_count"];
         
         NSDictionary *player = [dictionary objectSafelyFromKey:@"player"];
         if(player != nil){
-            _player = [[SPPlayer alloc] initWithDictionary:player];
-        }else{
-            _player = nil;
+            self.player = [[[SPPlayer alloc] initWithDictionary:player] autorelease];
         }
     }
     

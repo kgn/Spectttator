@@ -9,12 +9,17 @@
 #import "SPPagination.h"
 #import "SPMethods.h"
 
-@implementation SPPagination
+NSUInteger const SPPerPageDefault = 15;
+NSUInteger const SPPerPageMax = 50;
 
-@synthesize page = _page;
-@synthesize pages = _pages;
-@synthesize perPage = _perPage;
-@synthesize total = _total;
+@interface SPPagination()
+@property(nonatomic, readwrite) NSUInteger page;
+@property(nonatomic, readwrite) NSUInteger pages;
+@property(nonatomic, readwrite) NSUInteger perPage;
+@property(nonatomic, readwrite) NSUInteger total;
+@end
+
+@implementation SPPagination
 
 + (NSDictionary *)page:(NSUInteger)page{
     return [SPPagination page:page perPage:NSNotFound];
@@ -41,10 +46,10 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
-        _page = [dictionary uintSafelyFromKey:@"page"];
-        _pages = [dictionary uintSafelyFromKey:@"pages"];
-        _perPage = [dictionary uintSafelyFromKey:@"per_page"];
-        _total = [dictionary uintSafelyFromKey:@"total"];
+        self.page = [dictionary uintSafelyFromKey:@"page"];
+        self.pages = [dictionary uintSafelyFromKey:@"pages"];
+        self.perPage = [dictionary uintSafelyFromKey:@"per_page"];
+        self.total = [dictionary uintSafelyFromKey:@"total"];
     }
     return self;
 }

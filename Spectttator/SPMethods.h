@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SPPagination.h"
+
+@class SPPagination;
 
 #if TARGET_OS_IPHONE
 #define SPImage UIImage

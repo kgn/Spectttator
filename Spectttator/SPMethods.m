@@ -7,10 +7,10 @@
 //
 
 #import "SPMethods.h"
-
 #import "SPPlayer.h"
 #import "SPComment.h"
 #import "SPShot.h"
+#import "SPPagination.h"
 #import "AFJSONRequestOperation.h"
 #import "AFImageRequestOperation.h"
 #import "AFHTTPRequestOperation.h"

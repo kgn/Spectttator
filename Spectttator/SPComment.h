@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SPPlayer.h"
+#import "SPObject.h"
+
+@class SPPlayer;
 
 /** The `SPComment` class provides a programmatic interface for interacting 
  with Dribbble comments.
@@ -31,12 +33,12 @@
 @interface SPComment : SPObject
 
 /// The text of the comment.
-@property (readonly, nonatomic) NSString *body;
+@property (copy, nonatomic, readonly) NSString *body;
 /// The number of players who liked the comment.
-@property (readonly, nonatomic) NSUInteger likesCount;
+@property (nonatomic, readonly) NSUInteger likesCount;
 /** The player who posted the comment.
  @see SPPlayer
  */
-@property (readonly, nonatomic) SPPlayer *player;
+@property (retain, nonatomic, readonly) SPPlayer *player;
 
 @end

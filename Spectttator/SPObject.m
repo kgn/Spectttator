@@ -8,22 +8,22 @@
 
 #import "SPObject.h"
 
-@implementation SPObject
+@interface SPObject()
+@property (readonly, nonatomic, readwrite) NSUInteger identifier;
+@property (readonly, nonatomic, readwrite) NSDate *createdAt;
+@end
 
-@synthesize identifier = _identifier;
-@synthesize createdAt = _createdAt;
+@implementation SPObject
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super init])){
-        _identifier = [dictionary uintSafelyFromKey:@"id"];
+        self.identifier = [dictionary uintSafelyFromKey:@"id"];
         NSString *createdAt = [dictionary stringSafelyFromKey:@"created_at"];
         if(createdAt != nil){
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss ZZZZ"];
-            _createdAt = [[formatter dateFromString:createdAt] retain];
+            self.createdAt = [[formatter dateFromString:createdAt] retain];
             [formatter release];
-        }else{
-            _createdAt = nil;
         }
     }
     

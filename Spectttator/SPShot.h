@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SPPagination.h"
-#import "SPPlayer.h"
+#import "SPObject.h"
+
+@class SPPagination;
+@class SPPlayer;
 
 /** The `SPShot` class provides a programmatic interface for interacting 
  with Dribbble shots.
@@ -40,36 +42,36 @@
 @interface SPShot : SPObject
 
 /// The title of the shot.
-@property (readonly, nonatomic) NSString *title;
+@property (copy, nonatomic, readonly) NSString *title;
 /// The full url to the shot.
-@property (readonly, nonatomic) NSURL *url;
+@property (retain, nonatomic, readonly) NSURL *url;
 /// The short url to the shot.
-@property (readonly, nonatomic) NSURL *shortUrl;
+@property (retain, nonatomic, readonly) NSURL *shortUrl;
 /// The url to the shot's image.
-@property (readonly, nonatomic) NSURL *imageUrl;
+@property (retain, nonatomic, readonly) NSURL *imageUrl;
 /// The url to the shot's teaser image.
-@property (readonly, nonatomic) NSURL *imageTeaserUrl;
+@property (retain, nonatomic, readonly) NSURL *imageTeaserUrl;
 /// The width of the shot.
-@property (readonly, nonatomic) NSUInteger width;
+@property (nonatomic, readonly) NSUInteger width;
 /// The height of the shot.
-@property (readonly, nonatomic) NSUInteger height;
+@property (nonatomic, readonly) NSUInteger height;
 /// The number of views the shot has.
-@property (readonly, nonatomic) NSUInteger viewsCount;
+@property (nonatomic, readonly) NSUInteger viewsCount;
 /// The number of likes the shot has.
-@property (readonly, nonatomic) NSUInteger likesCount;
+@property (nonatomic, readonly) NSUInteger likesCount;
 /// The number of comments the shot has.
-@property (readonly, nonatomic) NSUInteger commentsCount;
+@property (nonatomic, readonly) NSUInteger commentsCount;
 /// The number of rebounds the shot has.
-@property (readonly, nonatomic) NSUInteger reboundsCount;
+@property (nonatomic, readonly) NSUInteger reboundsCount;
 /** The id of this shot this shot is a rebound of. 
 
  If it is not a rebound this value is `NSNotFound`.
  */
-@property (readonly, nonatomic) NSUInteger reboundSourceId;
+@property (nonatomic, readonly) NSUInteger reboundSourceId;
 /** The player who posted the shot.
  @see SPPlayer
  */
-@property (readonly, nonatomic) SPPlayer *player;
+@property (retain, nonatomic, readonly) SPPlayer *player;
 
 
 ///----------------------------

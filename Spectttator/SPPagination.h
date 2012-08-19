@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define SPMaxPerPage 50
-#define SPDefaultPerPage 15
+extern NSUInteger const SPPerPageDefault;
+extern NSUInteger const SPPerPageMax;
 
 /** Most Dribbble api calls take `page` and `per_page` to define which page of 
  data to return and how many items should be contained in the return. 
@@ -26,7 +26,7 @@
     NSString *username = @"inscopeapps";
 
     [SPRequest shotsForPlayer:user 
-              withPagination:[SPPagination perPage:20]
+              withPagination:SPPerPageMax
              runOnMainThread:NO
                    withBlock:^(NSArray *shots, SPPagination *pagination){
                        NSLog(@"Received shot data for %@", user);
@@ -42,13 +42,13 @@
 @interface SPPagination : NSObject
 
 /// The current page number.
-@property(readonly) NSUInteger page;
+@property(nonatomic, readonly) NSUInteger page;
 /// The total number of pages.
-@property(readonly) NSUInteger pages;
+@property(nonatomic, readonly) NSUInteger pages;
 /// The number of items per-page.
-@property(readonly) NSUInteger perPage;
+@property(nonatomic, readonly) NSUInteger perPage;
 /// The total number of items.
-@property(readonly) NSUInteger total;
+@property(nonatomic, readonly) NSUInteger total;
 
 ///----------------------------
 /// @name Initializing a SPPagination Object

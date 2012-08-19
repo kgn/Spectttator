@@ -33,42 +33,42 @@
 @interface SPPlayer : SPObject
 
 /// The real name of the player.
-@property (readonly, nonatomic) NSString *name;
+@property (copy, nonatomic, readonly) NSString *name;
 /// The username of the player.
-@property (readonly, nonatomic) NSString *username;
+@property (copy, nonatomic, readonly) NSString *username;
 /// The url of the player's profile.
-@property (readonly, nonatomic) NSURL *url;
+@property (retain, nonatomic, readonly) NSURL *url;
 /// The url of the player's avatar.
-@property (readonly, nonatomic) NSURL *avatarUrl;
+@property (retain, nonatomic, readonly) NSURL *avatarUrl;
 /// The location of the player.
-@property (readonly, nonatomic) NSString *location;
+@property (copy, nonatomic, readonly) NSString *location;
 /// The player's twitter name.
-@property (readonly, nonatomic) NSString *twitterScreenName;
+@property (copy, nonatomic, readonly) NSString *twitterScreenName;
 /** The id of this player who drafted this player.
  
  If this player was not drafted the value is `NSNotFound`.
  */
-@property (readonly, nonatomic) NSUInteger draftedByPlayerId;
+@property (nonatomic, readonly) NSUInteger draftedByPlayerId;
 /// The number of shots the player has posted.
-@property (readonly, nonatomic) NSUInteger shotsCount;
+@property (nonatomic, readonly) NSUInteger shotsCount;
 /// The number of players the player has drafted.
-@property (readonly, nonatomic) NSUInteger drafteesCount;
+@property (nonatomic, readonly) NSUInteger drafteesCount;
 /// The number of people the player follows.
-@property (readonly, nonatomic) NSUInteger followersCount;
+@property (nonatomic, readonly) NSUInteger followersCount;
 /// The number of followers the player has.
-@property (readonly, nonatomic) NSUInteger followingCount;
+@property (nonatomic, readonly) NSUInteger followingCount;
 /// The number of comments the player has posted.
-@property (readonly, nonatomic) NSUInteger commentsCount;
+@property (nonatomic, readonly) NSUInteger commentsCount;
 /// The number of comments the player's shots have received.
-@property (readonly, nonatomic) NSUInteger commentsReceivedCount;
+@property (nonatomic, readonly) NSUInteger commentsReceivedCount;
 /// The number of shots the player has liked.
-@property (readonly, nonatomic) NSUInteger likesCount;
+@property (nonatomic, readonly) NSUInteger likesCount;
 /// The number of likes the player's shots have received.
-@property (readonly, nonatomic) NSUInteger likesReceivedCount;
+@property (nonatomic, readonly) NSUInteger likesReceivedCount;
 /// The number of rebounds the player has posted.
-@property (readonly, nonatomic) NSUInteger reboundsCount;
+@property (nonatomic, readonly) NSUInteger reboundsCount;
 /// The number of rebounds the player's shots have received.
-@property (readonly, nonatomic) NSUInteger reboundsReceivedCount;
+@property (nonatomic, readonly) NSUInteger reboundsReceivedCount;
 
 ///----------------------------
 /// @name Avatar
