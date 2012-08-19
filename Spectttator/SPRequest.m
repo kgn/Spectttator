@@ -10,6 +10,10 @@
 #import "SPMethods.h"
 #import "AFJSONRequestOperation.h"
 
+NSString *const SPListDebuts = @"debuts";
+NSString *const SPListEveryone = @"everyone";
+NSString *const SPListPopular = @"popular";
+
 @implementation SPRequest
 
 #pragma mark Players

@@ -11,9 +11,9 @@
 #import "SPPlayer.h"
 #import "SPPagination.h"
 
-#define SPDebutsList @"debuts"
-#define SPEveryoneList @"everyone"
-#define SPPopularList @"popular"
+extern NSString *const SPListDebuts;
+extern NSString *const SPListEveryone;
+extern NSString *const SPListPopular;
 
 /** The `SPRequest` class provides a programmatic interface for interacting 
  with the majority of [Dribbble api](http://dribbble.com/api) calls, there are some shot centric 
