@@ -32,10 +32,10 @@ NSUInteger const SPPerPageMax = 50;
 + (NSDictionary *)page:(NSUInteger)page perPage:(NSUInteger)perPage{
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     if(page != NSNotFound && page > 0){
-        dictionary[@"page"] = [NSNumber numberWithInteger:page];
+        [dictionary setObject:@(page) forKey:@"page"];
     }
     if(perPage != NSNotFound && perPage > 0){
-        dictionary[@"perPage"] = [NSNumber numberWithInteger:perPage];
+        [dictionary setObject:@(perPage) forKey:@"perPage"];
     }    
     return dictionary;
 }
@@ -55,8 +55,9 @@ NSUInteger const SPPerPageMax = 50;
 }
 
 - (NSString *)description{
-    return [NSString stringWithFormat:@"<%@ Page=%lu Pages=%lu PerPage=%lu Total=%lu>", 
-            [self class], self.page, self.pages, self.perPage, self.total];
+    return [NSString stringWithFormat:@"<%@ Page=%lu Pages=%lu PerPage=%lu Total=%lu>",
+            [self class], (unsigned long)self.page, (unsigned long)self.pages,
+            (unsigned long)self.perPage, (unsigned long)self.total];
 }
 
 @end

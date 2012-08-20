@@ -27,7 +27,7 @@ NSString *const SPListPopular = @"popular";
       JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
           SPPlayer *player = nil;
-          if(![json[@"message"] isEqualToString:@"Not found"]){
+          if(![[json objectForKey:@"message"] isEqualToString:@"Not found"]){
               player = [[SPPlayer alloc] initWithDictionary:json];
           }
           if(runOnMainThread){
@@ -90,12 +90,12 @@ NSString *const SPListPopular = @"popular";
 + (void)shotInformationForIdentifier:(NSUInteger)identifier
                      runOnMainThread:(BOOL)runOnMainThread
                            withBlock:(void (^)(SPShot *shot))block{
-    NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/shots/%lu", identifier];
+    NSString *urlString = [NSString stringWithFormat:@"http://api.dribbble.com/shots/%lu", (unsigned long)identifier];
     [[AFJSONRequestOperation
      JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
         SPShot *shot = nil;
-        if(![json[@"message"] isEqualToString:@"Not found"]){
+         if(![[json objectForKey:@"message"] isEqualToString:@"Not found"]){
             shot = [[SPShot alloc] initWithDictionary:json];
         }
         if(runOnMainThread){
