@@ -12,9 +12,9 @@
 @interface SPObject : NSObject
 
 /// The unique id of the object.
-@property (readonly, nonatomic, readonly) NSUInteger identifier;
+@property (nonatomic, readonly) NSUInteger identifier;
 /// The date the object was created.
-@property (readonly, nonatomic, readonly) NSDate *createdAt;
+@property (strong, nonatomic, readonly) NSDate *createdAt;
 
 ///----------------------------
 /// @name Initializing a SPObject Object

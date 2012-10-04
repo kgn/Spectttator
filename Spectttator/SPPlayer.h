@@ -33,17 +33,17 @@
 @interface SPPlayer : SPObject
 
 /// The real name of the player.
-@property (copy, nonatomic, readonly) NSString *name;
+@property (strong, nonatomic, readonly) NSString *name;
 /// The username of the player.
-@property (copy, nonatomic, readonly) NSString *username;
+@property (strong, nonatomic, readonly) NSString *username;
 /// The url of the player's profile.
-@property (retain, nonatomic, readonly) NSURL *url;
+@property (strong, nonatomic, readonly) NSURL *url;
 /// The url of the player's avatar.
-@property (retain, nonatomic, readonly) NSURL *avatarUrl;
+@property (strong, nonatomic, readonly) NSURL *avatarUrl;
 /// The location of the player.
-@property (copy, nonatomic, readonly) NSString *location;
+@property (strong, nonatomic, readonly) NSString *location;
 /// The player's twitter name.
-@property (copy, nonatomic, readonly) NSString *twitterScreenName;
+@property (strong, nonatomic, readonly) NSString *twitterScreenName;
 /** The id of this player who drafted this player.
  
  If this player was not drafted the value is `NSNotFound`.

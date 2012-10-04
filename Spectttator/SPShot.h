@@ -42,15 +42,15 @@
 @interface SPShot : SPObject
 
 /// The title of the shot.
-@property (copy, nonatomic, readonly) NSString *title;
+@property (strong, nonatomic, readonly) NSString *title;
 /// The full url to the shot.
-@property (retain, nonatomic, readonly) NSURL *url;
+@property (strong, nonatomic, readonly) NSURL *url;
 /// The short url to the shot.
-@property (retain, nonatomic, readonly) NSURL *shortUrl;
+@property (strong, nonatomic, readonly) NSURL *shortUrl;
 /// The url to the shot's image.
-@property (retain, nonatomic, readonly) NSURL *imageUrl;
+@property (strong, nonatomic, readonly) NSURL *imageUrl;
 /// The url to the shot's teaser image.
-@property (retain, nonatomic, readonly) NSURL *imageTeaserUrl;
+@property (strong, nonatomic, readonly) NSURL *imageTeaserUrl;
 /// The width of the shot.
 @property (nonatomic, readonly) NSUInteger width;
 /// The height of the shot.
@@ -71,7 +71,7 @@
 /** The player who posted the shot.
  @see SPPlayer
  */
-@property (retain, nonatomic, readonly) SPPlayer *player;
+@property (strong, nonatomic, readonly) SPPlayer *player;
 
 
 ///----------------------------

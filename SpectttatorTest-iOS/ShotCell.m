@@ -18,8 +18,9 @@
 - (void)loadShot:(SPShot *)aShot withImage:(UIImage *)image{
     self.title.text = aShot.title;
     self.player.text = aShot.player.name;
-    self.info.text = [NSString stringWithFormat:@"👀%lu  💓%lu  📢%lu", 
-                       aShot.viewsCount, aShot.likesCount, aShot.commentsCount];
+    self.info.text = [NSString stringWithFormat:@"👀%lu  💓%lu  📢%lu",
+                      (unsigned long)aShot.viewsCount, (unsigned long)aShot.likesCount,
+                      (unsigned long)aShot.commentsCount];
     self.shot.image = image;
 }
 

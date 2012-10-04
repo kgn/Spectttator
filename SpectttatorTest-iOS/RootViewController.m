@@ -30,7 +30,7 @@
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [SPRequest shotsForList:self.list 
-             withPagination:[SPPagination perPage:SPMaxPerPage] 
+             withPagination:[SPPagination perPage:SPPerPageMax]
             runOnMainThread:YES 
                   withBlock:^(NSArray *theShots, SPPagination *thsPagination){
                       self.shots = theShots;
@@ -53,11 +53,11 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	if(buttonIndex == 0){
-        [self refreshWithList:SPPopularList];
+        [self refreshWithList:SPListPopular];
     }else if(buttonIndex == 1){
-        [self refreshWithList:SPEveryoneList];
+        [self refreshWithList:SPListEveryone];
     }else if(buttonIndex == 2){
-        [self refreshWithList:SPDebutsList];
+        [self refreshWithList:SPListDebuts];
     }
 }
 
@@ -66,9 +66,9 @@
                                                             delegate:self 
                                                    cancelButtonTitle:nil
                                               destructiveButtonTitle:nil
-                                                   otherButtonTitles:[SPPopularList capitalizedString], 
-                                                                     [SPEveryoneList capitalizedString], 
-                                                                     [SPDebutsList  capitalizedString], 
+                                                   otherButtonTitles:[SPListPopular capitalizedString],
+                                                                     [SPListEveryone capitalizedString],
+                                                                     [SPListDebuts  capitalizedString],
                                                                       nil];
 	[listSheet setActionSheetStyle:UIActionSheetStyleBlackOpaque];
 	[listSheet showInView:self.view];
@@ -76,7 +76,7 @@
 }
 
 - (void)viewDidLoad{
-    [self refreshWithList:SPPopularList];
+    [self refreshWithList:SPListPopular];
     
     self.refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
                                                                                    target:self 

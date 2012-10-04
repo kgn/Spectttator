@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730EB4D7161D67E600745929 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 730EB4D6161D67E600745929 /* Default-568h@2x.png */; };
 		73698B8913B6820100922D1A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73698B7113B681F400922D1A /* Cocoa.framework */; };
 		73698B9113B6820100922D1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 73698B9013B6820100922D1A /* main.m */; };
 		73698B9813B6820100922D1A /* SpectttatorTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73698B9713B6820100922D1A /* SpectttatorTestAppDelegate.m */; };
@@ -72,6 +73,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		730EB4D6161D67E600745929 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "SpectttatorTest/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		73698B7113B681F400922D1A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		73698B7613B681F400922D1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		73698B8713B6820100922D1A /* SpectttatorTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectttatorTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +217,7 @@
 		73C01CBD13C2EC4A00A8ECDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				730EB4D6161D67E600745929 /* Default-568h@2x.png */,
 				73C01CBE13C2EC4A00A8ECDB /* SpectttatorTest-iOS-Info.plist */,
 				73C01CC213C2EC4A00A8ECDB /* main.m */,
 				73C01CC413C2EC4A00A8ECDB /* SpectttatorTest-iOS-Prefix.pch */,
@@ -328,6 +331,7 @@
 				73C01CDC13C2ED3000A8ECDB /* ShotCell.xib in Resources */,
 				73C01CDE13C2ED3C00A8ECDB /* RootViewController.xib in Resources */,
 				D688AD2113C70A6E00278A6D /* MainWindow.xib in Resources */,
+				730EB4D7161D67E600745929 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +421,7 @@
 		73698B9D13B6820100922D1A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpectttatorTest/SpectttatorTest-Prefix.pch";
 				INFOPLIST_FILE = "SpectttatorTest/SpectttatorTest-Info.plist";
@@ -429,6 +434,7 @@
 		73698B9E13B6820100922D1A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpectttatorTest/SpectttatorTest-Prefix.pch";
 				INFOPLIST_FILE = "SpectttatorTest/SpectttatorTest-Info.plist";

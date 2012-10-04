@@ -9,12 +9,12 @@
 #import "SPPlayer.h"
 
 @interface SPPlayer()
-@property (copy, nonatomic, readwrite) NSString *name;
-@property (copy, nonatomic, readwrite) NSString *username;
-@property (retain, nonatomic, readwrite) NSURL *url;
-@property (retain, nonatomic, readwrite) NSURL *avatarUrl;
-@property (copy, nonatomic, readwrite) NSString *location;
-@property (copy, nonatomic, readwrite) NSString *twitterScreenName;
+@property (strong, nonatomic, readwrite) NSString *name;
+@property (strong, nonatomic, readwrite) NSString *username;
+@property (strong, nonatomic, readwrite) NSURL *url;
+@property (strong, nonatomic, readwrite) NSURL *avatarUrl;
+@property (strong, nonatomic, readwrite) NSString *location;
+@property (strong, nonatomic, readwrite) NSString *twitterScreenName;
 @property (nonatomic, readwrite) NSUInteger draftedByPlayerId;
 @property (nonatomic, readwrite) NSUInteger shotsCount;
 @property (nonatomic, readwrite) NSUInteger drafteesCount;
@@ -44,7 +44,7 @@
         self.url = [dictionary URLSafelyFromKey:@"url"];
         self.avatarUrl = [dictionary URLSafelyFromKey:@"avatar_url"];
         self.location = [dictionary stringSafelyFromKey:@"location"];
-        self.twitterScreenName = [[dictionary stringSafelyFromKey:@"twitter_screen_name"] retain];
+        self.twitterScreenName = [dictionary stringSafelyFromKey:@"twitter_screen_name"];
         self.draftedByPlayerId = [dictionary uintSafelyFromKey:@"drafted_by_player_id"];
         self.shotsCount = [dictionary uintSafelyFromKey:@"shots_count"];
         self.drafteesCount = [dictionary uintSafelyFromKey:@"draftees_count"];
@@ -66,14 +66,5 @@
             [self class], (unsigned long)self.identifier, self.name, self.username, self.url];
 }
 
-- (void)dealloc{
-    [_name release];
-    [_username release];
-    [_url release];
-    [_avatarUrl release];
-    [_location release];
-    [_twitterScreenName release];
-    [super dealloc];
-}
 
 @end

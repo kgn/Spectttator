@@ -110,7 +110,7 @@
     
     //get shots from player
     [SPRequest shotsForPlayer:user 
-               withPagination:[SPPagination perPage:SPMaxPerPage]
+               withPagination:[SPPagination perPage:SPPerPageMax]
               runOnMainThread:YES
                     withBlock:^(NSArray *shots, SPPagination *pagination){
         NSLog(@"Received shot data for %@", user);
@@ -130,14 +130,14 @@
             }];       
         }
         
-        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
+        @autoreleasepool {
             for(SPShot *shot in shots){
                 NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
                 NSMutableAttributedString *shotString = [NSAttributedString hyperlinkFromString:string 
                                                                                         withURL:shot.url];
                     [[self.shots textStorage] appendAttributedString:shotString];
             }
-        [pool drain];
+        }
         
         self.userUpdating = NO;
         if(!self.listUpdating){
@@ -170,14 +170,14 @@
             }];       
         }
         
-        NSAutoreleasePool *pool =  [[NSAutoreleasePool alloc] init];
+        @autoreleasepool {
             for(SPShot *shot in shots){
                 NSString *string = [NSString stringWithFormat:@"%@\n", shot.title];
                 NSMutableAttributedString *shotString = [NSAttributedString hyperlinkFromString:string 
                                                                                         withURL:shot.url];
                     [[self.listShots textStorage] appendAttributedString:shotString];
             }
-        [pool drain];
+        }
         
         self.listUpdating = NO;
         if(!self.userUpdating){

@@ -41,7 +41,7 @@ NSUInteger const SPPerPageMax = 50;
 }
 
 + (id)paginationWithDictionary:(NSDictionary *)dictionary{
-    return [[[SPPagination alloc] initWithDictionary:dictionary] autorelease];
+    return [[SPPagination alloc] initWithDictionary:dictionary];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{

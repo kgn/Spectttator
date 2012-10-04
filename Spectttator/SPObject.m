@@ -9,8 +9,8 @@
 #import "SPObject.h"
 
 @interface SPObject()
-@property (readonly, nonatomic, readwrite) NSUInteger identifier;
-@property (readonly, nonatomic, readwrite) NSDate *createdAt;
+@property (nonatomic, readwrite) NSUInteger identifier;
+@property (strong, nonatomic, readwrite) NSDate *createdAt;
 @end
 
 @implementation SPObject
@@ -22,8 +22,7 @@
         if(createdAt != nil){
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss ZZZZ"];
-            self.createdAt = [[formatter dateFromString:createdAt] retain];
-            [formatter release];
+            self.createdAt = [formatter dateFromString:createdAt];
         }
     }
     
@@ -41,9 +40,5 @@
     return NO;
 }
 
-- (void)dealloc{
-    [_createdAt release];
-    [super dealloc];
-}
 
 @end

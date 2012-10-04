@@ -32,10 +32,10 @@ NSString *const SPListPopular = @"popular";
           }
           if(runOnMainThread){
               dispatch_async(dispatch_get_main_queue(), ^{
-                  block([player autorelease]);
+                  block(player);
               });
           }else{
-              block([player autorelease]);
+              block(player);
           }
       } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
           if(runOnMainThread){
@@ -100,10 +100,10 @@ NSString *const SPListPopular = @"popular";
         }
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{
-                block([shot autorelease]);
+                block(shot);
             });
         }else{
-            block([shot autorelease]);
+            block(shot);
         }
      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
          if(runOnMainThread){

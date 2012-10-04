@@ -33,12 +33,12 @@
 @interface SPComment : SPObject
 
 /// The text of the comment.
-@property (copy, nonatomic, readonly) NSString *body;
+@property (strong, nonatomic, readonly) NSString *body;
 /// The number of players who liked the comment.
 @property (nonatomic, readonly) NSUInteger likesCount;
 /** The player who posted the comment.
  @see SPPlayer
  */
-@property (retain, nonatomic, readonly) SPPlayer *player;
+@property (strong, nonatomic, readonly) SPPlayer *player;
 
 @end

@@ -76,11 +76,9 @@
               @autoreleasepool{
                   SPPlayer *player = [[SPPlayer alloc] initWithDictionary:playerData];
                   [mplayers addObject:player];
-                  [player release];
               }
           }
           if([mplayers count] == 0){
-              [mplayers release];
               mplayers = nil;
           }
           if(runOnMainThread){
@@ -89,9 +87,6 @@
               });
           }else{
               block(mplayers, [SPPagination paginationWithDictionary:json]);
-          }
-          if(mplayers != nil){
-              [mplayers release];
           }
       } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
           if(runOnMainThread){
@@ -116,11 +111,9 @@
               @autoreleasepool{
                   SPShot *shot = [[SPShot alloc] initWithDictionary:shotData];
                   [mshots addObject:shot];
-                  [shot release];
               }
           }
           if([mshots count] == 0){
-              [mshots release];            
               mshots = nil;
           }
           if(runOnMainThread){
@@ -130,9 +123,6 @@
           }else{
               block(mshots, [SPPagination paginationWithDictionary:json]);
           }
-          if(mshots != nil){
-              [mshots release];
-          } 
       } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
           if(runOnMainThread){
               dispatch_async(dispatch_get_main_queue(), ^{
@@ -156,11 +146,9 @@
               @autoreleasepool{
                   SPComment *comment = [[SPComment alloc] initWithDictionary:commentData];
                   [mcomments addObject:comment];
-                  [comment release];
               }
           }
           if([mcomments count] == 0){
-              [mcomments release];
               mcomments = nil;
           }
           if(runOnMainThread){
@@ -169,9 +157,6 @@
               });
           }else{
               block(mcomments, [SPPagination paginationWithDictionary:json]);
-          }
-          if(mcomments != nil){
-              [mcomments release];
           }
       } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
           if(runOnMainThread){
@@ -213,7 +198,7 @@
             runOnMainThread:(BOOL)runOnMainThread
                   withBlock:(void (^)(NSData *data))block{
     AFHTTPRequestOperation *operation = 
-    [[[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:url]] autorelease];
+    [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:url]];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
         if(runOnMainThread){
             dispatch_async(dispatch_get_main_queue(), ^{

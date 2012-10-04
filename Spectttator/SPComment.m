@@ -10,21 +10,21 @@
 #import "SPPlayer.h"
 
 @interface SPComment()
-@property (copy, nonatomic, readwrite) NSString *body;
+@property (strong, nonatomic, readwrite) NSString *body;
 @property (nonatomic, readwrite) NSUInteger likesCount;
-@property (retain, nonatomic, readwrite) SPPlayer *player;
+@property (strong, nonatomic, readwrite) SPPlayer *player;
 @end
 
 @implementation SPComment
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super initWithDictionary:dictionary])){
-        self.body = [[dictionary stringSafelyFromKey:@"body"] retain];
+        self.body = [dictionary stringSafelyFromKey:@"body"];
         self.likesCount = [dictionary uintSafelyFromKey:@"likes_count"];
         
         NSDictionary *player = [dictionary objectSafelyFromKey:@"player"];
         if(player != nil){
-            self.player = [[[SPPlayer alloc] initWithDictionary:player] autorelease];
+            self.player = [[SPPlayer alloc] initWithDictionary:player];
         }
     }
     
@@ -36,10 +36,5 @@
             [self class], (unsigned long)self.identifier, self.player.username, self.body];
 }
 
-- (void)dealloc{
-    [_body release];
-    [_player release];
-    [super dealloc];
-}
 
 @end

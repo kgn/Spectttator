@@ -12,11 +12,11 @@
 #import "SPPlayer.h"
 
 @interface SPShot()
-@property (copy, nonatomic, readwrite) NSString *title;
-@property (retain, nonatomic, readwrite) NSURL *url;
-@property (retain, nonatomic, readwrite) NSURL *shortUrl;
-@property (retain, nonatomic, readwrite) NSURL *imageUrl;
-@property (retain, nonatomic, readwrite) NSURL *imageTeaserUrl;
+@property (strong, nonatomic, readwrite) NSString *title;
+@property (strong, nonatomic, readwrite) NSURL *url;
+@property (strong, nonatomic, readwrite) NSURL *shortUrl;
+@property (strong, nonatomic, readwrite) NSURL *imageUrl;
+@property (strong, nonatomic, readwrite) NSURL *imageTeaserUrl;
 @property (nonatomic, readwrite) NSUInteger width;
 @property (nonatomic, readwrite) NSUInteger height;
 @property (nonatomic, readwrite) NSUInteger viewsCount;
@@ -24,7 +24,7 @@
 @property (nonatomic, readwrite) NSUInteger commentsCount;
 @property (nonatomic, readwrite) NSUInteger reboundsCount;
 @property (nonatomic, readwrite) NSUInteger reboundSourceId;
-@property (retain, nonatomic, readwrite) SPPlayer *player;
+@property (strong, nonatomic, readwrite) SPPlayer *player;
 @end
 
 @implementation SPShot
@@ -82,7 +82,7 @@
         
         NSDictionary *player = [dictionary objectSafelyFromKey:@"player"];
         if(player != nil){
-            self.player = [[[SPPlayer alloc] initWithDictionary:player] autorelease];
+            self.player = [[SPPlayer alloc] initWithDictionary:player];
         }
     }
     
@@ -94,14 +94,5 @@
             [self class], (unsigned long)self.identifier, self.title, self.player.username, self.url];
 }
 
-- (void)dealloc{
-    [_title release];
-    [_url release];
-    [_shortUrl release];
-    [_imageUrl release];
-    [_imageTeaserUrl release];
-    [_player release];
-    [super dealloc];
-}
 
 @end
