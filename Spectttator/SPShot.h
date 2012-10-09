@@ -49,6 +49,8 @@
 @property (strong, nonatomic, readonly) NSURL *shortUrl;
 /// The url to the shot's image.
 @property (strong, nonatomic, readonly) NSURL *imageUrl;
+/// The url to the shot's 400px wide image.
+@property (strong, nonatomic, readonly) NSURL *image400Url;
 /// The url to the shot's teaser image.
 @property (strong, nonatomic, readonly) NSURL *imageTeaserUrl;
 /// The width of the shot.
@@ -88,6 +90,17 @@
  */
 - (void)imageRunOnMainThread:(BOOL)runOnMainThread 
                    withBlock:(void (^)(SPImage *image))block;
+
+/**
+ Retrieves the shot's 400px wide image.
+ @param runOnMainThread Specifies if the passed in block should be run on the main thread.
+ If UI elements are being updated in the block this should be `YES`.
+ @param block The block to be executed once the data has been retrieved.
+ Depending on the platform an `NSImage` or `UIImage` object for the
+ shot is passed to the block.
+ */
+- (void)image400RunOnMainThread:(BOOL)runOnMainThread
+                      withBlock:(void (^)(SPImage *image))block;
 
 /** 
  Retrieves the shot's teaser image.

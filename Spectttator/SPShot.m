@@ -16,6 +16,7 @@
 @property (strong, nonatomic, readwrite) NSURL *url;
 @property (strong, nonatomic, readwrite) NSURL *shortUrl;
 @property (strong, nonatomic, readwrite) NSURL *imageUrl;
+@property (strong, nonatomic, readwrite) NSURL *image400Url;
 @property (strong, nonatomic, readwrite) NSURL *imageTeaserUrl;
 @property (nonatomic, readwrite) NSUInteger width;
 @property (nonatomic, readwrite) NSUInteger height;
@@ -29,11 +30,18 @@
 
 @implementation SPShot
 
-- (void)imageRunOnMainThread:(BOOL)runOnMainThread 
+- (void)imageRunOnMainThread:(BOOL)runOnMainThread
                    withBlock:(void (^)(SPImage *image))block{
     [SPMethods requestImageWithURL:self.imageUrl
                    runOnMainThread:runOnMainThread 
                    withBlock:block];
+}
+
+- (void)image400RunOnMainThread:(BOOL)runOnMainThread
+                   withBlock:(void (^)(SPImage *image))block{
+    [SPMethods requestImageWithURL:self.image400Url
+                   runOnMainThread:runOnMainThread
+                         withBlock:block];
 }
     
 - (void)imageTeaserRunOnMainThread:(BOOL)runOnMainThread 
@@ -71,6 +79,7 @@
         self.url = [dictionary URLSafelyFromKey:@"url"];
         self.shortUrl = [dictionary URLSafelyFromKey:@"short_url"];
         self.imageUrl = [dictionary URLSafelyFromKey:@"image_url"];
+        self.image400Url = [dictionary URLSafelyFromKey:@"image_400_url"];
         self.imageTeaserUrl = [dictionary URLSafelyFromKey:@"image_teaser_url"];
         self.width = [dictionary uintSafelyFromKey:@"width"];
         self.height = [dictionary uintSafelyFromKey:@"height"];
