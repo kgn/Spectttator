@@ -76,6 +76,7 @@
 		73C01C9C13C2EB0B00A8ECDB /* SPComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 739A44AC13B86A8C00E7783A /* SPComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73C01C9D13C2EB0B00A8ECDB /* SPPagination.h in Headers */ = {isa = PBXBuildFile; fileRef = 739A449E13B85C9A00E7783A /* SPPagination.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73C01C9E13C2EB0B00A8ECDB /* SPMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = 739A44A613B8642B00E7783A /* SPMethods.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		830ABD751811A50800574F09 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830ABD741811A50800574F09 /* Security.framework */; };
 		8372A7CE168B6C3800010490 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8372A7CD168B6C3800010490 /* SystemConfiguration.framework */; };
 		8372A7D1168B6C4700010490 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8372A7D0168B6C4700010490 /* SystemConfiguration.framework */; };
 		8372A7D3168B6C5500010490 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8372A7D2168B6C5500010490 /* UIKit.framework */; };
@@ -124,6 +125,7 @@
 		73BBCF2013B7FB0300D5F5DF /* SPShot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPShot.m; sourceTree = "<group>"; };
 		73C01C7B13C2EA8600A8ECDB /* libSpectttator-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSpectttator-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73C01CAC13C2EB4B00A8ECDB /* Spectttator-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spectttator-iOS-Prefix.pch"; sourceTree = "<group>"; };
+		830ABD741811A50800574F09 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8372A7CD168B6C3800010490 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8372A7D0168B6C4700010490 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		8372A7D2168B6C5500010490 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -135,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				830ABD751811A50800574F09 /* Security.framework in Frameworks */,
 				8372A7CE168B6C3800010490 /* SystemConfiguration.framework in Frameworks */,
 				73698B7213B681F400922D1A /* Cocoa.framework in Frameworks */,
 			);
@@ -175,6 +178,7 @@
 		73698B7013B681F400922D1A /* Mac Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				830ABD741811A50800574F09 /* Security.framework */,
 				8372A7CD168B6C3800010490 /* SystemConfiguration.framework */,
 				73698B7613B681F400922D1A /* Foundation.framework */,
 				73698B7113B681F400922D1A /* Cocoa.framework */,
